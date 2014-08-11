@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+        <groupId>id.co.sigma.commonlib</groupId>
+        <artifactId>commons-lib-group</artifactId>
+        <version>1.5</version>
+    </parent>
+	
+	
+	
+   
+    <artifactId>lib-zk-bccore</artifactId>
+
+    <packaging>jar</packaging>
+    <name>Core ZK component</name>
+
+   
+
+   
+
+    <build>
+    
+    	<resources>
+    		<resource>
+    			<directory>src/main/java</directory>
+    		
+    		</resource>
+    		<resource>
+    			<directory>src/main/resources</directory>
+    		
+    		</resource>
+    	
+    	</resources>
+        <defaultGoal>install</defaultGoal>
+		<plugins>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>${maven.compiler.plugin.version}</version>
+			<configuration>
+				<encoding>UTF-8</encoding>
+				<source>${maven.compiler.source}</source>
+				<target>${maven.compiler.target}</target>
+			</configuration>
+		</plugin>
+		
+	
+	</plugins>
+    </build>
+
+    <dependencies>
+		<dependency>
+      <groupId>org.zkoss.zk</groupId>
+      <artifactId>zkplus</artifactId>
+      <version>${zk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zkoss.zk</groupId>
+      <artifactId>zhtml</artifactId>
+      <version>${zk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zkoss.zk</groupId>
+      <artifactId>zkbind</artifactId>
+      <version>${zk.version}</version>
+    </dependency>
+    
+
+	
+
+
+    <dependency>
+      <groupId>org.zkoss.zk</groupId>
+      <artifactId>zul</artifactId>
+      <version>${zk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>${commons.logging.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons.io.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${commons.lang.version}</version>
+    </dependency>
+     
+    <dependency>
+      <groupId>id.co.sigma.commonlib</groupId>
+      <artifactId>lib-base-server</artifactId>
+      <version>${project.version}</version>
+    </dependency>	
+   		
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>${lib.junit.version}</version>
+		  <scope>test</scope>
+		</dependency>
+		
+		
+		
+  	</dependencies>
+    
+   
+    <description>ZK core component</description>
+    
+   
+</project>
+
