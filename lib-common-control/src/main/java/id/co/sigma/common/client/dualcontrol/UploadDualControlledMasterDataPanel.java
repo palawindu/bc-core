@@ -9,7 +9,7 @@ import id.co.sigma.common.client.form.ExtendedButton;
 import id.co.sigma.common.client.form.advance.TextBoxAreaWithLabel;
 import id.co.sigma.common.client.rpc.DualControlDataRPCServiceAsync;
 import id.co.sigma.common.client.util.CommonClientControlUtil;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.data.app.DualControlEnabledData;
 import id.co.sigma.common.data.app.HeaderDataOnlyCommonDualControlContainerTable;
 import id.co.sigma.common.exception.BadBulkUploadDataException;
@@ -36,7 +36,7 @@ import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
  * panel untuk upload dual controlled master data
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class UploadDualControlledMasterDataPanel extends BaseSigmaComposite {
+public class UploadDualControlledMasterDataPanel extends BaseCommonControlComposite {
 
 	private static UploadDualControlledMasterDataPanelUiBinder uiBinder = GWT
 			.create(UploadDualControlledMasterDataPanelUiBinder.class);

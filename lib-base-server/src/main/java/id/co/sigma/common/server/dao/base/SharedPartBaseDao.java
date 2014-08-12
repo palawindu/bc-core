@@ -3,7 +3,7 @@ package id.co.sigma.common.server.dao.base;
 import id.co.sigma.common.data.ModificationDataContainer;
 import id.co.sigma.common.data.PagedSimpleDataGridData;
 import id.co.sigma.common.data.SingleKeyEntityData;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.common.server.dao.IBaseDao;
 import id.co.sigma.common.server.util.ExtendedBeanUtils;
@@ -155,7 +155,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 	 * @return contoh hasil : <br/> <code>AND a.name=:SIGMAPARAM1 AND a.username=:SIGMAPARAM2
 	 * </code> , jadinya parameter di automate dengan jumlah pada argument filters
 	 **/
-	protected String  buildWhereStatement(String tableAlias ,  SigmaSimpleQueryFilter[] filters) {
+	protected String  buildWhereStatement(String tableAlias ,  SimpleQueryFilter[] filters) {
 		String retval="" ; 
 		if ( filters==null||filters.length==0)
 			return "" ;
@@ -164,7 +164,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 		
 		String tableAliasWithDot = tableAlias!= null && tableAlias.length()> 0 ? tableAlias +"." : "" ;
 		
-		for ( SigmaSimpleQueryFilter scn : filters){
+		for ( SimpleQueryFilter scn : filters){
 			if ( (scn.getFilter()==null||scn.getFilter().length()==0)&& (			
 					SimpleQueryFilterOperator.likeBothSide.equals(  scn.getOperator())||
 					SimpleQueryFilterOperator.likeFrontOnly.equals(  scn.getOperator())||
@@ -220,7 +220,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 	}
 	
 	
-	protected String  buildWhereStatementOriginal(String tableAlias ,  SigmaSimpleQueryFilter[] filters) {
+	protected String  buildWhereStatementOriginal(String tableAlias ,  SimpleQueryFilter[] filters) {
 		String retval="" ; 
 		if ( filters==null||filters.length==0)
 			return "" ;
@@ -229,7 +229,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 		
 		
 		
-		for ( SigmaSimpleQueryFilter scn : filters){
+		for ( SimpleQueryFilter scn : filters){
 			if ( (scn.getFilter()==null||scn.getFilter().length()==0)&& (			
 					SimpleQueryFilterOperator.likeBothSide.equals(  scn.getOperator())||
 					SimpleQueryFilterOperator.likeFrontOnly.equals(  scn.getOperator())||
@@ -313,7 +313,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 	 * @param updatedFields field-field yang di update
 	 * @param filters filters untuk proses update data
 	 */
-	protected String generateUpdateStatement ( Class<?> entityClass , SimpleKeyValueParameter[] updatedFields , SigmaSimpleQueryFilter [] filters  ) {
+	protected String generateUpdateStatement ( Class<?> entityClass , SimpleKeyValueParameter[] updatedFields , SimpleQueryFilter [] filters  ) {
 		StringBuffer fieldUpdateStatment = new StringBuffer(); 
 		for ( SimpleKeyValueParameter scn :  updatedFields ){
 			if ( fieldUpdateStatment.length()>0)

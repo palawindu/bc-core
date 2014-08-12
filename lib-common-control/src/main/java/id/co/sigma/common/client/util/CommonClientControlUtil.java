@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.CalendarUtil;
 
 import id.co.sigma.common.client.CommonClientControlConstant;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 
 
@@ -493,10 +493,10 @@ public final class CommonClientControlUtil {
 	 * generate filter dengan date betwen. jadinya bikin tgl skr + tgl h+1
 	 * @param fieldName 
 	 */
-	public SigmaSimpleQueryFilter generateDateWithBetweenFilter ( String fieldName  , Date dateFilter )  {
+	public SimpleQueryFilter generateDateWithBetweenFilter ( String fieldName  , Date dateFilter )  {
 		Date tglDari = generate00HourPassedDate(dateFilter); 
 		Date tglSampai = generate00HourPassedDateNextDate(dateFilter);
-		SigmaSimpleQueryFilter retval = new SigmaSimpleQueryFilter(fieldName ,tglDari , tglSampai ); 
+		SimpleQueryFilter retval = new SimpleQueryFilter(fieldName ,tglDari , tglSampai ); 
 		return retval ; 
 		
 	}

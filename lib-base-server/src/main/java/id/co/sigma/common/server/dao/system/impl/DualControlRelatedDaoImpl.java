@@ -5,22 +5,22 @@ import javax.persistence.Query;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 import id.co.sigma.common.server.dao.system.DualControlRelatedDao;
 
 /**
  *
  *@author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class DualControlRelatedDaoImpl extends BaseSigmaDao implements DualControlRelatedDao{
+public class DualControlRelatedDaoImpl extends BaseJPADao implements DualControlRelatedDao{
 
 	
 
 	@Override
 	public PagedResultHolder<CommonDualControlContainerTable> getRejectList(
-			SigmaSimpleQueryFilter[] filters, SigmaSimpleSortArgument[] sorts,
+			SimpleQueryFilter[] filters, SimpleSortArgument[] sorts,
 			String username, int page, int pageSize) {
 		
 		

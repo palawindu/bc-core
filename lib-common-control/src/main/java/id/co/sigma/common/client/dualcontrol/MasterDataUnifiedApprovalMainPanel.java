@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import id.co.sigma.common.client.control.MainPanelStackControl;
 import id.co.sigma.common.client.control.ViewScreenMode;
 import id.co.sigma.common.client.form.ExtendedButton;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 
 import com.google.gwt.core.client.GWT;
@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class MasterDataUnifiedApprovalMainPanel extends BaseSigmaComposite {
+public class MasterDataUnifiedApprovalMainPanel extends BaseCommonControlComposite {
 	
 
 	
@@ -235,17 +235,17 @@ public class MasterDataUnifiedApprovalMainPanel extends BaseSigmaComposite {
 	/**
 	 * generate query filter. ini tergantung pada  apa saja yang di include/ exclude
 	 */
-	protected SigmaSimpleQueryFilter[] generateQueryFilters () {
-		ArrayList<SigmaSimpleQueryFilter> filters = new ArrayList<SigmaSimpleQueryFilter>(); 
+	protected SimpleQueryFilter[] generateQueryFilters () {
+		ArrayList<SimpleQueryFilter> filters = new ArrayList<SimpleQueryFilter>(); 
 		if ( includedObjectFQCNs!= null && includedObjectFQCNs.length>  0 ){
-			SigmaSimpleQueryFilter f = new SigmaSimpleQueryFilter(); 
+			SimpleQueryFilter f = new SimpleQueryFilter(); 
 			f.setField("targetObjectFQCN");
 			f.setFilter(includedObjectFQCNs);
 			f.setOperator(SimpleQueryFilterOperator.fieldIn);
 			filters.add(f); 
 		}
 		if ( excludedObjectFQCNs!= null && excludedObjectFQCNs.length>  0 ){
-			SigmaSimpleQueryFilter f = new SigmaSimpleQueryFilter(); 
+			SimpleQueryFilter f = new SimpleQueryFilter(); 
 			f.setField("targetObjectFQCN");
 			f.setFilter(excludedObjectFQCNs);
 			f.setOperator(SimpleQueryFilterOperator.fieldNotIn);
@@ -253,7 +253,7 @@ public class MasterDataUnifiedApprovalMainPanel extends BaseSigmaComposite {
 		}
 		if ( filters.isEmpty())
 			return null ; 
-		SigmaSimpleQueryFilter[] retval = new SigmaSimpleQueryFilter[filters.size()];
+		SimpleQueryFilter[] retval = new SimpleQueryFilter[filters.size()];
 		filters.toArray(retval); 
 		return retval ; 
 		

@@ -9,7 +9,7 @@ import org.springframework.security.core.session.SessionRegistry;
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.ApplicationSessionRegistry;
-import id.co.sigma.security.server.SigmaUserDetail;
+import id.co.sigma.security.server.CoreServerUserDetail;
 import id.co.sigma.security.server.service.IApplicationSessionManagement;
 
 /**
@@ -21,7 +21,7 @@ public class ApplicationSessionManagementImpl implements IApplicationSessionMana
 	
 	protected class SessionAndUserCombiner {
 		public String sessionId ; 
-		public SigmaUserDetail user ; 
+		public CoreServerUserDetail user ; 
 	}
 	
 	
@@ -53,7 +53,7 @@ public class ApplicationSessionManagementImpl implements IApplicationSessionMana
 		
 		
 		for ( Object scn : allSessions){
-			SigmaUserDetail userData = (SigmaUserDetail)scn;
+			CoreServerUserDetail userData = (CoreServerUserDetail)scn;
 			
 			List<SessionInformation> infs =  sessionRegistry.getAllSessions(scn, false);
 			boolean chk =  isMatch(usernameWildCard, realNameWildCard, email, userData);
@@ -88,7 +88,7 @@ public class ApplicationSessionManagementImpl implements IApplicationSessionMana
 	
 	
 	
-	private ApplicationSessionRegistry translate( SigmaUserDetail userDetail, String sessionId ){
+	private ApplicationSessionRegistry translate( CoreServerUserDetail userDetail, String sessionId ){
 		ApplicationSessionRegistry retval = new ApplicationSessionRegistry(); 
 		retval.setEmail(userDetail.getEmail()); 
 		retval.setIpAddress(userDetail.getIpAddress());
@@ -103,7 +103,7 @@ public class ApplicationSessionManagementImpl implements IApplicationSessionMana
 	/**
 	 * ngecek match ndak dengan wild card nya
 	 */
-	private boolean isMatch ( String usernameWildCard, String realNameWildCard, String email , SigmaUserDetail userData ){
+	private boolean isMatch ( String usernameWildCard, String realNameWildCard, String email , CoreServerUserDetail userData ){
 		if ( (usernameWildCard== null|| usernameWildCard.isEmpty()) &&
 				 (realNameWildCard== null|| realNameWildCard.isEmpty())&&
 				 (email== null|| email.isEmpty())) 

@@ -1,7 +1,7 @@
 package id.co.sigma.security.server.general;
 
 import id.co.sigma.common.security.domain.Signon;
-import id.co.sigma.security.server.SigmaUserDetail;
+import id.co.sigma.security.server.CoreServerUserDetail;
 import id.co.sigma.security.server.dao.impl.UserLoginDaoImpl;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class SigmaDefaultSuccessLogoutHandler implements LogoutSuccessHandler{
 		try {
 			if ( auth== null)
 				return ; 
-			SigmaUserDetail userDetail = (SigmaUserDetail) auth.getPrincipal();
+			CoreServerUserDetail userDetail = (CoreServerUserDetail) auth.getPrincipal();
 			if(userDetail != null){
 				String jsession = userDetail.getUuid();			
 				Signon data = userLoginDao.getSignonData(jsession);

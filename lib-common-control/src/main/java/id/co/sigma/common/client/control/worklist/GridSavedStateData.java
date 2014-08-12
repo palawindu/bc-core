@@ -1,7 +1,7 @@
 package id.co.sigma.common.client.control.worklist;
 
 
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
@@ -21,7 +21,7 @@ public class GridSavedStateData implements IJSONFriendlyObject<GridSavedStateDat
 	/**
 	 * sorting data terakhir. di sort dengan column apa saja data
 	 */
-	private SigmaSimpleSortArgument [] latestSort ; 
+	private SimpleSortArgument [] latestSort ; 
 	
 	
 	/**
@@ -41,7 +41,7 @@ public class GridSavedStateData implements IJSONFriendlyObject<GridSavedStateDat
 		GridSavedStateData retval = new GridSavedStateData();
 		retval.columnWidths = jsonContainer.getAsArrayOfIntegers("columnWidths"); 
 		
-		retval.latestSort = (SigmaSimpleSortArgument [])jsonContainer.getAsArray("latestSort", SigmaSimpleSortArgument.class);
+		retval.latestSort = (SimpleSortArgument [])jsonContainer.getAsArray("latestSort", SimpleSortArgument.class);
 		retval.gridWidth = jsonContainer.getAsInteger("gridWidth"); 
 		return retval ;
 	}
@@ -62,13 +62,13 @@ public class GridSavedStateData implements IJSONFriendlyObject<GridSavedStateDat
 	/**
 	 * sorting data terakhir. di sort dengan column apa saja data
 	 */
-	public void setLatestSort(SigmaSimpleSortArgument[] latestSort) {
+	public void setLatestSort(SimpleSortArgument[] latestSort) {
 		this.latestSort = latestSort;
 	}
 	/**
 	 * sorting data terakhir. di sort dengan column apa saja data
 	 */
-	public SigmaSimpleSortArgument[] getLatestSort() {
+	public SimpleSortArgument[] getLatestSort() {
 		return latestSort;
 	}
 	/**

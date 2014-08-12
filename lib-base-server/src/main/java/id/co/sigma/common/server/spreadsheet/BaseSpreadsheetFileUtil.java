@@ -6,7 +6,7 @@ import id.co.sigma.common.data.InvalidSpreadSheetRowException;
 import id.co.sigma.common.exception.BadBulkUploadDataException;
 import id.co.sigma.common.exception.DataDuplicationOnUploadedDataException;
 import id.co.sigma.common.exception.DataValidationException;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * </ol>
  * @author Dode
  **/
-public abstract class BaseSpreadsheetFileUtil<DATA> extends AbstractSigmaService implements ISpreadsheetFileUtil<DATA> , InitializingBean {
+public abstract class BaseSpreadsheetFileUtil<DATA> extends AbstractService implements ISpreadsheetFileUtil<DATA> , InitializingBean {
 	
 	
 	protected static final Logger LOGGER = LoggerFactory.getLogger(BaseSpreadsheetFileUtil.class); 

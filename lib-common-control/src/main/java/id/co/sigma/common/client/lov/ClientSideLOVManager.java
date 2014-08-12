@@ -5,7 +5,7 @@ import id.co.sigma.common.client.app.JSONFriendlyCommonLOVHeader;
 import id.co.sigma.common.client.cache.ClientObjectCacheWrapper;
 import id.co.sigma.common.client.control.ILOVCapableControl2ndLevel;
 import id.co.sigma.common.client.rpc.LOVProviderRPCServiceAsync;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.data.lov.Common2ndLevelLOVHeader;
 import id.co.sigma.common.data.lov.CommonLOVHeader;
 import id.co.sigma.common.data.lov.LOV2ndLevelRequestArgument;
@@ -182,7 +182,7 @@ public  class ClientSideLOVManager implements IClientSideLOVManager {
 		reqArg.setLookupId(control.getLovParameterId());
 		reqArg.setParentLovValueId(control.getParentLookupValue());
 		
-		LOVProviderRPCServiceAsync.Util.getInstance().getModifiedLOV(I18Utilities.getInstance().getCurrentLocalizationCode(), reqArg, new SigmaAsyncCallback<Common2ndLevelLOVHeader>() {
+		LOVProviderRPCServiceAsync.Util.getInstance().getModifiedLOV(I18Utilities.getInstance().getCurrentLocalizationCode(), reqArg, new CommonControlAsyncCallback<Common2ndLevelLOVHeader>() {
 			@Override
 			public void onSuccess(Common2ndLevelLOVHeader result) {
 				control.renderLookupData(result);
@@ -212,7 +212,7 @@ public  class ClientSideLOVManager implements IClientSideLOVManager {
 	 * @param  callback ini handle utnuk menerima data
 	 * 
 	 **/
-	public void  requestLOV(final String parentValue ,@SuppressWarnings("rawtypes") StrongTyped2ndLevelLOVID lovId , SigmaAsyncCallback<Common2ndLevelLOVHeader> callback){
+	public void  requestLOV(final String parentValue ,@SuppressWarnings("rawtypes") StrongTyped2ndLevelLOVID lovId , CommonControlAsyncCallback<Common2ndLevelLOVHeader> callback){
 		
 		
 		LOV2ndLevelRequestArgument reqArg = new LOV2ndLevelRequestArgument(); 
@@ -227,7 +227,7 @@ public  class ClientSideLOVManager implements IClientSideLOVManager {
 	/**
 	 * ini membaca 2nd level LOV. yang 1 level di ambil semua, di cari dengan id dari lookup
 	 **/
-	public void requestLOV2ndLevelByCurrentLookupValue (String parentLOVId ,StrongTyped2ndLevelLOVID lookupTypeId ,SigmaAsyncCallback<Common2ndLevelLOVHeader> callback){
+	public void requestLOV2ndLevelByCurrentLookupValue (String parentLOVId ,StrongTyped2ndLevelLOVID lookupTypeId ,CommonControlAsyncCallback<Common2ndLevelLOVHeader> callback){
 		//FIXME : baca dari cache di sini. seharusnya ini ada pengecekan ke cache dan ada version nya
 		LOV2ndLevelRequestArgument lovArg = new LOV2ndLevelRequestArgument(); 
 		lovArg.setParentLovValueId(parentLOVId);

@@ -13,7 +13,7 @@ import id.co.sigma.common.client.control.SimpleSearchFilterHandler;
 import id.co.sigma.common.client.control.worklist.PagedSimpleGridPanel;
 import id.co.sigma.common.client.form.exception.CommonFormValidationException;
 import id.co.sigma.common.client.rpc.DualControlDataRPCServiceAsync;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.widget.PageChangeHandler;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.PagedResultHolder;
@@ -21,8 +21,8 @@ import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
 import id.co.sigma.common.data.app.DualControlEnabledData;
 import id.co.sigma.common.data.app.DualControlEnabledOperation;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.grid.CellButtonHandler;
 import id.co.sigma.jquery.client.grid.ISortOrderChangeHandler;
@@ -51,14 +51,14 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 	/**
 	 * filter saat ini
 	 **/
-	private SigmaSimpleQueryFilter[] currentFilters ; 
+	private SimpleQueryFilter[] currentFilters ; 
 	
 	
 	
 	/**
 	 * sort saat ini
 	 **/
-	private SigmaSimpleSortArgument[] currentSortArguments ; 
+	private SimpleSortArgument[] currentSortArguments ; 
 	
 	
 	
@@ -134,8 +134,8 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 					boolean ascendingSorting,
 					BaseColumnDefinition<DATA, ?> columnDefinition) {
 				
-				currentSortArguments = new SigmaSimpleSortArgument[]{
-					new SigmaSimpleSortArgument(sortIndexField, ascendingSorting)
+				currentSortArguments = new SimpleSortArgument[]{
+					new SimpleSortArgument(sortIndexField, ascendingSorting)
 				} ;
 				
 			}
@@ -205,7 +205,7 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 				delReqData.setJsonData(data.generateJSONString()); 
 				delReqData.setTargetObjectFQCN(data.getClass().getName());
 				
-				DualControlDataRPCServiceAsync.Util.getInstance().submitDataForApproval(delReqData, DualControlEnabledOperation.DELETE, new SigmaAsyncCallback<BigInteger>() {
+				DualControlDataRPCServiceAsync.Util.getInstance().submitDataForApproval(delReqData, DualControlEnabledOperation.DELETE, new CommonControlAsyncCallback<BigInteger>() {
 					@Override
 					public void onSuccess(BigInteger result) {
 						JQueryUtils.getInstance().unblockEntirePage();
@@ -285,7 +285,7 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 	 * </ol>
 	 * ini akan mengeset page = 1
 	 **/
-	public void initialLoadEditableData (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortArguments ){
+	public void initialLoadEditableData (SimpleQueryFilter[] filters , SimpleSortArgument[] sortArguments ){
 		clearData(); 
 		editButton.setVisible(  DualControlEditorState.CREATE_FOR_APPROVAL.equals(dualControlEditorState)  );
 		//approveButton.setVisible( DualControlEditorState.APPROVAL.equals(dualControlEditorState) ); 
@@ -405,7 +405,7 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 	
 	 
 	@SuppressWarnings("rawtypes")
-	private AsyncCallback swapCallback  = new SigmaAsyncCallback<PagedResultHolder<DATA>>() {
+	private AsyncCallback swapCallback  = new CommonControlAsyncCallback<PagedResultHolder<DATA>>() {
 		@Override
 		protected void customFailurehandler(Throwable caught) {
 			String msg = generateFailGetEditableDataListMessage(caught); 
@@ -431,7 +431,7 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 	/**
 	 * worker yang bertugas load data dari server. data yang di load adalah data untuk di edit(modify / delete)
 	 **/
-	protected void loadDataWorker (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortArguments , int page , int pageSize){
+	protected void loadDataWorker (SimpleQueryFilter[] filters , SimpleSortArgument[] sortArguments , int page , int pageSize){
 		clearData(); 
 		showHideLoadingBlockerScreen(true); 
 		DualControlDataRPCServiceAsync.Util.getInstance().getDataForEditList(getDualControlClass().getName(), filters, sortArguments, getPageSize(), getCurrentPageToRequest(), dataGridCallback);
@@ -550,22 +550,22 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 	}
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters) {
+	public void applyFilter(SimpleQueryFilter[] filters) {
 		resetGrid();
 		initialLoadEditableData(filters, this.currentSortArguments);
 		
 	}
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sorts) {
+	public void applyFilter(SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sorts) {
 		resetGrid();
 		initialLoadEditableData(filters, sorts);
 		this.currentSortArguments = sorts ; 
 	}
 	
 	
-	public SigmaSimpleQueryFilter[] getCurrentFilters() {
+	public SimpleQueryFilter[] getCurrentFilters() {
 		return currentFilters;
 	}
 	
@@ -577,7 +577,7 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 		return "mohon menunggu, menghapus data " ; 
 	}
 	
-	public SigmaSimpleSortArgument[] getCurrentSortArguments() {
+	public SimpleSortArgument[] getCurrentSortArguments() {
 		return currentSortArguments;
 	}
 	

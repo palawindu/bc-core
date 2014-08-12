@@ -1,6 +1,6 @@
 package id.co.sigma.common.server.controllers;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;

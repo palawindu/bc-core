@@ -78,9 +78,9 @@ public abstract class ManualJSONSerializeRPCService<RPC extends JSONSerializedRe
 		
 		
 		@SuppressWarnings({ "rawtypes", "unchecked" })
-		final SigmaAsyncCallback<T> actualCallback =  rawCallback instanceof SigmaAsyncCallback? 
-				(SigmaAsyncCallback) rawCallback : 
-				new SigmaAsyncCallback<T>() {
+		final CommonControlAsyncCallback<T> actualCallback =  rawCallback instanceof CommonControlAsyncCallback? 
+				(CommonControlAsyncCallback) rawCallback : 
+				new CommonControlAsyncCallback<T>() {
 					@Override
 					protected void customFailurehandler(Throwable caught) {
 						rawCallback.onFailure(caught);
@@ -386,7 +386,7 @@ public abstract class ManualJSONSerializeRPCService<RPC extends JSONSerializedRe
 	 * handler kalau RPC request done
 	 **/
 	@SuppressWarnings("unchecked")
-	protected <T> void handleRequestResponse (String rawString , SigmaAsyncCallback<T> callback){
+	protected <T> void handleRequestResponse (String rawString , CommonControlAsyncCallback<T> callback){
 		RPCResponseWrapper wrapper = new  RPCResponseWrapper();
 		RPCResponseWrapper actualData =  wrapper.instantiateFromJSON(new ClientParsedJSONContainer(rawString));
 		if ( actualData.isHaveError()){

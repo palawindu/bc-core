@@ -5,7 +5,7 @@ import id.co.sigma.common.client.control.BaseSimpleSearchComboContentLocator;
 import id.co.sigma.common.client.security.lookup.base.SecurityBaseSimpleSingleResultLookupDialog;
 import id.co.sigma.common.client.security.rpc.BranchRPCServiceAsync;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
@@ -32,7 +32,7 @@ public class LookupBranch extends SecurityBaseSimpleSingleResultLookupDialog<Big
 	}
 
 	@Override
-	protected void retrieveData(SigmaSimpleQueryFilter[] filters, int page, int pageSize, AsyncCallback<PagedResultHolder<BranchDTO>> callback) {
+	protected void retrieveData(SimpleQueryFilter[] filters, int page, int pageSize, AsyncCallback<PagedResultHolder<BranchDTO>> callback) {
 		BranchRPCServiceAsync.Util.getInstance().getDataByParameter(filters, page, pageSize, callback);	
 	}
 

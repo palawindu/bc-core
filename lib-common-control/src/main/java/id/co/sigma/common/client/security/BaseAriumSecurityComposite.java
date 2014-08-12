@@ -2,7 +2,7 @@ package id.co.sigma.common.client.security;
 
 import id.co.sigma.common.security.dto.ApplicationDTO;
 import id.co.sigma.common.security.dto.UserDetailDTO;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -16,7 +16,7 @@ import com.google.gwt.i18n.client.DateTimeFormat.PredefinedFormat;
  * @since Dec 13, 2012, 12:05:27 PM
  * @version $Id
  */
-public class BaseAriumSecurityComposite extends BaseSigmaComposite{
+public class BaseAriumSecurityComposite extends BaseCommonControlComposite{
 	
 	
 	

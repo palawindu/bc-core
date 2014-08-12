@@ -2,8 +2,8 @@ package id.co.sigma.common.server.service;
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.DualControlEnabledData;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 
 /**
  * 
@@ -32,8 +32,8 @@ public interface ICustomTargetDataLoader<DATA extends DualControlEnabledData<DAT
 	 * custom loader data berupa grid. Kalau data perlu di load dengan join ke table-table tertentu, proses nya di taruh di sini
 	 **/
 	public PagedResultHolder<DATA> listDataRaw(  
-			int page, int pageSize, SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortArguments) throws Exception;
+			int page, int pageSize, SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortArguments) throws Exception;
 	
 
 }

@@ -31,7 +31,7 @@ import id.co.sigma.common.control.ResourceBundleConfigurableControl;
  * 
  * @category composite
  **/
-public abstract class BaseResourceBundleFriendlyComposite extends BaseSigmaComposite implements ResourceBundleEnableContainer, IMandatoryEnabledContainer{
+public abstract class BaseResourceBundleFriendlyComposite extends BaseCommonControlComposite implements ResourceBundleEnableContainer, IMandatoryEnabledContainer{
 
 	/**
 	 * tag yang di periksa. di curigai elemen ini yang mandatory enabled

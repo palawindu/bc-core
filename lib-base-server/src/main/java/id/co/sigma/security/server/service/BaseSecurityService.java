@@ -1,8 +1,8 @@
 package id.co.sigma.security.server.service;
 
 import id.co.sigma.common.security.dto.UserDetailDTO;
-import id.co.sigma.common.server.service.AbstractSigmaService;
-import id.co.sigma.security.server.SigmaUserDetail;
+import id.co.sigma.common.server.service.AbstractService;
+import id.co.sigma.security.server.CoreServerUserDetail;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,14 +13,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
  * @since Jan 16, 2013, 1:04:05 PM
  * @version $Id
  */
-public class BaseSecurityService extends AbstractSigmaService {
+public class BaseSecurityService extends AbstractService {
 	
 	/**
 	 * Get user detail DTO dari spring security context
 	 * @return UserDetailDTO
 	 */
 	public UserDetailDTO getUserDetailDTOFromSecurityContext(){									
-		SigmaUserDetail user = (SigmaUserDetail) getSigmaUserDetailFromSecurityContext();
+		CoreServerUserDetail user = (CoreServerUserDetail) getSigmaUserDetailFromSecurityContext();
 		UserDetailDTO userDetail = null;
 		if(user != null){
 			userDetail = new UserDetailDTO();
@@ -45,7 +45,7 @@ public class BaseSecurityService extends AbstractSigmaService {
 	 * Get Sigma user detail dari spring security context
 	 * @return SigmaUserDetail
 	 */
-	public SigmaUserDetail getSigmaUserDetailFromSecurityContext(){	
+	public CoreServerUserDetail getSigmaUserDetailFromSecurityContext(){	
 		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
 		if ( auth==null)
 			return null ; 
@@ -53,10 +53,10 @@ public class BaseSecurityService extends AbstractSigmaService {
 		if (swap==null){
 			return null;
 		}			
-		if (!( swap instanceof SigmaUserDetail)){
+		if (!( swap instanceof CoreServerUserDetail)){
 			return null ;
 		}
-		return (SigmaUserDetail) swap;		
+		return (CoreServerUserDetail) swap;		
 	}
 	
 	/**

@@ -5,7 +5,7 @@ import java.util.Collection;
 import id.co.sigma.common.client.control.MainPanelStackControl;
 import id.co.sigma.common.client.control.ViewScreenMode;
 import id.co.sigma.common.client.form.ExtendedButton;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.app.SimplifiedDualControlContainerTable;
 
@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
  *@deprecated silakan pergunakan : {@link MasterDataUnifiedApprovalMainPanel}
  */
 @Deprecated
-public class UnifiedApprovalMainPanel extends BaseSigmaComposite {
+public class UnifiedApprovalMainPanel extends BaseCommonControlComposite {
 
 	
 	

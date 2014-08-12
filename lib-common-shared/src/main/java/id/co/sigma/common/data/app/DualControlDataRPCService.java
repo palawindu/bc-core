@@ -6,8 +6,8 @@ import id.co.sigma.common.data.AppConfigurationDrivenDetaiResultHolder;
 import id.co.sigma.common.data.DataWithToken;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.SystemParamDrivenClass;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.InvalidExcelFileException;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 
@@ -118,7 +118,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * @param filters query filters. dalam kasus ini, yang di pakai adalah key 1 dan key2 
 	 * @param sortArguments argument untuk proses sorting data
 	 **/
-	public PagedResultHolder<CommonDualControlContainerTable> getDataRequiredApproval(String objectFQCN , SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortArguments , int pageSize , int page )throws Exception;
+	public PagedResultHolder<CommonDualControlContainerTable> getDataRequiredApproval(String objectFQCN , SimpleQueryFilter[] filters , SimpleSortArgument[] sortArguments , int pageSize , int page )throws Exception;
 	
 	
 	
@@ -126,8 +126,8 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * get data untuk proses update
 	 **/
 	public PagedResultHolder<? extends DualControlEnabledData<?, ?>> getDataForEditList(
-			String objectFQCN, SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortArguments, int pageSize, int page   ) throws Exception ;
+			String objectFQCN, SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortArguments, int pageSize, int page   ) throws Exception ;
 	
 	
 	/**
@@ -177,6 +177,6 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * rejector = current user. 
 	 * @param filters filter ini exclude user dan status. status akan di apply dari dao
 	 */
-	public PagedResultHolder<CommonDualControlContainerTable> getRejectListData (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sorts , int page , int pageSize ) ; 
+	public PagedResultHolder<CommonDualControlContainerTable> getRejectListData (SimpleQueryFilter[] filters , SimpleSortArgument[] sorts , int page , int pageSize ) ; 
 
 }

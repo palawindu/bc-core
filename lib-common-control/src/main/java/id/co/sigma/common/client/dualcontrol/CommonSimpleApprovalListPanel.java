@@ -8,12 +8,12 @@ import id.co.sigma.common.client.control.ViewScreenMode;
 import id.co.sigma.common.client.form.ExtendedButton;
 import id.co.sigma.common.client.form.advance.LOVCapabledComboBoxWithLabel;
 import id.co.sigma.common.client.form.advance.TextBoxWithLabel;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.CoreLibLookup;
 import id.co.sigma.common.data.approval.CommonApprovalHeader;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 
 import java.util.ArrayList;
@@ -34,15 +34,15 @@ import com.google.gwt.user.client.ui.Widget;
  * @author <a href="mailto:gede.wibawa@sigma.co.id">Agus Gede Adipartha Wibawa</a>
  * @since Sep 25, 2013 4:51:34 PM
  */
-public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
+public class CommonSimpleApprovalListPanel extends BaseCommonControlComposite {
 
 	private static CommonSimpleApprovalListPanelUiBinder uiBinder = GWT
 			.create(CommonSimpleApprovalListPanelUiBinder.class);
 	
 	
-	private static final SigmaSimpleSortArgument[] APPROVAL_SORT_ARGS ={
+	private static final SimpleSortArgument[] APPROVAL_SORT_ARGS ={
 		
-		new SigmaSimpleSortArgument("requestTime" , false)
+		new SimpleSortArgument("requestTime" , false)
 		
 	} ; 
 	@UiField LOVCapabledComboBoxWithLabel cbObjectType;
@@ -120,10 +120,10 @@ public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
 	 * generate query filters
 	 * @return query filters
 	 */
-	public SigmaSimpleQueryFilter[] generateFilters() {
-		List<SigmaSimpleQueryFilter> filterList = new ArrayList<SigmaSimpleQueryFilter>();
+	public SimpleQueryFilter[] generateFilters() {
+		List<SimpleQueryFilter> filterList = new ArrayList<SimpleQueryFilter>();
 		if (!(cbObjectType.getValue() == null || cbObjectType.getValue().trim().length() == 0)) {
-			SigmaSimpleQueryFilter objectTypeFilter = new SigmaSimpleQueryFilter();
+			SimpleQueryFilter objectTypeFilter = new SimpleQueryFilter();
 			objectTypeFilter.setField("targteObjectFQCN");
 			objectTypeFilter.setOperator(SimpleQueryFilterOperator.equal);
 			objectTypeFilter.setFilter(cbObjectType.getValue());
@@ -131,7 +131,7 @@ public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
 		}
 		
 		if (!(txtReqUserName.getValue() == null || txtReqUserName.getValue().trim().length() == 0)) {
-			SigmaSimpleQueryFilter reqUNameFilter = new SigmaSimpleQueryFilter();
+			SimpleQueryFilter reqUNameFilter = new SimpleQueryFilter();
 			reqUNameFilter.setField("requestorUserName");
 			reqUNameFilter.setOperator(SimpleQueryFilterOperator.likeBothSide);
 			reqUNameFilter.setFilter(txtReqUserName.getValue());
@@ -139,14 +139,14 @@ public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
 		}
 		
 		if ( includedObjectFQCNs!= null && includedObjectFQCNs.length> 0 ){
-			SigmaSimpleQueryFilter f = new SigmaSimpleQueryFilter(); 
+			SimpleQueryFilter f = new SimpleQueryFilter(); 
 			f.setField("targteObjectFQCN");
 			f.setFilter(includedObjectFQCNs);
 			f.setOperator(SimpleQueryFilterOperator.fieldIn);
 			filterList.add(f); 
 		}
 		if ( excludedObjectFQCNs!= null && excludedObjectFQCNs.length> 0 ){
-			SigmaSimpleQueryFilter f = new SigmaSimpleQueryFilter(); 
+			SimpleQueryFilter f = new SimpleQueryFilter(); 
 			f.setField("targteObjectFQCN");
 			f.setFilter(excludedObjectFQCNs);
 			f.setOperator(SimpleQueryFilterOperator.fieldNotIn);
@@ -156,7 +156,7 @@ public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
 		if (filterList.isEmpty())
 			return null;
 		
-		SigmaSimpleQueryFilter[] filters = new SigmaSimpleQueryFilter[filterList.size()];
+		SimpleQueryFilter[] filters = new SimpleQueryFilter[filterList.size()];
 		filterList.toArray(filters);
 		return filters;
 	}
@@ -176,7 +176,7 @@ public class CommonSimpleApprovalListPanel extends BaseSigmaComposite {
 	 * get list data yang waiting approval
 	 */
 	private void getData() {
-		SigmaSimpleQueryFilter[] filters = generateFilters();
+		SimpleQueryFilter[] filters = generateFilters();
 		approvalGrid.applyFilter(filters, APPROVAL_SORT_ARGS);
 	}
 

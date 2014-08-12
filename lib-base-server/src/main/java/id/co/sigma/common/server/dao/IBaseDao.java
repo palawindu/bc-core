@@ -2,8 +2,8 @@ package id.co.sigma.common.server.dao;
 
 import id.co.sigma.common.data.ModificationDataContainer;
 import id.co.sigma.common.data.SingleKeyEntityData;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.base.SimpleKeyValueParameter;
 
 import java.io.Serializable;
@@ -148,7 +148,7 @@ public interface IBaseDao {
 	/**
 	 * membaca data dengan simple filter
 	 **/
-	public <DATA> List<DATA> list(Class<? extends DATA> entityClass ,SigmaSimpleSortArgument[] sortArguments);
+	public <DATA> List<DATA> list(Class<? extends DATA> entityClass ,SimpleSortArgument[] sortArguments);
 	
 	
 	/**
@@ -156,7 +156,7 @@ public interface IBaseDao {
 	 * @param tableAndJoinStatment join statement. misal Person a inner join fetch a.address 
 	 * @param primaryTableAliasName sederhana nya kasi saja a
 	 **/
-	public <DATA> List<DATA> list(String tableAndJoinStatment  , String primaryTableAliasName ,SigmaSimpleSortArgument[] sortArguments);
+	public <DATA> List<DATA> list(String tableAndJoinStatment  , String primaryTableAliasName ,SimpleSortArgument[] sortArguments);
 	
 	
 	
@@ -168,7 +168,7 @@ public interface IBaseDao {
 	 * @param sortArguments sort order dari data 
 	 * 
 	 **/
-	public <DATA> List<DATA> list(Class<? extends DATA> entityClass , SigmaSimpleQueryFilter[] filters, SigmaSimpleSortArgument[] sortArguments ) throws Exception ; 
+	public <DATA> List<DATA> list(Class<? extends DATA> entityClass , SimpleQueryFilter[] filters, SimpleSortArgument[] sortArguments ) throws Exception ; 
 			
 			
 	
@@ -176,19 +176,19 @@ public interface IBaseDao {
 	/**
 	 * membaca data dengan simple filter
 	 **/
-	public <DATA> List<DATA> list(Class<? extends DATA> entityClass , SigmaSimpleQueryFilter[] filters, SigmaSimpleSortArgument[] sortArguments,  int pageSize , int firstRowPosition) throws Exception ;
+	public <DATA> List<DATA> list(Class<? extends DATA> entityClass , SimpleQueryFilter[] filters, SimpleSortArgument[] sortArguments,  int pageSize , int firstRowPosition) throws Exception ;
 	
 	
 	/**
 	 * membaca data dengan simple filter
 	 **/
-	public <DATA> List<DATA> list( String tableNameAndJoinArgument , String primaryTableNameAlias , SigmaSimpleQueryFilter[] filters, SigmaSimpleSortArgument[] sortArguments,  int pageSize , int firstRowPosition) throws Exception;
+	public <DATA> List<DATA> list( String tableNameAndJoinArgument , String primaryTableNameAlias , SimpleQueryFilter[] filters, SimpleSortArgument[] sortArguments,  int pageSize , int firstRowPosition) throws Exception;
 	
 	
 	/**
 	 * ini untuk count berapa data yang nemu 
 	 **/
-	public Long count(Class<?> entityClass , SigmaSimpleQueryFilter[] filters);
+	public Long count(Class<?> entityClass , SimpleQueryFilter[] filters);
 	
 	
 	/**
@@ -196,7 +196,7 @@ public interface IBaseDao {
 	 * @param tableAndJoinStatment join statement. misal Person a inner join fetch a.address 
 	 * @param primaryTableAliasName sederhana nya kasi saja a
 	 **/
-	public Long count(String tableAndJoinStatment  , String primaryTableAliasName , SigmaSimpleQueryFilter[] filters);
+	public Long count(String tableAndJoinStatment  , String primaryTableAliasName , SimpleQueryFilter[] filters);
 	
 	/**
 	 * get data by primary key 
@@ -211,5 +211,5 @@ public interface IBaseDao {
 	 * sebab tidak semua database engine support update join. mohon berhati-hati dalam mempergunakan method ini 
 	 * @param entityClass entity class yang hendak di update
 	 */
-	public int updateData ( Class<?> entityClass , SimpleKeyValueParameter[] updatedFields , SigmaSimpleQueryFilter [] filters )  ;
+	public int updateData ( Class<?> entityClass , SimpleKeyValueParameter[] updatedFields , SimpleQueryFilter [] filters )  ;
 }

@@ -8,7 +8,7 @@ import id.co.sigma.common.data.approval.CommonApprovalHeader;
 import id.co.sigma.common.data.approval.ISimpleApprovableObject;
 import id.co.sigma.common.data.approval.SimpleApprovalStatus;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 import id.co.sigma.common.server.service.approval.SimpleApprovalService;
 
 import java.math.BigInteger;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Sutarsa
  */
-public class SimpleApprovalServiceImpl extends  AbstractSigmaService implements  SimpleApprovalService{
+public class SimpleApprovalServiceImpl extends  AbstractService implements  SimpleApprovalService{
 
     
     

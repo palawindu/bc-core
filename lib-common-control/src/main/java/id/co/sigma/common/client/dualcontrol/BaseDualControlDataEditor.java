@@ -29,7 +29,7 @@ import id.co.sigma.common.client.form.exception.CommonFormValidationException;
 import id.co.sigma.common.client.rpc.DoubleSubmitProtectedAsyncCallback;
 import id.co.sigma.common.client.rpc.DualControlDataRPCServiceAsync;
 import id.co.sigma.common.client.rpc.GeneralPurposeRPCAsync;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.widget.BaseEditorPanel;
 import id.co.sigma.common.client.widget.EditorState;
 import id.co.sigma.common.data.DataWithToken;
@@ -526,7 +526,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	 **/
 	public void openDataByDualControlId (final BigInteger dualControlDataId,final Command commandAfterLoadComplete ) {
 		//DualControlDataRPCServiceAsync.Util.getInstance().getWaitApprovalDataWithToken(id, callback);
-		DualControlDataRPCServiceAsync.Util.getInstance().getWaitApprovalDataWithToken(dualControlDataId, new SigmaAsyncCallback<DataWithToken<CommonDualControlContainerTable>>() {
+		DualControlDataRPCServiceAsync.Util.getInstance().getWaitApprovalDataWithToken(dualControlDataId, new CommonControlAsyncCallback<DataWithToken<CommonDualControlContainerTable>>() {
 			@Override
 			public void onSuccess(DataWithToken<CommonDualControlContainerTable> callback) {
 				CommonDualControlContainerTable response  = callback.getData(); 
@@ -865,7 +865,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 			return ;
 		String messsage = approvalRemark.getValue();
 		final DATA editedData =  getCurrentData() ;
-		DualControlDataRPCServiceAsync.Util.getInstance().rejectData(currentCommonDualControlContainerData.getId(), messsage, new SigmaAsyncCallback<Void>() {
+		DualControlDataRPCServiceAsync.Util.getInstance().rejectData(currentCommonDualControlContainerData.getId(), messsage, new CommonControlAsyncCallback<Void>() {
 			@Override
 			protected void customFailurehandler(Throwable caught) {
 				Window.alert("gagal reject data, error message :" + caught.getMessage());

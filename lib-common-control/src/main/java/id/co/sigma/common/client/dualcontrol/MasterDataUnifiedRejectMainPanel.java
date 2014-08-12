@@ -3,12 +3,12 @@ package id.co.sigma.common.client.dualcontrol;
 import id.co.sigma.common.client.control.MainPanelStackControl;
 import id.co.sigma.common.client.control.ViewScreenMode;
 import id.co.sigma.common.client.form.ExtendedButton;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 
 import com.google.gwt.core.client.GWT;
@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  *@author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class MasterDataUnifiedRejectMainPanel extends BaseSigmaComposite {
+public class MasterDataUnifiedRejectMainPanel extends BaseCommonControlComposite {
 	
 	
 	
@@ -57,9 +57,9 @@ public class MasterDataUnifiedRejectMainPanel extends BaseSigmaComposite {
 	@UiField ExtendedButton btnCari ;
 	
 	
-	static  SigmaSimpleQueryFilter REJECT_FILTER ;  
+	static  SimpleQueryFilter REJECT_FILTER ;  
 	static {
-		REJECT_FILTER = new SigmaSimpleQueryFilter(); 
+		REJECT_FILTER = new SimpleQueryFilter(); 
 		REJECT_FILTER.setField("approvalStatus");
 		
 		REJECT_FILTER.setOperator(SimpleQueryFilterOperator.fieldIn);
@@ -71,15 +71,15 @@ public class MasterDataUnifiedRejectMainPanel extends BaseSigmaComposite {
 		});
 	}
 	
-	SigmaSimpleQueryFilter [] filters = new SigmaSimpleQueryFilter[]{
+	SimpleQueryFilter [] filters = new SimpleQueryFilter[]{
 		/*new SigmaSimpleQueryFilter("creatorUserId" , SimpleQueryFilterOperator.equal , getCurrentUserLogin())  , 	
 		REJECT_FILTER	
 		*/	
 	}; 
 	
-	SigmaSimpleSortArgument [] sorts = new SigmaSimpleSortArgument[]{
+	SimpleSortArgument [] sorts = new SimpleSortArgument[]{
 			
-			new SigmaSimpleSortArgument("approvedTime" , false) 
+			new SimpleSortArgument("approvedTime" , false) 
 	};
 	
 	

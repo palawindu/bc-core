@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.dao;
 
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @version $Id
  */
 @Repository
-public class BaseGenericDao extends BaseSigmaDao{
+public class BaseGenericDao extends BaseJPADao{
 	
 	/**
 	 * Find by primary key

@@ -3,9 +3,9 @@ package id.co.sigma.common.client.security;
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.dto.UserDetailDTO;
 import id.co.sigma.common.security.menu.ApplicationMenuSecurity;
-import id.co.sigma.common.client.BaseSigmaEntryPoint;
+import id.co.sigma.common.client.BaseCommonControlEntryPoint;
 import id.co.sigma.common.client.common.CommonRunAsynCallback;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.security.rpc.ApplicationUserRPCServiceAsync;
 import id.co.sigma.jquery.client.menu.MenuClickHandler;
 
@@ -22,7 +22,7 @@ import com.google.gwt.user.client.Window;
  * base class entry point untuk entry point dengan menu
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  **/
-public abstract class BaseEntryPointWithBasicMenu extends BaseSigmaEntryPoint{
+public abstract class BaseEntryPointWithBasicMenu extends BaseCommonControlEntryPoint{
 
 	/**
 	 * cache menu, di index dengan id dari menu(big integer)
@@ -71,7 +71,7 @@ public abstract class BaseEntryPointWithBasicMenu extends BaseSigmaEntryPoint{
 		};
 		
 		
-		ApplicationUserRPCServiceAsync.Util.getInstance().getApplicationMenu(parameter, new SigmaAsyncCallback<List<ApplicationMenuSecurity>>() {
+		ApplicationUserRPCServiceAsync.Util.getInstance().getApplicationMenu(parameter, new CommonControlAsyncCallback<List<ApplicationMenuSecurity>>() {
 			@Override
 			protected void customFailurehandler(Throwable caught) {
 				//FIXME : masukan message yang lebih bersahabat

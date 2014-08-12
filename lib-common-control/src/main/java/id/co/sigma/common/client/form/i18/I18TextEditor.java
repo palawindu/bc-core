@@ -17,9 +17,9 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import id.co.sigma.common.client.form.LOVCapabledComboBox;
 import id.co.sigma.common.client.rpc.ApplicationConfigRPCServiceAsync;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.util.CommonClientControlUtil;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.client.form.ExtendedTextBox;
 import id.co.sigma.common.data.CoreLibLookup;
 import id.co.sigma.common.data.entity.I18Code;
@@ -34,7 +34,7 @@ import id.co.sigma.jquery.client.container.JQDialog;
  * @version $Id
  * @since 
  **/
-public final class I18TextEditor extends BaseSigmaComposite {
+public final class I18TextEditor extends BaseCommonControlComposite {
 	
 	
 	private static I18TextEditor instance ; 
@@ -155,7 +155,7 @@ public final class I18TextEditor extends BaseSigmaComposite {
 			scn.setValue("");
 		}
 		groupCmb.setEnabled(false);
-		ApplicationConfigRPCServiceAsync.Util.getInstance().getAllLanguagesTextById(i18NKey, new SigmaAsyncCallback<List<I18Text>>() {
+		ApplicationConfigRPCServiceAsync.Util.getInstance().getAllLanguagesTextById(i18NKey, new CommonControlAsyncCallback<List<I18Text>>() {
 
 			@Override
 			public void onSuccess(List<I18Text> result) {
@@ -241,7 +241,7 @@ public final class I18TextEditor extends BaseSigmaComposite {
 		}
 		I18Text[] arr = new I18Text[txts.size()];
 		txts.toArray(arr);
-		ApplicationConfigRPCServiceAsync.Util.getInstance().saveLabels(arr, new SigmaAsyncCallback<Void>() {
+		ApplicationConfigRPCServiceAsync.Util.getInstance().saveLabels(arr, new CommonControlAsyncCallback<Void>() {
 
 			@Override
 			public void onSuccess(Void result) {

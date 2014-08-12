@@ -9,7 +9,7 @@ import id.co.sigma.common.data.CoreLibLookup;
 import id.co.sigma.common.data.entity.I18NTextGroup;
 import id.co.sigma.common.data.lov.CommonLOV;
 import id.co.sigma.common.data.lov.StrongTypedCustomLOVID;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
 import id.co.sigma.common.server.dao.system.ApplicationConfigurationDao;
 import id.co.sigma.common.server.lov.BaseSelfRegisterLOVProvider;
@@ -30,8 +30,8 @@ public class I18NGroupLOVProvider extends BaseSelfRegisterLOVProvider{
 	
 	private List<CommonLOV> lovArray ;
 	
-	private final  SigmaSimpleSortArgument sorterArray[] =new SigmaSimpleSortArgument[]{
-		new SigmaSimpleSortArgument("id",true)
+	private final  SimpleSortArgument sorterArray[] =new SimpleSortArgument[]{
+		new SimpleSortArgument("id",true)
 	};
 	
 	private void readLOVData() {

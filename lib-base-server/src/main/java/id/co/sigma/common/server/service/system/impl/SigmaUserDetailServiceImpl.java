@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import id.co.sigma.common.server.data.security.SigmaSimpleUserData;
 import id.co.sigma.common.server.data.security.UserLoginNotificationData;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 import id.co.sigma.common.server.service.system.AuthorityTranslator;
-import id.co.sigma.common.server.service.system.ISigmaUserService;
+import id.co.sigma.common.server.service.system.ICoreServerUserService;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
  * 
  **/
 @Service(value="sigma-user-detail-service")
-public class SigmaUserDetailServiceImpl extends AbstractSigmaService implements UserDetailsService , InitializingBean, ISigmaUserService{
+public class SigmaUserDetailServiceImpl extends AbstractService implements UserDetailsService , InitializingBean, ICoreServerUserService{
 
 	
 	

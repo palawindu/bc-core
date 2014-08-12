@@ -21,8 +21,8 @@ public class LibSharedObjectGenerator extends AbstractObjectGenerator{
 		
 		id.co.sigma.common.data.lov.CommonLOV.class, 
 		id.co.sigma.common.data.lov.CommonLOVHeader.class , 
-		id.co.sigma.common.data.query.SigmaSimpleQueryFilter.class,
-		id.co.sigma.common.data.query.SigmaSimpleSortArgument.class,
+		id.co.sigma.common.data.query.SimpleQueryFilter.class,
+		id.co.sigma.common.data.query.SimpleSortArgument.class,
 		
 		//add by dode
 		id.co.sigma.common.data.app.exception.InvalidDualControlStateException.class,
@@ -91,8 +91,8 @@ public class LibSharedObjectGenerator extends AbstractObjectGenerator{
 	public <T> T instantiateSampleObject(String objectFQCN) {
 		if (id.co.sigma.common.data.lov.CommonLOV.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.lov.CommonLOV();
 		if (id.co.sigma.common.data.lov.CommonLOVHeader.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.lov.CommonLOVHeader();
-		if (id.co.sigma.common.data.query.SigmaSimpleQueryFilter.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.query.SigmaSimpleQueryFilter();
-		if (id.co.sigma.common.data.query.SigmaSimpleSortArgument.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.query.SigmaSimpleSortArgument();
+		if (id.co.sigma.common.data.query.SimpleQueryFilter.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.query.SimpleQueryFilter();
+		if (id.co.sigma.common.data.query.SimpleSortArgument.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.query.SimpleSortArgument();
 
 		//add by dode
 		if (id.co.sigma.common.data.app.exception.InvalidDualControlStateException.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.data.app.exception.InvalidDualControlStateException();
@@ -151,8 +151,8 @@ public class LibSharedObjectGenerator extends AbstractObjectGenerator{
 	public <T> T[] instantiateArray(String objectFQCN, int size) {
 		if (id.co.sigma.common.data.lov.CommonLOV.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.lov.CommonLOV[size];
 		if (id.co.sigma.common.data.lov.CommonLOVHeader.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.lov.CommonLOVHeader[size];
-		if (id.co.sigma.common.data.query.SigmaSimpleQueryFilter.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.query.SigmaSimpleQueryFilter[size];
-		if (id.co.sigma.common.data.query.SigmaSimpleSortArgument.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.query.SigmaSimpleSortArgument[size];
+		if (id.co.sigma.common.data.query.SimpleQueryFilter.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.query.SimpleQueryFilter[size];
+		if (id.co.sigma.common.data.query.SimpleSortArgument.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.query.SimpleSortArgument[size];
 		
 		//add by dode
 		if (id.co.sigma.common.data.app.exception.InvalidDualControlStateException.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.data.app.exception.InvalidDualControlStateException[size];

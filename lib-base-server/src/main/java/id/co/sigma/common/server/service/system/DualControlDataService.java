@@ -8,8 +8,8 @@ import id.co.sigma.common.data.app.DualControlDefinition;
 import id.co.sigma.common.data.app.DualControlEnabledData;
 import id.co.sigma.common.data.app.DualControlEnabledOperation;
 import id.co.sigma.common.data.app.HeaderDataOnlyCommonDualControlContainerTable;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.InvalidExcelFileException;
 import id.co.sigma.common.server.spreadsheet.UploadedDataContainer;
 
@@ -93,8 +93,8 @@ public interface DualControlDataService {
 	 * akses data mentahan. return simple paged result holder
 	 **/
 	public PagedResultHolder<? extends DualControlEnabledData<?, ?>> listDataRaw( Class<? extends DualControlEnabledData<?, ?>> entCls,
-			int page, int pageSize, SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortArguments) throws Exception ; 
+			int page, int pageSize, SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortArguments) throws Exception ; 
 	
 	 
 	
@@ -103,8 +103,8 @@ public interface DualControlDataService {
 	 * akses ke data dual control. return paged result holder
 	 **/
 	public PagedResultHolder<? extends DualControlEnabledData<?,?>> getDataForEditList(String objectFQCN,
-			SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortArguments, int pageSize, int page)
+			SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortArguments, int pageSize, int page)
 			throws Exception ;  
 			
  

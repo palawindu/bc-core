@@ -4,8 +4,8 @@ import java.math.BigInteger;
 import java.util.List;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 
@@ -25,7 +25,7 @@ public interface GeneralPurposeRPC extends JSONSerializedRemoteService{
 	 * </ol>
 	 * 
 	 **/
-	public PagedResultHolder<IJSONFriendlyObject<?>> getPagedData (String objectFQCN , SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sorts , int page , int pageSize) throws Exception ;
+	public PagedResultHolder<IJSONFriendlyObject<?>> getPagedData (String objectFQCN , SimpleQueryFilter[] filters , SimpleSortArgument[] sorts , int page , int pageSize) throws Exception ;
 	
 	
 	

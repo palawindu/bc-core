@@ -28,12 +28,12 @@ import id.co.sigma.common.server.dao.IGeneralPurposeDao;
 import id.co.sigma.common.server.data.system.CommonSequenceTable;
 import id.co.sigma.common.server.service.system.ICommonSystemService;
 import id.co.sigma.common.server.service.system.ISimpleParameterEncryption;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 
 /**
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class CommonSystemServiceImpl extends AbstractSigmaService implements ICommonSystemService  , ApplicationContextAware , IReloadableService{
+public class CommonSystemServiceImpl extends AbstractService implements ICommonSystemService  , ApplicationContextAware , IReloadableService{
 	
 	private static final Logger logger = LoggerFactory.getLogger(CommonSystemServiceImpl.class);	
 	

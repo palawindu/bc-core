@@ -19,8 +19,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.User;
-import id.co.sigma.security.server.SigmaUserAuthority;
-import id.co.sigma.security.server.SigmaUserDetail;
+import id.co.sigma.security.server.CoreServerUserAuthority;
+import id.co.sigma.security.server.CoreServerUserDetail;
 import id.co.sigma.security.server.dao.IUserLoginDao;
 import id.co.sigma.security.server.service.BaseSecurityService;
 
@@ -53,7 +53,7 @@ public class SigmaDefaultUserServices extends BaseSecurityService implements Use
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		SigmaUserDetail userDetail = null;
+		CoreServerUserDetail userDetail = null;
 		try {								 			
 			username = username.toUpperCase();
 			User userFromDb = userDao.getUserByUsername(username);
@@ -65,7 +65,7 @@ public class SigmaDefaultUserServices extends BaseSecurityService implements Use
 					System.out.println("DEBUG PASSWORD FROM UI SECURITY SERVER >>> md5 password from ui : " + passwordDb);
 					System.out.println("DEBUG PASSWORD DB SECURITY SERVER >>> password from db : " + userFromDb.getChipperText());
 					if(passwordDb.equals(userFromDb.getChipperText())){
-						userDetail = new SigmaUserDetail();
+						userDetail = new CoreServerUserDetail();
 						userDetail.setIpAddress(getCurrentUserIpAddress());
 						setUserDetailFromDb(userDetail, userFromDb);
 						System.out.println("DEBUG USER DETAIL SECURITY SERVER >>> user detail yang di return : " + userDetail);
@@ -91,7 +91,7 @@ public class SigmaDefaultUserServices extends BaseSecurityService implements Use
 	 * @param userFromDb
 	 * @param application
 	 */
-	protected void setUserDetailFromDb(SigmaUserDetail userDetail, User userFromDb) throws Exception{
+	protected void setUserDetailFromDb(CoreServerUserDetail userDetail, User userFromDb) throws Exception{
 		String passwordNoEncript = request.getParameter("j_password");
 		
 		/*Variable untuk spring security*/
@@ -133,8 +133,8 @@ public class SigmaDefaultUserServices extends BaseSecurityService implements Use
 		userDetail.setLastLogin(lastLDate);
 		userDetail.setUuid(UUID.randomUUID().toString());
 										
-		Collection<SigmaUserAuthority> authority = new ArrayList<SigmaUserAuthority>();
-		SigmaUserAuthority authorityRoleUser = new SigmaUserAuthority();
+		Collection<CoreServerUserAuthority> authority = new ArrayList<CoreServerUserAuthority>();
+		CoreServerUserAuthority authorityRoleUser = new CoreServerUserAuthority();
 		authorityRoleUser.setAuthority("ROLE_USER");
 		authority.add(authorityRoleUser);
 		

@@ -4,7 +4,7 @@
 package id.co.sigma.common.server.lov;
 
 import id.co.sigma.common.data.lov.CommonLOV;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
 import id.co.sigma.common.server.lov.BaseSelfRegisterLOVProvider;
 
@@ -110,7 +110,7 @@ public abstract class GenericCustomLOVProvider<KEY, DATA> extends BaseSelfRegist
 	/**
 	 * field-field untuk sort
 	 **/
-	protected abstract SigmaSimpleSortArgument[] getLOVSorter();
+	protected abstract SimpleSortArgument[] getLOVSorter();
 	
 	/**
 	 * pekerjaan nya adalah merubah dari data MDA menjadi data LOV

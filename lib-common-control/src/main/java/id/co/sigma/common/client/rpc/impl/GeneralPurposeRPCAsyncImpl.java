@@ -7,8 +7,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import id.co.sigma.common.client.rpc.GeneralPurposeRPCAsync;
 import id.co.sigma.common.client.rpc.ManualJSONSerializeRPCService;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.rpc.common.GeneralPurposeRPC;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 
@@ -19,12 +19,12 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 public class GeneralPurposeRPCAsyncImpl extends ManualJSONSerializeRPCService<GeneralPurposeRPC> implements GeneralPurposeRPCAsync{
 
 	@Override
-	public <DATA extends IJSONFriendlyObject<DATA>> void getPagedData (String objectFQCN , SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sorts , int page , int pageSize , AsyncCallback<PagedResultHolder<DATA>> callback) {
+	public <DATA extends IJSONFriendlyObject<DATA>> void getPagedData (String objectFQCN , SimpleQueryFilter[] filters , SimpleSortArgument[] sorts , int page , int pageSize , AsyncCallback<PagedResultHolder<DATA>> callback) {
 		this.submitRPCRequestRaw( "getPagedData",
 			new Class[]{
 				String.class,
-				SigmaSimpleQueryFilter[].class , 
-				SigmaSimpleSortArgument[].class , 
+				SimpleQueryFilter[].class , 
+				SimpleSortArgument[].class , 
 				int.class , 
 				int.class
 			}, 

@@ -1,7 +1,7 @@
 package id.co.sigma.security.server.service;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
@@ -24,7 +24,7 @@ public interface IUserService {
 	 * @return PageResultHolder
 	 * @throws Exception
 	 */
-	public PagedResultHolder<UserDTO> getUserByParameter(SigmaSimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserByParameter(SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * Get user yg diperuntukkan untuk worklist user
@@ -34,7 +34,7 @@ public interface IUserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId,SigmaSimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId,SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * get user by filter
@@ -44,7 +44,7 @@ public interface IUserService {
 	 * @return data user
 	 * @throws Exception
 	 */
-	public PagedResultHolder<User> getUserByFilter(SigmaSimpleQueryFilter[] filters, int pagePosition, int pageSize) throws Exception;
+	public PagedResultHolder<User> getUserByFilter(SimpleQueryFilter[] filters, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * insert data user

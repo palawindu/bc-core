@@ -3,7 +3,7 @@ package id.co.sigma.security.server.dao.impl;
 import id.co.sigma.common.data.lov.ILookupDetail;
 import id.co.sigma.common.data.lov.ILookupHeader;
 import id.co.sigma.common.server.dao.DirectTableLookupProviderDao;
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository(value="common-lov.directTableProvider")
-public class DirectTableLookupProviderDaoImpl extends BaseSigmaDao implements DirectTableLookupProviderDao{
+public class DirectTableLookupProviderDaoImpl extends BaseJPADao implements DirectTableLookupProviderDao{
 	
 	@Override
 	public List<ILookupHeader> getLookupHeaders(String localizationCode,

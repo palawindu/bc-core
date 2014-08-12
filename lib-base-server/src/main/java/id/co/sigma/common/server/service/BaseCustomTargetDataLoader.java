@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.DualControlEnabledData;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
 
 /**
@@ -54,8 +54,8 @@ public abstract class BaseCustomTargetDataLoader<DATA extends DualControlEnabled
 	 **/
 	@SuppressWarnings("unchecked")
 	protected  PagedResultHolder<DATA> genericlistDataRaw( Class<? extends DualControlEnabledData<?, ?>> entCls,
-			int page, int pageSize, SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortArguments) throws Exception  {
+			int page, int pageSize, SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortArguments) throws Exception  {
 		
 		Long cnt = generalPurposeDao.count(entCls, filters); 
 		if ( cnt==null)

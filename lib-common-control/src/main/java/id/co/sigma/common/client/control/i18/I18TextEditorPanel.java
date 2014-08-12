@@ -4,7 +4,7 @@ import id.co.sigma.common.client.form.ExtendedTextBox;
 import id.co.sigma.common.client.form.LOVCapabledComboBox;
 import id.co.sigma.common.client.form.i18.LabelConfigurationEditorPanel;
 import id.co.sigma.common.client.rpc.ApplicationConfigRPCServiceAsync;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.LabelDataWrapper;
 import id.co.sigma.common.data.entity.I18NTextGroup;
@@ -34,7 +34,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since Sep 18, 2012, 11:37:54 AM
  * @version $Id
  */
-public class I18TextEditorPanel extends BaseSigmaComposite implements IReload{
+public class I18TextEditorPanel extends BaseCommonControlComposite implements IReload{
 
 	private static I18TextEditorPanelUiBinder uiBinder = GWT.create(I18TextEditorPanelUiBinder.class);
 	private LabelConfigurationEditorPanel editorPanel;

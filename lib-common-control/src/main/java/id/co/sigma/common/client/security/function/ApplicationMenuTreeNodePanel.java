@@ -3,7 +3,7 @@ package id.co.sigma.common.client.security.function;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.exception.MenuHaveChildException;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.security.BaseAriumSecurityComposite;
 import id.co.sigma.common.client.security.rpc.FunctionRPCServiceAsync;
 import id.co.sigma.common.client.widget.SpanButton;
@@ -104,7 +104,7 @@ public class ApplicationMenuTreeNodePanel extends BaseAriumSecurityComposite {
 				if (Window.confirm("Apakah anda yakin ingin menghapus menu " + currentMenuData.getLabel()+" ?") == true) {
 					// hapus dari tree
 					try {
-						FunctionRPCServiceAsync.Util.getInstance().eraseApplicationMenu(currentMenuData.getId(), new SigmaAsyncCallback<Void>() {
+						FunctionRPCServiceAsync.Util.getInstance().eraseApplicationMenu(currentMenuData.getId(), new CommonControlAsyncCallback<Void>() {
 
 							@Override
 							public void onSuccess(Void result) {

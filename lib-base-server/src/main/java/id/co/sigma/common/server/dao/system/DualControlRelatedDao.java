@@ -4,8 +4,8 @@ import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
 import id.co.sigma.common.data.app.SimplifiedDualControlContainerTable;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.IBaseDao;
 
 /**
@@ -28,7 +28,7 @@ public interface DualControlRelatedDao extends IBaseDao{
 	 * @param filters filters data. ini tanpa user name
 	 * @param sorts sort order
 	 */
-	public PagedResultHolder<CommonDualControlContainerTable> getRejectList (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sorts , String username , int page , int pageSize) ;
+	public PagedResultHolder<CommonDualControlContainerTable> getRejectList (SimpleQueryFilter[] filters , SimpleSortArgument[] sorts , String username , int page , int pageSize) ;
 	
 	
 }

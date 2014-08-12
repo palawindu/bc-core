@@ -25,7 +25,7 @@ public class SigmaLoginRelatedController {
 	
 	
 	@Autowired
-	private ISigmaUserService sigmaUserService;
+	private ICoreServerUserService sigmaUserService;
 	
 	@Autowired
 	private HttpServletRequest request ; 

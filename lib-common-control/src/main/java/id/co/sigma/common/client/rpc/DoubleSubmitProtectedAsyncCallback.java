@@ -5,7 +5,7 @@ package id.co.sigma.common.client.rpc;
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  * @param <DATA> data yang di return oleh server
  */
-public abstract class DoubleSubmitProtectedAsyncCallback<DATA> extends SigmaAsyncCallback<DATA>{
+public abstract class DoubleSubmitProtectedAsyncCallback<DATA> extends CommonControlAsyncCallback<DATA>{
 
 	
 	

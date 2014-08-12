@@ -3,7 +3,7 @@ package id.co.sigma.common.client.security.rpc;
 import id.co.sigma.common.security.menu.UserDomain;
 import id.co.sigma.common.client.security.rpc.impl.UserDomainRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -35,5 +35,5 @@ public interface UserDomainRPCServiceAsync {
 	 * @param pageSize
 	 * @param callback
 	 */
-	void getUserDomainFromIIS(SigmaSimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<UserDomain>> callback);
+	void getUserDomainFromIIS(SimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<UserDomain>> callback);
 }

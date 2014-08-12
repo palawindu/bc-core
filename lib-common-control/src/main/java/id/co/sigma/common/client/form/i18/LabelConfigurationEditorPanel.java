@@ -6,7 +6,7 @@ import id.co.sigma.common.client.control.i18.IReload;
 import id.co.sigma.common.client.form.ExtendedTextBox;
 import id.co.sigma.common.client.form.LOVCapabledComboBox;
 import id.co.sigma.common.client.rpc.ApplicationConfigRPCServiceAsync;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.data.entity.I18NTextGroup;
 import id.co.sigma.common.data.entity.I18Text;
 import id.co.sigma.common.data.entity.I18TextPK;
@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a> 
  * @version $Id
  **/
-public class LabelConfigurationEditorPanel extends BaseSigmaComposite  {
+public class LabelConfigurationEditorPanel extends BaseCommonControlComposite  {
 	
 	private static LabelConfigurationEditorPanelUiBinder uiBinder = GWT.create(LabelConfigurationEditorPanelUiBinder.class);
 	private String localeId;

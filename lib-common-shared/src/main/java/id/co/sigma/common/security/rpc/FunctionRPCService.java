@@ -4,8 +4,8 @@
 package id.co.sigma.common.security.rpc;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.DataNotFoundException;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.Function;
@@ -61,7 +61,7 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	/**
 	 * halaman yang tersedia dalam aplikasi saat ini
 	 **/
-	public PagedResultHolder<PageDefinitionDTO> getCurrentAppAvailablePages (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortArgs , int pageSize , int page)throws Exception ; 
+	public PagedResultHolder<PageDefinitionDTO> getCurrentAppAvailablePages (SimpleQueryFilter[] filters , SimpleSortArgument[] sortArgs , int pageSize , int page)throws Exception ; 
 	
 	
 	

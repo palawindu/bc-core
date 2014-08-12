@@ -5,8 +5,8 @@ import java.util.List;
 import javax.persistence.Query;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 
 
 /**
@@ -14,7 +14,7 @@ import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  * @version $If
  **/
-public abstract class BaseSimpleLookupDao<ENTITY> extends BaseSigmaDao{
+public abstract class BaseSimpleLookupDao<ENTITY> extends BaseJPADao{
 
 	
 	/**
@@ -26,7 +26,7 @@ public abstract class BaseSimpleLookupDao<ENTITY> extends BaseSigmaDao{
 	 * @param includedNonBasicFields fields non basic yang di included. 
 	 *  
 	 **/
-	public  PagedResultHolder<ENTITY> getDataWorker (/*String[] includedNonBasicFields , */ SigmaSimpleQueryFilter[] filters ,  int page , int pageSize  ) throws Exception{
+	public  PagedResultHolder<ENTITY> getDataWorker (/*String[] includedNonBasicFields , */ SimpleQueryFilter[] filters ,  int page , int pageSize  ) throws Exception{
 		
 		String countSmt = "select count(a.id) from "  + generateCountSelectStatement("a") + " WHERE 1=1 " + buildWhereStatement("a", filters);
 		System.out.println("count smt :>>" + countSmt);

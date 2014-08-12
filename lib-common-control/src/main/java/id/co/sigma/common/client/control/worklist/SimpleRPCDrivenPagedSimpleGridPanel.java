@@ -11,8 +11,8 @@ import id.co.sigma.common.client.control.SimpleSearchFilterHandler;
 import id.co.sigma.common.client.rpc.GeneralPurposeRPCAsync;
 import id.co.sigma.common.client.widget.PageChangeHandler;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.jquery.client.grid.ISortOrderChangeHandler;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
@@ -28,7 +28,7 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	/**
 	 * filters yang di pergunakan saat ini
 	 **/
-	protected  SigmaSimpleQueryFilter[] currentFilters ;
+	protected  SimpleQueryFilter[] currentFilters ;
 	
 	
 	
@@ -36,7 +36,7 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	/**
 	 * argument sort current
 	 **/
-	protected SigmaSimpleSortArgument[] currentSortArguments  ;  
+	protected SimpleSortArgument[] currentSortArguments  ;  
 	
 	
 	
@@ -55,8 +55,8 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 					boolean ascendingSorting,
 					BaseColumnDefinition<DATA, ?> columnDefinition) {
 				GWT.log("sort request dengan field : "  + sortIndexField);
-				currentSortArguments = new SigmaSimpleSortArgument[]{
-					new SigmaSimpleSortArgument(sortIndexField , ascendingSorting)	
+				currentSortArguments = new SimpleSortArgument[]{
+					new SimpleSortArgument(sortIndexField , ascendingSorting)	
 				} ; 
 				reload();
 				saveCurrentGridConfiguration();
@@ -100,7 +100,7 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters) {
+	public void applyFilter(SimpleQueryFilter[] filters) {
 			resetGrid();
 		 this.currentFilters  = filters ; 
 		 reload();
@@ -108,8 +108,8 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	}
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sorts) {
+	public void applyFilter(SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sorts) {
 		resetGrid();
 		this.currentFilters = filters ;
 		this.currentSortArguments = sorts ;
@@ -175,9 +175,9 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	
 	
 	/**
-	 * ini request ke RPC.Request ke   {@link GeneralPurposeRPCAsync#getPagedData(String, SigmaSimpleQueryFilter[], SigmaSimpleSortArgument[], int, int, AsyncCallback)}. kalau perlu custom, bisa override method ini
+	 * ini request ke RPC.Request ke   {@link GeneralPurposeRPCAsync#getPagedData(String, SimpleQueryFilter[], SimpleSortArgument[], int, int, AsyncCallback)}. kalau perlu custom, bisa override method ini
 	 **/
-	protected void submitRPCRequest(SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortsArgument , int page, int pageSize  ) {
+	protected void submitRPCRequest(SimpleQueryFilter[] filters , SimpleSortArgument[] sortsArgument , int page, int pageSize  ) {
 		actualSubmitCallbackWorker(filters, sortsArgument, page, pageSize, getDataCallback());
 	}
 	
@@ -185,14 +185,14 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	
 	
 	/**
-	 * actual callback yang di trigger oleh grid. versi lengkap dengan argument callback di banding dengan {@link #submitRPCRequest(SigmaSimpleQueryFilter[], SigmaSimpleSortArgument[], int, int)}
+	 * actual callback yang di trigger oleh grid. versi lengkap dengan argument callback di banding dengan {@link #submitRPCRequest(SimpleQueryFilter[], SimpleSortArgument[], int, int)}
 	 * @param filters filter data
 	 * @param sortsArgument sorting argument
 	 * @param page page di baca
 	 * @param pageSize ukuran page di baca
 	 * @param callback callback data
 	 */
-	protected void actualSubmitCallbackWorker (SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortsArgument , int page, int pageSize  , AsyncCallback<PagedResultHolder<DATA>> callback) {
+	protected void actualSubmitCallbackWorker (SimpleQueryFilter[] filters , SimpleSortArgument[] sortsArgument , int page, int pageSize  , AsyncCallback<PagedResultHolder<DATA>> callback) {
 		this.showHideLoadingBlockerScreen(true);
 		GeneralPurposeRPCAsync.Util.getInstance().getPagedData(getRenderedClass().getName(), filters, sortsArgument, page, pageSize,callback);
 	}
@@ -240,13 +240,13 @@ public abstract class SimpleRPCDrivenPagedSimpleGridPanel<DATA extends IJSONFrie
 	 * sorting saat ini. plug ke sini kalau hendak override sort yang di simpan terakhir
 	 */
 	public void setCurrentSortArguments(
-			SigmaSimpleSortArgument[] currentSortArguments) {
+			SimpleSortArgument[] currentSortArguments) {
 		this.currentSortArguments = currentSortArguments;
 	}
 	/**
 	 * sorting saat ini
 	 */
-	public SigmaSimpleSortArgument[] getCurrentSortArguments() {
+	public SimpleSortArgument[] getCurrentSortArguments() {
 		return currentSortArguments;
 	}
 	

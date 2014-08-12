@@ -1,7 +1,7 @@
 package id.co.sigma.common.security.rpc;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.dto.UserDTO;
@@ -27,7 +27,7 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	 * @param pageSize
 	 * @return
 	 */
-	public PagedResultHolder<UserDTO> getUserByParameter(SigmaSimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserByParameter(SimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
 	
 	/**
 	 * Get user by parameter
@@ -38,7 +38,7 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	 * @return PageResultHolder
 	 * @throws Exception
 	 */
-	public PagedResultHolder<UserDTO> getUserByParameter(BigInteger applicationId,SigmaSimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserByParameter(BigInteger applicationId,SimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
 	
 	/**
 	 * get user by filter
@@ -48,7 +48,7 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	 * @return data user
 	 * @throws Exception
 	 */
-	public PagedResultHolder<User> getUserByFilter(SigmaSimpleQueryFilter[] filters, int pagePosition, int pageSize) throws Exception;
+	public PagedResultHolder<User> getUserByFilter(SimpleQueryFilter[] filters, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * insert data user

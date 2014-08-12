@@ -15,7 +15,7 @@
 	</bean>
 	
 	
-	<bean id="sigma-no-operation-pwd-encoder" class="id.co.sigma.common.server.service.system.impl.SigmaNoOpPassowordEconder">
+	<bean id="sigma-no-operation-pwd-encoder" class="id.co.sigma.common.server.service.system.impl.NoOperationPasswordEconder">
 		<description>encode password, practically do nothing</description>
 	</bean>
 

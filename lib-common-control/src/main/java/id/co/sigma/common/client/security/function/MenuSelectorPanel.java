@@ -12,7 +12,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Tree;
 
 import id.co.sigma.common.client.control.ITransformableToReadonlyLabel;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.data.app.security.MenuEditingData;
 import id.co.sigma.common.security.domain.Function;
 import id.co.sigma.jquery.client.util.JQueryUtils;
@@ -23,7 +23,7 @@ import id.co.sigma.jquery.client.util.JQueryUtils;
  * 
  *@author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class MenuSelectorPanel extends BaseSigmaComposite implements ITransformableToReadonlyLabel{
+public class MenuSelectorPanel extends BaseCommonControlComposite implements ITransformableToReadonlyLabel{
 	
 	
 	private Tree menuTree ; 

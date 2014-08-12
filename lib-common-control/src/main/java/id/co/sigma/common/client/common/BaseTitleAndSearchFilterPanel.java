@@ -1,13 +1,13 @@
 package id.co.sigma.common.client.common;
 
 import id.co.sigma.common.client.control.SimpleSearchFilterHandler;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 
 /**
  * base template untuk panel title dan search criteria. ini untuk penyeragaman search grid
  * @author <a href='mailto:gede.sutarsa@gmail.com'>Gede Sutarsa</a>
  */
-public abstract class BaseTitleAndSearchFilterPanel extends BaseSigmaComposite implements ITitleAndSearchPanelFilter{
+public abstract class BaseTitleAndSearchFilterPanel extends BaseCommonControlComposite implements ITitleAndSearchPanelFilter{
 	
 	
 	

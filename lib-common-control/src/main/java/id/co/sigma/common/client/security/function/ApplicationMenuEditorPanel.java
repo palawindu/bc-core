@@ -2,9 +2,9 @@ package id.co.sigma.common.client.security.function;
 
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.client.form.ExtendedButton;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.security.rpc.FunctionRPCServiceAsync;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.jquery.client.container.JQDialog;
 
 import java.math.BigInteger;
@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
  *
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class ApplicationMenuEditorPanel extends BaseSigmaComposite {
+public class ApplicationMenuEditorPanel extends BaseCommonControlComposite {
 
 	private static ApplicationMenuEditorPanelUiBinder uiBinder = GWT
 			.create(ApplicationMenuEditorPanelUiBinder.class);
@@ -78,7 +78,7 @@ public class ApplicationMenuEditorPanel extends BaseSigmaComposite {
 	 * request data via RPC dan render data
 	 **/
 	protected void requestAndRenderTree () {
-		FunctionRPCServiceAsync.Util.getInstance().getCurrentAppMenuDToByAppIdOrderByTreeLevelAndSiblingOrder(new SigmaAsyncCallback<List<ApplicationMenuDTO>>() {
+		FunctionRPCServiceAsync.Util.getInstance().getCurrentAppMenuDToByAppIdOrderByTreeLevelAndSiblingOrder(new CommonControlAsyncCallback<List<ApplicationMenuDTO>>() {
 			@Override
 			protected void customFailurehandler(Throwable caught) {
 				

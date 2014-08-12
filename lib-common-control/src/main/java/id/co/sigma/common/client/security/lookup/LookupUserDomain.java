@@ -5,7 +5,7 @@ import id.co.sigma.common.client.control.BaseSimpleSearchComboContentLocator;
 import id.co.sigma.common.client.security.lookup.base.SecurityBaseSimpleSingleResultLookupDialog;
 import id.co.sigma.common.client.security.rpc.UserDomainRPCServiceAsync;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
@@ -66,7 +66,7 @@ public class LookupUserDomain extends SecurityBaseSimpleSingleResultLookupDialog
 	}
 
 	@Override
-	protected void retrieveData(SigmaSimpleQueryFilter[] filters, int page,int pageSize,AsyncCallback<PagedResultHolder<UserDomain>> callback) {
+	protected void retrieveData(SimpleQueryFilter[] filters, int page,int pageSize,AsyncCallback<PagedResultHolder<UserDomain>> callback) {
 		UserDomainRPCServiceAsync.Util.getInstance().getUserDomainFromIIS(filters, page, pageSize, callback);
 	}
 

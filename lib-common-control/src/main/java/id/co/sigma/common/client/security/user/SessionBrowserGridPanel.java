@@ -7,8 +7,8 @@ import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import id.co.sigma.common.client.control.worklist.SimpleRPCDrivenPagedSimpleGridPanel;
 import id.co.sigma.common.client.security.rpc.ApplicationSessionManagementRPCServiceAsync;
 import id.co.sigma.common.client.style.CommonResourceBundle;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.security.ApplicationSessionRegistry;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.grid.CellGenericHandler;
@@ -224,12 +224,12 @@ public class SessionBrowserGridPanel extends SimpleRPCDrivenPagedSimpleGridPanel
 		return retval;
 	}
 	@Override
-	protected void submitRPCRequest(SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sortsArgument, int page, int pageSize) {
+	protected void submitRPCRequest(SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sortsArgument, int page, int pageSize) {
 		String email = null ; 
 		String usernameWildCard = null ;
 		String realNameWildCard= null; 
-		for ( SigmaSimpleQueryFilter scn : filters){
+		for ( SimpleQueryFilter scn : filters){
 			if ( "email".equals(scn.getField()))
 				email = scn.getFilter(); 
 			else if ( "realName".equals(scn.getField()))

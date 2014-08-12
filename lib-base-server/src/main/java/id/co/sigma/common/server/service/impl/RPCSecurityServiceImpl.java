@@ -11,14 +11,14 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import id.co.sigma.common.exception.InvalidTokenException;
 import id.co.sigma.common.security.MD5Utils;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 import id.co.sigma.common.server.service.IRPCSecurityService;
 
 /**
  * service untuk handle RPC security token
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class RPCSecurityServiceImpl extends AbstractSigmaService implements IRPCSecurityService{
+public class RPCSecurityServiceImpl extends AbstractService implements IRPCSecurityService{
 
 	
 	//FIXME: replace dengan ehcache

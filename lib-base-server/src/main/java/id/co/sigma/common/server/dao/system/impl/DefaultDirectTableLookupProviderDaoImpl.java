@@ -12,7 +12,7 @@ import id.co.sigma.common.data.lov.ILookupDetail;
 import id.co.sigma.common.data.lov.ILookupHeader;
 import id.co.sigma.common.data.lov.LOVSource;
 import id.co.sigma.common.server.dao.DirectTableLookupProviderDao;
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 import id.co.sigma.common.server.data.lookup.Common1LevelLOVDetail;
 import id.co.sigma.common.server.data.lookup.Common1LevelLOVHeader;
 
@@ -25,7 +25,7 @@ import id.co.sigma.common.server.data.lookup.Common1LevelLOVHeader;
  * @version $Id
  * 
  **/
-public class DefaultDirectTableLookupProviderDaoImpl extends BaseSigmaDao implements DirectTableLookupProviderDao{
+public class DefaultDirectTableLookupProviderDaoImpl extends BaseJPADao implements DirectTableLookupProviderDao{
 
 	
 	private static final String LOV_IDS_PREFIX="IDS"; 

@@ -20,7 +20,7 @@ import com.google.gwt.user.client.Command;
  * @version $Id
  * @since 6 August 2012
  * @see id.co.sigma.common.client.CommonClientControlConstant#TAG_KEY_SEL_REF untuk cara mencari reference ke object dalam dom
- * @see id.co.sigma.common.client.widget.BaseSigmaComposite#initWidget
+ * @see id.co.sigma.common.client.widget.BaseCommonControlComposite#initWidget
  **/
 public interface ResourceBundleEnableContainer {
 	

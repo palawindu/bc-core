@@ -14,7 +14,7 @@ import id.co.sigma.common.client.security.rpc.ApplicationUserRPCServiceAsync;
 import id.co.sigma.common.client.security.rpc.UserRPCServiceAsync;
 import id.co.sigma.common.client.widget.PageChangeHandler;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQDialog;
 
@@ -171,8 +171,8 @@ public class ApplicationUserListPanel extends BaseRootSecurityPanel implements I
 		/*Set criteria pencarian*/
 		
 		String filterChoise = cmbCriteria.getValue(cmbCriteria.getSelectedIndex());
-		SigmaSimpleQueryFilter[] filter = new SigmaSimpleQueryFilter[1];
-		SigmaSimpleQueryFilter filterAssign = new SigmaSimpleQueryFilter();		
+		SimpleQueryFilter[] filter = new SimpleQueryFilter[1];
+		SimpleQueryFilter filterAssign = new SimpleQueryFilter();		
 				
 		if(filterChoise.equals(SecurityConstant.FILTER_USERNAME)){			
 			filterAssign.setField(SecurityConstant.FILTER_USERNAME);			

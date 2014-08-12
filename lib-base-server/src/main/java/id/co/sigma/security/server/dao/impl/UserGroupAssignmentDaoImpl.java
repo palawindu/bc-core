@@ -2,7 +2,7 @@ package id.co.sigma.security.server.dao.impl;
 
 import id.co.sigma.common.security.domain.UserGroup;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 import id.co.sigma.security.server.dao.IUserGroupAssignmentDao;
 
 import java.math.BigInteger;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
  * @version $Id
  */
 @Repository
-public class UserGroupAssignmentDaoImpl extends BaseSigmaDao implements IUserGroupAssignmentDao{
+public class UserGroupAssignmentDaoImpl extends BaseJPADao implements IUserGroupAssignmentDao{
 
 	@SuppressWarnings("unchecked")
 	@Override

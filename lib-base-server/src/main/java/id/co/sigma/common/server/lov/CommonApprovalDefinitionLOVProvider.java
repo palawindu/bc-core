@@ -7,7 +7,7 @@ import id.co.sigma.common.data.CoreLibLookup;
 import id.co.sigma.common.data.approval.CommonApprovalDefinition;
 import id.co.sigma.common.data.lov.CommonLOV;
 import id.co.sigma.common.data.lov.StrongTypedCustomLOVID;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 
 import java.util.Date;
 
@@ -24,8 +24,8 @@ public class CommonApprovalDefinitionLOVProvider extends GenericAuditTrailedObje
 	}
 
 	@Override
-	protected SigmaSimpleSortArgument[] getLOVSorter() {
-		return new SigmaSimpleSortArgument[] {new SigmaSimpleSortArgument("objectName", true)};
+	protected SimpleSortArgument[] getLOVSorter() {
+		return new SimpleSortArgument[] {new SimpleSortArgument("objectName", true)};
 	}
 
 	@Override

@@ -15,7 +15,7 @@ import id.co.sigma.common.data.entity.FormElementConfiguration;
 import id.co.sigma.common.data.entity.I18Code;
 import id.co.sigma.common.data.entity.I18NTextGroup;
 import id.co.sigma.common.data.entity.I18Text;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -140,7 +140,7 @@ public interface ApplicationConfigRPCServiceAsync {
 	 * @param pagePosition posisi page yang hendak di baca
 	 *  
 	 **/
-	public void getI18NTexts(int pageSize , int pagePosition , SigmaSimpleQueryFilter [] filters  , AsyncCallback<PagedResultHolder<I18Text>> callback );
+	public void getI18NTexts(int pageSize , int pagePosition , SimpleQueryFilter [] filters  , AsyncCallback<PagedResultHolder<I18Text>> callback );
 	
 	
 	

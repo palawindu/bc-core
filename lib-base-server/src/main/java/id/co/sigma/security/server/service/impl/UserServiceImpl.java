@@ -1,7 +1,7 @@
 package id.co.sigma.security.server.service.impl;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.security.MD5Utils;
 import id.co.sigma.common.security.domain.Application;
 import id.co.sigma.common.security.domain.ApplicationUser;
@@ -12,7 +12,7 @@ import id.co.sigma.common.security.domain.UserPassword;
 import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.dto.UserGroupDTO;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 import id.co.sigma.common.server.util.ExtendedBeanUtils;
 import id.co.sigma.security.server.dao.IUserGroupAssignmentDao;
 import id.co.sigma.security.server.dao.impl.PasswordPolicyDaoImpl;
@@ -37,7 +37,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version $Id
  */
 @Service
-public class UserServiceImpl extends  AbstractSigmaService implements IUserService{
+public class UserServiceImpl extends  AbstractService implements IUserService{
 
 	private final String USER_CODE = "userCode";
 	private final String REAL_NAME = "realName";
@@ -55,7 +55,7 @@ public class UserServiceImpl extends  AbstractSigmaService implements IUserServi
 	
 	@Transactional(readOnly=true)
 	@Override
-	public PagedResultHolder<UserDTO> getUserByParameter(SigmaSimpleQueryFilter[] filter,int pagePosition, int pageSize) throws Exception {
+	public PagedResultHolder<UserDTO> getUserByParameter(SimpleQueryFilter[] filter,int pagePosition, int pageSize) throws Exception {
 		
 		PagedResultHolder<UserDTO> retval = new PagedResultHolder<UserDTO>();
 		List<User> actualData = new ArrayList<User>();
@@ -97,7 +97,7 @@ public class UserServiceImpl extends  AbstractSigmaService implements IUserServi
 	 */
 	@Transactional(readOnly=true)
 	@Override
-	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId, SigmaSimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception {		
+	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId, SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception {		
 		PagedResultHolder<UserDTO> retval = new PagedResultHolder<UserDTO>();
 		List<User> resultUser = new ArrayList<User>();
 		User parameter = null;		
@@ -173,7 +173,7 @@ public class UserServiceImpl extends  AbstractSigmaService implements IUserServi
 	 * @param filter
 	 * @param objParam
 	 */
-	private void setParameterByFilter(SigmaSimpleQueryFilter filter, User objParam){		
+	private void setParameterByFilter(SimpleQueryFilter filter, User objParam){		
 		if(filter.getField().equals(USER_CODE)){
 			objParam.setUserCode(filter.getFilter());
 		}else if(filter.getField().equals(REAL_NAME)){
@@ -187,7 +187,7 @@ public class UserServiceImpl extends  AbstractSigmaService implements IUserServi
 	
 	@Override
 	public PagedResultHolder<User> getUserByFilter(
-			SigmaSimpleQueryFilter[] filters, int pagePosition, int pageSize)
+			SimpleQueryFilter[] filters, int pagePosition, int pageSize)
 			throws Exception {
 		Integer count = userDao.countUserByFilters(filters);
 		if (count == null) 

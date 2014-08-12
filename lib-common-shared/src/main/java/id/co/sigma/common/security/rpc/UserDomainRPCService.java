@@ -1,7 +1,7 @@
 package id.co.sigma.common.security.rpc;
 
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.menu.UserDomain;
 
@@ -21,5 +21,5 @@ public interface UserDomainRPCService extends JSONSerializedRemoteService{
 	 * @param pageSize
 	 * @return
 	 */
-	public PagedResultHolder<UserDomain> getUserDomainFromIIS(SigmaSimpleQueryFilter[] filter, int page, int pageSize);
+	public PagedResultHolder<UserDomain> getUserDomainFromIIS(SimpleQueryFilter[] filter, int page, int pageSize);
 }

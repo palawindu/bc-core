@@ -12,13 +12,13 @@ import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.SimpleDualControlData;
 import id.co.sigma.common.exception.DataValidationException;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
-import id.co.sigma.common.server.service.AbstractSigmaService;
+import id.co.sigma.common.server.service.AbstractService;
 
 /**
  * base class untuk custom handler
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public abstract class BaseCustomDualControlAfterApproveTask<DATA extends SimpleDualControlData<?>> extends AbstractSigmaService implements ICustomDualControlAfterApproveTask<DATA> , InitializingBean{
+public abstract class BaseCustomDualControlAfterApproveTask<DATA extends SimpleDualControlData<?>> extends AbstractService implements ICustomDualControlAfterApproveTask<DATA> , InitializingBean{
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(BaseCustomDualControlAfterApproveTask.class); 

@@ -9,8 +9,8 @@ import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.dto.PageDefinitionDTO;
 import id.co.sigma.common.client.security.rpc.impl.FunctionRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -58,7 +58,7 @@ public interface FunctionRPCServiceAsync {
 	 * halaman yang tersedia dalam aplikasi saat ini
 	 * 
 	 **/
-	public void getCurrentAppAvailablePages ( SigmaSimpleQueryFilter[] filters , SigmaSimpleSortArgument[] sortArgs , int pageSize , int page, AsyncCallback<PagedResultHolder<PageDefinitionDTO>> callback) ;
+	public void getCurrentAppAvailablePages ( SimpleQueryFilter[] filters , SimpleSortArgument[] sortArgs , int pageSize , int page, AsyncCallback<PagedResultHolder<PageDefinitionDTO>> callback) ;
 	
 	
 	/**

@@ -7,8 +7,8 @@ import id.co.sigma.common.client.control.worklist.SimpleRPCDrivenPagedSimpleGrid
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.approval.CommonApprovalHeader;
 import id.co.sigma.common.data.approval.SimpleApprovalStatus;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.common.util.json.SharedServerClientLogicManager;
 import id.co.sigma.jquery.client.grid.CellButtonHandler;
@@ -142,15 +142,15 @@ public class SimpleApprovalGrid extends SimpleRPCDrivenPagedSimpleGridPanel<Comm
 	 * @param currentFilters filter dari list panel
 	 * @return filter yang baru
 	 */
-	private SigmaSimpleQueryFilter[] addWaitingApprovalToFilter(SigmaSimpleQueryFilter[] currentFilters) {
-		SigmaSimpleQueryFilter waitingApprovalFilter = new SigmaSimpleQueryFilter();
+	private SimpleQueryFilter[] addWaitingApprovalToFilter(SimpleQueryFilter[] currentFilters) {
+		SimpleQueryFilter waitingApprovalFilter = new SimpleQueryFilter();
 		waitingApprovalFilter.setField("approvalStatusCode");
 		waitingApprovalFilter.setOperator(SimpleQueryFilterOperator.equal);
 		waitingApprovalFilter.setFilter(SimpleApprovalStatus.WAITING_APPROVAL.toString());
 		if (currentFilters == null) {
-			return new SigmaSimpleQueryFilter[] {waitingApprovalFilter};
+			return new SimpleQueryFilter[] {waitingApprovalFilter};
 		}
-		SigmaSimpleQueryFilter[] newFilters = new SigmaSimpleQueryFilter[currentFilters.length + 1];
+		SimpleQueryFilter[] newFilters = new SimpleQueryFilter[currentFilters.length + 1];
 		//add new filter to array filter
 		for (int i = 0; i < currentFilters.length; i++) {
 			newFilters[i] = currentFilters[i];
@@ -160,15 +160,15 @@ public class SimpleApprovalGrid extends SimpleRPCDrivenPagedSimpleGridPanel<Comm
 	}
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters) {
-		SigmaSimpleQueryFilter[] newFilters = addWaitingApprovalToFilter(filters);
+	public void applyFilter(SimpleQueryFilter[] filters) {
+		SimpleQueryFilter[] newFilters = addWaitingApprovalToFilter(filters);
 		super.applyFilter(newFilters);
 	}
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters,
-			SigmaSimpleSortArgument[] sorts) {
-		SigmaSimpleQueryFilter[] newFilters = addWaitingApprovalToFilter(filters);
+	public void applyFilter(SimpleQueryFilter[] filters,
+			SimpleSortArgument[] sorts) {
+		SimpleQueryFilter[] newFilters = addWaitingApprovalToFilter(filters);
 		super.applyFilter(newFilters, sorts);
 	}
 }

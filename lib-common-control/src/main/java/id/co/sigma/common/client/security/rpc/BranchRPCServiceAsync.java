@@ -4,7 +4,7 @@ import id.co.sigma.common.security.domain.Branch;
 import id.co.sigma.common.security.dto.BranchDTO;
 import id.co.sigma.common.client.security.rpc.impl.BranchRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 import java.math.BigInteger;
 
@@ -32,7 +32,7 @@ public interface BranchRPCServiceAsync {
 	 * @param pageSize
 	 * @param callback
 	 */
-	void getDataByParameter(SigmaSimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<BranchDTO>> callback);
+	void getDataByParameter(SimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<BranchDTO>> callback);
 	
 	/**
 	 * Save or update data branch

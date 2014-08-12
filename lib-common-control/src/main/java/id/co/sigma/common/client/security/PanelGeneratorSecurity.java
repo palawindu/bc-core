@@ -1,7 +1,7 @@
 package id.co.sigma.common.client.security;
 
 import id.co.sigma.common.security.dto.ApplicationDTO;
-import id.co.sigma.common.client.rpc.SigmaAsyncCallback;
+import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.client.security.function.ApplicationMenuEditorPanel;
 import id.co.sigma.common.client.security.group.GroupListPanel;
 import id.co.sigma.common.client.security.rpc.ApplicationRPCServiceAsync;
@@ -31,7 +31,7 @@ public   class PanelGeneratorSecurity extends MenuHandlerPanelGeneratorGroup {
 								
 								
 								
-								getCurrentUserSecurityData(new SigmaAsyncCallback<ApplicationDTO>() {
+								getCurrentUserSecurityData(new CommonControlAsyncCallback<ApplicationDTO>() {
 									@Override
 									protected void customFailurehandler(
 											Throwable caught) {
@@ -123,7 +123,7 @@ public   class PanelGeneratorSecurity extends MenuHandlerPanelGeneratorGroup {
 	/**
 	 * aktivitas ini untuk membaca current security data. di bikin async, kalau di perlukan akses ke RPC, taruh di sini
 	 **/
-	protected    void getCurrentUserSecurityData (final SigmaAsyncCallback<ApplicationDTO> callback)  {
+	protected    void getCurrentUserSecurityData (final CommonControlAsyncCallback<ApplicationDTO> callback)  {
 		if ( applicationDTO!= null){
 			callback.onSuccess(applicationDTO); 
 			return ; 
@@ -131,7 +131,7 @@ public   class PanelGeneratorSecurity extends MenuHandlerPanelGeneratorGroup {
 		
 		
 		// kirim request ke server
-		ApplicationRPCServiceAsync.Util.getInstance().getCurrentAppApplicationInfo(new SigmaAsyncCallback<ApplicationDTO>() {
+		ApplicationRPCServiceAsync.Util.getInstance().getCurrentAppApplicationInfo(new CommonControlAsyncCallback<ApplicationDTO>() {
 			@Override
 			public void onSuccess(ApplicationDTO innerResult) {
 				

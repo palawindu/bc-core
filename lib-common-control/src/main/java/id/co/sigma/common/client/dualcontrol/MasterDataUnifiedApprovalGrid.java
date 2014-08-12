@@ -10,14 +10,14 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import id.co.sigma.common.client.control.worklist.SimpleRPCDrivenPagedSimpleGridPanel;
 import id.co.sigma.common.client.rpc.DualControlDataRPCServiceAsync;
-import id.co.sigma.common.client.widget.BaseSigmaComposite;
+import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.control.DataProcessWorker;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
 import id.co.sigma.common.data.app.DualControlDefinition;
-import id.co.sigma.common.data.query.SigmaSimpleQueryFilter;
-import id.co.sigma.common.data.query.SigmaSimpleSortArgument;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
+import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.jquery.client.grid.CellButtonHandler;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.DateColumnDefinition;
@@ -39,8 +39,8 @@ public class MasterDataUnifiedApprovalGrid extends SimpleRPCDrivenPagedSimpleGri
 	
 	
 	
-	private SigmaSimpleSortArgument [] DEFAULT_SORTS ={
-		new SigmaSimpleSortArgument("createdTime" ,false )	
+	private SimpleSortArgument [] DEFAULT_SORTS ={
+		new SimpleSortArgument("createdTime" ,false )	
 	}; 
 	
 	private String currentUserName ; 
@@ -71,15 +71,15 @@ public class MasterDataUnifiedApprovalGrid extends SimpleRPCDrivenPagedSimpleGri
 	private String messageForNotAllowEditYourOwnData ="you are not allowed to approve this data, because this data was requested by you";
 	
 	
-	private SigmaSimpleSortArgument [] sortArguments  =DEFAULT_SORTS ; 
+	private SimpleSortArgument [] sortArguments  =DEFAULT_SORTS ; 
 	
 	public MasterDataUnifiedApprovalGrid(DataProcessWorker<CommonDualControlContainerTable> viewDetailHandler , DataProcessWorker<CommonDualControlContainerTable> approveItemHandler){
 		super();
 		this.viewDetailHandler = viewDetailHandler ; 
 		this.approveItemHandler = approveItemHandler ; 
 		setCaption("Data To approve");
-		currentUserName = BaseSigmaComposite.userDetail.getUsername(); 
-		fullName = BaseSigmaComposite.userDetail.getFullNameUser();
+		currentUserName = BaseCommonControlComposite.userDetail.getUsername(); 
+		fullName = BaseCommonControlComposite.userDetail.getFullNameUser();
 		
 		
 	}
@@ -170,7 +170,7 @@ public class MasterDataUnifiedApprovalGrid extends SimpleRPCDrivenPagedSimpleGri
 	
 	protected boolean checkIsAllowApproveItem (CommonDualControlContainerTable data) {
 		if ( indexedDualControlDefinition.containsKey(data.getTargetObjectFQCN())){
-            GWT.log("current user is : " + BaseSigmaComposite.userDetail.getUsername() +", requestor : " + data.getCreatorUserId());
+            GWT.log("current user is : " + BaseCommonControlComposite.userDetail.getUsername() +", requestor : " + data.getCreatorUserId());
             if ( "Y".equals(indexedDualControlDefinition.get(data.getTargetObjectFQCN()).getStrickDualControlFlag())){
             	boolean enableVisible =!data.getCreatorUserId().equalsIgnoreCase(  currentUserName) ;
             	GWT.log("data id : " + data.getId() + "- enable : " + enableVisible);
@@ -194,24 +194,24 @@ public class MasterDataUnifiedApprovalGrid extends SimpleRPCDrivenPagedSimpleGri
 		};
 	
 	@Override
-	public void applyFilter(SigmaSimpleQueryFilter[] filters) {
+	public void applyFilter(SimpleQueryFilter[] filters) {
 		// tambahkan filter
 		
-		ArrayList<SigmaSimpleQueryFilter> filtersArray = new ArrayList<SigmaSimpleQueryFilter>(); 
+		ArrayList<SimpleQueryFilter> filtersArray = new ArrayList<SimpleQueryFilter>(); 
 		if ( filters!= null ){
-			for( SigmaSimpleQueryFilter scn : filters){
+			for( SimpleQueryFilter scn : filters){
 				filtersArray.add(scn); 
 			}
 			
 		}
-		SigmaSimpleQueryFilter fltTipe = new SigmaSimpleQueryFilter(); 
+		SimpleQueryFilter fltTipe = new SimpleQueryFilter(); 
 		fltTipe.setField("approvalStatus"); 
 		fltTipe.setFilter(RENDERED_TYPES); 
 		filtersArray.add(fltTipe);
 		
 		
 		
-		filters = new SigmaSimpleQueryFilter[filtersArray.size()]; 
+		filters = new SimpleQueryFilter[filtersArray.size()]; 
 		filtersArray.toArray(filters); 
 		
 		super.applyFilter(filters , sortArguments);

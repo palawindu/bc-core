@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import id.co.sigma.common.security.domain.Function;
 import id.co.sigma.common.security.domain.PageDefinition;
-import id.co.sigma.common.server.dao.base.BaseSigmaDao;
+import id.co.sigma.common.server.dao.base.BaseJPADao;
 import id.co.sigma.security.server.dao.IFunctionDao;
 
 /**
@@ -23,7 +23,7 @@ import id.co.sigma.security.server.dao.IFunctionDao;
  * @since Jan 7, 2013, 10:05:58 AM
  */
 @Repository
-public class FunctionDaoImpl extends BaseSigmaDao implements IFunctionDao {
+public class FunctionDaoImpl extends BaseJPADao implements IFunctionDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
