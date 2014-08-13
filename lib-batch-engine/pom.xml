@@ -130,30 +130,10 @@
 			<version>1.2.14</version>
 		</dependency>
 		
-			<dependency>
-			  <groupId>com.microsoft.sqlserver</groupId>
-			  <artifactId>sqljdbc4</artifactId>
-			  <version>4.0</version>
-			</dependency>
 		
 		
 		
-	<dependency>
-			<groupId>com.google.code.gson</groupId>
-  			<artifactId>gson</artifactId>
-  			<version>${gson.version}</version>
-		</dependency>
 		
-		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.2.9</version>
-		</dependency>
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.0-801.jdbc4</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.apache.commons</groupId>

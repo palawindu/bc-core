@@ -10,7 +10,7 @@
                            http://camel.apache.org/schema/spring
                            http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<bean id="sigma-user-detail-service" class="id.co.sigma.common.server.service.system.impl.SigmaUserDetailServiceImpl">
+	<bean id="sigma-user-detail-service" class="id.co.sigma.common.server.service.system.impl.CoreServerUserDetailServiceImpl">
 		<description>User detail service, ini loader data *diambil nya dari data yang di passed oleh security app ke applikasi ini*</description>
 	</bean>
 	
@@ -19,11 +19,9 @@
 		<description>encode password, practically do nothing</description>
 	</bean>
 
-	<bean id="sigma-session-registry" class="id.co.sigma.common.server.service.system.impl.SigmaSessionRegistryImpl">
-		<description>registry session</description>
-	</bean>
 	
-	<bean id="security::login-related-controller" class="id.co.sigma.common.server.service.system.SigmaLoginRelatedController">
+	
+	<bean id="security::login-related-controller" class="id.co.sigma.common.server.service.system.LoginRelatedController">
 		<description>controller untuk menerima item login</description>
 	</bean>
 	

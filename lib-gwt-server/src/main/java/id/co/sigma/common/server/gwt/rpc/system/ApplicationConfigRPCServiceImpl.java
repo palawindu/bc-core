@@ -18,12 +18,14 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.server.dao.base.PagedResultExecutorTemplate;
 import id.co.sigma.common.server.dao.system.ApplicationConfigurationDao;
-import id.co.sigma.common.server.data.security.SigmaSimpleUserData;
+
+import id.co.sigma.common.server.data.security.SimpleUserData;
 import id.co.sigma.common.server.gwt.rpc.BaseServerRPCService;
 import id.co.sigma.common.server.service.system.ApplicationConfigService;
 import id.co.sigma.common.server.util.JaxbConverterUtils;
 
 import java.util.List;
+
 
 
 
@@ -243,7 +245,7 @@ public class ApplicationConfigRPCServiceImpl extends BaseServerRPCService<Applic
 	
 	@Override
 	public void saveLabels(I18Text[] texts) throws Exception {
-		SigmaSimpleUserData usr = getCurrentUser();
+		SimpleUserData usr = getCurrentUser();
 		String usrName = usr==null?null : usr.getUsername();
 		
 		applicationConfigService.saveLabels(texts, usrName, getApplicationDate());

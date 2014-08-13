@@ -2,7 +2,7 @@ package id.co.sigma.common.server.service.system;
 
 import java.util.Collection;
 
-import id.co.sigma.common.server.data.security.SigmaAuthority;
+import id.co.sigma.common.server.data.security.CoreComponentAuthority;
 import id.co.sigma.common.server.data.security.UserLoginNotificationData;
 
 
@@ -13,6 +13,6 @@ import id.co.sigma.common.server.data.security.UserLoginNotificationData;
  **/
 public interface AuthorityTranslator {
 	
-	public Collection<SigmaAuthority> generateAuthorities (UserLoginNotificationData notificationResult) ; 
+	public Collection<CoreComponentAuthority> generateAuthorities (UserLoginNotificationData notificationResult) ; 
 
 }

@@ -17,14 +17,12 @@ import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 
 
 /**
  * application configuration dao
  * @author <a href='mailto:gede.sutarsa@gmail.com'>Gede Sutarsa</a>
  **/
-@Repository
 public class ApplicationConfigurationDaoImpl extends BaseJPADao implements ApplicationConfigurationDao{
 	
 	

@@ -164,12 +164,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	@Column(name="CHIPPER_TEXT")
 	private String chipperText;
 	
-	/**
-	* is ntlm user<br/>
-	* column :IS_NTLM_USER
-	**/
-	@Column(name="IS_NTLM_USER")
-	private String ntlmUser;
+	
 	
 	/**
 	 * flag super admin atau bukan
@@ -489,21 +484,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 		this.chipperText = chipperText;
 	}
 	
-	/**
-	* is ntlm user<br/>
-	* column :IS_NTLM_USER
-	**/
-	public String getNtlmUser() {
-		return ntlmUser;
-	}
 	
-	/**
-	* is ntlm user<br/>
-	* column :IS_NTLM_USER
-	**/
-	public void setNtlmUser(String ntlmUser) {
-		this.ntlmUser = ntlmUser;
-	}
 	
 	@Override
 	public int hashCode() {
@@ -713,7 +694,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 		jsonContainer.put("modifiedBy",getModifiedBy());
 		jsonContainer.put("modifiedByIPAddress",getModifiedByIPAddress());
 		jsonContainer.put("modifiedOn",getModifiedOn());
-		jsonContainer.put("ntlmUser",getNtlmUser());
+		
 		jsonContainer.put("numericScale",getNumericScale());
 		jsonContainer.put("realName",getRealName());
 		jsonContainer.put("status",getStatus());
@@ -747,7 +728,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
 		retval.setModifiedByIPAddress( (String)jsonContainer.get("modifiedByIPAddress" ,  String.class.getName()));
 		retval.setModifiedOn( (Date)jsonContainer.get("modifiedOn" ,  Date.class.getName()));
-		retval.setNtlmUser( (String)jsonContainer.get("ntlmUser" ,  String.class.getName()));
+		
 		retval.setNumericScale( (Integer)jsonContainer.get("numericScale" ,  Integer.class.getName()));
 		retval.setRealName( (String)jsonContainer.get("realName" ,  String.class.getName()));
 		retval.setStatus( (String)jsonContainer.get("status" ,  String.class.getName()));

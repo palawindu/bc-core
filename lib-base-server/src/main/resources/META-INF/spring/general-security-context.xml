@@ -14,16 +14,17 @@
 
 	<!-- Bean user detail service yg berfungsi utk memproses hasil login dari aplikasi -->
 	
-	<bean id="SigmaDatabaseUserDetailService" class="id.co.sigma.security.server.general.SigmaDefaultUserServices" />
+	<bean id="coreserver-DatabaseUserDetailService" class="id.co.sigma.security.server.general.DefaultUserServices" />
 	
-	<!-- Bean password encode. Secara default encoder yg digunakan adalah MD5, silahkan sesuaikan encoder yg digunakan sesuai kebutuhan -->
-	<bean id="SigmaPasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+	<bean id="core-session-registry" class="id.co.sigma.common.server.service.system.impl.CoreServerSessionRegistryImpl">
+		<description>registry session</description>
+	</bean>
 	
 	<!-- Bean success handler yg berfungsi untuk me-redirect ke URL aplikasi jika sudah berhasil login -->	
-	<bean id="SigmaSuccessHandlerAuthentification" class="id.co.sigma.security.server.general.SigmaDefaultAuthentificationSuccess"/>
+	<bean id="coreserver-SuccessHandlerAuthentification" class="id.co.sigma.security.server.general.DefaultAuthentificationSuccess"/>
 	
 	<!-- Bean logout handler yg berfungsi utk me-redirect ke URL login aplikasi jika sudah berhasil logout -->
-	<bean id="SigmaLogoutSuccessHandler" class="id.co.sigma.security.server.general.SigmaDefaultSuccessLogoutHandler" />
+	<bean id="coreserver-LogoutSuccessHandler" class="id.co.sigma.security.server.general.DefaultSuccessLogoutHandler" />
 	
 	<!-- Bean untuk URL dari aplikasi. Untuk mengubah nilai pada bean ini, silahkan refer ke resource.properties yg digunakan-->
 	<bean id="defaultApplicationURL" class="java.lang.String" factory-method="valueOf">
@@ -45,19 +46,19 @@
 			always-use-default-target="true"			    		                          
             login-processing-url="/j_spring_security_login"
             authentication-failure-url="/${default.security.failureUrl}" 
-            authentication-success-handler-ref="SigmaSuccessHandlerAuthentification" /> 
+            authentication-success-handler-ref="coreserver-SuccessHandlerAuthentification" /> 
                                                
         <security:logout logout-url="/j_spring_security_logout" 
         				 invalidate-session="true"
-        				 success-handler-ref="SigmaLogoutSuccessHandler"/>
+        				 success-handler-ref="coreserver-LogoutSuccessHandler"/>
         				         
         <security:access-denied-handler error-page="/${default.security.accessDenied}"/>                              
 	</security:http>	
 	
 	<!-- konfigurasi authentification manager -->
 	<security:authentication-manager>
-        <security:authentication-provider user-service-ref="SigmaDatabaseUserDetailService">
-        	<security:password-encoder ref="SigmaPasswordEncoder" />        	
+        <security:authentication-provider user-service-ref="coreserver-DatabaseUserDetailService">
+        	<security:password-encoder ref="core-server-PasswordEncoder" />        	
         </security:authentication-provider>
     </security:authentication-manager>
 </beans>

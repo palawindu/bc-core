@@ -15,9 +15,11 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.ListBox;
+
 import id.co.sigma.common.client.form.ExtendedButton;
 import id.co.sigma.common.client.rpc.ApplicationConfigRPCServiceAsync;
 import id.co.sigma.common.client.util.CommonClientControlUtil;
+import id.co.sigma.common.data.CommonLibraryConstant;
 import id.co.sigma.common.data.entity.I18Code;
 import id.co.sigma.common.util.I18Utilities;
 
@@ -127,7 +129,12 @@ public class I18ReloaderControllerPanel extends Composite {
 	
 	
 	protected void reloadWorker (String localeCode ){
-		String url = CommonClientControlUtil.getInstance().getApplicationBaseUrl()+ "sigma-app-configuration/" +localeCode+ "/i18-groups.json";
+		
+		String cnfUrl = CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL ; 
+		if ( cnfUrl.startsWith("/"))
+			cnfUrl  = cnfUrl.substring(1); 
+		
+		String url = CommonClientControlUtil.getInstance().getApplicationBaseUrl()+  cnfUrl+ "/" +localeCode+ "/i18-groups.json";
 		
 		
 		
@@ -142,7 +149,10 @@ public class I18ReloaderControllerPanel extends Composite {
 	 * load language dan hide panel 
 	 **/
 	public void loadLanguageAndHide (String localeCode) {
-		String url = CommonClientControlUtil.getInstance().getApplicationBaseUrl()+ "sigma-app-configuration/" +localeCode+ "/i18-groups.json";
+		String cnfUrl = CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL ; 
+		if ( cnfUrl.startsWith("/"))
+			cnfUrl  = cnfUrl.substring(1); 
+		String url = CommonClientControlUtil.getInstance().getApplicationBaseUrl()+ cnfUrl +  "/" +localeCode+ "/i18-groups.json";
 		
 		I18Utilities.getInstance().setCurrentLocalizationCode(localeCode);
 		CommonClientControlUtil.getInstance().setUseDotForThousandSeparator(!".".equals(indexedDecimalSeparator.get(localeCode)));

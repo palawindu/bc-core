@@ -32,5 +32,11 @@ public final class CommonLibraryConstant {
 	 * </ol>
 	 */
 	public static final String DOUBLE_SUBMIT_AVOIDENCE_PARAMTER_KEY="bcSystemDoubleSubmitHandler";
+	
+	
+	/**
+	 * path application configuration
+	 */
+	public static final String COMMON_CONTROL_CONFIGURATION_URL ="/sigma-app-configuration"; 
 
 }

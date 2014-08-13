@@ -7,7 +7,7 @@ import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.CommonWrappedSerializableException;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
 import id.co.sigma.common.server.dao.system.ApplicationConfigurationDao;
-import id.co.sigma.common.server.data.security.SigmaSimpleUserData;
+import id.co.sigma.common.server.data.security.SimpleUserData;
 import id.co.sigma.common.server.util.IDTOGenerator;
 import id.co.sigma.common.server.util.IObjectCleanUp;
 
@@ -235,16 +235,16 @@ public abstract class BaseSelfRegisteredRPCService extends BaseRPCServlet  imple
 	}
 	*/
 	
-	protected SigmaSimpleUserData getCurrentUser () {
+	protected SimpleUserData getCurrentUser () {
 		Authentication swap =  SecurityContextHolder.getContext().getAuthentication();
 		if ( !(swap instanceof UsernamePasswordAuthenticationToken))
 			return null ; 
 		UsernamePasswordAuthenticationToken tkn = (UsernamePasswordAuthenticationToken)swap;
 		Object swapPrincipal =  tkn.getPrincipal() ; 
 				
-		if ( swapPrincipal ==null|| !(swapPrincipal instanceof SigmaSimpleUserData))
+		if ( swapPrincipal ==null|| !(swapPrincipal instanceof SimpleUserData))
 			return null ; 
-		return (SigmaSimpleUserData)swapPrincipal ; 
+		return (SimpleUserData)swapPrincipal ; 
 				 
 	}
 	 

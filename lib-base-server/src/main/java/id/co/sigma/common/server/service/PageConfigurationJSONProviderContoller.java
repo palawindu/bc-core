@@ -3,11 +3,15 @@ package id.co.sigma.common.server.service;
 import java.util.List;
 
 
+
+
 import javax.servlet.http.HttpServletRequest;
 
+import id.co.sigma.common.data.CommonLibraryConstant;
 import id.co.sigma.common.data.entity.FormElementConfiguration;
 import id.co.sigma.common.data.entity.I18NTextGroup;
 import id.co.sigma.common.data.entity.I18Text;
+import id.co.sigma.common.server.controllers.BaseController;
 import id.co.sigma.common.server.dao.system.ApplicationConfigurationDao;
 import id.co.sigma.common.server.dao.system.IApplicationConfigFieldControl;
 
@@ -23,7 +27,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * controller page. ini memprovide JSON application configuration untuk applikasi
  **/
 @Controller
-public class PageConfigurationJSONProviderContoller {
+public class PageConfigurationJSONProviderContoller extends BaseController{
 	
 	
 	
@@ -44,7 +48,7 @@ public class PageConfigurationJSONProviderContoller {
 	protected static final String LOAD_FORM_CONFIG_SCRIPT_TEMPLATE ="$.ajax({ " + 	
 				" type: 'GET', "+	
 				" global: true, "+	
-				" url: \"%s/sigma-app-configuration/db-driven/%s-form-config.json\", "+	
+				" url: \"%s" +CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL +"/db-driven/%s-form-config.json\", "+	
 				" async: false, 	"+
 				" dataType: 'script' });";
 	@org.springframework.beans.factory.annotation.Autowired
@@ -53,17 +57,14 @@ public class PageConfigurationJSONProviderContoller {
 	@org.springframework.beans.factory.annotation.Autowired
 	private IApplicationConfigFieldControl applicationConfigFieldDao ; 
 	
-	@RequestMapping(value="/sigma-app-configuration/hello.json")
-	public @ResponseBody String helloworldSpringMVC(){
-		return "hello";
-	}
 	
 	
-	@RequestMapping(value="/sigma-app-configuration/{i18Code}/i18-groups.json")
+	
+	@RequestMapping(value="/{i18Code}/i18-groups.json")
 	public @ResponseBody String getInternalizationTextGroup(@PathVariable String i18Code){
 		List<I18NTextGroup> groups =  applicationConfigurationDao.getTextGroups();
 		 
-		String baseUrl = getBaseUrl( ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest())	;
+		String baseUrl = getBaseAppUrl() + CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL ;
 		StringBuffer buffer = new StringBuffer();
 		if ( groups!=null&&!groups.isEmpty()){
 			for ( I18NTextGroup scn : groups){
@@ -71,22 +72,11 @@ public class PageConfigurationJSONProviderContoller {
 				buffer.append("$.ajax({ " + 
 						"	type: \"GET\", "+
 						"	global: true, " +
-						"	url: \"" +baseUrl+ "/sigma-app-configuration/" + i18Code+"/" + scn.getId() + "-texts.json\", " +
+						"	url: \"" +baseUrl+ "/" + i18Code+"/" + scn.getId() + "-texts.json\", " +
 						"	async: false, " +
 						"	dataType: \"script\""+
 						" });");
 				
-				/*
-				buffer.append("(function() { "+ 
-		    " var s = document.createElement('script'); "+ 
-		    " s.type = 'text/javascript'; "+ 
-		    " s.async = true; "+ 
-		    
-		    " var x = document.getElementsByTagName('script')[0]; "+ 
-		    " x.parentNode.appendChild( x); "+ 
-		    " s.src = '"+baseUrl+ "/sigma-app-configuration/" + i18Code+"/" + scn.getId() + "-texts.json'; "+ 
-		    " })();");
-				*/
 			}
 			
 		}
@@ -100,7 +90,7 @@ public class PageConfigurationJSONProviderContoller {
 	 * ini merender json untuk 1 group. misal kalau code = security, panel konfig apa saja akan di kirim dalam format json ke client
 	 * 
 	 **/
-	@RequestMapping(value="/sigma-app-configuration/{groupCode}/panel-config-by-group-id.json")
+	@RequestMapping(value= CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL +  "/{groupCode}/panel-config-by-group-id.json")
 	public String getPanelConfigurationByGroupId (@PathVariable String groupCode ){
 		return null ; 
 	}
@@ -116,7 +106,7 @@ public class PageConfigurationJSONProviderContoller {
 		
 	}
 	
-	@RequestMapping(value="/sigma-app-configuration/{i18Code}/{group}-texts.json", produces="application/json")
+	@RequestMapping(value= CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL + "/{i18Code}/{group}-texts.json", produces="application/json")
 	public @ResponseBody String getInternalizationTexts(@PathVariable String i18Code,@PathVariable String group ){
 		List<I18Text> texts = this.applicationConfigurationDao.getTextsOnGroup(group, i18Code);
 		StringBuffer retval = new StringBuffer(); 
@@ -139,7 +129,7 @@ public class PageConfigurationJSONProviderContoller {
 	/**
 	 * ini untuk menyediakan script json config untuk form configuration
 	 **/
-	@RequestMapping(value="/sigma-app-configuration/db-driven/{groupId}-form-config.json", produces="application/json")
+	@RequestMapping(value= CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL + "/db-driven/{groupId}-form-config.json", produces="application/json")
 	public @ResponseBody String getFormElementConfigurationJson (@PathVariable String groupId ) {
 		StringBuffer retval = new StringBuffer(); 
 		retval.append("var id=id||{};id.co=id.co||{};id.co.sigma=id.co.sigma||{};id.co.sigma.formConfigs=id.co.sigma.formConfigs||{};");
@@ -179,13 +169,13 @@ public class PageConfigurationJSONProviderContoller {
 	 * load form configurations all
 	 * @param request request param
 	 **/
-	@RequestMapping(value="/sigma-app-configuration/db-driven/load-all-form-config.json", produces="application/json")
+	@RequestMapping(value= CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL +   "/db-driven/load-all-form-config.json", produces="application/json")
 	public @ResponseBody String getLoadAllFormConfigurationJs (HttpServletRequest request  ){
 		List<String> groups = applicationConfigFieldDao.getFormConfigurationGroups();
 		
 		StringBuffer retval = new StringBuffer(); 
 		if ( groups!=null&&!groups.isEmpty()){
-			String baseUrl = getBaseUrl(request);
+			String baseUrl = getBaseAppUrl();
 			for ( String grp : groups){
 				retval.append(String.format(LOAD_FORM_CONFIG_SCRIPT_TEMPLATE,baseUrl ,   grp));
 			}
@@ -202,13 +192,6 @@ public class PageConfigurationJSONProviderContoller {
 	
 	
 	
-	protected  String getBaseUrl (HttpServletRequest request){
-		  String url = request.getRequestURL().toString() ; 
-		    String contextPath = request.getContextPath() ;
-		    int index =  url.indexOf(contextPath) + contextPath.length();
-		    String baseUrl = url.substring(0 , index  ) ;
-		    return baseUrl ; 
-	}
 	
 
 }

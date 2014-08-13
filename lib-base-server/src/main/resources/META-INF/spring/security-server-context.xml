@@ -13,9 +13,7 @@
                                               
     <bean class="id.co.sigma.security.server.RedirectUrlUtils" />
         
-	<bean id="urlIisServer" class="java.lang.String" factory-method="valueOf">
-	    <constructor-arg value="${security.iis}"/>
-  	</bean>
+	
     
     <bean id="securityApplicationHost" class="java.lang.String" factory-method="valueOf">
 		<constructor-arg value="${security.securityApplicationHost}"/>

@@ -26,6 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.CalendarUtil;
 
 import id.co.sigma.common.client.CommonClientControlConstant;
+import id.co.sigma.common.data.CommonLibraryConstant;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 
@@ -157,7 +158,10 @@ public final class CommonClientControlUtil {
 	 * reload i18 Text. Dev mode dari database, else dari file dengan tag &lt;script&gt;&lt;/script&gt;
 	 **/
 	public void reloadI18Texts(String localeCode){
-		String url = applicationBaseUrl+ "sigma-app-configuration/" +localeCode+ "/i18-groups.json";
+		String cnfUrl = CommonLibraryConstant.COMMON_CONTROL_CONFIGURATION_URL ; 
+		if ( cnfUrl.startsWith("/"))
+			cnfUrl  = cnfUrl.substring(1); 
+		String url = applicationBaseUrl+ cnfUrl  + "/" +localeCode+ "/i18-groups.json";
 		fetchScriptSynchronous(url);
 	}
 	

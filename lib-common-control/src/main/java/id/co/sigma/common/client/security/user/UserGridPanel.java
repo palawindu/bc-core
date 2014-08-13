@@ -119,15 +119,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 					return data.getDefaultApplication().getApplicationName();
 				}
 			},
-			new BooleanColumnDefinition<User>(I18Utilities.getInstance().getInternalitionalizeText("security.user.header.grid.ntlmser", "NTLM User"), 50) {
-
-				@Override
-				public Boolean getData(User data) {
-					if ("Y".equals(data.getNtlmUser()))
-						return true;
-					return false;
-				}
-			}
+			
 		};
 		return retval;
 	}
@@ -161,14 +153,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 			public void runProccess(User data) {
 				openDialog(data);
 			}
-		}){
-			@Override
-			public boolean isDataAllowMeToVisible(User data) {
-				if ("Y".equals(data.getNtlmUser()))
-					return false;
-				return true;
-			}
-		};
+		});
 		
 		btnStatusActive = new CellButtonHandler<User>("ui-icon-unlocked", I18Utilities.getInstance().getInternalitionalizeText("security.common.button.title.activate", "Deactivate"), new DataProcessWorker<User>() {
 

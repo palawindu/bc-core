@@ -16,7 +16,6 @@ import id.co.sigma.common.client.form.advance.TextBoxWithLabel;
 import id.co.sigma.common.client.security.BaseAriumSecurityComposite;
 import id.co.sigma.common.client.security.control.EditPasswordTextBox;
 import id.co.sigma.common.client.security.group.IOpenAndCloseable;
-import id.co.sigma.common.client.security.lookup.BrowseLookupUserDomain;
 import id.co.sigma.common.client.security.rpc.ApplicationRPCServiceAsync;
 import id.co.sigma.common.client.security.rpc.UserRPCServiceAsync;
 import id.co.sigma.common.control.SingleValueLookupResultHandler;
@@ -67,10 +66,10 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	@UiField TextBoxWithLabel txtFullName;
 	@UiField TextBoxWithLabel txtEmail;
 	@UiField DatePickerWithLabel dtExpiredDate;
-	@UiField CheckBoxWithLabel checkBoxNTLM;
+	
 	@UiField CheckBoxWithLabel checkBoxStatus;
 	@UiField CheckBoxWithLabel checkBoxSuperAdmin;
-	@UiField BrowseLookupUserDomain txtNtlmUserName;
+	
 	@UiField ComboBoxWithLabel cbDefaultApplication;
 	@UiField ExtendedTextBox txtUserName;
 	@UiField ExtendedLabel lblUserName;
@@ -92,20 +91,7 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	public UserEditorPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		txtNtlmUserName.setLookupHandler(new SingleValueLookupResultHandler<UserDomain>() {
-			
-			@Override
-			public void onSelectionDone(UserDomain data) {
-				txtFullName.setValue(data.getFullName());
-			}
-		});
-		txtNtlmUserName.setResetClickHandler(new Command() {
-			
-			@Override
-			public void execute() {
-				resetNtlmRelatedComponent();
-			}
-		});
+		
 	}
 	
 	/**
@@ -208,7 +194,7 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 		ntlmUserControlRule(data);
 		
 		//render data to control form
-		checkBoxNTLM.setValue("Y".equals(data.getNtlmUser())? true : false);
+		
 		txtFullName.setValue(data.getRealName());
 		dtExpiredDate.setValue(data.getExpiredDate());
 		txtEmail.setValue(data.getEmail());
@@ -232,19 +218,9 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	 */
 	private void ntlmUserControlRule(User data) {
 		boolean isNtlmUser = false;
-		if ("Y".equals(data.getNtlmUser())) {
-			UserDomain userDomain = new UserDomain();
-			userDomain.setUsername(data.getUserCode());
-			userDomain.setFullName(data.getRealName());
-			txtNtlmUserName.setValue(userDomain);
-			isNtlmUser = true;
-		} else {
-			txtUserName.setValue(data.getUserCode());
-		}
-		if (STATE_ADD_NEW.equals(editorState))
-			checkBoxNTLM.setEnabled(true);
-		else
-			checkBoxNTLM.setEnabled(false);
+		
+		txtUserName.setValue(data.getUserCode());
+		
 		enableDisableNtlmControl(isNtlmUser);
 	}
 	
@@ -256,8 +232,6 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 		showHidePasswordControl(!isNtlmUser);
 		txtFullName.setEnabled(!isNtlmUser);
 		dtExpiredDate.setEnabled(!isNtlmUser);
-		txtNtlmUserName.setVisible(isNtlmUser);
-		txtNtlmUserName.setVisible(isNtlmUser);
 		txtUserName.setVisible(!isNtlmUser);
 	}
 	
@@ -289,8 +263,8 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	 * @param targetData
 	 */
 	public void renderEntryDataToPojo(User targetData) {
-		targetData.setUserCode(checkBoxNTLM.getValue()? txtNtlmUserName.getValue().getUsername() : txtUserName.getValue());
-		targetData.setNtlmUser(checkBoxNTLM.getValue()? "Y" : "N");
+		targetData.setUserCode(  txtUserName.getValue());
+		
 		targetData.setRealName(txtFullName.getValue());
 		targetData.setExpiredDate(dtExpiredDate.getValue());
 		targetData.setEmail(txtEmail.getValue());
@@ -298,7 +272,7 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 		targetData.setSuperAdmin(checkBoxSuperAdmin.getValue()? "Y" : "N");
 		targetData.setDefaultApplicationId(Integer.valueOf(cbDefaultApplication.getValue()));
 		if (STATE_ADD_NEW.equals(editorState)) {
-			targetData.setChipperText(checkBoxNTLM.getValue()? null : txtPassword.getPasswordValue());
+			targetData.setChipperText( txtPassword.getPasswordValue());
 		}
 	}
 
@@ -308,16 +282,16 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	 */
 	@UiHandler("checkBoxNTLM")
 	void onCheckBoxNTLMClick(ClickEvent event) {
-		boolean isNtlmUser = checkBoxNTLM.getValue();
+		
 		resetNtlmRelatedComponent();
-		enableDisableNtlmControl(isNtlmUser);		
+		enableDisableNtlmControl(false);		
 	}
 	
 	/**
 	 * reset value component yang berkaitan dengan ntlmUser
 	 */
 	private void resetNtlmRelatedComponent() {
-		txtNtlmUserName.setValue(null);
+		
 		txtFullName.setValue(null);
 		txtPassword.setBothValue(null);
 	}
@@ -333,15 +307,12 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 			isMandatoryValid = false;
 		if (txtEmail.getText() == null || txtEmail.getValue().isEmpty())
 			isMandatoryValid = false;
-		if (!checkBoxNTLM.getValue()) {
+		
 			if (dtExpiredDate.getValue() == null)
 				isMandatoryValid = false;
 			if (txtUserName.getText() == null || txtUserName.getValue().isEmpty())
 				isMandatoryValid = false;
-		} else {
-			if (txtNtlmUserName.getValue().getUsername() == null || txtNtlmUserName.getValue().getUsername().isEmpty())
-				isMandatoryValid = false;
-		}
+		
 		if (!isMandatoryValid) {
 			Window.alert(I18Utilities.getInstance().getInternalitionalizeText("security.user.alert.errormandatoryfield", "Mandatory field cannot be empty !"));
 			return false;
@@ -366,8 +337,7 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	 * @return true if valid, false if not
 	 */
 	private boolean passwordValidation() {
-		if (checkBoxNTLM.getValue())
-			return true;
+		
 		return txtPassword.validatePassword();
 	}
 	
@@ -418,11 +388,11 @@ public class UserEditorPanel extends BaseAriumSecurityComposite {
 	 */
 	public void clearComponentData() {
 		txtUserName.setValue(null);
-		txtNtlmUserName.setValue(null);
+		
 		txtFullName.setValue(null);
 		txtEmail.setValue(null);
 		dtExpiredDate.setValue(new Date());
-		checkBoxNTLM.setValue(false);
+		
 		checkBoxStatus.setValue(false);
 		checkBoxSuperAdmin.setValue(false);
 		txtPassword.setBothValue(null);

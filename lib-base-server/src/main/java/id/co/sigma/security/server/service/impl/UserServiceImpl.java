@@ -324,9 +324,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 	
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
 	private void insertUserPassword(User data) throws Exception {
-		if ("Y".equals(data.getNtlmUser()))
-			return ;
-		//create object userPassword
+		
 		UserPassword userPassword = new UserPassword();
 		userPassword.setUserId(data.getId());
 		userPassword.setCipherText(data.getChipperText());

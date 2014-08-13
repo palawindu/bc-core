@@ -25,7 +25,7 @@ import id.co.sigma.common.exception.CommonWrappedSerializableException;
 import id.co.sigma.common.server.dao.ICustomJoinHqlProvider;
 import id.co.sigma.common.server.dao.ICustomJoinHqlProviderManager;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
-import id.co.sigma.common.server.data.security.SigmaSimpleUserData;
+import id.co.sigma.common.server.data.security.SimpleUserData;
 import id.co.sigma.common.server.gwt.rpc.impl.BaseRPCHandler;
 import id.co.sigma.common.server.service.IObjectCleanUpManager;
 import id.co.sigma.common.server.util.IDTOGenerator;
@@ -62,7 +62,7 @@ public abstract class BaseServerRPCService<T> extends BaseRPCHandler<T>{
 	@Autowired
 	private HttpServletRequest httpServletRequest ; 
 	
-	protected SigmaSimpleUserData getCurrentUser () {
+	protected SimpleUserData getCurrentUser () {
 		Authentication swap =  SecurityContextHolder.getContext().getAuthentication();
 		if ( !(swap instanceof UsernamePasswordAuthenticationToken))
 			return null ; 
@@ -73,11 +73,11 @@ public abstract class BaseServerRPCService<T> extends BaseRPCHandler<T>{
 			return null ; 
 			
 			
-		if (swapPrincipal instanceof SigmaSimpleUserData)
-			return (SigmaSimpleUserData)swapPrincipal ; 
+		if (swapPrincipal instanceof SimpleUserData)
+			return (SimpleUserData)swapPrincipal ; 
 		if ( swapPrincipal instanceof CoreServerUserDetail){
 			CoreServerUserDetail act = (CoreServerUserDetail) swapPrincipal ; 
-			SigmaSimpleUserData retval = new SigmaSimpleUserData(); 
+			SimpleUserData retval = new SimpleUserData(); 
 			retval.setBranchCode(act.getCurrentBranchCode());
 			retval.setEmail(act.getEmail());
 			retval.setFullName(act.getFullNameUser());
