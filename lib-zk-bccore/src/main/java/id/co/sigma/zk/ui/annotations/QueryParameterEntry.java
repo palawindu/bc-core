@@ -1,4 +1,4 @@
-package id.co.sigma.zk.ui;
+package id.co.sigma.zk.ui.annotations;
 
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 
@@ -26,7 +26,16 @@ public @interface QueryParameterEntry {
 	/**
 	 * query operator untuk field. operator untuk query apa saja
 	 */
-	public SimpleQueryFilterOperator queryOperator () default SimpleQueryFilterOperator.likeTailOnly; 
+	public SimpleQueryFilterOperator queryOperator () default SimpleQueryFilterOperator.likeTailOnly;
+	
+	
+	
+	
+	/**
+	 * skip filter kalau misal isian kosong. 
+	 * default = true
+	 */
+	public boolean skipFilterIfEmpty() default true;  
 	
 
 }

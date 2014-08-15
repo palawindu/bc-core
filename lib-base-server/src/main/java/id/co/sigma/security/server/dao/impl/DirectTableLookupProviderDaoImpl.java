@@ -11,9 +11,9 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.springframework.stereotype.Repository;
 
-@Repository(value="common-lov.directTableProvider")
+
+
 public class DirectTableLookupProviderDaoImpl extends BaseJPADao implements DirectTableLookupProviderDao{
 	
 	@Override
@@ -44,33 +44,22 @@ public class DirectTableLookupProviderDaoImpl extends BaseJPADao implements Dire
 			Collection<String> lovIds) {
 		if (lovIds==null||lovIds.isEmpty())
 			return null ; 
-		// split dulu, berdasarkan prefix
-		List<String> useGenericTable = new ArrayList<String>();		
-		for ( String scn : lovIds){			
-			useGenericTable.add(scn);
-		}
-		ArrayList<ILookupDetail> merged = new ArrayList<ILookupDetail>();
 		
-		
-		if ( !useGenericTable.isEmpty()){
 			String hql =
 					"select a   " +
 					" from  " +
 					"	LookupDetail a inner join fetch a.header " +
 					" where " +
 					"	a.header.i18Key =:I18 " +
-					"	AND  a.header.id in ( " + this.genarateInStatement("IDS", useGenericTable.size())+")" +
+					"	AND  a.header.id in ( " + this.genarateInStatement("IDS", lovIds.size())+")" +
 					" order by " +
 					"		a.sequence asc ";
 			Query q = getEntityManager().createQuery(hql)
 					.setParameter("I18", localizationCode);
 			@SuppressWarnings("unchecked")
-			List<ILookupDetail> swaps =   this.fillInParams(q, "IDS", useGenericTable)
+			List<ILookupDetail> swaps =   this.fillInParams(q, "IDS", lovIds)
 						.getResultList();
-			if ( swaps!=null&&swaps.isEmpty())
-				merged.addAll(swaps);
-		}
+			return swaps ; 
 				
-		return merged;
 	}
 }

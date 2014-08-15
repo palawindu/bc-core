@@ -84,6 +84,12 @@ public class Common1LevelLOVDetailPK implements Serializable{
 	public String getDataValue() {
 		return dataValue;
 	}
+	@Override
+	public String toString() {
+		return "Common1LevelLOVDetailPK [parentId=" + parentId
+				+ ", languageCode=" + languageCode + ", dataValue=" + dataValue
+				+ "]";
+	}
 	
 	
 

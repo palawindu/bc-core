@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.zkoss.bind.BindComposer;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.metainfo.ComponentInfo;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -91,6 +92,7 @@ public class IndexController extends GenericForwardComposer<Component>{
 		};
 		personData.initiate(personListbox.getPageSize());/**/
 		personListbox.setModel(personData);
+		Component c =  Executions.createComponents("~./metainfo/xml/hello-component.zul", null	, null);
 		
 		
 		

@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 
@@ -48,7 +49,7 @@ public class LookupDetail implements Serializable , ILookupDetail, IJSONFriendly
 	 * id
 	 **/
 	@EmbeddedId
-	private LookupDetailPK id ; 
+	private LookupDetailPK id = new LookupDetailPK(); 
 	
 	
 	@ManyToOne(targetEntity=LookupHeader.class , fetch=FetchType.LAZY  )
@@ -56,7 +57,7 @@ public class LookupDetail implements Serializable , ILookupDetail, IJSONFriendly
 				value={
 						@JoinColumn(name="LOV_ID" , updatable=false , insertable=false , referencedColumnName="LOV_ID") , 
 						@JoinColumn(name="i18_CODE" , updatable=false, insertable=false , referencedColumnName="i18_CODE")
-				}
+				} 
 			)
 	
 	private LookupHeader header ;
@@ -84,6 +85,32 @@ public class LookupDetail implements Serializable , ILookupDetail, IJSONFriendly
 	
 	@Column(name="VAL_2")
 	private String extField2 ;
+	
+	
+	/**
+	 * kode internalization
+	 * column : i18_CODE. 
+	 **/
+	@Column(name="i18_CODE", updatable = false , insertable = false )
+	private String i18Key ; 
+	
+	
+	public LookupDetail() {
+		
+	}
+
+	
+	public LookupDetail(LookupHeader header, String detailCode, String label,
+			Integer sequence) {
+		super();
+		this.header = header;
+		this.detailCode = detailCode;
+		this.label = label;
+		this.sequence = sequence;
+		this.i18Key = header.getI18Key(); 
+		this.headerId = header.getId(); 
+	}
+
 
 	public LookupHeader getHeader() {
 		return header;
@@ -204,6 +231,30 @@ public class LookupDetail implements Serializable , ILookupDetail, IJSONFriendly
 		retval.setLabel( (String)jsonContainer.get("label" ,  String.class.getName()));
 		retval.setSequence( (Integer)jsonContainer.get("sequence" ,  Integer.class.getName()));
 		return retval; 
+	}
+	
+	
+	@PrePersist
+	public void prePersist() {
+		if ( id == null)
+			id = new LookupDetailPK() ;
+		id.setLovID(headerId);
+		id.setLovDetailId(detailCode);
+		id.setI18Code(i18Key);
+	}
+	/**
+	 * kode internalization
+	 * column : i18_CODE. 
+	 **/
+	public void setI18Key(String i18Key) {
+		this.i18Key = i18Key;
+	}
+	/**
+	 * kode internalization
+	 * column : i18_CODE. 
+	 **/
+	public String getI18Key() {
+		return i18Key;
 	}
 	
 	

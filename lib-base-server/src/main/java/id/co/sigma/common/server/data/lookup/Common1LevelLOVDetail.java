@@ -199,6 +199,14 @@ public class Common1LevelLOVDetail implements Serializable, ILookupDetail{
 	public Integer getSequence() {
 		return sequence;
 	}
+	@Override
+	public String toString() {
+		return "Common1LevelLOVDetail [id=" + id + ", parentId=" + parentId
+				+ ", languageCode=" + languageCode + ", dataValue=" + dataValue
+				+ ", additionalData2=" + additionalData2 + ", additionalData1="
+				+ additionalData1 + ", label=" + label + ", sequence="
+				+ sequence + "]";
+	}
 	 
 }
 

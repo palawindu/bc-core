@@ -1,20 +1,17 @@
 package id.co.sigma.lab.zk.controller;
 
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.zhtml.Messagebox;
+
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zkplus.databind.AnnotateDataBinder;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Window;
+
 
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.sandbox.shared.domain.Person;
-import id.co.sigma.zk.ui.QueryParameterEntry;
+import id.co.sigma.zk.ui.annotations.QueryParameterEntry;
 import id.co.sigma.zk.ui.controller.BaseSimpleListController;
 
 /**
@@ -23,12 +20,21 @@ import id.co.sigma.zk.ui.controller.BaseSimpleListController;
  */
 public class ListControllerSandbox extends BaseSimpleListController<Person>{
 
-	@QueryParameterEntry(filteredField="email" , queryOperator=SimpleQueryFilterOperator.likeBothSide)
+	@QueryParameterEntry(
+				filteredField="email" , 
+				queryOperator=SimpleQueryFilterOperator.likeBothSide)
 	@Wire
+	
 	Textbox emailSearch ; 
+	
+	@QueryParameterEntry(filteredField="name" , queryOperator= SimpleQueryFilterOperator.equal)
+	@Wire
+	Textbox nameSearch  ;
 	
 	@Wire
 	Button searchButton ;
+	
+	
 	
 	@Wire
 	Listbox listbox ; 
@@ -37,6 +43,12 @@ public class ListControllerSandbox extends BaseSimpleListController<Person>{
 	@Override
 	protected Class<? extends Person> getHandledClass() {
 		return Person.class;
+	}
+	
+	@Override
+	public void doAfterCompose(Component comp) throws Exception {
+		super.doAfterCompose(comp);
+		 
 	}
 	
 	@Listen(value="onClick = #searchButton")
