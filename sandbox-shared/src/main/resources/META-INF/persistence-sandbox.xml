@@ -8,7 +8,9 @@
 		<!--  core System  -->
 		<class>id.co.sigma.common.server.data.system.CommonSequenceTable</class>
 		<class>id.co.sigma.common.data.app.SystemSimpleParameter</class>
-		
+		<class>id.co.sigma.common.security.domain.lov.LookupHeader</class>
+		<class>id.co.sigma.common.security.domain.lov.LookupDetail</class>
+		<class>id.co.sigma.common.security.domain.lov.LookupDetailPK</class>
 		<!-- LOV, i18n -->
 		<class>id.co.sigma.common.data.entity.FormConfigurationSummary</class>
 		<class>id.co.sigma.common.data.entity.FormConfigurationSummaryPK</class>
@@ -63,7 +65,7 @@
 		
 		<!--  sandbox -->
 		<class>id.co.sigma.sandbox.shared.domain.Person</class>
-		
+		<class>id.co.sigma.sandbox.shared.domain.Department</class>		
 
 		
 		
