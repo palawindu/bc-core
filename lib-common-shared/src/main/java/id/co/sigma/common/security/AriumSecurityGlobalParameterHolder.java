@@ -1,6 +1,6 @@
 package id.co.sigma.common.security;
 
-import java.math.BigInteger;
+
 
 /**
  * Class untuk menampung variable global
@@ -13,7 +13,7 @@ public class AriumSecurityGlobalParameterHolder {
 	/**
 	 * aplikasi current id
 	 **/
-	public static BigInteger CURRENT_APPLICATION_ID ; 
+	public static Long CURRENT_APPLICATION_ID =1L; 
 	
 	/**
 	 * nama current aplikasi 

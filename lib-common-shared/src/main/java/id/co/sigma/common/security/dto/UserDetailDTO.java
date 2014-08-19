@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
@@ -19,12 +18,12 @@ public class UserDetailDTO implements Serializable,IsSerializable, IJSONFriendly
 
 	private static final long serialVersionUID = -3644491221492219875L;
 		
-	private BigInteger userId;
+	private Long userId;
 	private String username;	
 	private String password;
 	private String applicationName;
 	private String fullNameUser;
-	private BigInteger applicationId;
+	private Long applicationId;
 	private String applicationUrl;
 	private String applicationLoginUrl;
 	private String passwordNoHashing;
@@ -41,10 +40,10 @@ public class UserDetailDTO implements Serializable,IsSerializable, IJSONFriendly
 	 */
 	private String currentBranch ; 
 		
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getUsername() {
@@ -71,10 +70,10 @@ public class UserDetailDTO implements Serializable,IsSerializable, IJSONFriendly
 	public void setFullNameUser(String fullNameUser) {
 		this.fullNameUser = fullNameUser;
 	}
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 	public String getApplicationUrl() {
@@ -129,7 +128,7 @@ public class UserDetailDTO implements Serializable,IsSerializable, IJSONFriendly
 	@Override
 	public UserDetailDTO instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		UserDetailDTO retval = new UserDetailDTO();
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setApplicationLoginUrl( (String)jsonContainer.get("applicationLoginUrl" ,  String.class.getName()));
 		retval.setApplicationName( (String)jsonContainer.get("applicationName" ,  String.class.getName()));
 		retval.setApplicationUrl( (String)jsonContainer.get("applicationUrl" ,  String.class.getName()));
@@ -137,7 +136,7 @@ public class UserDetailDTO implements Serializable,IsSerializable, IJSONFriendly
 		retval.setLastLogin( (Date)jsonContainer.get("lastLogin" ,  Date.class.getName()));
 		retval.setPassword( (String)jsonContainer.get("password" ,  String.class.getName()));
 		retval.setPasswordNoHashing( (String)jsonContainer.get("passwordNoHashing" ,  String.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		retval.setUsername( (String)jsonContainer.get("username" ,  String.class.getName()));
 		retval.setUuid( (String)jsonContainer.get("uuid" ,  String.class.getName()));
 		retval.setCurrentBranch(jsonContainer.getAsString("currentBranch"));

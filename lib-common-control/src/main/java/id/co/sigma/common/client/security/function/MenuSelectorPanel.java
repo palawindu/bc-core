@@ -1,7 +1,7 @@
 package id.co.sigma.common.client.security.function;
 
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.Tree;
 import id.co.sigma.common.client.control.ITransformableToReadonlyLabel;
 import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.common.data.app.security.MenuEditingData;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.jquery.client.util.JQueryUtils;
 
 /**
@@ -39,8 +39,8 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 		
 		
 	}
-	private Map<BigInteger, MenuSelectorTreeItem> indexedTreeItem
-			= new HashMap<BigInteger, MenuSelectorTreeItem>(); 
+	private Map<Long, MenuSelectorTreeItem> indexedTreeItem
+			= new HashMap<Long, MenuSelectorTreeItem>(); 
 	
 	
 	/**
@@ -53,20 +53,20 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 		
 		menuTree.clear(); 
 		
-		ArrayList<Function> cloneArray = new ArrayList<Function>() ; 
+		ArrayList<ApplicationMenu> cloneArray = new ArrayList<ApplicationMenu>() ; 
 		cloneArray.addAll(  menuData.getAllMenus()); 
 		
-		ArrayList<ArrayList<Function>> netstedMenus = new ArrayList<ArrayList<Function>>();
+		ArrayList<ArrayList<ApplicationMenu>> netstedMenus = new ArrayList<ArrayList<ApplicationMenu>>();
 		// 
 		
 		
-		netstedMenus.add(new ArrayList<Function>()); 
-		for (Function scn : cloneArray ){
+		netstedMenus.add(new ArrayList<ApplicationMenu>()); 
+		for (ApplicationMenu scn : cloneArray ){
 			if ( scn.getFunctionIdParent()== null){
 				netstedMenus.get(0).add(scn); 
 			}
 		}
-		for (Function scn : netstedMenus.get(0)){
+		for (ApplicationMenu scn : netstedMenus.get(0)){
 			cloneArray.remove(scn); 
 		}
 		int idx = 0 ; 
@@ -74,9 +74,9 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 		int maxDeepth = 100000 ; 
 		int currentDepth = 0  ; 
 		while ( !cloneArray.isEmpty() && currentDepth<maxDeepth){
-			netstedMenus.add(new ArrayList<Function>());
-			for ( Function scn : cloneArray){
-				for ( Function bpk : netstedMenus.get(idx)){
+			netstedMenus.add(new ArrayList<ApplicationMenu>());
+			for ( ApplicationMenu scn : cloneArray){
+				for ( ApplicationMenu bpk : netstedMenus.get(idx)){
 					if (bpk.getId().equals(   scn.getFunctionIdParent()) ){
 						netstedMenus.get(idx + 1 ).add(scn); 
 						break ; 
@@ -89,7 +89,7 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 			if ( netstedMenus.get(idx +1 ).isEmpty()){
 				break ; 
 			}
-			for ( Function scn : netstedMenus.get(idx + 1 )) {
+			for ( ApplicationMenu scn : netstedMenus.get(idx + 1 )) {
 				cloneArray.remove(scn); 
 			}
 			idx ++ ; 
@@ -99,8 +99,8 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 		indexedTreeItem.clear(); 
 		
 		
-		for ( ArrayList<Function> levels : netstedMenus) {
-			for ( Function scn : levels) {
+		for ( ArrayList<ApplicationMenu> levels : netstedMenus) {
+			for ( ApplicationMenu scn : levels) {
 				MenuSelectorTreeItem itm = new MenuSelectorTreeItem(scn );
 				indexedTreeItem.put(scn.getId(), itm); 
 				if ( scn.getFunctionIdParent()== null){
@@ -140,8 +140,8 @@ public class MenuSelectorPanel extends BaseCommonControlComposite implements ITr
 	/**
 	 * capute semua item yang di pilih dalam panel selector menu. jadi child item + parent item
 	 */
-	public List<BigInteger> getAllSelectedMenuIds () {
-		ArrayList<BigInteger> retval = new ArrayList<BigInteger>(); 
+	public List<Long> getAllSelectedMenuIds () {
+		ArrayList<Long> retval = new ArrayList<Long>(); 
 		for ( MenuSelectorTreeItem itm : indexedTreeItem.values()){
 			if ( itm.isChecked()){
 				retval.add(itm.getMenu().getId()); 

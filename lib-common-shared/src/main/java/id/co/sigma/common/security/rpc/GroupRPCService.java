@@ -5,7 +5,7 @@ import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.UserGroup;
 import id.co.sigma.common.security.dto.UserGroupDTO;
 
-import java.math.BigInteger;
+
 
 /**
  * Group RPC
@@ -13,7 +13,6 @@ import java.math.BigInteger;
  * @since Nov 26, 2012, 3:57:26 PM
  * @version $Id
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/user-sec-group.app-rpc")
 public interface GroupRPCService extends JSONSerializedRemoteService{
 	
 	/**
@@ -45,7 +44,7 @@ public interface GroupRPCService extends JSONSerializedRemoteService{
 	 * @param parameter
 	 * @throws Exception
 	 */
-	public void delete(BigInteger parameter) throws Exception;
+	public void delete(Long parameter) throws Exception;
 	
 	/**
 	 * Update user group

@@ -3,7 +3,7 @@
  */
 package id.co.sigma.common.client.security.rpc;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.dto.PageDefinitionDTO;
@@ -12,7 +12,7 @@ import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -44,7 +44,7 @@ public interface FunctionRPCServiceAsync {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public void getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<BigInteger> groupIds, AsyncCallback<List<Function>> callback) throws Exception;
+	public void getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<Long> groupIds, AsyncCallback<List<ApplicationMenu>> callback) throws Exception;
 	
 	/**
 	 * get function by application id order by tree level and sibling order
@@ -52,7 +52,7 @@ public interface FunctionRPCServiceAsync {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public void getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(BigInteger applicationId, AsyncCallback<List<Function>> callback) throws Exception;
+	public void getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(Long applicationId, AsyncCallback<List<ApplicationMenu>> callback) throws Exception;
 	
 	/**
 	 * halaman yang tersedia dalam aplikasi saat ini
@@ -65,7 +65,7 @@ public interface FunctionRPCServiceAsync {
 	 * membaca menu. di cari dengan current application
 	 * @return list of menus dari current application
 	 **/
-	public void getCurrentAppMenusOrderByTreeLevelAndSiblingOrder( AsyncCallback<List<Function> > callback)  ;
+	public void getCurrentAppMenusOrderByTreeLevelAndSiblingOrder( AsyncCallback<List<ApplicationMenu> > callback)  ;
 	
 	/**
 	 * versi ini mengeluarkan DTO dari application menu. 
@@ -77,7 +77,7 @@ public interface FunctionRPCServiceAsync {
 	 * hapus application menu. di hapus bersama dengan semua referensi 
 	 * @param applicationMenuId id dari menu yang hendak di hapus
 	 **/
-	public void eraseApplicationMenu (BigInteger applicationMenuId , AsyncCallback<Void> callback) throws Exception; 
+	public void eraseApplicationMenu (Long applicationMenuId , AsyncCallback<Void> callback) throws Exception; 
 	
 	
 	
@@ -103,6 +103,6 @@ public interface FunctionRPCServiceAsync {
 	/**
 	 * mencari data page definition dengan id dari page
 	 */
-	public void getPageDefinition (BigInteger  page , AsyncCallback<PageDefinition> callback) ; 
+	public void getPageDefinition (Long  page , AsyncCallback<PageDefinition> callback) ; 
 	
 }

@@ -1,10 +1,9 @@
 package id.co.sigma.common.client.security;
 
 import id.co.sigma.common.security.dto.ApplicationDTO;
-import id.co.sigma.common.security.dto.UserDetailDTO;
 import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -30,7 +29,7 @@ public class BaseAriumSecurityComposite extends BaseCommonControlComposite{
 	 * Get current application id
 	 * @return BigInteger
 	 */
-	protected BigInteger getCurrentApplicationId () {
+	protected Long getCurrentApplicationId () {
 		/*return getUserDetail().getApplicationId();*/
 		/*return BigInteger.ONE;*/
 		return userDetail.getApplicationId();

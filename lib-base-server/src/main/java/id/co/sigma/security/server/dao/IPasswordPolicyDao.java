@@ -5,7 +5,7 @@ package id.co.sigma.security.server.dao;
 
 import id.co.sigma.common.security.domain.PasswordPolicy;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -36,5 +36,5 @@ public interface IPasswordPolicyDao {
 	 * @return password policy data
 	 * @throws Exception
 	 */
-	public PasswordPolicy getPasswordPolicyById(BigInteger id) throws Exception;
+	public PasswordPolicy getPasswordPolicyById(Long id) throws Exception;
 }

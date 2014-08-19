@@ -3,18 +3,13 @@
  */
 package id.co.sigma.common.server.gwt.rpc.security;
 
-import id.co.sigma.common.data.app.security.MenuEditingData;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.rpc.FunctionAssignmentRPCService;
-import id.co.sigma.common.server.gwt.rpc.impl.BaseRPCHandler;
-import id.co.sigma.common.server.gwt.rpc.BaseSelfRegisteredRPCService;
 import id.co.sigma.security.server.service.IFunctionAssignmentService;
 
-import java.math.BigInteger;
+
 import java.util.List;
-
-import javax.servlet.annotation.WebServlet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,27 +18,23 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version $Id
  * @since Jan 8, 2013, 2:24:17 PM
  */
-/*@WebServlet(
-		name="id.co.sigma.arium.security.server.rpc.FunctionAssignmentRPCServiceImpl" , 
-		description="Servlet RPC untuk handle Function Assignment Domain" , 
-		urlPatterns={"/sigma-rpc/function-assignment.app-rpc"})*/
 public class FunctionAssignmentRPCServiceImpl extends
-		/*BaseSelfRegisteredRPCService*/ BaseSecurityRPCService<FunctionAssignmentRPCService> implements FunctionAssignmentRPCService {
+		BaseSecurityRPCService<FunctionAssignmentRPCService> implements FunctionAssignmentRPCService {
 
-	private static final long serialVersionUID = -3333502819213472079L;
+	
 
 	@Autowired
 	private IFunctionAssignmentService functionAssignmentService;
 	
 	@Override
-	public List<BigInteger> getFunctionIdByGroupId(BigInteger groupId)
+	public List<Long> getFunctionIdByGroupId(Long groupId)
 			throws Exception {
 		return functionAssignmentService.getFunctionIdByGroupId(groupId);
 	}
 
 	@Override
-	public void addRemoveFunctionAssignment(List<FunctionAssignment> addedMenuItem,
-			List<FunctionAssignment> removedMenuItem) throws Exception {
+	public void addRemoveFunctionAssignment(List<ApplicationMenuAssignment> addedMenuItem,
+			List<ApplicationMenuAssignment> removedMenuItem) throws Exception {
 		functionAssignmentService.addRemoveFunctionAssignment(addedMenuItem, removedMenuItem);
 	}
 
@@ -52,11 +43,6 @@ public class FunctionAssignmentRPCServiceImpl extends
 		return FunctionAssignmentRPCService.class;
 	}
 
-	@Override
-	public MenuEditingData getAllAvailableMenu(BigInteger applicationId,
-			BigInteger groupId) {
-		
-		return null;
-	}
+	
 
 }

@@ -5,7 +5,7 @@ import id.co.sigma.common.security.dto.UserGroupDTO;
 import id.co.sigma.common.client.security.rpc.impl.GroupRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -59,7 +59,7 @@ public interface GroupRPCServiceAsync {
 	 * @param parameter
 	 * @param callback
 	 */
-	void delete(BigInteger parameter, AsyncCallback<Void> callback);
+	void delete(Long parameter, AsyncCallback<Void> callback);
 	
 	/**
 	 * Update use group

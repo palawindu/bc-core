@@ -2,7 +2,7 @@ package id.co.sigma.common.client.dualcontrol;
 
 import id.co.sigma.common.data.app.DualControlEnabledData;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.event.shared.HandlerRegistration;
 
@@ -18,7 +18,7 @@ public interface IDualControlEditor<DATA extends DualControlEnabledData<?, ?>>  
 	/**
 	 * approve data tunggal
 	 **/
-	public void approveSingleData ( BigInteger approvalId ) ;
+	public void approveSingleData ( Long approvalId ) ;
 	
 	
 	
@@ -35,7 +35,7 @@ public interface IDualControlEditor<DATA extends DualControlEnabledData<?, ?>>  
 	/**
 	 * menampikan detail dari data. di render dalam mode read only
 	 **/
-	public void viewSingleDataApprovalDetail ( BigInteger approvalId ) ;
+	public void viewSingleDataApprovalDetail ( Long approvalId ) ;
 	
 	
 	
@@ -43,7 +43,7 @@ public interface IDualControlEditor<DATA extends DualControlEnabledData<?, ?>>  
 	/**
 	 * ini untuk menampilkan data approved/ rejected data item
 	 */
-	public void viewSingleDataRejectedOrApprovedDataDetail ( BigInteger approvalId ) ;
+	public void viewSingleDataRejectedOrApprovedDataDetail ( Long approvalId ) ;
 	
 	
 	

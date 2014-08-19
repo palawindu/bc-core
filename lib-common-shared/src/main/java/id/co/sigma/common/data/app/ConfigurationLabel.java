@@ -3,13 +3,10 @@ package id.co.sigma.common.data.app;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.io.Serializable;
+
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.google.gwt.user.client.rpc.IsSerializable;
-
 
 
 

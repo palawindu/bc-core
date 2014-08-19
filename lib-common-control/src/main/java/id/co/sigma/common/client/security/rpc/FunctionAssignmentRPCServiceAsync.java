@@ -5,9 +5,9 @@ package id.co.sigma.common.client.security.rpc;
 
 import id.co.sigma.common.client.security.rpc.impl.FunctionAssignmentRPCServiceAsyncImpl;
 import id.co.sigma.common.data.app.security.MenuEditingData;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -38,7 +38,7 @@ public interface FunctionAssignmentRPCServiceAsync {
 	 * @return list of function id
 	 * @throws Exception
 	 */
-	public void getFunctionIdByGroupId(BigInteger groupId, AsyncCallback<List<BigInteger>> callback) throws Exception;
+	public void getFunctionIdByGroupId(Long groupId, AsyncCallback<List<Long>> callback) throws Exception;
 	
 	/**
 	 * added by dode
@@ -47,12 +47,7 @@ public interface FunctionAssignmentRPCServiceAsync {
 	 * @param removedMenuItem list of removed menu item
 	 * @throws Exception
 	 */
-	public void addRemoveFunctionAssignment(List<FunctionAssignment> addedMenuItem, List<FunctionAssignment> removedMenuItem, AsyncCallback<Void> callback) throws Exception;
+	public void addRemoveFunctionAssignment(List<ApplicationMenuAssignment> addedMenuItem, List<ApplicationMenuAssignment> removedMenuItem, AsyncCallback<Void> callback) throws Exception;
 	
-	/**
-	 * membaca data aplication yang tersedia
-	 * @param applicationId id aplikasi
-	 * @param groupId id group 
-	 */
-	public void getAllAvailableMenu ( BigInteger applicationId , BigInteger groupId , AsyncCallback<MenuEditingData> callback) ; 
+	 
 }

@@ -26,7 +26,6 @@ import id.co.sigma.common.server.service.IRPCSecurityService;
 import id.co.sigma.common.server.service.system.DualControlDataService;
 import id.co.sigma.common.server.service.system.ICommonSystemService;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -110,7 +109,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 	
 	@Override
 	public DataWithToken<CommonDualControlContainerTable> getWaitApprovalDataWithToken(
-			BigInteger id) throws Exception {
+			Long id) throws Exception {
 		CommonDualControlContainerTable actData = generalPurposeDao.get(CommonDualControlContainerTable.class, id);
 		DataWithToken<CommonDualControlContainerTable> retval = new DataWithToken<>( rpcSecurityService.generateToken()  , actData); 
 		return retval;
@@ -119,7 +118,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 	
 
 	@Override
-	public BigInteger submitDataForApproval(
+	public Long submitDataForApproval(
 			CommonDualControlContainerTable dualControlledData,
 			DualControlEnabledOperation operation) throws Exception{
 		try {
@@ -188,7 +187,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 	}
 
 	@Override
-	public void rejectData(BigInteger dataId, String rejectReason)
+	public void rejectData(Long dataId, String rejectReason)
 			throws Exception {
 		try {
 			dualControlDataService.rejectData(dataId, rejectReason);
@@ -233,7 +232,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 
 	@Override
 	public <DATA extends DualControlEnabledData<?, ?>> PagedResultHolder<DATA> getBulkApprovalDataDetails(
-			BigInteger approvalDataId, int pageSize, int page) throws Exception {
+			Long approvalDataId, int pageSize, int page) throws Exception {
 		return dualControlDataService.getBulkApprovalDataDetails(approvalDataId, pageSize, page);
 	}
 
@@ -251,7 +250,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 
 
 	@Override
-	public void approveAndApplyBulkData(BigInteger bulkDataId) throws Exception {
+	public void approveAndApplyBulkData(Long bulkDataId) throws Exception {
 		dualControlDataService.approveAndApplyBulkData(bulkDataId);
 		
 	}
@@ -261,7 +260,7 @@ public class DualControlDataRPCServiceImpl extends BaseServerRPCService<DualCont
 
 
 	@Override
-	public void rejectBulkData(BigInteger bulkDataId, String rejectReason) throws Exception {
+	public void rejectBulkData(Long bulkDataId, String rejectReason) throws Exception {
 		try {
 			dualControlDataService.rejectBulkData(bulkDataId, rejectReason);
 		} catch (Exception e) {

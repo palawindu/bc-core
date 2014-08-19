@@ -8,7 +8,7 @@ import id.co.sigma.security.server.dao.impl.ApplicationUserDaoImpl;
 import id.co.sigma.security.server.dao.impl.UserGroupAssignmentDaoImpl;
 import id.co.sigma.security.server.service.IApplicationUserService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +40,7 @@ public class ApplicationUserServiceImpl implements IApplicationUserService{
 
 	@Transactional(readOnly=false)
 	@Override
-	public void insertApplicationUser(List<UserGroupAssignmentDTO> data, BigInteger applicationId, BigInteger userId, String currentUser) throws Exception {
+	public void insertApplicationUser(List<UserGroupAssignmentDTO> data, Long applicationId, Long userId, String currentUser) throws Exception {
 		//1. CHECK sec_application_user apakah sudah ada atau tidak
 		ApplicationUser appUser = new ApplicationUser();				
 		ApplicationUserKey appUserKey = new ApplicationUserKey();
@@ -74,7 +74,7 @@ public class ApplicationUserServiceImpl implements IApplicationUserService{
 
 	@Transactional(readOnly=false)
 	@Override
-	public void deleteApplicationUser(BigInteger applicationId, BigInteger userId) throws Exception {
+	public void deleteApplicationUser(Long applicationId, Long userId) throws Exception {
 		//1.  DELETE sec_application_user		
 		ApplicationUser appUser = new ApplicationUser();		
 		ApplicationUserKey appUserKey = new ApplicationUserKey();

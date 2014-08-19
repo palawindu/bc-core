@@ -9,7 +9,7 @@ import id.co.sigma.common.security.dto.UserDetailDTO;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
 import id.co.sigma.common.security.exception.UserNotExistException;
 
-import java.math.BigInteger;
+
 
 /**
  * User RPC Service
@@ -17,7 +17,6 @@ import java.math.BigInteger;
  * @since Dec 10, 2012, 11:01:15 AM
  * @version $Id
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/user.app-rpc")
 public interface UserRPCService extends JSONSerializedRemoteService{
 	
 	/**
@@ -38,7 +37,7 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	 * @return PageResultHolder
 	 * @throws Exception
 	 */
-	public PagedResultHolder<UserDTO> getUserByParameter(BigInteger applicationId,SimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserByParameter(Long applicationId,SimpleQueryFilter[] filter, int page, int pageSize) throws Exception;
 	
 	/**
 	 * get user by filter
@@ -69,7 +68,7 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	 * @param id id user yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long id) throws Exception;
 	
 	/**
 	 * reset password
@@ -88,11 +87,11 @@ public interface UserRPCService extends JSONSerializedRemoteService{
 	/**
 	 * lock user
 	 */
-	public void lockUser ( BigInteger userId ) throws UserNotExistException  ;
+	public void lockUser ( Long userId ) throws UserNotExistException  ;
 	
 	
 	/**
 	 * unlock user
 	 */
-	public void unlockUser ( BigInteger userId ) throws UserNotExistException  ;
+	public void unlockUser ( Long userId ) throws UserNotExistException  ;
 }

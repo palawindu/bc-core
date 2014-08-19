@@ -5,7 +5,6 @@ import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.common.server.dao.base.BaseJPADao;
 import id.co.sigma.security.server.dao.IUserGroupAssignmentDao;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -50,21 +49,21 @@ public class UserGroupAssignmentDaoImpl extends BaseJPADao implements IUserGroup
 	}
 	
 	@Override
-	public void deleteGroupAssignmentByGroupId(BigInteger groupId) throws Exception {
+	public void deleteGroupAssignmentByGroupId(Long groupId) throws Exception {
 		Query qry = getEntityManager().createQuery("DELETE FROM UserGroupAssignment a WHERE a.groupId=:GROUP_ID");
 		qry.setParameter("GROUP_ID", groupId);
 		qry.executeUpdate();
 	}
 	
 	@Override
-	public void deleteGroupAssignmentByUserId(BigInteger userId) throws Exception {
+	public void deleteGroupAssignmentByUserId(Long userId) throws Exception {
 		Query qry = getEntityManager().createQuery("DELETE FROM UserGroupAssignment a WHERE a.userId=:USER_ID");
 		qry.setParameter("USER_ID", userId);
 		qry.executeUpdate();
 	}
 	
 	@Override
-	public void deleteGroupAssignmenyByUserGroupId(BigInteger userId, BigInteger groupId) throws Exception {
+	public void deleteGroupAssignmenyByUserGroupId(Long userId, Long groupId) throws Exception {
 		Query qry = getEntityManager().createQuery("DELETE FROM UserGroupAssignment a WHERE a.groupId=:GROUP_ID AND a.userId=:USER_ID");
 		qry.setParameter("GROUP_ID", groupId);
 		qry.setParameter("USER_ID", userId);
@@ -73,7 +72,7 @@ public class UserGroupAssignmentDaoImpl extends BaseJPADao implements IUserGroup
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserGroupAssignment> getDataByUserId(BigInteger userId) throws Exception {
+	public List<UserGroupAssignment> getDataByUserId(Long userId) throws Exception {
 		List<UserGroupAssignment> result = null;
 		String qryString = "SELECT a FROM UserGroupAssignment a inner join fetch a.userGroup inner join fetch a.user WHERE a.userId=:USER_ID ORDER BY a.id";		
 		
@@ -90,7 +89,7 @@ public class UserGroupAssignmentDaoImpl extends BaseJPADao implements IUserGroup
 	 * @return
 	 * @throws Exception
 	 */
-	public UserGroupAssignment find(BigInteger id) throws Exception{
+	public UserGroupAssignment find(Long id) throws Exception{
 		return getEntityManager().find(UserGroupAssignment.class, id);
 	}
 	

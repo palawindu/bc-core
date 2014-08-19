@@ -3,11 +3,11 @@
  */
 package id.co.sigma.common.security.rpc;
 
-import id.co.sigma.common.data.app.security.MenuEditingData;
-import id.co.sigma.common.rpc.JSONSerializedRemoteService;
-import id.co.sigma.common.security.domain.FunctionAssignment;
 
-import java.math.BigInteger;
+import id.co.sigma.common.rpc.JSONSerializedRemoteService;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
+
+
 import java.util.List;
 
 /**
@@ -16,16 +16,10 @@ import java.util.List;
  * @version $Id
  * @since Jan 8, 2013, 2:14:30 PM
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/function-assignment.app-rpc")
 public interface FunctionAssignmentRPCService extends JSONSerializedRemoteService {
 	
 	
-	/**
-	 * membaca data aplication yang tersedia
-	 * @param applicationId id aplikasi
-	 * @param groupId id group 
-	 */
-	public MenuEditingData getAllAvailableMenu ( BigInteger applicationId , BigInteger groupId ) ; 
+	
 	
 	/**
 	 * get function id by group id
@@ -33,7 +27,7 @@ public interface FunctionAssignmentRPCService extends JSONSerializedRemoteServic
 	 * @return list of function id
 	 * @throws Exception
 	 */
-	public List<BigInteger> getFunctionIdByGroupId(BigInteger groupId) throws Exception;
+	public List<Long> getFunctionIdByGroupId(Long groupId) throws Exception;
 	
 	/**
 	 * added by dode
@@ -42,5 +36,5 @@ public interface FunctionAssignmentRPCService extends JSONSerializedRemoteServic
 	 * @param removedMenuItem list of removed menu item
 	 * @throws Exception
 	 */
-	public void addRemoveFunctionAssignment(List<FunctionAssignment> addedMenuItem, List<FunctionAssignment> removedMenuItem) throws Exception;
+	public void addRemoveFunctionAssignment(List<ApplicationMenuAssignment> addedMenuItem, List<ApplicationMenuAssignment> removedMenuItem) throws Exception;
 }

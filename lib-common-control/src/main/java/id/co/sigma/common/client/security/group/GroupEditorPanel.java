@@ -1,6 +1,6 @@
 package id.co.sigma.common.client.security.group;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.UserGroup;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.common.security.dto.UserDTO;
@@ -19,7 +19,7 @@ import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQTabContainerPanel;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -229,7 +229,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 					chkActive.setValue(false);
 				}
 				
-				getDataGroupAssignment(new BigInteger(data.getId().toString()));
+				getDataGroupAssignment(data.getId().longValue());
 				currentData = data;
 				menuTreeEditorPanel.setCurrentData(currentData);
 			}
@@ -241,13 +241,14 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 	 * create tree menu dengan men set field group id nya
 	 * @param groupId
 	 */
-	public void createMenuTreeView(BigInteger groupId) {
-		List<BigInteger> groupIds = new ArrayList<BigInteger>();
+	public void createMenuTreeView(Long
+			groupId) {
+		List<Long> groupIds = new ArrayList<Long>();
 		groupIds.add(groupId);
 		
 		//request menu item untuk create menu tree view
 		try {
-			  FunctionRPCServiceAsync.Util.getInstance().getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(groupIds, new AsyncCallback<List<Function>>() {
+			  FunctionRPCServiceAsync.Util.getInstance().getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(groupIds, new AsyncCallback<List<ApplicationMenu>>() {
 
 				  @Override
 				  public void onFailure(Throwable e) {
@@ -256,7 +257,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 				  }
 				  
 				  @Override
-				  public void onSuccess(List<Function> result) {
+				  public void onSuccess(List<ApplicationMenu> result) {
 					  menuTreeViewPanel.menuTree.generateTree(result);
 					  extractMenuItemIdFromMenuItemList(result);
 					  
@@ -280,7 +281,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 	private void showHideMenuTreeViewAndEditorPanel(boolean visibleViewPanel) {
 		if (visibleViewPanel) {
 			menuTreeEditorPanel.menuTree.clearTree();
-			createMenuTreeView(new BigInteger(currentData.getId().toString()));
+			createMenuTreeView(currentData.getId().longValue() );
 		} else {
 			menuTreeViewPanel.menuTree.clearTree();
 			createMenuTreeEditor();
@@ -294,10 +295,10 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 	 */
 	private void createMenuTreeEditor() {
 		try {
-			FunctionRPCServiceAsync.Util.getInstance().getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(currentData.getApplicationId(), new AsyncCallback<List<Function>>() {
+			FunctionRPCServiceAsync.Util.getInstance().getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(currentData.getApplicationId(), new AsyncCallback<List<ApplicationMenu>>() {
 				
 				@Override
-				public void onSuccess(List<Function> result) {
+				public void onSuccess(List<ApplicationMenu> result) {
 					menuTreeEditorPanel.menuTree.setMenus(result);
 					menuTreeEditorPanel.menuTree.generateTree();
 				}
@@ -320,12 +321,12 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 	 * untuk keperluan edit tree menu
 	 * @param menuItems menu items group
 	 */
-	private void extractMenuItemIdFromMenuItemList(List<Function> menuItems) {
-		List<BigInteger> menuItemsId = new ArrayList<BigInteger>();
+	private void extractMenuItemIdFromMenuItemList(List<ApplicationMenu> menuItems) {
+		List<Long> menuItemsId = new ArrayList<Long>();
 		menuTreeEditorPanel.menuTree.setSelectedMenus(menuItemsId);
 		if (menuItems == null || menuItems.isEmpty())
 			return ;
-		for (Function menuItem : menuItems) {
+		for (ApplicationMenu menuItem : menuItems) {
 			menuItemsId.add(menuItem.getId());
 		}
 	}
@@ -333,7 +334,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 	/**
 	 * Get data group assignment
 	 */
-	private void getDataGroupAssignment(BigInteger parameter){
+	private void getDataGroupAssignment(Long parameter){
 		UserGroupAssignment data = new UserGroupAssignment();
 		data.setGroupId(parameter);
 		
@@ -395,7 +396,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 			Window.alert(I18Utilities.getInstance().getInternalitionalizeText("security.applicationuser.alert.errorusernamealreadyexist", "Sorry, username already exist !"));
 		}else{
 			UserGroupAssignment dataUserGroup = new UserGroupAssignment();
-			dataUserGroup.setGroupId(new BigInteger(txtUserGroupId.getValue()));
+			dataUserGroup.setGroupId(new Long(txtUserGroupId.getValue()));
 			dataUserGroup.setUserId(data.getIdUser());
 			dataUserGroup.setCreatedBy(getCurrentUserLogin());			
 			
@@ -459,7 +460,7 @@ public class GroupEditorPanel extends BaseAriumSecurityComposite implements IAdd
 			}
 			
 			if(isUpdate){
-				data.setId(new BigInteger(txtUserGroupId.getValue()));
+				data.setId(new Long(txtUserGroupId.getValue()));
 				data.setModifiedBy(getCurrentUserLogin());
 				GroupRPCServiceAsync.Util.getInstance().update(data, new AsyncCallback<Void>() {
 					@Override

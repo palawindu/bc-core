@@ -5,7 +5,7 @@ import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 import id.co.sigma.common.client.security.rpc.impl.GroupAssignmentRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -52,12 +52,12 @@ public interface GroupAssignmentRPCServiceAsync {
 	 * @param data
 	 * @param callback
 	 */
-	void delete(BigInteger data, AsyncCallback<Void> callback);
+	void delete(Long data, AsyncCallback<Void> callback);
 	
 	/**
 	 * Get user group by user id
 	 * @param userId
 	 * @param callback
 	 */
-	void getUserGroupByUserId(BigInteger userId, AsyncCallback<List<UserGroupAssignmentDTO>> callback);
+	void getUserGroupByUserId(Long userId, AsyncCallback<List<UserGroupAssignmentDTO>> callback);
 }

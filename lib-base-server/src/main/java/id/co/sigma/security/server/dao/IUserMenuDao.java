@@ -1,10 +1,10 @@
 package id.co.sigma.security.server.dao;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
-import id.co.sigma.common.security.domain.Function;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenu;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 
@@ -31,21 +31,21 @@ public interface IUserMenuDao {
 	 * @return List of UserGroupAssigment yg isi group_id
 	 * @throws Exception
 	 */
-	public List<UserGroupAssignment> getGroupAssigmentByParam(BigInteger userId) throws Exception;
+	public List<UserGroupAssignment> getGroupAssigmentByParam(Long userId) throws Exception;
 	
 	/**
 	 * Get satu atau lebih data pada function_assignment berdasarkan parameter. Minumal parameter : group_id
-	 * @param parameter berupa list(BigInteger) dr group_id. Dpt dimasukkan group_id lbh dari 1
+	 * @param parameter berupa list(Long) dr group_id. Dpt dimasukkan group_id lbh dari 1
 	 * @return List of FunctionAssignment yg isi function_id
 	 * @throws Exception
 	 */
-	public List<FunctionAssignment> getFunctionAssignmentByGroupId(List<BigInteger> parameter) throws Exception;
+	public List<ApplicationMenuAssignment> getFunctionAssignmentByGroupId(List<Long> parameter) throws Exception;
 	
 	/**
 	 * Get function menu berdasarkan function_id nya
-	 * @param parameter - List(BigInteger) dari id_function
+	 * @param parameter - List(Long) dari id_function
 	 * @return List of function
 	 * @throws Exception
 	 */
-	public List<Function> getFunctionMenuByFunctionId(List<BigInteger> parameter) throws Exception;
+	public List<ApplicationMenu> getFunctionMenuByFunctionId(List<Long> parameter) throws Exception;
 }

@@ -1,33 +1,17 @@
-package id.co.sigma.zk.ui.controller;
+package id.co.sigma.zk.ui.controller.base;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import id.co.sigma.common.data.CustomDataFormatter;
-import id.co.sigma.common.data.lov.CommonLOV;
-import id.co.sigma.common.data.lov.CommonLOVHeader;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.common.data.query.SimpleSortArgument;
-import id.co.sigma.common.server.lov.ILOVProviderService;
-import id.co.sigma.zk.ui.PosibleQueryFieldType;
 import id.co.sigma.zk.ui.SimpleQueryDrivenListModel;
-import id.co.sigma.zk.ui.annotations.LookupEnabledControl;
 import id.co.sigma.zk.ui.annotations.QueryParameterEntry;
-import id.co.sigma.zk.ui.lov.DefaultLOVRenderer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.impl.InputElement;

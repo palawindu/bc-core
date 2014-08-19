@@ -6,7 +6,7 @@ import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.security.server.dao.BaseGenericDao;
 import id.co.sigma.security.server.dao.IUserGroupDao;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -73,8 +73,8 @@ public class UserGroupDaoImpl extends BaseGenericDao implements IUserGroupDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<String> getUserGroups(BigInteger userId,
-			BigInteger applicationid) {
+	public List<String> getUserGroups(Long userId,
+			Long applicationid) {
 		String hqlSmt ="select a.userGroup.groupCode " +
 				" from UserGroupAssignment a " +
 				" where " +
@@ -144,7 +144,7 @@ public class UserGroupDaoImpl extends BaseGenericDao implements IUserGroupDao{
 	}
 
 	@Override
-	public User getUserById(BigInteger userId) {
+	public User getUserById(Long userId) {
 		try {
 			return getEntityManager().find(User.class, userId);
 		} catch (Exception e) {
@@ -165,7 +165,7 @@ public class UserGroupDaoImpl extends BaseGenericDao implements IUserGroupDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserGroupAssignment> getUserGroupByUserIds(
-			Collection<BigInteger> userIds) {
+			Collection<Long> userIds) {
 		if (userIds== null || userIds.isEmpty())
 			return null ; 
 		String hqlSmt ="SELECT a from UserGroupAssignment a  inner join fetch a.userGroup  WHERE a.userId in ( " + genarateInStatement("IDS", userIds.size()) +" ) ";

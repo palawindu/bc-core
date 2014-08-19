@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.service;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import id.co.sigma.common.data.PagedResultHolder;
@@ -38,7 +38,7 @@ public interface IBranchService {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long id) throws Exception;
 	
 	/**
 	 * Get branch assignment by user id
@@ -46,5 +46,5 @@ public interface IBranchService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<BranchDTO> getBranchAssignmentByUserId(BigInteger userId) throws Exception;
+	public List<BranchDTO> getBranchAssignmentByUserId(Long userId) throws Exception;
 }

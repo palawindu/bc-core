@@ -3,14 +3,13 @@
  */
 package id.co.sigma.common.client.security.group;
 
-import id.co.sigma.common.security.domain.Function;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenu;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.dto.UserGroupDTO;
 import id.co.sigma.common.client.form.ExtendedButton;
 import id.co.sigma.common.client.security.BaseAriumSecurityComposite;
 import id.co.sigma.common.client.security.control.CheckBoxMenuTree;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +45,14 @@ public class GroupMenuTreeEditorPanel extends BaseAriumSecurityComposite {
 	 * get added menu items in function assignment object
 	 * @return list of added function assignment
 	 */
-	public List<FunctionAssignment> getAddedMenuItems() {
+	public List<ApplicationMenuAssignment> getAddedMenuItems() {
 		//ubah dari added list bertipe function ke tipe function assignment agar bisa langsung diinsert
-		List<FunctionAssignment> addedFunctionAssignment = new ArrayList<FunctionAssignment>();
+		List<ApplicationMenuAssignment> addedFunctionAssignment = new ArrayList<ApplicationMenuAssignment>();
 		if (!menuTree.getAddedMenu().isEmpty()) {
-			for (Function addedItem : menuTree.getAddedMenu()) {
-				FunctionAssignment newGroupMenuItem = new FunctionAssignment();
+			for (ApplicationMenu addedItem : menuTree.getAddedMenu()) {
+				ApplicationMenuAssignment newGroupMenuItem = new ApplicationMenuAssignment();
 				newGroupMenuItem.setFunctionId(addedItem.getId());
-				newGroupMenuItem.setGroupId(new BigInteger(currentData.getId().toString()));
+				newGroupMenuItem.setGroupId(currentData.getId()== null ? null  : currentData.getId().longValue());
 				newGroupMenuItem.setCreatedOn(getApplicationDate());
 				newGroupMenuItem.setCreatedBy(getCurrentUserLogin());
 				addedFunctionAssignment.add(newGroupMenuItem);
@@ -67,14 +66,14 @@ public class GroupMenuTreeEditorPanel extends BaseAriumSecurityComposite {
 	 * get added menu items in function assignment object
 	 * @return list of removed function assignment
 	 */
-	public List<FunctionAssignment> getRemoedMenuItems() {
+	public List<ApplicationMenuAssignment> getRemoedMenuItems() {
 		//ubah dari removed list bertipe function ke tipe function assignment agar lebih mudah untuk deletenya
-		List<FunctionAssignment> removedFunctionAssignment = new ArrayList<FunctionAssignment>();
+		List<ApplicationMenuAssignment> removedFunctionAssignment = new ArrayList<ApplicationMenuAssignment>();
 		if (!menuTree.getRemovedMenu().isEmpty()) {
-			for (Function removedItem : menuTree.getRemovedMenu()) {
-				FunctionAssignment deleteGroupMenuItem = new FunctionAssignment();
+			for (ApplicationMenu removedItem : menuTree.getRemovedMenu()) {
+				ApplicationMenuAssignment deleteGroupMenuItem = new ApplicationMenuAssignment();
 				deleteGroupMenuItem.setFunctionId(removedItem.getId());
-				deleteGroupMenuItem.setGroupId(new BigInteger(currentData.getId().toString()));
+				deleteGroupMenuItem.setGroupId(currentData.getId().longValue());
 				removedFunctionAssignment.add(deleteGroupMenuItem);
 			}
 		}

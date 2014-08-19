@@ -6,7 +6,6 @@ import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
 
-import java.math.BigInteger;
 
 /**
  * User service
@@ -34,7 +33,7 @@ public interface IUserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId,SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
+	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(Long applicationId,SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * get user by filter
@@ -65,7 +64,7 @@ public interface IUserService {
 	 * @param id id user yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long id) throws Exception;
 	
 	/**
 	 * update password user dan insert password history user

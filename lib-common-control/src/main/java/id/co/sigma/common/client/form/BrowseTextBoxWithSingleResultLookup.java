@@ -4,7 +4,7 @@ import com.google.gwt.user.client.Command;
 
 import id.co.sigma.common.client.control.lookup.BaseSimpleSingleResultLookupDialog;
 import id.co.sigma.common.control.SingleValueLookupResultHandler;
-import id.co.sigma.common.data.SingleKeyEntityData;
+
 
 
 

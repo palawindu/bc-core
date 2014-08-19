@@ -4,7 +4,7 @@ import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.domain.UserGroup;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 
-import java.math.BigInteger;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public interface IUserGroupDao {
 	 * @param applicationid id applikasi
 	 * 
 	 **/
-	public List<String> getUserGroups(BigInteger userId , BigInteger applicationid); 
+	public List<String> getUserGroups(Long userId , Long applicationid); 
 	
 	/**
 	 * Update user group
@@ -64,7 +64,7 @@ public interface IUserGroupDao {
 	 * membaca data user dengan id dari user
 	 * @author <a href="gede.sutarsa@gmail.com">Gede Sutarsa</a>
 	 **/
-	public User getUserById (BigInteger userId ) ; 
+	public User getUserById (Long userId ) ; 
 	
 	
 	
@@ -81,7 +81,7 @@ public interface IUserGroupDao {
 	 * membaca data user group assigment dengan user id list
 	 * @param userIds daftar user ids dari user
 	 */
-	public List<UserGroupAssignment> getUserGroupByUserIds (Collection<BigInteger> userIds ) ; 
+	public List<UserGroupAssignment> getUserGroupByUserIds (Collection<Long> userIds ) ; 
 	
 	public UserGroup getUserGroupByCode(String code) ;
 	

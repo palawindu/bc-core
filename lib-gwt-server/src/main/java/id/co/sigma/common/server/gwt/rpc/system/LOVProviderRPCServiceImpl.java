@@ -1,27 +1,17 @@
 package id.co.sigma.common.server.gwt.rpc.system;
 
 import id.co.sigma.common.data.lov.Common2ndLevelLOVHeader;
-import id.co.sigma.common.data.lov.CommonLOV;
 import id.co.sigma.common.data.lov.CommonLOVHeader;
-import id.co.sigma.common.data.lov.ILookupDetail;
-import id.co.sigma.common.data.lov.ILookupHeader;
 import id.co.sigma.common.data.lov.LOV2ndLevelRequestArgument;
 import id.co.sigma.common.data.lov.LOVProviderRPCService;
 import id.co.sigma.common.data.lov.LOVRequestArgument;
-import id.co.sigma.common.data.lov.LOVSource;
 import id.co.sigma.common.exception.CacheStillUpToDateException;
 import id.co.sigma.common.exception.UnknownLookupValueProviderException;
 import id.co.sigma.common.server.dao.DirectTableLookupProviderDao;
-import id.co.sigma.common.server.lov.Base2ndLevelLOVProvider;
-import id.co.sigma.common.server.lov.BaseLOVProvider;
 import id.co.sigma.common.server.lov.ILOVProviderService;
 import id.co.sigma.common.server.lov.ISelfRegisterLovManager;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 
@@ -34,18 +24,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  * @author <a href="gede.mahendra@sigma.co.id">Gede Mahendra</a>
  **/
-/*@WebServlet(name="id.co.sigma.common.server.rpc.system.LOVProviderRPCServiceImpl" ,
-			description="servlet provider Lookup value. custom maupun yang simple" , 
-			urlPatterns={
-				"/corelib-rpc/lov-data.app-rpc"
-			}, loadOnStartup=1
-		)*/
+
 public class LOVProviderRPCServiceImpl extends id.co.sigma.common.server.gwt.rpc.BaseServerRPCService<LOVProviderRPCService> implements LOVProviderRPCService {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6506373837260010220L;
+	
 	@Autowired
 	ILOVProviderService  lovProviderService;
 	
@@ -119,12 +101,7 @@ public class LOVProviderRPCServiceImpl extends id.co.sigma.common.server.gwt.rpc
 	public Common2ndLevelLOVHeader getModifiedLOV(String localizationCode,
 			LOV2ndLevelRequestArgument dataRequest) throws UnknownLookupValueProviderException, CacheStillUpToDateException , Exception{
 		return lovProviderService.getModifiedLOV(localizationCode, dataRequest);
-		/*
-		Base2ndLevelLOVProvider provider =  this.selfRegisterLovManager.get2ndLevelProvider(dataRequest.getLookupId().getId());
-		if(provider==null)
-			 throw new UnknownLookupValueProviderException("Lookup value untuk :"   + dataRequest.getLookupId().getId() +",tidak di temukan. Cek apakah anda salah id, atau item ini belum di registerd di server"
-				, dataRequest.getLookupId().getId()	)   ;
-		return  provider.getLookupValues(localizationCode, dataRequest);*/
+		
 	}
 
 
@@ -134,13 +111,7 @@ public class LOVProviderRPCServiceImpl extends id.co.sigma.common.server.gwt.rpc
 			LOV2ndLevelRequestArgument lovRequestArgument)
 			throws UnknownLookupValueProviderException,
 			CacheStillUpToDateException, Exception {
-		return lovProviderService.getSameParent2ndLevelLOV(localizationCode, lovRequestArgument); 
-		/*Base2ndLevelLOVProvider provider =  this.selfRegisterLovManager.get2ndLevelProvider(lovRequestArgument.getLookupId().getId());
-		if(provider==null)
-			 throw new UnknownLookupValueProviderException("Lookup value untuk :"   + lovRequestArgument.getLookupId().getId() +",tidak di temukan. Cek apakah anda salah id, atau item ini belum di registerd di server"
-				, lovRequestArgument.getLookupId().getId()	)   ;
-		return provider.getSameLevelLookupValues(localizationCode, lovRequestArgument.getParentLovValueId(), lovRequestArgument.getCacheVersion());
-		*/
+		return lovProviderService.getSameParent2ndLevelLOV(localizationCode, lovRequestArgument);
 	}
 
 

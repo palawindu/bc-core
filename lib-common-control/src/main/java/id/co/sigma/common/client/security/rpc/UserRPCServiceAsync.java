@@ -4,12 +4,11 @@ import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.dto.UserDetailDTO;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
-import id.co.sigma.common.security.exception.UserNotExistException;
 import id.co.sigma.common.client.security.rpc.impl.UserRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -51,7 +50,7 @@ public interface UserRPCServiceAsync {
 	 * @param pageSize
 	 * @param callback
 	 */
-	void getUserByParameter(BigInteger applicationId, SimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<UserDTO>> callback);
+	void getUserByParameter(Long applicationId, SimpleQueryFilter[] filter, int page, int pageSize, AsyncCallback<PagedResultHolder<UserDTO>> callback);
 	
 	/**
 	 * get user by filter
@@ -82,7 +81,7 @@ public interface UserRPCServiceAsync {
 	 * @param id id user yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id, AsyncCallback<Void> callback) throws Exception;
+	public void remove(Long id, AsyncCallback<Void> callback) throws Exception;
 	
 	/**
 	 * reset password
@@ -101,11 +100,11 @@ public interface UserRPCServiceAsync {
 	/**
 	 * lock user
 	 */
-	public void lockUser ( BigInteger userId , AsyncCallback<Void> callback)  ;
+	public void lockUser ( Long userId , AsyncCallback<Void> callback)  ;
 	
 	
 	/**
 	 * unlock user
 	 */
-	public void unlockUser ( BigInteger userId , AsyncCallback<Void> callback) ;
+	public void unlockUser ( Long userId , AsyncCallback<Void> callback) ;
 }

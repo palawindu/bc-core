@@ -1,10 +1,10 @@
 package id.co.sigma.security.server.service;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.menu.ApplicationMenuSecurity;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -39,7 +39,7 @@ public interface IUserMenuService {
 	 * </ol>
 	 * @param userId id dari user
 	 **/
-	public List<Function> getAllowedMenusByUserId (BigInteger userId)throws Exception ; 
+	public List<ApplicationMenu> getAllowedMenusByUserId (Long userId)throws Exception ; 
 	
-	public List<ApplicationMenuSecurity> getMenuApplication(BigInteger userId) throws Exception  ;
+	public List<ApplicationMenuSecurity> getMenuApplication(Long userId) throws Exception  ;
 }

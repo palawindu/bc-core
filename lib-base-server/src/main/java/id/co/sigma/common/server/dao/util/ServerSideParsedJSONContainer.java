@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
@@ -469,7 +470,19 @@ public class ServerSideParsedJSONContainer extends BaseParsedJSONContainer{
 
 	
 
-	
+	@Override
+	public void appendToArray(String key, Long[] values) {
+		if ( values==null || values.length==0){
+			jsonObject.add(key, JsonNull.INSTANCE);
+			return ; 
+		}
+		JsonArray arr = new JsonArray(); 
+		for ( Long scn  : values ) {
+			arr.add(scn== null ? JsonNull.INSTANCE :   new JsonPrimitive(scn));
+		}
+		
+		jsonObject.add(key, arr);
+	}
 	
 	
 	
@@ -502,4 +515,13 @@ public class ServerSideParsedJSONContainer extends BaseParsedJSONContainer{
 	public JsonObject getJsonObject() {
 		return jsonObject;
 	}
+
+	@Override
+	public void injectJSONValue(String json) {
+		JsonParser parser = new JsonParser();  
+		JsonElement jsonElement = parser.parse(json);
+		jsonObject =  jsonElement.getAsJsonObject(); 
+		
+	}
+	
 }

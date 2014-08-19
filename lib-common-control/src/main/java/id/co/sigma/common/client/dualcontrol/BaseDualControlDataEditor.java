@@ -1,7 +1,6 @@
 package id.co.sigma.common.client.dualcontrol;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -369,7 +368,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	/**
 	 * message standard kalau gagal membaca data. anda perlu menyediakan implementasi anda masing-masing untuk message standard. message ini di override kalau misalnya i18n code untuk message ini di sediakan.pls refer pada method : {@link #getMessageFailOpenDataI18nCode()} 
 	 **/
-	protected abstract String getDefaultMessageFailOpenData(BigInteger dataId) ; 
+	protected abstract String getDefaultMessageFailOpenData(Long dataId) ; 
 	
 	/**
 	 * i18N code untuk kasus pembacaan data gagal
@@ -456,7 +455,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	 * @param dataId id dari data yang di edit
 	 * @param exception exception yang di kirim dari server
 	 **/
-	protected abstract String getMessageOnApproveDataFailure (BigInteger dataId , Throwable exception) ; 
+	protected abstract String getMessageOnApproveDataFailure (Long dataId , Throwable exception) ; 
 	
 	
 	
@@ -524,7 +523,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	 * @param dualControlDataId id dari table {@link CommonDualControlContainerTable}. 
 	 * @param makeReadonly editor di jadikan readonly atau editable
 	 **/
-	public void openDataByDualControlId (final BigInteger dualControlDataId,final Command commandAfterLoadComplete ) {
+	public void openDataByDualControlId (final Long dualControlDataId,final Command commandAfterLoadComplete ) {
 		//DualControlDataRPCServiceAsync.Util.getInstance().getWaitApprovalDataWithToken(id, callback);
 		DualControlDataRPCServiceAsync.Util.getInstance().getWaitApprovalDataWithToken(dualControlDataId, new CommonControlAsyncCallback<DataWithToken<CommonDualControlContainerTable>>() {
 			@Override
@@ -715,8 +714,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	
 	@Override
 	public void editExistingData(DATA data) {
-		//FIXME: 1. ini musti di pastikan sudah ada dalam database
-		//FIXME: 2. ini musti di pastikan tidak dalam state edit. kalau ada , maka operator yang di pergunakan adalah id.co.sigma.common.client.dualcontrol.BaseDualControlDataEditor.openDataByDualControlId(BigInteger)
+		
 		super.editExistingData(data);
 		remark.setVisible(true); 
 		remark.restoreControl();
@@ -1083,7 +1081,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	
 	
 	@Override
-	public void approveSingleData(BigInteger approvalId) {
+	public void approveSingleData(Long approvalId) {
 		 
 		setDualControlEditorState(DualControlEditorState.APPROVAL);
 		remark.setVisible(true);
@@ -1112,7 +1110,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 	
 	
 	@Override
-	public void viewSingleDataRejectedOrApprovedDataDetail(BigInteger approvalId) {
+	public void viewSingleDataRejectedOrApprovedDataDetail(Long approvalId) {
 		openDataByDualControlId(approvalId , new Command() {
 			@Override
 			public void execute() {
@@ -1139,7 +1137,7 @@ public abstract class BaseDualControlDataEditor<KEY extends Serializable ,  DATA
 		
 	}
 	@Override
-	public void viewSingleDataApprovalDetail(BigInteger approvalId) {
+	public void viewSingleDataApprovalDetail(Long approvalId) {
 		
 		openDataByDualControlId(approvalId , new Command() {
 			@Override

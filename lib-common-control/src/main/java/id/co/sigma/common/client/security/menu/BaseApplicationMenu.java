@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public abstract class BaseApplicationMenu<PARENT extends IContainerMenu<?>,CHILD extends ILinkMenu> extends ComplexPanel implements  IRootMenuContainer{
 	
-	private Map<BigInteger, ApplicationMenuSecurity> indexedLoadedMenus = new HashMap<BigInteger, ApplicationMenuSecurity>();
+	private Map<Long, ApplicationMenuSecurity> indexedLoadedMenus = new HashMap<Long, ApplicationMenuSecurity>();
 	
 	/*public BaseApplicationMenu() {
 		setElement(generateMenuUnderlyingElement());
@@ -121,7 +121,7 @@ public abstract class BaseApplicationMenu<PARENT extends IContainerMenu<?>,CHILD
 	 */
 	@SuppressWarnings("unchecked")
 	private void readMenuFromList(List<ApplicationMenuSecurity> result){
-		Map<BigInteger, IContainerMenu<?>> indexParent = new HashMap<BigInteger, IContainerMenu<?>>();
+		Map<Long, IContainerMenu<?>> indexParent = new HashMap<Long, IContainerMenu<?>>();
 		List<IBaseMenu> allChild = new ArrayList<IBaseMenu>();
 		
 		final List<IBaseMenu> level0 = new ArrayList<IBaseMenu>();

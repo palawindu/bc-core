@@ -57,7 +57,7 @@ public class UserDaoImpl extends BaseJPADao implements IUserDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ApplicationUser> getApplicationUser(BigInteger applicationId,User parameter,int pagePosition, int pageSize) throws Exception {
+	public List<ApplicationUser> getApplicationUser(Long applicationId,User parameter,int pagePosition, int pageSize) throws Exception {
 		List<ApplicationUser> result = null;
 		String sqlString = "SELECT a FROM ApplicationUser a WHERE a.applicationUser.applicationId=:APPLICATION_ID ";
 		String whereString = "";
@@ -94,7 +94,7 @@ public class UserDaoImpl extends BaseJPADao implements IUserDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getUserByUserId(List<BigInteger> userIds) throws Exception {
+	public List<User> getUserByUserId(List<Long> userIds) throws Exception {
 		List<User> result = null;
 		Query qry = getEntityManager().createQuery("SELECT a FROM User a WHERE a.id IN :USER_IDS ORDER BY a.id ASC");
 		qry.setParameter("USER_IDS", userIds);		
@@ -104,7 +104,7 @@ public class UserDaoImpl extends BaseJPADao implements IUserDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserGroupAssignment> getGroupAssignmentByUserId(List<BigInteger> userIds) throws Exception {
+	public List<UserGroupAssignment> getGroupAssignmentByUserId(List<Long> userIds) throws Exception {
 		List<UserGroupAssignment> result = null;
 		Query qry = getEntityManager().createQuery("SELECT a FROM UserGroupAssignment a WHERE a.userId IN :USER_ID ORDER BY a.userId ASC");
 		qry.setParameter("USER_ID", userIds);
@@ -229,7 +229,7 @@ public class UserDaoImpl extends BaseJPADao implements IUserDao{
 	}
 
 	@Override
-	public User getUserById(BigInteger id) throws Exception {
+	public User getUserById(Long id) throws Exception {
 		String hql = "SELECT A FROM User A WHERE id = :ID";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("ID", id);
@@ -238,7 +238,7 @@ public class UserDaoImpl extends BaseJPADao implements IUserDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserPassword> getUserPasswordByUserId(BigInteger id)
+	public List<UserPassword> getUserPasswordByUserId(Long id)
 			throws Exception {
 		String hql = "SELECT A FROM UserPassword A WHERE userId = :USER_ID";
 		Query query = getEntityManager().createQuery(hql);

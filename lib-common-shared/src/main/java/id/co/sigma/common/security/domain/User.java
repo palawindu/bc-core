@@ -5,11 +5,10 @@
  */
 package id.co.sigma.common.security.domain;
 
-import id.co.sigma.common.security.domain.audit.BaseAuditedObject;
-import id.co.sigma.common.util.json.IJSONFriendlyObject;
+import id.co.sigma.common.data.app.SimpleDualControlData;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,7 +29,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="sec_user")
-public class User extends BaseAuditedObject implements IJSONFriendlyObject<User> {
+public class User extends SimpleDualControlData<User> {
 
 	private static final long serialVersionUID = -6026281510605996562L;
 	
@@ -41,7 +40,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
-	private BigInteger id;
+	private Long id;
 	/**
 	* kode user<br/>
 	* column :USER_CODE
@@ -60,48 +59,15 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	**/
 	@Column(name="BIRTHDATE")
 	private Date  birthDate;
-	/**
-	* datetime pattern<br/>
-	* column :DATETIME_PATTERN
-	**/
-	@Column(name="DATETIME_PATTERN")
-	private String datetimePattern;
-	/**
-	* timezone<br/>
-	* column :TIMEZONE
-	**/
-	@Column(name="TIMEZONE")
-	private String timezone;
-	/**
-	* desimal separator<br/>
-	* column :DECIMAL_SEPARATOR
-	**/
-	@Column(name="DECIMAL_SEPARATOR")
-	private String decimalSeparator;
-	/**
-	* numeric skale<br/>
-	* column :NUMERIC_SCALE
-	**/
-	@Column(name="NUMERIC_SCALE")
-	private Integer numericScale;
+	
 	/**
 	* email<br/>
 	* column :EMAIL
 	**/
 	@Column(name="EMAIL")
 	private String email;
-	/**
-	* currency<br/>
-	* column :CURRENCY
-	**/
-	@Column(name="CURRENCY")
-	private String currency;
-	/**
-	* maksimal data per page<br/>
-	* column :MAX_ROWS_PER_PAGE
-	**/
-	@Column(name="MAX_ROWS_PER_PAGE")
-	private Integer maxRowPerPage;
+	
+	
 	/**
 	* failed login attemps<br/>
 	* column :FAILED_LOGIN_ATTEMPTS
@@ -137,17 +103,10 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	* column :ACTIVE_STATUS
 	**/
 	@Column(name="ACTIVE_STATUS")
-	private String activeStatus;
-	/**
-	* login status<br/>
-	* column :LOGIN_STATUS
-	**/
-	@Column(name="LOGIN_STATUS")
-	private String loginStatus;
+	private String activeFlag;
 	
-	/*@OneToOne(fetch=FetchType.LAZY,mappedBy="user")
-	private UserPassword password;*/
 	
+		
 	/**
 	 * add by dode
 	 * default application
@@ -166,11 +125,7 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	
 	
 	
-	/**
-	 * flag super admin atau bukan
-	 **/
-	@Column(name="IS_SUPER_ADMIN")		
-	private String superAdmin; 
+	
 	
 	
 	/**
@@ -180,22 +135,38 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	@Column(name="default_branch_code", length=16)
 	private String defaultBranchCode ; 
 	
+	public User(){}
 	
 	
 	
-	
+	public User(String userCode, String email, String realName, String locale) {
+		super();
+		this.userCode = userCode;
+		this.email = email;
+		this.realName = realName;
+		this.locale = locale;
+		this.activeFlag="A"; 
+		this.defaultApplicationId = 1 ; 
+		this.createdOn = new Date(); 
+		this.createdBy ="APP"; 
+		this.creatorIPAddress="127.0.0.1"; 
+		
+	}
+
+
+
 	/**
 	* id<br/>
 	* column :USER_ID
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	/**
 	* id<br/>
 	* column :USER_ID
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	/**
@@ -241,61 +212,13 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	    return this.birthDate;
 	}
 	/**
-	* datetime pattern<br/>
-	* column :DATETIME_PATTERN
-	**/
-	public void setDatetimePattern(String datetimePattern){
-	  this.datetimePattern=datetimePattern;
-	}
-	/**
-	* datetime pattern<br/>
-	* column :DATETIME_PATTERN
-	**/
-	public String getDatetimePattern(){
-	    return this.datetimePattern;
-	}
-	/**
-	* timezone<br/>
-	* column :TIMEZONE
-	**/
-	public void setTimezone(String timezone){
-	  this.timezone=timezone;
-	}
-	/**
-	* timezone<br/>
-	* column :TIMEZONE
-	**/
-	public String getTimezone(){
-	    return this.timezone;
-	}
-	/**
-	* desimal separator<br/>
-	* column :DECIMAL_SEPARATOR
-	**/
-	public void setDecimalSeparator(String decimalSeparator){
-	  this.decimalSeparator=decimalSeparator;
-	}
-	/**
-	* desimal separator<br/>
-	* column :DECIMAL_SEPARATOR
-	**/
-	public String getDecimalSeparator(){
-	    return this.decimalSeparator;
-	}
-	/**
-	* numeric skale<br/>
-	* column :NUMERIC_SCALE
-	**/
-	public void setNumericScale(Integer numericScale){
-	  this.numericScale=numericScale;
-	}
-	/**
-	* numeric skale<br/>
-	* column :NUMERIC_SCALE
-	**/
-	public Integer getNumericScale(){
-	    return this.numericScale;
-	}
+	 * flag super admin atau bukan
+	 **/
+	@Column(name="IS_SUPER_ADMIN")		
+	private String superAdmin; 
+	
+	
+	
 	/**
 	* email<br/>
 	* column :EMAIL
@@ -310,34 +233,8 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	public String getEmail(){
 	    return this.email;
 	}
-	/**
-	* currency<br/>
-	* column :CURRENCY
-	**/
-	public void setCurrency(String currency){
-	  this.currency=currency;
-	}
-	/**
-	* currency<br/>
-	* column :CURRENCY
-	**/
-	public String getCurrency(){
-	    return this.currency;
-	}
-	/**
-	* maksimal data per page<br/>
-	* column :MAX_ROWS_PER_PAGE
-	**/
-	public void setMaxRowPerPage(Integer maxRowPerPage){
-	  this.maxRowPerPage=maxRowPerPage;
-	}
-	/**
-	* maksimal data per page<br/>
-	* column :MAX_ROWS_PER_PAGE
-	**/
-	public Integer getMaxRowPerPage(){
-	    return this.maxRowPerPage;
-	}
+	
+	
 	/**
 	* failed login attemps<br/>
 	* column :FAILED_LOGIN_ATTEMPTS
@@ -408,34 +305,8 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	public Integer getDefaultApplicationId(){
 	    return this.defaultApplicationId;
 	}
-	/**
-	* active status<br/>
-	* column :ACTIVE_STATUS
-	**/
-	public void setActiveStatus(String activeStatus){
-	  this.activeStatus=activeStatus;
-	}
-	/**
-	* active status<br/>
-	* column :ACTIVE_STATUS
-	**/
-	public String getActiveStatus(){
-	    return this.activeStatus;
-	}
-	/**
-	* login status<br/>
-	* column :LOGIN_STATUS
-	**/
-	public void setLoginStatus(String loginStatus){
-	  this.loginStatus=loginStatus;
-	}
-	/**
-	* login status<br/>
-	* column :LOGIN_STATUS
-	**/
-	public String getLoginStatus(){
-	    return this.loginStatus;
-	}
+	
+	
 	/**
 	 * Reference object UserPassword
 	 * @return password
@@ -486,165 +357,63 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 	
 	
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((activeStatus == null) ? 0 : activeStatus.hashCode());
-		result = prime * result
-				+ ((birthDate == null) ? 0 : birthDate.hashCode());
-		result = prime * result
-				+ ((currency == null) ? 0 : currency.hashCode());
-		result = prime * result
-				+ ((datetimePattern == null) ? 0 : datetimePattern.hashCode());
-		result = prime
-				* result
-				+ ((decimalSeparator == null) ? 0 : decimalSeparator.hashCode());
-		result = prime
-				* result
-				+ ((defaultApplicationId == null) ? 0 : defaultApplicationId
-						.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result
-				+ ((expiredDate == null) ? 0 : expiredDate.hashCode());
-		result = prime
-				* result
-				+ ((failedLoginAttempts == null) ? 0 : failedLoginAttempts
-						.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((locale == null) ? 0 : locale.hashCode());
-		result = prime * result
-				+ ((loginStatus == null) ? 0 : loginStatus.hashCode());
-		result = prime * result
-				+ ((maxRowPerPage == null) ? 0 : maxRowPerPage.hashCode());
-		result = prime * result
-				+ ((numericScale == null) ? 0 : numericScale.hashCode());
-		result = prime * result
-				+ ((realName == null) ? 0 : realName.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result
-				+ ((timezone == null) ? 0 : timezone.hashCode());
-		result = prime * result
-				+ ((userCode == null) ? 0 : userCode.hashCode());
-		return result;
+	 
+	
+	/**
+	 * kode cabang default user, dia berada di mana <br/>
+	 * column : default_branch_code
+	 */
+	public void setDefaultBranchCode(String defaultBranchCode) {
+		this.defaultBranchCode = defaultBranchCode;
 	}
-		
+	/**
+	 * kode cabang default user, dia berada di mana <br/>
+	 * column : default_branch_code
+	 */
+	public String getDefaultBranchCode() {
+		return defaultBranchCode;
+	}
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (activeStatus == null) {
-			if (other.activeStatus != null)
-				return false;
-		} else if (!activeStatus.equals(other.activeStatus))
-			return false;
-		if (birthDate == null) {
-			if (other.birthDate != null)
-				return false;
-		} else if (!birthDate.equals(other.birthDate))
-			return false;
-		if (currency == null) {
-			if (other.currency != null)
-				return false;
-		} else if (!currency.equals(other.currency))
-			return false;
-		if (datetimePattern == null) {
-			if (other.datetimePattern != null)
-				return false;
-		} else if (!datetimePattern.equals(other.datetimePattern))
-			return false;
-		if (decimalSeparator == null) {
-			if (other.decimalSeparator != null)
-				return false;
-		} else if (!decimalSeparator.equals(other.decimalSeparator))
-			return false;
-		if (defaultApplicationId == null) {
-			if (other.defaultApplicationId != null)
-				return false;
-		} else if (!defaultApplicationId.equals(other.defaultApplicationId))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (expiredDate == null) {
-			if (other.expiredDate != null)
-				return false;
-		} else if (!expiredDate.equals(other.expiredDate))
-			return false;
-		if (failedLoginAttempts == null) {
-			if (other.failedLoginAttempts != null)
-				return false;
-		} else if (!failedLoginAttempts.equals(other.failedLoginAttempts))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (locale == null) {
-			if (other.locale != null)
-				return false;
-		} else if (!locale.equals(other.locale))
-			return false;
-		if (loginStatus == null) {
-			if (other.loginStatus != null)
-				return false;
-		} else if (!loginStatus.equals(other.loginStatus))
-			return false;
-		if (maxRowPerPage == null) {
-			if (other.maxRowPerPage != null)
-				return false;
-		} else if (!maxRowPerPage.equals(other.maxRowPerPage))
-			return false;
-		if (numericScale == null) {
-			if (other.numericScale != null)
-				return false;
-		} else if (!numericScale.equals(other.numericScale))
-			return false;
-		if (realName == null) {
-			if (other.realName != null)
-				return false;
-		} else if (!realName.equals(other.realName))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (timezone == null) {
-			if (other.timezone != null)
-				return false;
-		} else if (!timezone.equals(other.timezone))
-			return false;
-		if (userCode == null) {
-			if (other.userCode != null)
-				return false;
-		} else if (!userCode.equals(other.userCode))
-			return false;
-		return true;
+	public String[] retrieveModifableFields() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
+	/**
+	 * column : column :ACTIVE_STATUS
+	 */
 	@Override
-	public String toString() {
-		return "User [id=" + id + ", userCode=" + userCode + ", expiredDate="
-				+ expiredDate + ", birthDate=" + birthDate
-				+ ", datetimePattern=" + datetimePattern + ", timezone="
-				+ timezone + ", decimalSeparator=" + decimalSeparator
-				+ ", numericScale=" + numericScale + ", email=" + email
-				+ ", currency=" + currency + ", maxRowPerPage=" + maxRowPerPage
-				+ ", failedLoginAttempts=" + failedLoginAttempts
-				+ ", realName=" + realName + ", status=" + status + ", locale="
-				+ locale + ", defaultApplicationId=" + defaultApplicationId
-				+ ", activeStatus=" + activeStatus + ", loginStatus="
-				+ loginStatus + "]";
+	public void setActiveFlag(String activeFlag) {
+		this.activeFlag  = activeFlag ; 
+		
+	}
+	@Override
+	public String getActiveFlag() {
+		return activeFlag;
+	}
+	@Override
+	public Long getPrimaryKey() {
+		return id;
+	}
+	@Override
+	public Class<Long> getPrimaryKeyClassType() {
+		return Long.class;
+	}
+	@Override
+	public String getKey1AsString() {
+		return userCode;
+	}
+	@Override
+	public String getKey2AsString() {
+		return null;
+	}
+	@Override
+	public boolean isEraseDataOnApproveErase() {
+		return true;
+	}
+	@Override
+	public String getPrimaryKeyJPAName() {
+		return "id";
 	}
 	
 	/**
@@ -661,98 +430,42 @@ public class User extends BaseAuditedObject implements IJSONFriendlyObject<User>
 		this.superAdmin = superAdmin;
 	}
 	
+	
 	@Override
-	public void translateToJSON(ParsedJSONContainer jsonContainer) {
-		jsonContainer.put("activeStatus",getActiveStatus());
-		jsonContainer.put("birthDate",getBirthDate());
-		jsonContainer.put("chipperText",getChipperText());
-		jsonContainer.put("createdBy",getCreatedBy());
-		jsonContainer.put("createdOn",getCreatedOn());
-		jsonContainer.put("creatorIPAddress",getCreatorIPAddress());
-		jsonContainer.put("currency",getCurrency());
-		jsonContainer.put("datetimePattern",getDatetimePattern());
-		jsonContainer.put("decimalSeparator",getDecimalSeparator());
-		  
-		 Application param11 = getDefaultApplication();   
-		 if ( param11 != null){ 
+	protected void extractDataFromJSON(User targetObject,
+			ParsedJSONContainer jsonContainer) {
+		targetObject.setActiveFlag(  (String)jsonContainer.get("activeFlag" ,  String.class.getName()));
+		targetObject.setBirthDate( (Date)jsonContainer.get("birthDate" ,  Date.class.getName()));
+		targetObject.setChipperText( (String)jsonContainer.get("chipperText" ,  String.class.getName()));
+		targetObject.setDefaultApplication( (Application)jsonContainer.get("defaultApplication" ,  Application.class.getName()));
+		targetObject.setDefaultApplicationId( (Integer)jsonContainer.get("defaultApplicationId" ,  Integer.class.getName()));
+		targetObject.setEmail( (String)jsonContainer.get("email" ,  String.class.getName()));
+		targetObject.setExpiredDate( (Date)jsonContainer.get("expiredDate" ,  Date.class.getName()));
+		targetObject.setFailedLoginAttempts( (Integer)jsonContainer.get("failedLoginAttempts" ,  Integer.class.getName()));
+		targetObject.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
+		targetObject.setLocale( (String)jsonContainer.get("locale" ,  String.class.getName()));
+		targetObject.setRealName( (String)jsonContainer.get("realName" ,  String.class.getName()));
+		targetObject.setStatus( (String)jsonContainer.get("status" ,  String.class.getName()));
+		targetObject.setUserCode( (String)jsonContainer.get("userCode" ,  String.class.getName()));
+		targetObject.setDefaultBranchCode(jsonContainer.getAsString("defaultBranchCode")); 
 		
- //1. Ok tampung dulu variable
-//2. null kan variable 
-// 3 taruh ke json
-			jsonContainer.put("defaultApplication", param11);
-//4. restore lagi 
-		}
-		jsonContainer.put("defaultApplication",getDefaultApplication());
-		jsonContainer.put("defaultApplicationId",getDefaultApplicationId());
-		jsonContainer.put("email",getEmail());
-		jsonContainer.put("expiredDate",getExpiredDate());
-		jsonContainer.put("failedLoginAttempts",getFailedLoginAttempts());
-		jsonContainer.put("id",getId());
-		jsonContainer.put("locale",getLocale());
-		jsonContainer.put("loginStatus",getLoginStatus());
-		jsonContainer.put("maxRowPerPage",getMaxRowPerPage());
-		jsonContainer.put("modifiedBy",getModifiedBy());
-		jsonContainer.put("modifiedByIPAddress",getModifiedByIPAddress());
-		jsonContainer.put("modifiedOn",getModifiedOn());
-		
-		jsonContainer.put("numericScale",getNumericScale());
-		jsonContainer.put("realName",getRealName());
-		jsonContainer.put("status",getStatus());
-		jsonContainer.put("superAdmin",getSuperAdmin());
-		jsonContainer.put("timezone",getTimezone());
-		jsonContainer.put("userCode",getUserCode());
-		jsonContainer.put("defaultBranchCode", getDefaultBranchCode());
 	}
+	
 	@Override
-	public User instantiateFromJSON(ParsedJSONContainer jsonContainer) {
-		User retval = new User();
-		retval.setActiveStatus( (String)jsonContainer.get("activeStatus" ,  String.class.getName()));
-		retval.setBirthDate( (Date)jsonContainer.get("birthDate" ,  Date.class.getName()));
-		retval.setChipperText( (String)jsonContainer.get("chipperText" ,  String.class.getName()));
-		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
-		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
-		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
-		retval.setCurrency( (String)jsonContainer.get("currency" ,  String.class.getName()));
-		retval.setDatetimePattern( (String)jsonContainer.get("datetimePattern" ,  String.class.getName()));
-		retval.setDecimalSeparator( (String)jsonContainer.get("decimalSeparator" ,  String.class.getName()));
-		  
-		retval.setDefaultApplication( (Application)jsonContainer.get("defaultApplication" ,  Application.class.getName()));
-		retval.setDefaultApplicationId( (Integer)jsonContainer.get("defaultApplicationId" ,  Integer.class.getName()));
-		retval.setEmail( (String)jsonContainer.get("email" ,  String.class.getName()));
-		retval.setExpiredDate( (Date)jsonContainer.get("expiredDate" ,  Date.class.getName()));
-		retval.setFailedLoginAttempts( (Integer)jsonContainer.get("failedLoginAttempts" ,  Integer.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
-		retval.setLocale( (String)jsonContainer.get("locale" ,  String.class.getName()));
-		retval.setLoginStatus( (String)jsonContainer.get("loginStatus" ,  String.class.getName()));
-		retval.setMaxRowPerPage( (Integer)jsonContainer.get("maxRowPerPage" ,  Integer.class.getName()));
-		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
-		retval.setModifiedByIPAddress( (String)jsonContainer.get("modifiedByIPAddress" ,  String.class.getName()));
-		retval.setModifiedOn( (Date)jsonContainer.get("modifiedOn" ,  Date.class.getName()));
-		
-		retval.setNumericScale( (Integer)jsonContainer.get("numericScale" ,  Integer.class.getName()));
-		retval.setRealName( (String)jsonContainer.get("realName" ,  String.class.getName()));
-		retval.setStatus( (String)jsonContainer.get("status" ,  String.class.getName()));
-		retval.setSuperAdmin( (String)jsonContainer.get("superAdmin" ,  String.class.getName()));
-		retval.setTimezone( (String)jsonContainer.get("timezone" ,  String.class.getName()));
-		retval.setUserCode( (String)jsonContainer.get("userCode" ,  String.class.getName()));
-		retval.setDefaultBranchCode(jsonContainer.getAsString("defaultBranchCode")); 
-		return retval; 
+	public void translateToJSON(ParsedJSONContainer jsonContainerData) {
+		super.translateToJSON(jsonContainerData);
+		jsonContainerData.put("id", id);
+		jsonContainerData.put("userCode", userCode);
+		jsonContainerData.put("expiredDate", expiredDate);
+		jsonContainerData.put("birthDate", birthDate);
+		jsonContainerData.put("email", email);
+		jsonContainerData.put("failedLoginAttempts", failedLoginAttempts);
+		jsonContainerData.put("realName", realName);
+		jsonContainerData.put("status", status);
+		jsonContainerData.put("locale", locale);
+		jsonContainerData.put("defaultApplicationId", defaultApplicationId);
+		jsonContainerData.put("defaultApplication", defaultApplication);
+		jsonContainerData.put("chipperText", chipperText);
+		jsonContainerData.put("defaultBranchCode", defaultBranchCode);
 	}
-	
-	/**
-	 * kode cabang default user, dia berada di mana <br/>
-	 * column : default_branch_code
-	 */
-	public void setDefaultBranchCode(String defaultBranchCode) {
-		this.defaultBranchCode = defaultBranchCode;
-	}
-	/**
-	 * kode cabang default user, dia berada di mana <br/>
-	 * column : default_branch_code
-	 */
-	public String getDefaultBranchCode() {
-		return defaultBranchCode;
-	}
-	
-	
 }

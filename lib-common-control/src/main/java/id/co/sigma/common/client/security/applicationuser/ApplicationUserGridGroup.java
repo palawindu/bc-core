@@ -13,7 +13,7 @@ import id.co.sigma.jquery.client.grid.CellButtonHandler;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -148,7 +148,7 @@ public class ApplicationUserGridGroup extends SecurityAppClientEditedDataGridPan
 						UserGroupAssignmentDTO groupAssignment = new UserGroupAssignmentDTO();
 						groupAssignment.setGroupCode(dto.getGroupCode());
 						groupAssignment.setGroupName(dto.getGroupName());
-						groupAssignment.setGroupId(new BigInteger(dto.getId().toString()));								
+						groupAssignment.setGroupId(dto.getId().longValue());								
 						iAddUserGroup.add(groupAssignment);
 					}
 					

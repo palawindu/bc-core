@@ -16,7 +16,8 @@ import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.IntegerColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
-import java.math.BigInteger;
+
+
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
@@ -36,7 +37,7 @@ public class PasswordPolicyGridPanel extends I18EnabledSimpleGrid<PasswordPolicy
 	private CellButtonHandler<PasswordPolicy> btnDelete;
 	private CellButtonHandler<PasswordPolicy>[] actionButtons;
 	
-	private IRemove<BigInteger> removeUtil;
+	private IRemove<Long> removeUtil;
 	private IOpenAndCloseable<PasswordPolicy> openCloseable;
 	
 	public PasswordPolicyGridPanel() {
@@ -60,6 +61,7 @@ public class PasswordPolicyGridPanel extends I18EnabledSimpleGrid<PasswordPolicy
 	 * generate button di action column
 	 * @return array cell button
 	 */
+	@SuppressWarnings("unchecked")
 	private CellButtonHandler<PasswordPolicy>[] generateActionButton() {
 		
 		btnDelete = new CellButtonHandler<PasswordPolicy>("ui-icon-closethick", I18Utilities.getInstance().getInternalitionalizeText("security.common.button.action.hint.erase", "Erase"), new DataProcessWorker<PasswordPolicy>() {
@@ -197,7 +199,7 @@ final String rowId =  super.appendRow(data);
 	 * object untuk remove data
 	 * @param removeUtil
 	 */
-	public void setRemoveUtil(IRemove<BigInteger> removeUtil) {
+	public void setRemoveUtil(IRemove<Long> removeUtil) {
 		this.removeUtil = removeUtil;
 	}
 	

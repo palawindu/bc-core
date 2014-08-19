@@ -13,7 +13,6 @@ import id.co.sigma.common.form.BaseFormElement;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.TextBox;
 
 
@@ -49,7 +48,7 @@ public class ExtendedTextBox extends TextBox implements BaseFormElement,
 	
 	
 	
-	private boolean onAttachedCalled1 =false ; 
+	 
 	/**
 	 *  id dari form di mana dia di taruh. ini di pergunakan untuk load/save. ini di inject oleh container
 	 **/
@@ -144,7 +143,7 @@ public class ExtendedTextBox extends TextBox implements BaseFormElement,
 	/**
 	 * flag show hide config button
 	 **/
-	private boolean showEditConfigButton = false ; 
+	boolean showEditConfigButton = false ; 
 	
 	
 	@Override

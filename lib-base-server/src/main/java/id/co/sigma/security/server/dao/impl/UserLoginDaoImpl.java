@@ -5,7 +5,7 @@
  */
 package id.co.sigma.security.server.dao.impl;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import javax.persistence.Query;
@@ -49,7 +49,7 @@ public class UserLoginDaoImpl extends BaseGenericDao implements IUserLoginDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Signon> getSignOnByUserId(BigInteger userId) throws Exception {
+	public List<Signon> getSignOnByUserId(Long userId) throws Exception {
 		List<Signon> result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-LOGIN-CHECK-SIGNON");
 		qry.setParameter("USER_ID", userId);
@@ -62,7 +62,7 @@ public class UserLoginDaoImpl extends BaseGenericDao implements IUserLoginDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Application getApplicationData(BigInteger applicationId) throws Exception {
+	public Application getApplicationData(Long applicationId) throws Exception {
 		Application result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-LOGIN-GET-APPLICATION");
 		qry.setParameter("APPLICATION_ID", applicationId);
@@ -75,7 +75,7 @@ public class UserLoginDaoImpl extends BaseGenericDao implements IUserLoginDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public UserPassword getPasswordAtHistory(BigInteger userId) throws Exception {
+	public UserPassword getPasswordAtHistory(Long userId) throws Exception {
 		UserPassword result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-LOGIN-CHECK-PASSWORD");
 		qry.setParameter("USER_ID", userId);
@@ -88,7 +88,7 @@ public class UserLoginDaoImpl extends BaseGenericDao implements IUserLoginDao{
 	}
 
 	@Override
-	public Signon getSigonData(BigInteger sigonId) {
+	public Signon getSigonData(Long sigonId) {
 		String hqlSmt ="SELECT a from Signon a inner join fetch a.user inner join fetch a.application where a.id=:ID " ;
 		try {
 			return (Signon) getEntityManager().createQuery(hqlSmt).setParameter("ID", sigonId).getSingleResult();
@@ -118,7 +118,7 @@ public class UserLoginDaoImpl extends BaseGenericDao implements IUserLoginDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Signon getLastLoginTime(BigInteger userId) throws Exception {
+	public Signon getLastLoginTime(Long userId) throws Exception {
 		Signon result = null;
 		
 		String hql = "SELECT a FROM Signon a WHERE a.userId=:USERID ORDER BY a.logonTime DESC";

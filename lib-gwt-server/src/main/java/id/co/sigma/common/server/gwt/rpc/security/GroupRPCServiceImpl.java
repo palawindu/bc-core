@@ -1,6 +1,6 @@
 package id.co.sigma.common.server.gwt.rpc.security;
 
-import java.math.BigInteger;
+
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.domain.UserGroup;
@@ -47,7 +47,7 @@ public class GroupRPCServiceImpl extends BaseSecurityRPCService<GroupRPCService>
 	}
 
 	@Override
-	public void delete(BigInteger parameter) throws Exception {
+	public void delete(Long parameter) throws Exception {
 		userGroupService.delete(parameter);		
 	}
 

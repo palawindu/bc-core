@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONArray;
@@ -58,19 +57,14 @@ public class LOVCacheManager {
 	private void writeDefinitionToStorage (){
 		JSONArray arr = new JSONArray(); 
 		if (! lovCaches.isEmpty()){
-			int i = 0 ; 
-			int indexIncrement = 0 ; 
+			int i = 0 ;
 			for ( LOVCacheDefinition scn : lovCaches){
 				JSONValue val =null ; 
 				try {
 					val = scn.translateToJSON(); 
 				} catch (Exception e) {
 					continue ; 
-				}
-				finally{
-					indexIncrement++; 
-				}
-						
+				}		
 				arr.set(i++, val  ); 
 			}
 		}

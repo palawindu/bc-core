@@ -115,7 +115,7 @@ public class ModificationDataContainer<DATA> implements  Serializable, IsSeriali
 		if ( fqcn== null|| fqcn.length()==0)
 			return null ; 
 		@SuppressWarnings("unchecked")
-		List tmp =  jsonContainerData.getAsArraylist(key, fqcn) ;
+		List<DATA> tmp = (List<DATA>) jsonContainerData.getAsArraylist(key, fqcn) ;
 		if ( tmp== null|| tmp.isEmpty())
 			return null ; 
 		List<DATA> retval = new ArrayList< DATA>();

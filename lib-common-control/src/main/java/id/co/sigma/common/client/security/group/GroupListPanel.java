@@ -12,7 +12,7 @@ import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQDialog;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @since Nov 26, 2012, 3:40:17 PM
  * @version $Id
  */
-public class GroupListPanel extends BaseRootSecurityPanel implements IReloadGridCommand,IOpenAndCloseable<UserGroupDTO>,IRemove<BigInteger>{
+public class GroupListPanel extends BaseRootSecurityPanel implements IReloadGridCommand,IOpenAndCloseable<UserGroupDTO>,IRemove<Long>{
 
 	private static GroupListPanelUiBinder uiBinder = GWT.create(GroupListPanelUiBinder.class);	
 	
@@ -162,7 +162,7 @@ public class GroupListPanel extends BaseRootSecurityPanel implements IReloadGrid
 		}else{
 			dialog.setTitle(I18Utilities.getInstance().getInternalitionalizeText("security.group.title.dialog.editgroupdetail", "Edit Group Detail"));
 			UserGroup parameter = new UserGroup();
-			parameter.setId(new BigInteger(data.getId().toString()));
+			parameter.setId(new Long(data.getId().toString()));
 			editorPanel.setDataIntoComponent(parameter);
 			
 			//add by dode
@@ -184,7 +184,7 @@ public class GroupListPanel extends BaseRootSecurityPanel implements IReloadGrid
 	}
 
 	@Override
-	public void remove(BigInteger parameter) {
+	public void remove(Long parameter) {
 		
 		GroupRPCServiceAsync.Util.getInstance().delete(parameter, new AsyncCallback<Void>() {
 			@Override

@@ -16,7 +16,8 @@ import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQDialog;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -36,7 +37,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @version $Id
  * @since Dec 17, 2012, 2:41:33 PM
  */
-public class UserListPanel extends BaseRootSecurityPanel implements IReloadGridCommand, IOpenAndCloseable<User>, IRemove<BigInteger> {
+public class UserListPanel extends BaseRootSecurityPanel implements IReloadGridCommand, IOpenAndCloseable<User>, IRemove<Long> {
 
 	private static UserListPanelUiBinder uiBinder = GWT
 			.create(UserListPanelUiBinder.class);
@@ -83,7 +84,7 @@ public class UserListPanel extends BaseRootSecurityPanel implements IReloadGridC
 	 * remove user
 	 */
 	@Override
-	public void remove(BigInteger parameter) {
+	public void remove(Long parameter) {
 		try {
 			UserRPCServiceAsync.Util.getInstance().remove(parameter, new AsyncCallback<Void>() {
 				
@@ -115,6 +116,7 @@ public class UserListPanel extends BaseRootSecurityPanel implements IReloadGridC
 	/**
 	 * open dialog user editor panel
 	 */
+	@SuppressWarnings("static-access")
 	@Override
 	public void openDialog(final User data) {
 		String saveButtonTitle = "";

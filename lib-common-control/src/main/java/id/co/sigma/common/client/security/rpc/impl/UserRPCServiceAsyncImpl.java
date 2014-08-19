@@ -1,12 +1,15 @@
 package id.co.sigma.common.client.security.rpc.impl;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.rpc.UserRPCService;
 import id.co.sigma.common.client.rpc.ManualJSONSerializeRPCService;
 import id.co.sigma.common.client.security.rpc.UserRPCServiceAsync;
+import id.co.sigma.common.data.PagedResultHolder;
+import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 public class UserRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<UserRPCService> implements UserRPCServiceAsync{
 
@@ -15,16 +18,18 @@ public class UserRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<UserR
 		return UserRPCService.class;
 	}
 	
-		public void remove(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
+	@Override
+	public void remove(Long id, AsyncCallback<Void> callback) throws Exception {
 		this.submitRPCRequestRaw( "remove", new Class<?>[]{
-			java.math.BigInteger.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
-	}
+				Long.class, 
+				
+			}, 
+			new Object[]{
+				 id 
+			}, 
+			callback); 	
+		
+	}	
 
 
 	public void insert(id.co.sigma.common.security.domain.User param0,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
@@ -62,17 +67,18 @@ public class UserRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<UserR
 		callback); 	
 	}
 
-
-	public void getUserByParameter(java.math.BigInteger param0,id.co.sigma.common.data.query.SimpleQueryFilter[] param1,int param2,int param3,com.google.gwt.user.client.rpc.AsyncCallback<id.co.sigma.common.data.PagedResultHolder<id.co.sigma.common.security.dto.UserDTO>> callback) {
+	
+	
+	@Override
+	public void getUserByParameter(Long applicationId,
+			SimpleQueryFilter[] filter, int page, int pageSize,
+			AsyncCallback<PagedResultHolder<UserDTO>> callback) {
 		this.submitRPCRequestRaw( "getUserByParameter", new Class<?>[]{
-			java.math.BigInteger.class,id.co.sigma.common.data.query.SimpleQueryFilter[].class,int.class,int.class, 
-			
-		}, 
-		new Object[]{
-			 param0, param1, param2, param3, 
-		}, 
-		callback); 	
+				
+				
+		}, new Object[]{} , callback ); 
 	}
+
 
 
 	public void getUserByFilter(id.co.sigma.common.data.query.SimpleQueryFilter[] param0,int param1,int param2,com.google.gwt.user.client.rpc.AsyncCallback<id.co.sigma.common.data.PagedResultHolder<id.co.sigma.common.security.domain.User>> callback) {
@@ -111,9 +117,9 @@ public class UserRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<UserR
 	}
 
 	@Override
-	public void lockUser(BigInteger userId, AsyncCallback<Void> callback) {
+	public void lockUser(Long userId, AsyncCallback<Void> callback) {
 		this.submitRPCRequestRaw( "lockUser", new Class<?>[]{
-				BigInteger.class, 
+				Long.class, 
 				
 			}, 
 			new Object[]{
@@ -124,9 +130,9 @@ public class UserRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<UserR
 	}
 
 	@Override
-	public void unlockUser(BigInteger userId, AsyncCallback<Void> callback) {
+	public void unlockUser(Long userId, AsyncCallback<Void> callback) {
 		this.submitRPCRequestRaw( "unlockUser", new Class<?>[]{
-				BigInteger.class, 
+				Long.class, 
 				
 			}, 
 			new Object[]{

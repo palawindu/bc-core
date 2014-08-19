@@ -16,10 +16,10 @@ import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.domain.UserPassword;
 import id.co.sigma.security.server.CurrentUserCurrentluUsedException;
 import id.co.sigma.security.server.dao.IUserGroupDao;
-import id.co.sigma.security.server.dao.impl.UserLoginDaoImpl;
+import id.co.sigma.security.server.dao.IUserLoginDao;
 import id.co.sigma.security.server.service.IUserLoginService;
 
-import java.math.BigInteger;
+
 import java.net.InetAddress;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +44,7 @@ import org.springframework.web.client.RestTemplate;
 public class UserLoginService implements IUserLoginService {
 	
 	@Autowired
-	private UserLoginDaoImpl userLoginDao;
+	private IUserLoginDao userLoginDao;
 	
 	public static final Integer CODE_SUCCESS = 0;		
 	private final Integer CODE_UNKNOWN_USER = 1;
@@ -163,7 +163,7 @@ public class UserLoginService implements IUserLoginService {
 	
 	@Transactional(readOnly=true, propagation=Propagation.REQUIRES_NEW)
 	@Override
-	public Application getApplication(BigInteger applicationId)throws Exception {		
+	public Application getApplication(Long applicationId)throws Exception {		
 		return userLoginDao.getApplicationData(applicationId);
 	}
 		
@@ -173,7 +173,7 @@ public class UserLoginService implements IUserLoginService {
 	 * @throws Exception 
 	 */
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-	public Signon createSignOnDataAndKickPrevUser(BigInteger appId , BigInteger userId) throws CurrentUserCurrentluUsedException,  Exception{
+	public Signon createSignOnDataAndKickPrevUser(Long appId , Long userId) throws CurrentUserCurrentluUsedException,  Exception{
 		List<Signon> listSignOn = userLoginDao.getSignOnByUserId(userId);
 		if(listSignOn != null){			
 			//3. Cek application id yg ada
@@ -219,7 +219,7 @@ public class UserLoginService implements IUserLoginService {
 	 * worker untuk request kick session dari app client
 	 **/
 	//@Async
-	protected void requestKickUser (BigInteger applicationId , String uuid){
+	protected void requestKickUser (Long applicationId , String uuid){
 		//FIXME : 1 include async lib
 		//FIXME : 2 kirim ke app client agar user dengan uud =xxx di kick session nya
 	}
@@ -248,7 +248,7 @@ public class UserLoginService implements IUserLoginService {
 	 * populate ke table sec_signon
 	 **/
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-	private Signon insertDataSignOn(BigInteger userId , BigInteger applicationId) throws Exception{
+	private Signon insertDataSignOn(Long userId , Long applicationId) throws Exception{
 		Signon data = new Signon();
 		data.setUserId(userId);
 		data.setApplicationId(applicationId);
@@ -291,13 +291,13 @@ public class UserLoginService implements IUserLoginService {
 	}
 
 	@Override
-	public List<Branch> getUserBranches(BigInteger userId) {
+	public List<Branch> getUserBranches(Long userId) {
 		
 		return null;
 	}
 
 	@Override
-	public Signon getSigonData(BigInteger sigonId) {
+	public Signon getSigonData(Long sigonId) {
 		return userLoginDao.getSigonData(sigonId);
 	}
 	
@@ -310,7 +310,7 @@ public class UserLoginService implements IUserLoginService {
 	 * @return URL
 	 * @throws Exception
 	 */
-	public String getUrlRedirectToApplication(Application application ,BigInteger applicationId, Integer errorCode, String uuid, String userName , HttpServletResponse response ) throws Exception{
+	public String getUrlRedirectToApplication(Application application ,Long applicationId, Integer errorCode, String uuid, String userName , HttpServletResponse response ) throws Exception{
 				
 		String url = "re-post-to-requester.security-rpc?errorCode="  + errorCode + "&uuid=" + uuid + "&userName=" + userName + "&url=" + response.encodeURL(   application.generateAutomaticLoginUrl());
 		System.out.println("URL Security : " + url);

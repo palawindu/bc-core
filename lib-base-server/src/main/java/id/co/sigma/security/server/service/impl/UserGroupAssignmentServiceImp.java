@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.service.impl;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -76,7 +76,7 @@ public class UserGroupAssignmentServiceImp implements IUserGroupAssignmentServic
 
 	@Transactional(readOnly=true)
 	@Override
-	public List<UserGroupAssignmentDTO> getGroupByUserId(BigInteger userId) throws Exception {
+	public List<UserGroupAssignmentDTO> getGroupByUserId(Long userId) throws Exception {
 		List<UserGroupAssignmentDTO> result = null;
 		List<UserGroupAssignment> resultData = userGroupAssignmentDao.getDataByUserId(userId);
 		
@@ -96,7 +96,7 @@ public class UserGroupAssignmentServiceImp implements IUserGroupAssignmentServic
 
 	@Transactional(readOnly=true)
 	@Override
-	public List<UserGroupDTO> getUserGroupByUserId(BigInteger userId) throws Exception {
+	public List<UserGroupDTO> getUserGroupByUserId(Long userId) throws Exception {
 		List<UserGroupDTO> result = null;
 		List<UserGroupAssignment> tempResult = userGroupAssignmentDao.getDataByUserId(userId);
 		if(!tempResult.isEmpty()){

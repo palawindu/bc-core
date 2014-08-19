@@ -7,7 +7,7 @@ import id.co.sigma.common.security.domain.PasswordPolicy;
 import id.co.sigma.common.client.security.rpc.impl.PasswordPolicyRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -60,5 +60,5 @@ public interface PasswordPolicyRPCServiceAsync {
 	 * @param id id password policy yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id, AsyncCallback<Void> callback) ;
+	public void remove(Long id, AsyncCallback<Void> callback) ;
 }

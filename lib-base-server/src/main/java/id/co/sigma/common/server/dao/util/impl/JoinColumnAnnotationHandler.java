@@ -4,7 +4,7 @@ import java.lang.annotation.Annotation;
 
 import javax.persistence.JoinColumn;
 
-import id.co.sigma.common.server.dao.util.JPAAnnotationHandler;
+
 
 
 

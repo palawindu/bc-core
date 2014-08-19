@@ -6,7 +6,7 @@ import id.co.sigma.common.client.security.group.GroupListPanel;
 import id.co.sigma.common.client.security.user.UserListPanel;
 import id.co.sigma.common.security.AriumSecurityGlobalParameterHolder;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -25,9 +25,9 @@ public class AriumSecurityApplication implements EntryPoint{
 	public void onModuleLoad() {
 		
 		/*Data dummy untuk application id dan current user login*/
-		AriumSecurityGlobalParameterHolder.CURRENT_APPLICATION_ID =BigInteger.ONE ;
+		AriumSecurityGlobalParameterHolder.CURRENT_APPLICATION_ID =1L ;
 		AriumSecurityGlobalParameterHolder.CURRENT_USER_LOGIN = "DEIN";
-		AriumSecurityGlobalParameterHolder.CURRENT_APPLICATION_NAME = "Open Cams";
+		AriumSecurityGlobalParameterHolder.CURRENT_APPLICATION_NAME = "Sample Apps";
 		
 		
 		

@@ -4,7 +4,7 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -23,16 +23,16 @@ public class ApplicationUserKey implements Serializable,IsSerializable, IJSONFri
 	private static final long serialVersionUID = 6796304485937487194L;
 	
 	@Column(name="user_id")
-	private BigInteger userId;
+	private Long userId;
 	
 	@Column(name="application_id")
-	private BigInteger applicationId;
+	private Long applicationId;
 
 	/**
 	* id user<br/>
 	* column :user_id
 	**/
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
@@ -40,7 +40,7 @@ public class ApplicationUserKey implements Serializable,IsSerializable, IJSONFri
 	* id user<br/>
 	* column :user_id
 	**/
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -48,7 +48,7 @@ public class ApplicationUserKey implements Serializable,IsSerializable, IJSONFri
 	* id applikasi<br/>
 	* column :application_id
 	**/
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 
@@ -56,7 +56,7 @@ public class ApplicationUserKey implements Serializable,IsSerializable, IJSONFri
 	* id applikasi<br/>
 	* column :application_id
 	**/
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 
@@ -101,8 +101,8 @@ public class ApplicationUserKey implements Serializable,IsSerializable, IJSONFri
 	@Override
 	public ApplicationUserKey instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		ApplicationUserKey retval = new ApplicationUserKey();
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		return retval; 
 	}
 	

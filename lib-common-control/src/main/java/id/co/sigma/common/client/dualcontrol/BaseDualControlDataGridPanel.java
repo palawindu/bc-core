@@ -1,6 +1,6 @@
 package id.co.sigma.common.client.dualcontrol;
 
-import java.math.BigInteger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -205,9 +205,9 @@ public abstract class BaseDualControlDataGridPanel<DATA extends DualControlEnabl
 				delReqData.setJsonData(data.generateJSONString()); 
 				delReqData.setTargetObjectFQCN(data.getClass().getName());
 				
-				DualControlDataRPCServiceAsync.Util.getInstance().submitDataForApproval(delReqData, DualControlEnabledOperation.DELETE, new CommonControlAsyncCallback<BigInteger>() {
+				DualControlDataRPCServiceAsync.Util.getInstance().submitDataForApproval(delReqData, DualControlEnabledOperation.DELETE, new CommonControlAsyncCallback<Long>() {
 					@Override
-					public void onSuccess(BigInteger result) {
+					public void onSuccess(Long result) {
 						JQueryUtils.getInstance().unblockEntirePage();
 						Window.alert(getDefaultDeleteRequestSubmitedDoneMessage());
 						getPageChangeHandler().onPageChange(1); // paksa navigasi ke halaman 1, agar di reload kembali

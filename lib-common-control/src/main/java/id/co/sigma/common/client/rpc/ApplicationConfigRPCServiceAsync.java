@@ -4,7 +4,7 @@ package id.co.sigma.common.client.rpc;
 
 import java.util.List;
 
-import id.co.sigma.common.client.control.CommonGlobalVariableHolder;
+
 import id.co.sigma.common.client.rpc.impl.ApplicationConfigRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.app.AppFormConfiguration;
@@ -19,7 +19,6 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 
 

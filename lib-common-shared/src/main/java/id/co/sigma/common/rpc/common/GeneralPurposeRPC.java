@@ -28,6 +28,12 @@ public interface GeneralPurposeRPC extends JSONSerializedRemoteService{
 	public PagedResultHolder<IJSONFriendlyObject<?>> getPagedData (String objectFQCN , SimpleQueryFilter[] filters , SimpleSortArgument[] sorts , int page , int pageSize) throws Exception ;
 	
 	
+	/**
+	 * insert object baru ke dalam database
+	 * @param newObject 
+	 */
+	public void insertData (IJSONFriendlyObject<?> newObject)  throws Exception ; 
+	
 	
 	/**
 	 * mencari data dengan big integer ID

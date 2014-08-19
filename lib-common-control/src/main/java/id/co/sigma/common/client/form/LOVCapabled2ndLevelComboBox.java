@@ -69,7 +69,7 @@ public class LOVCapabled2ndLevelComboBox extends ExtendedComboBox implements ILO
 		
 	}
 	
-	private StrongTyped2ndLevelLOVID strongTyped2ndLevelLOVID ; 
+	private StrongTyped2ndLevelLOVID<?> strongTyped2ndLevelLOVID ; 
 	
 	
 	private IParentLOVEnableControl parentControl ; 

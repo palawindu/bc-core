@@ -5,7 +5,6 @@
 package id.co.sigma.common.data.serializer;
 
 import id.co.sigma.common.data.ObjectSerializer;
-import java.math.BigInteger;
 
 /**
  *

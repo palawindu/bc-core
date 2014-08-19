@@ -1,6 +1,6 @@
 package id.co.sigma.security.server;
 
-import java.math.BigInteger;
+
 import java.util.Collection;
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class CoreServerUserDetail implements UserDetails{
 	/**
 	 * ID PK dari user
 	 **/
-	private BigInteger userInternalId ;
+	private Long userInternalId ;
 	
 	/*Varible yg bersesuaian dg kebutuhan spring security*/			
 	private String password;
@@ -33,7 +33,7 @@ public class CoreServerUserDetail implements UserDetails{
 	/*Varibale tambahan yg dibutuhan oleh aplikasi*/
 	private String applicationName;
 	private String fullNameUser;
-	private BigInteger applicationId;
+	private Long applicationId;
 	private String applicationUrl;
 	private String applicationLoginUrl;
 	private String passwordNoHashing;
@@ -143,11 +143,11 @@ public class CoreServerUserDetail implements UserDetails{
 		this.fullNameUser = fullNameUser;
 	}
 
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 
@@ -178,13 +178,13 @@ public class CoreServerUserDetail implements UserDetails{
 	/**
 	 * ID PK dari user
 	 **/
-	public void setUserInternalId(BigInteger userInternalId) {
+	public void setUserInternalId(Long userInternalId) {
 		this.userInternalId = userInternalId;
 	}
 	/**
 	 * ID PK dari user
 	 **/
-	public BigInteger getUserInternalId() {
+	public Long getUserInternalId() {
 		return userInternalId;
 	}
 

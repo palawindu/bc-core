@@ -3,7 +3,7 @@ package id.co.sigma.security.server.service;
 import id.co.sigma.common.security.domain.ApplicationUser;
 import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -30,7 +30,7 @@ public interface IApplicationUserService {
 	 * @param currentUser
 	 * @throws Exception
 	 */
-	public void insertApplicationUser(List<UserGroupAssignmentDTO> data,  BigInteger applicationId, BigInteger userId, String currentUser) throws Exception;
+	public void insertApplicationUser(List<UserGroupAssignmentDTO> data,  Long applicationId, Long userId, String currentUser) throws Exception;
 	
 	/**
 	 * Delete application user. Prosesnya : Delete ke tabel sec_application_user & sec_group_assignment
@@ -38,5 +38,5 @@ public interface IApplicationUserService {
 	 * @param userId
 	 * @throws Exception
 	 */
-	public void deleteApplicationUser(BigInteger applicationId, BigInteger userId) throws Exception;
+	public void deleteApplicationUser(Long applicationId, Long userId) throws Exception;
 }

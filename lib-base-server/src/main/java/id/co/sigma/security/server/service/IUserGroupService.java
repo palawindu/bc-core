@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.service;
 
-import java.math.BigInteger;
+
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.domain.UserGroup;
@@ -36,7 +36,7 @@ public interface IUserGroupService {
 	 * @param paramater
 	 * @throws Exception
 	 */
-	public void delete(BigInteger paramater) throws Exception;
+	public void delete(Long paramater) throws Exception;
 	
 	/**
 	 * Update user group

@@ -1,6 +1,6 @@
 package id.co.sigma.common.client.lov;
 
-import id.co.sigma.common.data.lov.CommonLOV;
+
 import id.co.sigma.common.data.lov.CommonLOVHeader;
 import id.co.sigma.common.data.lov.LOVSource;
 

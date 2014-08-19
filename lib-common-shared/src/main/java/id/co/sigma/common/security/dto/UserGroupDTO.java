@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -23,7 +22,7 @@ public class UserGroupDTO implements Serializable,IsSerializable, IJSONFriendlyO
 	private String groupName;
 	private String status;
 	private String superGroup;
-	private BigInteger applicationId;
+	private Long applicationId;
 	
 	public UserGroupDTO(){
 		super();
@@ -73,10 +72,10 @@ public class UserGroupDTO implements Serializable,IsSerializable, IJSONFriendlyO
 	public void setSuperGroup(String isSuperUser) {
 		this.superGroup = isSuperUser;
 	}
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 	
@@ -93,7 +92,7 @@ public class UserGroupDTO implements Serializable,IsSerializable, IJSONFriendlyO
 	@Override
 	public UserGroupDTO instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		UserGroupDTO retval = new UserGroupDTO();
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setGroupCode( (String)jsonContainer.get("groupCode" ,  String.class.getName()));
 		retval.setGroupName( (String)jsonContainer.get("groupName" ,  String.class.getName()));
 		retval.setId( (Integer)jsonContainer.get("id" ,  Integer.class.getName()));

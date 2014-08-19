@@ -44,6 +44,7 @@ public class PasswordPolicyEditorPanel extends BaseAriumSecurityComposite {
 	
 	//variabel for relation with list panel
 	private IReloadGridCommand reloadGrid;
+	@SuppressWarnings("rawtypes")
 	private IOpenAndCloseable openClose;
 	
 	//save current user edited data
@@ -166,7 +167,7 @@ public class PasswordPolicyEditorPanel extends BaseAriumSecurityComposite {
 		this.reloadGrid = reloadGrid;
 	}
 	
-	public void setOpenClose(IOpenAndCloseable openClose) {
+	public void setOpenClose(@SuppressWarnings("rawtypes") IOpenAndCloseable openClose) {
 		this.openClose = openClose;
 	}
 	

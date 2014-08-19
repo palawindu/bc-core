@@ -1,11 +1,6 @@
 package id.co.sigma.common.client.lov;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.Style.Display;
-import com.google.gwt.user.client.DOM;
-
-import id.co.sigma.common.client.style.CommonResourceBundle;
 import id.co.sigma.common.data.lov.CommonLOVHeader;
 import id.co.sigma.common.data.lov.LOVSource;
 

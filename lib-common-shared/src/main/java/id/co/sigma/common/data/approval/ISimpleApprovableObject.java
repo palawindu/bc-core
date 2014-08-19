@@ -6,7 +6,6 @@ package id.co.sigma.common.data.approval;
 
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 /**
  *
@@ -32,7 +31,7 @@ public interface ISimpleApprovableObject<T> extends  IJSONFriendlyObject<T>, Ser
     /**
      * di rekomendasikan di setiap table item yang approvable, di sertakan ID dari approval. ID dari approval refer ke object CommonApprovalHeader
     */
-    public void setApprovalId(BigInteger approvalId ) ; 
+    public void setApprovalId(Long approvalId ) ; 
     
     
     /**

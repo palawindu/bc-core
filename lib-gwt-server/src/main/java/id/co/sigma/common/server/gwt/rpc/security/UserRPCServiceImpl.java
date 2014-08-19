@@ -14,7 +14,6 @@ import id.co.sigma.security.server.UserDetailUtils;
 import id.co.sigma.security.server.service.IUserService;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since Dec 10, 2012, 1:42:47 PM
  * @version $Id
  */
-/*@WebServlet(
-		name="id.co.sigma.arium.security.server.rpc.UserRPCServiceImpl" , 
-		description="Servlet RPC untuk handle User Domain" , 
-		urlPatterns={"/sigma-rpc/user.app-rpc"})*/
+
 public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> implements UserRPCService{
 
 	
@@ -65,7 +61,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 	}
 
 	@Override
-	public PagedResultHolder<UserDTO> getUserByParameter(BigInteger applicationId, SimpleQueryFilter[] filter,int page, int pageSize) throws Exception {	
+	public PagedResultHolder<UserDTO> getUserByParameter(Long applicationId, SimpleQueryFilter[] filter,int page, int pageSize) throws Exception {	
 		return userService.getUserAtWorklistByParam(applicationId, filter, page, pageSize);
 	}
 
@@ -91,7 +87,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 	}
 
 	@Override
-	public void remove(BigInteger id) throws Exception {
+	public void remove(Long id) throws Exception {
 		userService.remove(id);
 	}
 
@@ -124,7 +120,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 
 
 	@Override
-	public void lockUser(BigInteger userId)  throws UserNotExistException{
+	public void lockUser(Long userId)  throws UserNotExistException{
 		User dbUser = null ;
 		try {
 			dbUser= generalPurposeDao.get(User.class, userId);
@@ -135,7 +131,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 		if ( dbUser== null ){
 			throw new UserNotExistException("User dengan id : "  + userId + "tidak detemukan.mungkin data sudah di hapus");
 		}
-		dbUser.setActiveStatus("D");
+		dbUser.setActiveFlag("D");
 		try {
 			userService.update(dbUser);
 		} catch (Exception e) {
@@ -147,7 +143,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 
 
 	@Override
-	public void unlockUser(BigInteger userId) throws UserNotExistException {
+	public void unlockUser(Long userId) throws UserNotExistException {
 		User dbUser = null ;
 		try {
 			dbUser= generalPurposeDao.get(User.class, userId);
@@ -158,7 +154,7 @@ public class UserRPCServiceImpl extends BaseSecurityRPCService<UserRPCService> i
 		if ( dbUser== null ){
 			throw new UserNotExistException("User dengan id : "  + userId + "tidak detemukan.mungkin data sudah di hapus");
 		}
-		dbUser.setActiveStatus("A");
+		dbUser.setActiveFlag("A");
 		try {
 			userService.update(dbUser);
 		} catch (Exception e) {

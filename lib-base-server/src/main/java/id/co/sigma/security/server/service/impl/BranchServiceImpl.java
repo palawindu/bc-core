@@ -9,7 +9,7 @@ import id.co.sigma.common.security.dto.BranchDTO;
 import id.co.sigma.security.server.dao.impl.BranchDaoImpl;
 import id.co.sigma.security.server.service.IBranchService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -84,7 +84,7 @@ public class BranchServiceImpl implements IBranchService{
 	
 	@Transactional(readOnly=false)
 	@Override
-	public void remove(BigInteger id) throws Exception {
+	public void remove(Long id) throws Exception {
 		Branch result = (Branch) branchDao.find(Branch.class, id);
 		branchDao.delete(result);
 	}
@@ -94,7 +94,7 @@ public class BranchServiceImpl implements IBranchService{
 	 * @param id
 	 * @return String - branch code
 	 */
-	private String getBranchCode(BigInteger id){
+	private String getBranchCode(Long id){
 		try {
 			SimpleQueryFilter tempFilter = new SimpleQueryFilter();
 			tempFilter.setField("id");
@@ -110,7 +110,7 @@ public class BranchServiceImpl implements IBranchService{
 
 	@Transactional(readOnly=true)
 	@Override
-	public List<BranchDTO> getBranchAssignmentByUserId(BigInteger userId) throws Exception {
+	public List<BranchDTO> getBranchAssignmentByUserId(Long userId) throws Exception {
 		List<BranchDTO> result = null;
 		List<BranchAssignment> tempResult = branchDao.getBranchAssignmentByUserId(userId);
 		if(!tempResult.isEmpty()){

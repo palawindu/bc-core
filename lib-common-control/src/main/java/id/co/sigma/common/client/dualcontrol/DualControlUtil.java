@@ -6,7 +6,6 @@ import java.util.Map;
 
 import id.co.sigma.common.client.rpc.DoubleSubmitProtectedAsyncCallback;
 import id.co.sigma.common.client.rpc.DualControlDataRPCServiceAsync;
-import id.co.sigma.common.client.rpc.CommonControlAsyncCallback;
 import id.co.sigma.common.data.app.CommonDualControlContainerTable;
 import id.co.sigma.common.data.app.DualControlApprovalStatusCode;
 import id.co.sigma.common.data.app.DualControlEnabledData;

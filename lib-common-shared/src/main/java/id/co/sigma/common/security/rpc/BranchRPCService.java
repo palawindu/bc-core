@@ -6,7 +6,7 @@ import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.Branch;
 import id.co.sigma.common.security.dto.BranchDTO;
 
-import java.math.BigInteger;
+
 
 /**
  * Branch list RPC Service
@@ -38,5 +38,5 @@ public interface BranchRPCService extends JSONSerializedRemoteService{
 	 * @param id
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long id) throws Exception;
 }

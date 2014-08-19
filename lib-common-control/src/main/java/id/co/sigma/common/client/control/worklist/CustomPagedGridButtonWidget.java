@@ -6,7 +6,6 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import id.co.sigma.common.client.util.CommonClientControlUtil;
 import id.co.sigma.common.client.widget.PageChangeHandler;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.jquery.client.grid.GridButtonWidget;

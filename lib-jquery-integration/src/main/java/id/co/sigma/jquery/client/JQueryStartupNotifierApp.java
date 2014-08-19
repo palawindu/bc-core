@@ -6,7 +6,6 @@ import id.co.sigma.jquery.client.util.JQueryUtils;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
 
 public class JQueryStartupNotifierApp implements EntryPoint {
 	

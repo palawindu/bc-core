@@ -10,7 +10,7 @@ import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -18,7 +18,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 /**
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  **/
-public class PageDefinitionLookup extends SecurityBaseSimpleSingleResultLookupDialog<BigInteger , PageDefinitionDTO>{
+public class PageDefinitionLookup extends SecurityBaseSimpleSingleResultLookupDialog<Long , PageDefinitionDTO>{
 
 	
 	

@@ -19,7 +19,7 @@ import id.co.sigma.security.server.dao.impl.PasswordPolicyDaoImpl;
 import id.co.sigma.security.server.dao.impl.UserDaoImpl;
 import id.co.sigma.security.server.service.IUserService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -97,7 +97,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 	 */
 	@Transactional(readOnly=true)
 	@Override
-	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(BigInteger applicationId, SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception {		
+	public PagedResultHolder<UserDTO> getUserAtWorklistByParam(Long applicationId, SimpleQueryFilter[] filter, int pagePosition, int pageSize) throws Exception {		
 		PagedResultHolder<UserDTO> retval = new PagedResultHolder<UserDTO>();
 		List<User> resultUser = new ArrayList<User>();
 		User parameter = null;		
@@ -116,7 +116,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 		/*SELECT tabel sec_application_user*/
 		List<ApplicationUser> resulApplicationUser = userDao.getApplicationUser(applicationId,parameter,pagePosition,pageSize);				
 		if(!resulApplicationUser.isEmpty()){
-			List<BigInteger> listUserId = new ArrayList<BigInteger>();
+			List<Long> listUserId = new ArrayList<Long>();
 			for (ApplicationUser user : resulApplicationUser) {
 				listUserId.add(user.getApplicationUser().getUserId());
 			}
@@ -179,7 +179,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 		}else if(filter.getField().equals(REAL_NAME)){
 			objParam.setRealName(filter.getFilter());
 		}else if(filter.getField().equals(ID)){
-			objParam.setId(new BigInteger(filter.getFilter()));
+			objParam.setId(new Long(filter.getFilter()));
 		}else if(filter.getField().equals(EMAIL)){
 			objParam.setEmail(filter.getFilter());
 		}		
@@ -343,7 +343,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
 	@Override
-	public void remove(BigInteger id) throws Exception {
+	public void remove(Long id) throws Exception {
 		removeUserPassword(id);
 		groupAssignDao.deleteGroupAssignmentByUserId(id);
 		User dataToRemove = userDao.getUserById(id);
@@ -351,7 +351,7 @@ public class UserServiceImpl extends  AbstractService implements IUserService{
 	}
 	
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-	private void removeUserPassword(BigInteger userId) throws Exception {
+	private void removeUserPassword(Long userId) throws Exception {
 		List<UserPassword> listData = userDao.getUserPasswordByUserId(userId);
 		for (UserPassword dataToRemove : listData)
 		{

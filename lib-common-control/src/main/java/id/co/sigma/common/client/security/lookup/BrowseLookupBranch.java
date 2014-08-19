@@ -4,7 +4,7 @@ import id.co.sigma.common.security.dto.BranchDTO;
 import id.co.sigma.common.client.control.lookup.BaseSimpleSingleResultLookupDialog;
 import id.co.sigma.common.client.security.lookup.base.BaseSecurityLookupBrowseText;
 
-import java.math.BigInteger;
+
 
 /**
  * Browse button branch
@@ -12,10 +12,10 @@ import java.math.BigInteger;
  * @since Jan 31, 2013, 11:18:03 AM
  * @version $Id
  */
-public class BrowseLookupBranch extends BaseSecurityLookupBrowseText<BigInteger, BranchDTO>{
+public class BrowseLookupBranch extends BaseSecurityLookupBrowseText<Long, BranchDTO>{
 
 	@Override
-	protected BaseSimpleSingleResultLookupDialog<BigInteger, BranchDTO> instantiateLookup() {		
+	protected BaseSimpleSingleResultLookupDialog<Long, BranchDTO> instantiateLookup() {		
 		return new LookupBranch();
 	}
 

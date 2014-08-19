@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.service;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import id.co.sigma.common.data.PagedResultHolder;
@@ -46,7 +46,7 @@ public interface IUserGroupAssignmentService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserGroupAssignmentDTO> getGroupByUserId(BigInteger userId) throws Exception;
+	public List<UserGroupAssignmentDTO> getGroupByUserId(Long userId) throws Exception;
 	
 	/**
 	 * get user group assignment berdasarkan user id
@@ -54,5 +54,5 @@ public interface IUserGroupAssignmentService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserGroupDTO> getUserGroupByUserId(BigInteger userId) throws Exception;
+	public List<UserGroupDTO> getUserGroupByUserId(Long userId) throws Exception;
 }

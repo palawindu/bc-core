@@ -4,9 +4,9 @@
 package id.co.sigma.common.client.security.control;
 
 import id.co.sigma.common.client.security.BaseAriumSecurityComposite;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,27 +33,27 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	/**
 	 * list of all menu in an application
 	 */
-	private List<Function> menus;
+	private List<ApplicationMenu> menus;
 	
 	/**
 	 * list of added menu
 	 */
-	private List<Function> addedMenu;
+	private List<ApplicationMenu> addedMenu;
 	
 	/**
 	 * list of removed menu
 	 */
-	private List<Function> removedMenu;
+	private List<ApplicationMenu> removedMenu;
 	
 	/**
 	 * list of existing menu id in group application
 	 */
-	private List<BigInteger> selectedMenus;
+	private List<Long> selectedMenus;
 	
 	/**
 	 * map of tree item
 	 */
-	private Map<BigInteger, ExtendedMenuTreeItem> treeMap;
+	private Map<Long, ExtendedMenuTreeItem> treeMap;
 	
 	/**
 	 * panel of the tree
@@ -63,9 +63,9 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	public CheckBoxMenuTree() {
 		//insialisasi variabel
 		rootTree = new Tree();
-		addedMenu  = new ArrayList<Function>();
-		removedMenu = new ArrayList<Function>();
-		treeMap = new HashMap<BigInteger, ExtendedMenuTreeItem>();
+		addedMenu  = new ArrayList<ApplicationMenu>();
+		removedMenu = new ArrayList<ApplicationMenu>();
+		treeMap = new HashMap<Long, ExtendedMenuTreeItem>();
 				
 		panel = new ScrollPanel(rootTree);
 		panel.setSize("200px", "200px");
@@ -93,7 +93,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 		treeMap.clear();
 		addedMenu.clear();
 		removedMenu.clear();
-		for (final Function item : menus) {
+		for (final ApplicationMenu item : menus) {
 			final ExtendedMenuTreeItem treeNode = new ExtendedMenuTreeItem(item.getFunctionLabel());
 			treeMap.put(item.getId(), treeNode);
 			treeNode.setFunction(item);
@@ -116,7 +116,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 			}
 		}
 		
-		for (BigInteger selectedFunctionId : selectedMenus) {
+		for (Long selectedFunctionId : selectedMenus) {
 			ExtendedMenuTreeItem menuItem = treeMap.get(selectedFunctionId);
 			menuItem.setCheckBoxValue(true);
 			if (treeMap.get(menuItem.getFunction().getFunctionIdParent()) != null)
@@ -128,7 +128,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * checking is parent add to removed list
 	 * @param parentItem parent menu item
 	 */
-	private void removeParentChecking(Function parentItem) {
+	private void removeParentChecking(ApplicationMenu parentItem) {
 		if (parentItem == null || treeMap.get(parentItem.getId()).getNumOfSelectedChild() != 0)
 			return ;
 		else
@@ -139,7 +139,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * remove item menu dari group menu
 	 * @param menuItem menu item yang di remove
 	 */
-	private void removeMenuItem(Function menuItem) {
+	private void removeMenuItem(ApplicationMenu menuItem) {
 		//remove menu item dari added list jika ada
 		addedMenu.remove(menuItem);
 		//add menu item ke removed list
@@ -155,7 +155,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * checking is parent add to added list
 	 * @param parentItem parent menu item
 	 */
-	private void addParentChecking(Function parentItem) {
+	private void addParentChecking(ApplicationMenu parentItem) {
 		//jika parent nya null atau mempunyai selected child lebih dari 1 ga usah di add lagi
 		if (parentItem == null || treeMap.get(parentItem.getId()).getNumOfSelectedChild() > 1)
 			return ;
@@ -167,7 +167,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * add menu item to group menu
 	 * @param menuItem item that add
 	 */
-	private void addMenuItem(Function menuItem) {
+	private void addMenuItem(ApplicationMenu menuItem) {
 		//kalo sudah ada di list of selected menu jangan di add ke added list lagi
 		if (!selectedMenus.contains(menuItem.getId()))
 			addedMenu.add(menuItem);
@@ -184,7 +184,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * get list of menu
 	 * @return
 	 */
-	public List<Function> getMenus() {
+	public List<ApplicationMenu> getMenus() {
 		return menus;
 	}
 	
@@ -192,7 +192,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * set list of menu
 	 * @param menus
 	 */
-	public void setMenus(List<Function> menus) {
+	public void setMenus(List<ApplicationMenu> menus) {
 		this.menus = menus;
 	}
 	
@@ -200,7 +200,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * get selected menu
 	 * @return list of selected menu id
 	 */
-	public List<BigInteger> getSelectedMenus() {
+	public List<Long> getSelectedMenus() {
 		return selectedMenus;
 	}
 	
@@ -208,7 +208,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * set selected menu (list of id selected menu)
 	 * @param selectedMenus list of id selected menu
 	 */
-	public void setSelectedMenus(List<BigInteger> selectedMenus) {
+	public void setSelectedMenus(List<Long> selectedMenus) {
 		this.selectedMenus = selectedMenus;
 	}
 	
@@ -232,7 +232,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * get added menu item
 	 * @return list of added menu item
 	 */
-	public List<Function> getAddedMenu() {
+	public List<ApplicationMenu> getAddedMenu() {
 		return addedMenu;
 	}
 	
@@ -240,7 +240,7 @@ public class CheckBoxMenuTree extends BaseAriumSecurityComposite {
 	 * get removed menu item
 	 * @return list of removed menu item
 	 */
-	public List<Function> getRemovedMenu() {
+	public List<ApplicationMenu> getRemovedMenu() {
 		return removedMenu;
 	}
 }

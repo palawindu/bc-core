@@ -3,7 +3,7 @@
  */
 package id.co.sigma.common.client.security.control;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.TreeItem;
@@ -40,7 +40,7 @@ public class ExtendedMenuTreeItem extends TreeItem {
 	/**
 	 * function yang diwakilkan oleh item (optional)
 	 */
-	private Function function;
+	private ApplicationMenu function;
 	
 	public ExtendedMenuTreeItem() {
 		initializeField();
@@ -112,11 +112,11 @@ public class ExtendedMenuTreeItem extends TreeItem {
 		this.text = text;
 	}
 	
-	public Function getFunction() {
+	public ApplicationMenu getFunction() {
 		return function;
 	}
 	
-	public void setFunction(Function function) {
+	public void setFunction(ApplicationMenu function) {
 		this.function = function;
 	}
 	

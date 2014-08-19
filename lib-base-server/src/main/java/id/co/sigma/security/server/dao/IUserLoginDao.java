@@ -10,7 +10,9 @@ import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.domain.UserPassword;
 
-import java.math.BigInteger;
+
+import id.co.sigma.common.server.dao.IBaseDao;
+
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  * @since Nov 19, 2012, 11:54:40 AM
  * @version $Id
  */
-public interface IUserLoginDao {
+public interface IUserLoginDao extends IBaseDao{
 
 	/**
 	 * Get user berdasarkan username
@@ -35,7 +37,7 @@ public interface IUserLoginDao {
 	 * @return list of signon
 	 * @throws Exception
 	 */
-	public List<Signon> getSignOnByUserId(BigInteger userId) throws Exception;
+	public List<Signon> getSignOnByUserId(Long userId) throws Exception;
 	
 	/**
 	 * Get application data berdasarkan applicationId
@@ -43,7 +45,7 @@ public interface IUserLoginDao {
 	 * @return application
 	 * @throws Exception
 	 */
-	public Application getApplicationData(BigInteger applicationId) throws Exception;
+	public Application getApplicationData(Long applicationId) throws Exception;
 	
 	/**
 	 * check user password di tabel password history
@@ -51,14 +53,14 @@ public interface IUserLoginDao {
 	 * @return object userPassword
 	 * @throws Exception
 	 */
-	public UserPassword getPasswordAtHistory(BigInteger userId) throws Exception;
+	public UserPassword getPasswordAtHistory(Long userId) throws Exception;
 	
 	
 	
 	/**
 	 * membaca data user signon by id
 	 **/
-	public Signon getSigonData(BigInteger sigonId);
+	public Signon getSigonData(Long sigonId);
 	
 	/**
 	 * Get data signon berdasarkan uuid yg didapat dari jsessionid spring security
@@ -73,5 +75,5 @@ public interface IUserLoginDao {
 	 * @return Signon
 	 * @throws Exception
 	 */
-	public Signon getLastLoginTime(BigInteger userId) throws Exception;
+	public Signon getLastLoginTime(Long userId) throws Exception;
 }

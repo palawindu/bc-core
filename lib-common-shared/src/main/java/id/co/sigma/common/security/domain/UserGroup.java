@@ -9,7 +9,7 @@ import id.co.sigma.common.security.domain.audit.BaseAuditedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,13 +41,13 @@ public class UserGroup extends BaseAuditedObject implements IJSONFriendlyObject<
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="GROUP_ID")
-	private BigInteger id;
+	private Long id;
 	/**
 	* id applikasi<br/>
 	* column :APPLICATION_ID
 	**/
 	@Column(name="APPLICATION_ID")
-	private BigInteger applicationId;
+	private Long applicationId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="APPLICATION_ID", insertable=false, updatable=false)
@@ -82,28 +82,28 @@ public class UserGroup extends BaseAuditedObject implements IJSONFriendlyObject<
 	* group id<br/>
 	* column :GROUP_ID
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	/**
 	* group id<br/>
 	* column :GROUP_ID
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	/**
 	* id applikasi<br/>
 	* column :APPLICATION_ID
 	**/
-	public void setApplicationId(BigInteger applicationId){
+	public void setApplicationId(Long applicationId){
 	  this.applicationId=applicationId;
 	}
 	/**
 	* id applikasi<br/>
 	* column :APPLICATION_ID
 	**/
-	public BigInteger getApplicationId(){
+	public Long getApplicationId(){
 	    return this.applicationId;
 	}
 	/**
@@ -280,13 +280,13 @@ public class UserGroup extends BaseAuditedObject implements IJSONFriendlyObject<
 		UserGroup retval = new UserGroup();
 		  
 		retval.setApplication( (Application)jsonContainer.get("application" ,  Application.class.getName()));
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		retval.setGroupCode( (String)jsonContainer.get("groupCode" ,  String.class.getName()));
 		retval.setGroupName( (String)jsonContainer.get("groupName" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
 		retval.setModifiedByIPAddress( (String)jsonContainer.get("modifiedByIPAddress" ,  String.class.getName()));
 		retval.setModifiedOn( (Date)jsonContainer.get("modifiedOn" ,  Date.class.getName()));

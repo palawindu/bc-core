@@ -11,7 +11,7 @@ import id.co.sigma.common.client.security.rpc.BranchRPCServiceAsync;
 import id.co.sigma.common.control.SingleValueLookupResultHandler;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -122,7 +122,7 @@ public class BranchEditorPanel extends BaseAriumSecurityComposite {
 	 * Remove branch
 	 * @param id
 	 */
-	public void remove(BigInteger id){
+	public void remove(Long id){
 		BranchRPCServiceAsync.Util.getInstance().remove(id, new AsyncCallback<Void>() {
 			@Override
 			public void onFailure(Throwable ex) {
@@ -150,12 +150,12 @@ public class BranchEditorPanel extends BaseAriumSecurityComposite {
 		branch.setBranchCode(txtBranchCode.getValue());
 		branch.setBranchName(txtBranchName.getValue());
 		if(txtBranchParentId.getValue().length() > 0){
-			branch.setBranchParendId(new BigInteger(txtBranchParentId.getValue()));
+			branch.setBranchParendId(new Long(txtBranchParentId.getValue()));
 		}		
 		branch.setCreatedBy(getCurrentUserLogin());
 		branch.setDescription(txtBranchDescription.getValue());
 		if(txtBranchId.getValue().length() > 0){
-			branch.setId(new BigInteger(txtBranchId.getValue()));
+			branch.setId(new Long(txtBranchId.getValue()));
 		}
 		if(txtStatus.getValue()){
 			status = "A";

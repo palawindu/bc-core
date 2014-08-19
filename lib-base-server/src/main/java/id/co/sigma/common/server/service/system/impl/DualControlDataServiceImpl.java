@@ -19,7 +19,6 @@ import id.co.sigma.common.exception.DataNotFoundException;
 import id.co.sigma.common.exception.DataValidationException;
 import id.co.sigma.common.exception.InvalidExcelFileException;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
-import id.co.sigma.common.server.dao.system.ApplicationConfigurationDao;
 import id.co.sigma.common.server.dao.util.ServerSideParsedJSONArrayContainer;
 import id.co.sigma.common.server.dao.util.ServerSideParsedJSONContainer;
 import id.co.sigma.common.server.service.AbstractService;
@@ -207,7 +206,7 @@ public class DualControlDataServiceImpl extends AbstractService
 		DualControlApprovalStatusCode nextApprovalStatus = getNextApprovalStatusByOperationCode(operation); 		// next approval status
 		
 		
-		BigInteger retval = null ; 
+		Long retval = null ; 
 		if ( dbData!= null && !DualControlApprovalStatusCode.APPLIED.toString().equals( dbData.getApprovalStatus())){
 			// berarti dari draft dulu. jadinya proses nya update
 			dbData.setJsonData(dualControlledData.getJsonData());
@@ -286,7 +285,7 @@ public class DualControlDataServiceImpl extends AbstractService
 		return commonSystemService.generateRefNumber(def.getReffNoSequenceRemark(), prefix, def.getReffNumberLength() - prefix.length(), def.getReffNoSequenceRemark()); 
 	}
 	@Override
-	public void approveAndApplyBulkData(BigInteger dataApprovalId) throws Exception {
+	public void approveAndApplyBulkData(Long dataApprovalId) throws Exception {
 		if ( dataApprovalId==null){
 			throw new DataNotFoundException("No data id supplied, canceling approval now");
 		}
@@ -398,7 +397,7 @@ public class DualControlDataServiceImpl extends AbstractService
 	
 	
 	@Override
-	public void applyDataModification(BigInteger dataApprovalId, String approvalRemark)
+	public void applyDataModification(Long dataApprovalId, String approvalRemark)
 			throws Exception {
 		if ( dataApprovalId==null){
 			throw new DataNotFoundException("No data id supplied, canceling approval now");
@@ -687,7 +686,7 @@ public class DualControlDataServiceImpl extends AbstractService
 	
 	
 	@Override
-	public void rejectBulkData(BigInteger dataId, String rejectReason)
+	public void rejectBulkData(Long dataId, String rejectReason)
 			throws Exception {
 		CommonDualControlContainerTable dbData =  this.generalPurposeDao.get(CommonDualControlContainerTable.class, dataId);
 		if ( dbData ==null){
@@ -728,7 +727,7 @@ public class DualControlDataServiceImpl extends AbstractService
 	}
 	
 	@Override
-	public void rejectData(BigInteger dataId, String rejectReason)
+	public void rejectData(Long dataId, String rejectReason)
 			throws Exception {
 		// cari dulu data
 		CommonDualControlContainerTable dbData =  this.generalPurposeDao.get(CommonDualControlContainerTable.class, dataId);
@@ -889,7 +888,7 @@ public class DualControlDataServiceImpl extends AbstractService
 	@SuppressWarnings("unchecked")
 	@Override
 	public <DATA extends DualControlEnabledData<?, ?>> PagedResultHolder<DATA> getBulkApprovalDataDetails(
-			BigInteger approvalDataId, int pageSize, int page) throws Exception {
+			Long approvalDataId, int pageSize, int page) throws Exception {
 		
 		CommonDualControlBulkDataContainer c = this.generalPurposeDao.get(CommonDualControlBulkDataContainer.class, approvalDataId);
 		//FIXME: pembacaan json perlu enhancment, kalau data jumlah nya terlalu banyak

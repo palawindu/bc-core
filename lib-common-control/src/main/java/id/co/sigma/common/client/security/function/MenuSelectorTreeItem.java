@@ -2,7 +2,7 @@ package id.co.sigma.common.client.security.function;
 
 import id.co.sigma.common.client.control.ITransformableToReadonlyLabel;
 import id.co.sigma.common.client.style.CommonResourceBundle;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
@@ -32,11 +32,11 @@ public class MenuSelectorTreeItem extends TreeItem implements ITransformableToRe
 	private String checkboxId = DOM.createUniqueId(); 
 	
 	
-	private Function menu ; 
+	private ApplicationMenu menu ; 
 	static int MENU_COUNTER =1 ;
 	static final String MENU_PREFIX="MENU_EDITOR_CLCK_";
 	
-	public MenuSelectorTreeItem(Function menuItem) {
+	public MenuSelectorTreeItem(ApplicationMenu menuItem) {
 		super(); 
 		menu = menuItem ; 
 		String mthd = MENU_PREFIX + MENU_COUNTER ; 
@@ -166,7 +166,7 @@ public class MenuSelectorTreeItem extends TreeItem implements ITransformableToRe
 	
 
 	
-	public Function getMenu() {
+	public ApplicationMenu getMenu() {
 		return menu;
 	}
 

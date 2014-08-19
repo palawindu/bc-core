@@ -11,7 +11,7 @@ import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.InvalidExcelFileException;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 
@@ -25,22 +25,15 @@ import java.util.List;
 public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	
 	
-	/**
-	 * membaca data dual control dengan berdasar pada id dari data
-	 * @param id id dari data dalam table dual control
-	 *  
-	 **/
-	// di matikan dan di replace dengan : getWaitApprovalDataWithToken
-	//public CommonDualControlContainerTable getDataById(BigInteger id ) throws Exception;
 	
 	
 	
 	
 	/**
-	 * replacement untuk {@link #getDataById(BigInteger)}. versi ini dengan mengirimkan data token kembali ke client. jadinya round trip data bisa di kurangi
+	 *  versi ini dengan mengirimkan data token kembali ke client. jadinya round trip data bisa di kurangi
 	 * @param id ID pada table m_dual_control_table. data yang memerlukan approval
 	 */
-	public DataWithToken<CommonDualControlContainerTable> getWaitApprovalDataWithToken (BigInteger id ) throws Exception ; 
+	public DataWithToken<CommonDualControlContainerTable> getWaitApprovalDataWithToken (Long id ) throws Exception ; 
 	
 	/**
 	 * membaca data sebagai JSON String. data di baca dengan class FQCN dan ID dari data. id dari data di compact menjadi 1. Kalau id dari data composite, data di concat dengan .
@@ -62,7 +55,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * @return id dari object yang di create dalam database
 	 **/
 	
-	public BigInteger submitDataForApproval (  CommonDualControlContainerTable dualControlledData , DualControlEnabledOperation operation) throws Exception ;
+	public Long submitDataForApproval (  CommonDualControlContainerTable dualControlledData , DualControlEnabledOperation operation) throws Exception ;
 	
 	
 	
@@ -86,7 +79,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	/**
 	 * approve data bulk. yang di kirim cuma Id dari approval data
 	 */
-	public void approveAndApplyBulkData ( BigInteger bulkDataId ) throws Exception ;
+	public void approveAndApplyBulkData ( Long bulkDataId ) throws Exception ;
 	
 	
 	
@@ -95,7 +88,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * @param bulkDataId id dari data bulk
 	 * @param rejectReason alasan penolakan
 	 */
-	public void rejectBulkData ( BigInteger bulkDataId , String rejectReason) throws Exception ;
+	public void rejectBulkData ( Long bulkDataId , String rejectReason) throws Exception ;
 	
 	
 	/**
@@ -108,7 +101,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * @param dataId id data yang di reject
 	 * @param rejectReason alasan data di tolak oleh user
 	 **/
-	public void rejectData (BigInteger dataId , String rejectReason) throws Exception ; 
+	public void rejectData (Long dataId , String rejectReason) throws Exception ; 
 	
 	
 	
@@ -136,7 +129,7 @@ public interface DualControlDataRPCService extends JSONSerializedRemoteService{
 	 * @param pageSize ukuran page per pembacaan data
 	 * @param page page berapa yang akan di baca
 	 */
-	public <DATA extends DualControlEnabledData<?,?>> PagedResultHolder<DATA> getBulkApprovalDataDetails ( BigInteger approvalDataId , int pageSize, int page) throws Exception ;
+	public <DATA extends DualControlEnabledData<?,?>> PagedResultHolder<DATA> getBulkApprovalDataDetails ( Long approvalDataId , int pageSize, int page) throws Exception ;
 	
 	
 	/**

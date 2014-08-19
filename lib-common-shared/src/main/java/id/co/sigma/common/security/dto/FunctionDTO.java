@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -18,24 +17,24 @@ public class FunctionDTO implements Serializable,IsSerializable, IJSONFriendlyOb
 	
 	private static final long serialVersionUID = -7077085112270326039L;
 	
-	private BigInteger id;
-	private BigInteger idParent;
+	private Long id;
+	private Long idParent;
 	private String functionCodeParent;
 	private String functionLabelParent;
 	private String functionCode;
 	private String functionLabel;
 	private Boolean functionStatus;
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public BigInteger getIdParent() {
+	public Long getIdParent() {
 		return idParent;
 	}
-	public void setIdParent(BigInteger idParent) {
+	public void setIdParent(Long idParent) {
 		this.idParent = idParent;
 	}
 	public String getFunctionCodeParent() {
@@ -88,8 +87,8 @@ public class FunctionDTO implements Serializable,IsSerializable, IJSONFriendlyOb
 		retval.setFunctionLabel( (String)jsonContainer.get("functionLabel" ,  String.class.getName()));
 		retval.setFunctionLabelParent( (String)jsonContainer.get("functionLabelParent" ,  String.class.getName()));
 		retval.setFunctionStatus( (Boolean)jsonContainer.get("functionStatus" ,  Boolean.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
-		retval.setIdParent( (BigInteger)jsonContainer.get("idParent" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
+		retval.setIdParent( (Long)jsonContainer.get("idParent" ,  Long.class.getName()));
 		return retval; 
 	}
 }

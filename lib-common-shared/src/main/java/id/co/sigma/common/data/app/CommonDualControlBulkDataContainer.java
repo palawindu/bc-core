@@ -3,7 +3,7 @@ package id.co.sigma.common.data.app;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +37,7 @@ public class CommonDualControlBulkDataContainer implements IJSONFriendlyObject<C
 	 */
 	@Id
 	@Column(name="pk")
-	private BigInteger id;
+	private Long id;
 	
 	
 	/**
@@ -70,7 +70,7 @@ public class CommonDualControlBulkDataContainer implements IJSONFriendlyObject<C
 	 * column : PK 
 	 * primary key dari data
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
@@ -79,7 +79,7 @@ public class CommonDualControlBulkDataContainer implements IJSONFriendlyObject<C
 	 * column : PK 
 	 * primary key dari data
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -145,7 +145,7 @@ public class CommonDualControlBulkDataContainer implements IJSONFriendlyObject<C
 	public CommonDualControlBulkDataContainer instantiateFromJSON(
 			ParsedJSONContainer jsonContainer) {
 		CommonDualControlBulkDataContainer retval = new CommonDualControlBulkDataContainer(); 
-		retval.id = jsonContainer.getAsBigInteger("id"); 
+		retval.id = (Long)jsonContainer.get("id" , Long.class.getName()); 
 		retval.bulkDataAsJson = jsonContainer.getAsString("bulkDataAsJson"); 
 		retval.dataCount = jsonContainer.getAsInteger("dataCount"); 
 		retval.dualControlContainerTable = (HeaderDataOnlyCommonDualControlContainerTable) jsonContainer

@@ -1,6 +1,6 @@
 package id.co.sigma.common.server.dao.util.impl;
 
-import java.lang.annotation.Annotation;
+
 import java.lang.reflect.Field;
 
 import javax.persistence.FetchType;

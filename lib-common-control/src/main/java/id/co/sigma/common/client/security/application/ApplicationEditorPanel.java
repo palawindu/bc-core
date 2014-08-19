@@ -10,7 +10,7 @@ import id.co.sigma.common.client.security.rpc.ApplicationRPCServiceAsync;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -104,7 +104,7 @@ public class ApplicationEditorPanel extends BaseAriumSecurityComposite{
 		ApplicationDTO data = new ApplicationDTO();		
 		String appId = txtApplicationId.getValue();
 		if(!appId.equals("")){
-			data.setId(new BigInteger(txtApplicationId.getValue()));
+			data.setId(new Long (  txtApplicationId.getValue()));
 			isActive = chkActive.getValue();
 		}		
 		data.setApplicationCode(txtApplicationCode.getValue());

@@ -13,8 +13,6 @@ import id.co.sigma.common.data.serializer.IntegerSerializer;
 import id.co.sigma.common.data.serializer.LongSerializer;
 import id.co.sigma.common.data.serializer.StringSerializer;
 import id.co.sigma.common.data.serializer.VoidSerializer;
-import id.co.sigma.common.util.json.ParsedJSONContainer;
-import id.co.sigma.common.util.json.SharedServerClientLogicManager;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -36,7 +34,7 @@ public final class ObjectSerializerManager {
      /**
      * tipe data simple yang tidak di json kan
      */
-    public final static Class [] SIMPLE_OBJECTS  ={
+    public final static Class <?>[] SIMPLE_OBJECTS  ={
         Long.class , 
         long.class , 
         Integer.class , 
@@ -134,7 +132,7 @@ public final class ObjectSerializerManager {
     /**
      * register serializer ke dalam manager
      */
-    public void registerSerializer (ObjectSerializer serializer ){
+    public void registerSerializer (ObjectSerializer<?> serializer ){
         if ( serializer==null || serializer.acceptedClassFQCNS()== null || serializer.acceptedClassFQCNS().length ==0)
             return ; 
         for ( String scn : serializer.acceptedClassFQCNS()){

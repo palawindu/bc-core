@@ -8,7 +8,7 @@ package id.co.sigma.common.client.rpc.impl;
  * @since Sep 6, 2013, 4:57:22 PM
  *
  */
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 
@@ -38,25 +38,15 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 		return DualControlDataRPCService.class;
 	}
 	
-	/*
-		public void getDataById(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<id.co.sigma.common.data.app.CommonDualControlContainerTable> callback) {
-		this.submitRPCRequestRaw( "getDataById", new Class<?>[]{
-			java.math.BigInteger.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
-	}*/
+	
 		
 		
 	@Override
 	public void getWaitApprovalDataWithToken(
-			BigInteger id,
+			Long id,
 			AsyncCallback<DataWithToken<CommonDualControlContainerTable>> callback) {
 		this.submitRPCRequestRaw( "getWaitApprovalDataWithToken", new Class<?>[]{
-				java.math.BigInteger.class,
+				Long.class,
 			}, 
 			new Object[]{
 				 id, 
@@ -66,9 +56,9 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 	}	
 
 
-	public void rejectData(java.math.BigInteger param0,java.lang.String param1,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
+	public void rejectData(Long param0,java.lang.String param1,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
 		this.submitRPCRequestRaw( "rejectData", new Class<?>[]{
-			java.math.BigInteger.class,java.lang.String.class, 
+				Long.class,java.lang.String.class, 
 			
 		}, 
 		new Object[]{
@@ -104,7 +94,7 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 	}
 
 
-	public void submitDataForApproval(id.co.sigma.common.data.app.CommonDualControlContainerTable param0,id.co.sigma.common.data.app.DualControlEnabledOperation param1,com.google.gwt.user.client.rpc.AsyncCallback<java.math.BigInteger> callback) {
+	public void submitDataForApproval(id.co.sigma.common.data.app.CommonDualControlContainerTable param0,id.co.sigma.common.data.app.DualControlEnabledOperation param1,com.google.gwt.user.client.rpc.AsyncCallback<Long> callback) {
 		this.submitRPCRequestRaw( "submitDataForApproval", new Class<?>[]{
 			id.co.sigma.common.data.app.CommonDualControlContainerTable.class,id.co.sigma.common.data.app.DualControlEnabledOperation.class, 
 			
@@ -158,10 +148,10 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 	 */
 	@Override
 	public <DATA extends DualControlEnabledData<?, ?>> void getBulkApprovalDataDetails(
-			BigInteger approvalDataId, int pageSize, int page,
+			Long approvalDataId, int pageSize, int page,
 			AsyncCallback<PagedResultHolder<DATA>> callback) {
 		this.submitRPCRequestRaw( "getBulkApprovalDataDetails", new Class<?>[]{
-				BigInteger.class , 
+				Long.class , 
 				int.class , 
 				int.class
 			}, 
@@ -185,10 +175,10 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 	}
 
 	@Override
-	public void approveAndApplyBulkData(BigInteger bulkDataId,
+	public void approveAndApplyBulkData(Long bulkDataId,
 			AsyncCallback<Void> callback)  {
 		this.submitRPCRequestRaw( "approveAndApplyBulkData", new Class<?>[]{
-				BigInteger.class 
+				Long.class 
 		}, 
 		new Object[]{
 			bulkDataId
@@ -197,10 +187,10 @@ public class DualControlDataRPCServiceAsyncImpl extends ManualJSONSerializeRPCSe
 	}
 
 	@Override
-	public void rejectBulkData(BigInteger bulkDataId, String rejectReason,
+	public void rejectBulkData(Long bulkDataId, String rejectReason,
 			AsyncCallback<Void> callback)  {
 		this.submitRPCRequestRaw( "rejectBulkData", new Class<?>[]{
-			BigInteger.class , 
+				Long.class , 
 			String.class
 		}, 
 		new Object[]{

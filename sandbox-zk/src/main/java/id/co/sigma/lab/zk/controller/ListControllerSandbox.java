@@ -8,11 +8,10 @@ import org.zkoss.zul.Button;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 
-
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.sandbox.shared.domain.Person;
 import id.co.sigma.zk.ui.annotations.QueryParameterEntry;
-import id.co.sigma.zk.ui.controller.BaseSimpleListController;
+import id.co.sigma.zk.ui.controller.base.BaseSimpleListController;
 
 /**
  * 

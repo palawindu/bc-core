@@ -6,7 +6,7 @@ import id.co.sigma.common.exception.InvalidTokenException;
  * service untuk handle RPC security. lebih ke arah token
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public interface IRPCSecurityService {
+public interface IRPCSecurityService extends IBaseService{
 	
 	
 	

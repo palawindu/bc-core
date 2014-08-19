@@ -2,12 +2,8 @@ package id.co.sigma.common.client.form;
 
 import java.util.ArrayList;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ChangeEvent;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.DomEvent;
+
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
 
@@ -26,10 +22,11 @@ public class ExtendedListBox extends BaseExtendedListbox  implements HasValue<St
 	
 	
 	
-	private ArrayList<ValueChangeHandler<String[]>> changeHandlers = new ArrayList<ValueChangeHandler<String[]>>(); 
+	ArrayList<ValueChangeHandler<String[]>> changeHandlers = new ArrayList<ValueChangeHandler<String[]>>(); 
 	
 	public ExtendedListBox(){
-		super(true); 
+		super(true);
+		/*
 		addChangeHandler(new ChangeHandler() {
 			
 			@Override
@@ -43,7 +40,8 @@ public class ExtendedListBox extends BaseExtendedListbox  implements HasValue<St
 				}
 				
 			}
-		}); 
+		});
+		*/ 
 	}
 	
 	

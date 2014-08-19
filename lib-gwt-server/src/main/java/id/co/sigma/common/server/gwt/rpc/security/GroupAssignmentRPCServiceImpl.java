@@ -6,18 +6,15 @@ import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 import id.co.sigma.common.security.rpc.GroupAssignmentRPCService;
 import id.co.sigma.security.server.service.IUserGroupAssignmentService;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-/*@WebServlet(
-		name="id.co.sigma.arium.security.server.rpc.GroupAssignmentRPCServiceImpl" , 
-		description="Servlet RPC untuk handle Group User" , 
-		urlPatterns={"/sigma-rpc/group-assignment.app-rpc"})*/
-public class GroupAssignmentRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/BaseSecurityRPCService<GroupAssignmentRPCService> implements GroupAssignmentRPCService{
 
-	private static final long serialVersionUID = 8846531085713519227L;
+public class GroupAssignmentRPCServiceImpl extends BaseSecurityRPCService<GroupAssignmentRPCService> implements GroupAssignmentRPCService{
+
+
 
 	@Autowired
 	private IUserGroupAssignmentService groupAssignmentService;
@@ -33,14 +30,14 @@ public class GroupAssignmentRPCServiceImpl extends /*BaseSelfRegisteredRPCServic
 	}
 
 	@Override
-	public void delete(BigInteger data) throws Exception {
+	public void delete(Long data) throws Exception {
 		UserGroupAssignment parameter = new UserGroupAssignment();
 		parameter.setId(data);
 		groupAssignmentService.delete(parameter);	
 	}
 
 	@Override
-	public List<UserGroupAssignmentDTO> getUserGroupByUserId(BigInteger userId) throws Exception {		
+	public List<UserGroupAssignmentDTO> getUserGroupByUserId(Long userId) throws Exception {		
 		return groupAssignmentService.getGroupByUserId(userId);
 	}
 

@@ -5,14 +5,14 @@
 package id.co.sigma.common.client.app;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbstractImagePrototype;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import id.co.sigma.common.client.style.CommonResourceBundle;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.common.util.NativeJsUtilities;

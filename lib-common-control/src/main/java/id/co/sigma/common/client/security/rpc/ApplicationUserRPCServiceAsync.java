@@ -6,7 +6,7 @@ import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 import id.co.sigma.common.security.menu.ApplicationMenuSecurity;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -49,7 +49,7 @@ public interface ApplicationUserRPCServiceAsync {
 	 * @param currentUser
 	 * @param callback
 	 */
-	void insertOrUpdate(List<UserGroupAssignmentDTO> data, BigInteger applicationId, BigInteger userId, String currentUser, AsyncCallback<Void> callback);
+	void insertOrUpdate(List<UserGroupAssignmentDTO> data, Long applicationId, Long userId, String currentUser, AsyncCallback<Void> callback);
 	
 	/**
 	 * Delete application user
@@ -57,7 +57,7 @@ public interface ApplicationUserRPCServiceAsync {
 	 * @param userId
 	 * @param callback
 	 */
-	void deleteApplicationUser(BigInteger applicationId, BigInteger userId, AsyncCallback<Void> callback);
+	void deleteApplicationUser(Long applicationId, Long userId, AsyncCallback<Void> callback);
 	
 	/**
 	 * Get application menu berdasarkan user yg login pada signon data

@@ -4,7 +4,7 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,7 +41,7 @@ public class CommonApprovalHeader implements Serializable , IJSONFriendlyObject<
 	@Id
 	@Column(name="pk", nullable=true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    private BigInteger id;
+    private Long id;
 	 
 	/**
 	* fqcn class POJO data<br/>
@@ -153,7 +153,7 @@ public class CommonApprovalHeader implements Serializable , IJSONFriendlyObject<
 	* Primary key dari data<br/>
 	* column :pk
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	 
@@ -161,7 +161,7 @@ public class CommonApprovalHeader implements Serializable , IJSONFriendlyObject<
 	* Primary key dari data<br/>
 	* column :pk
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	 
@@ -331,7 +331,7 @@ public class CommonApprovalHeader implements Serializable , IJSONFriendlyObject<
 		retval.setApprovalStatusCode( (String)jsonContainer.get("approvalStatusCode" ,  String.class.getName()));
 		retval.setApprovedTime( (Date)jsonContainer.get("approvedTime" ,  Date.class.getName()));
 		retval.setApproverUserName( (String)jsonContainer.get("approverUserName" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setRequestRemark( (String)jsonContainer.get("requestRemark" ,  String.class.getName()));
 		retval.setRequestTime( (Date)jsonContainer.get("requestTime" ,  Date.class.getName()));
 		retval.setRequestorUserName( (String)jsonContainer.get("requestorUserName" ,  String.class.getName()));

@@ -5,7 +5,7 @@
  */
 package id.co.sigma.common.security.domain;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -38,13 +38,13 @@ public class Branch extends BaseAuditedObject implements IJSONFriendlyObject<Bra
 	@Id	
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="BRANCH_ID")
-	private BigInteger id;
+	private Long id;
 	/**
 	* reference ke parent<br/>
 	* column :BRANCH_ID_PARENT
 	**/
 	@Column(name="BRANCH_ID_PARENT")
-	private BigInteger branchParendId;
+	private Long branchParendId;
 	/**
 	* kode cabang<br/>
 	* column :BRANCH_CODE
@@ -87,7 +87,7 @@ public class Branch extends BaseAuditedObject implements IJSONFriendlyObject<Bra
 	 * Additional Branch
 	 * @param idBranch
 	 */
-	public Branch(BigInteger idBranch){
+	public Branch(Long idBranch){
 		this.id = idBranch;
 	}
 	
@@ -95,28 +95,28 @@ public class Branch extends BaseAuditedObject implements IJSONFriendlyObject<Bra
 	* branch id<br/>
 	* column :BRANCH_ID
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	/**
 	* branch id<br/>
 	* column :BRANCH_ID
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	/**
 	* reference ke parent<br/>
 	* column :BRANCH_ID_PARENT
 	**/
-	public void setBranchParendId(BigInteger branchParendId){
+	public void setBranchParendId(Long branchParendId){
 	  this.branchParendId=branchParendId;
 	}
 	/**
 	* reference ke parent<br/>
 	* column :BRANCH_ID_PARENT
 	**/
-	public BigInteger getBranchParendId(){
+	public Long getBranchParendId(){
 	    return this.branchParendId;
 	}
 	/**
@@ -286,12 +286,12 @@ public class Branch extends BaseAuditedObject implements IJSONFriendlyObject<Bra
 		retval.setBranchAddress( (String)jsonContainer.get("branchAddress" ,  String.class.getName()));
 		retval.setBranchCode( (String)jsonContainer.get("branchCode" ,  String.class.getName()));
 		retval.setBranchName( (String)jsonContainer.get("branchName" ,  String.class.getName()));
-		retval.setBranchParendId( (BigInteger)jsonContainer.get("branchParendId" ,  BigInteger.class.getName()));
+		retval.setBranchParendId( (Long)jsonContainer.get("branchParendId" ,  Long.class.getName()));
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		retval.setDescription( (String)jsonContainer.get("description" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
 		retval.setModifiedByIPAddress( (String)jsonContainer.get("modifiedByIPAddress" ,  String.class.getName()));
 		retval.setModifiedOn( (Date)jsonContainer.get("modifiedOn" ,  Date.class.getName()));

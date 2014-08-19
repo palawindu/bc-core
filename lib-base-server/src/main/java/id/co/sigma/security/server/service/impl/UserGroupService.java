@@ -8,7 +8,7 @@ import id.co.sigma.security.server.dao.impl.UserGroupAssignmentDaoImpl;
 import id.co.sigma.security.server.dao.impl.UserGroupDaoImpl;
 import id.co.sigma.security.server.service.IUserGroupService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -78,7 +78,7 @@ public class UserGroupService implements IUserGroupService{
 
 	@Transactional(readOnly=false)
 	@Override
-	public void delete(BigInteger paramater) throws Exception {		
+	public void delete(Long paramater) throws Exception {		
 		/*DELETE sec_function_assignment*/
 		functionAssignmentDao.deleteFunctionByGroupId(paramater);
 		

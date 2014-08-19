@@ -4,6 +4,8 @@ import id.co.sigma.common.data.ICreateAuditedData;
 import id.co.sigma.common.data.IModifyAuditedData;
 import id.co.sigma.common.exception.BaseIsSerializableException;
 import id.co.sigma.common.exception.IStackTraceToStringWorker;
+import id.co.sigma.common.server.dao.IGeneralPurposeDao;
+import id.co.sigma.common.server.util.ExtendedBeanUtils;
 import id.co.sigma.security.server.CoreServerUserDetail;
 
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.Date;
 
@@ -18,12 +21,10 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
-import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -39,6 +40,9 @@ public abstract class AbstractService implements IBaseService{
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(AbstractService.class);
+	
+	@Autowired
+	private IGeneralPurposeDao  generalPurposeDao ;
 	
 	/**
 	 * init proccess
@@ -207,4 +211,60 @@ public abstract class AbstractService implements IBaseService{
             
         
         }
+        
+        @Override
+        public <DATA extends Serializable> DATA insertNewData(DATA newData)
+        		throws Exception {
+        	if ( newData == null)
+        		return null ; 
+        	if ( newData instanceof ICreateAuditedData){
+        		touchCreateTimestamp((ICreateAuditedData)newData); 
+        	}
+        	generalPurposeDao.insert (newData);
+        	return newData;
+        }
+        
+        @Override
+        public <DATA extends Serializable> void updateData(DATA updatedData,
+        		String pkFieldName, String[] modifiedFields) throws Exception {
+        	if ( updatedData == null)
+        		return  ; 
+        	if ( modifiedFields== null || modifiedFields.length==0){
+        		logger.warn("update data : " + updatedData.getClass().getName() + " tidak menyertakan field sama sekali, tidak ada statement update yang di eksekusi");
+        		return   ; 
+        	}
+        	Object swapPK  = ExtendedBeanUtils.getInstance().getProperty(updatedData, pkFieldName); 
+        	if ( swapPK == null || !(swapPK instanceof Serializable)){
+        		throw new RuntimeException("class : " + updatedData.getClass().getName() + ", tidak bisa di update. primary key field class [" + pkFieldName + "]  tidak bisa di baca dari object yang di kirimkan. silakan review kembali code anda"); 
+        	}
+        	Serializable s = (Serializable) swapPK ; 
+        	Serializable o =generalPurposeDao.get(updatedData.getClass(), s);
+        	ExtendedBeanUtils.getInstance().copyPropertiesWithSpecifiedItemOnly(updatedData, 0, modifiedFields);
+        	if ( o instanceof IModifyAuditedData){
+        		touchModifyTimestamp((IModifyAuditedData)o);
+        	}
+        	generalPurposeDao.update(o);
+        }
+        
+        @Override
+        public <DATA extends Serializable> void updateDataWithExcludedFields(
+        		DATA updatedData, String pkFieldName, String[] excludedField)
+        		throws Exception {
+        	if ( updatedData == null)
+        		return  ; 
+        	
+        	Object swapPK  = ExtendedBeanUtils.getInstance().getProperty(updatedData, pkFieldName); 
+        	if ( swapPK == null || !(swapPK instanceof Serializable)){
+        		throw new RuntimeException("class : " + updatedData.getClass().getName() + ", tidak bisa di update. primary key field class [" + pkFieldName + "]  tidak bisa di baca dari object yang di kirimkan. silakan review kembali code anda"); 
+        	}
+        	Serializable s = (Serializable) swapPK ; 
+        	Serializable o =generalPurposeDao.get(updatedData.getClass(), s);
+        	ExtendedBeanUtils.copyProperties( updatedData, 0, excludedField);
+        	if ( o instanceof IModifyAuditedData){
+        		touchModifyTimestamp((IModifyAuditedData)o);
+        	}
+        	generalPurposeDao.update(o);
+        	
+        }
+        
 }

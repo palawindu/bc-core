@@ -1,6 +1,6 @@
 package id.co.sigma.common.client.control.worklist;
 
-import com.google.gwt.core.client.GWT;
+
 
 import id.co.sigma.common.client.control.IFormElementConfiguration;
 import id.co.sigma.common.client.control.OnScreenConfigurableControl;

@@ -8,7 +8,6 @@ import id.co.sigma.security.server.service.IUserLoginService;
 import id.co.sigma.security.server.service.impl.UserLoginService;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -41,8 +40,8 @@ public class CoreServerAuthentificationSuccess extends BaseSecurityService imple
 	@Resource(name="securityHostAddress")
 	private String securityHostAddress;
 	
-	private BigInteger securityApplicationIdAsBigInt ; 
-	private BigInteger securityApplicationIdDevAsBigInt;
+	private Long securityApplicationIdAsLong ; 
+	private Long securityApplicationIdDevAsLong;
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse respone, 
@@ -53,8 +52,8 @@ public class CoreServerAuthentificationSuccess extends BaseSecurityService imple
 			CoreServerUserDetail userSigma = getSigmaUserDetailFromSecurityContext();		
 			
 			//Pengecekan apakah user login sebagai QA atau developer
-			if(user.getApplicationId().compareTo(securityApplicationIdAsBigInt) == 0 || 
-					user.getApplicationId().compareTo(securityApplicationIdDevAsBigInt) == 0){			
+			if(user.getApplicationId().compareTo(securityApplicationIdAsLong) == 0 || 
+					user.getApplicationId().compareTo(securityApplicationIdDevAsLong) == 0){			
 				securityAppHandler(request, respone, userSigma);
 			}else{
 				try {
@@ -101,7 +100,7 @@ public class CoreServerAuthentificationSuccess extends BaseSecurityService imple
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		securityApplicationIdAsBigInt = new  BigInteger(securityApplicationId) ;
-		securityApplicationIdDevAsBigInt = new BigInteger(securityApplicationIdDev);
+		securityApplicationIdAsLong = new  Long(securityApplicationId) ;
+		securityApplicationIdDevAsLong = new Long(securityApplicationIdDev);
 	}
 }

@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -18,11 +17,11 @@ public class UserGroupAssignmentDTO implements Serializable,IsSerializable, IJSO
 
 	private static final long serialVersionUID = 1150676999888785821L;
 	
-	private BigInteger id;
-	private BigInteger userId;
+	private Long id;
+	private Long userId;
 	private String username;
 	private String fullname;
-	private BigInteger groupId;
+	private Long groupId;
 	private String groupCode;
 	private String groupName;
 	
@@ -30,7 +29,7 @@ public class UserGroupAssignmentDTO implements Serializable,IsSerializable, IJSO
 		super();
 	}
 	
-	public UserGroupAssignmentDTO(BigInteger id,String username,String fullname){
+	public UserGroupAssignmentDTO(Long id,String username,String fullname){
 		this.id = id;
 		this.username = username;
 		this.fullname = fullname;
@@ -40,17 +39,17 @@ public class UserGroupAssignmentDTO implements Serializable,IsSerializable, IJSO
 		this.groupCode = groupCode;
 		this.groupName = groupName;
 	}	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}	
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -66,10 +65,10 @@ public class UserGroupAssignmentDTO implements Serializable,IsSerializable, IJSO
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}	
-	public BigInteger getGroupId() {
+	public Long getGroupId() {
 		return groupId;
 	}
-	public void setGroupId(BigInteger groupId) {
+	public void setGroupId(Long groupId) {
 		this.groupId = groupId;
 	}
 	public String getGroupCode() {
@@ -101,10 +100,10 @@ public class UserGroupAssignmentDTO implements Serializable,IsSerializable, IJSO
 		UserGroupAssignmentDTO retval = new UserGroupAssignmentDTO();
 		retval.setFullname( (String)jsonContainer.get("fullname" ,  String.class.getName()));
 		retval.setGroupCode( (String)jsonContainer.get("groupCode" ,  String.class.getName()));
-		retval.setGroupId( (BigInteger)jsonContainer.get("groupId" ,  BigInteger.class.getName()));
+		retval.setGroupId( (Long)jsonContainer.get("groupId" ,  Long.class.getName()));
 		retval.setGroupName( (String)jsonContainer.get("groupName" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		retval.setUsername( (String)jsonContainer.get("username" ,  String.class.getName()));
 		return retval; 
 	}

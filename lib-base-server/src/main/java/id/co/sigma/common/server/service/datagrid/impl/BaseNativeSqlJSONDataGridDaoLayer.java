@@ -4,14 +4,11 @@
  */
 package id.co.sigma.common.server.service.datagrid.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import id.co.sigma.common.data.PagedResultHolder;
+
 import id.co.sigma.common.data.query.BaseGridDataProviderNativeSql;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;

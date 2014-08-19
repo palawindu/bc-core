@@ -3,7 +3,7 @@ package id.co.sigma.security.server.dao;
 import id.co.sigma.common.security.domain.UserGroup;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -37,14 +37,14 @@ public interface IUserGroupAssignmentDao {
 	 * @param groupId
 	 * @throws Exception
 	 */
-	public void deleteGroupAssignmentByGroupId(BigInteger groupId) throws Exception;
+	public void deleteGroupAssignmentByGroupId(Long groupId) throws Exception;
 	
 	/**
 	 * Delete group assignmeny berdasarkan user id
 	 * @param userId
 	 * @throws Exception
 	 */
-	public void deleteGroupAssignmentByUserId(BigInteger userId) throws Exception;
+	public void deleteGroupAssignmentByUserId(Long userId) throws Exception;
 	
 	/**
 	 * Delete group assignment berdasarkan group id dan user id
@@ -52,7 +52,7 @@ public interface IUserGroupAssignmentDao {
 	 * @param groupId
 	 * @throws Exception
 	 */
-	public void deleteGroupAssignmenyByUserGroupId(BigInteger userId, BigInteger groupId) throws Exception;
+	public void deleteGroupAssignmenyByUserGroupId(Long userId, Long groupId) throws Exception;
 	
 	/**
 	 * Get all group assignment by user id
@@ -60,7 +60,7 @@ public interface IUserGroupAssignmentDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserGroupAssignment> getDataByUserId(BigInteger userId) throws Exception;
+	public List<UserGroupAssignment> getDataByUserId(Long userId) throws Exception;
 	
 	
 	

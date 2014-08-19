@@ -2,7 +2,7 @@ package id.co.sigma.common.client.security.applicationuser;
 
 import id.co.sigma.common.security.domain.ApplicationUser;
 import id.co.sigma.common.security.domain.ApplicationUserKey;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.dto.UserDTO;
 import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 import id.co.sigma.common.client.form.advance.TextBoxWithLabel;
@@ -18,7 +18,7 @@ import id.co.sigma.common.control.SingleValueLookupResultHandler;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQTabContainerPanel;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +57,7 @@ public class ApplicationUserEditorPanel extends BaseAriumSecurityComposite imple
 	 */
 	private JQTabContainerPanel tabContainer;
 	private MenuTree menuTree;
-	private List<BigInteger> groupIds;
+	private List<Long> groupIds;
 	
 	interface ApplicationUserEditorPanelUiBinder extends
 			UiBinder<Widget, ApplicationUserEditorPanel> {
@@ -73,7 +73,7 @@ public class ApplicationUserEditorPanel extends BaseAriumSecurityComposite imple
 		tabContainer = new JQTabContainerPanel();
 		menuTree = new MenuTree();
 		menuTree.setSize(480, 220);
-		groupIds = new ArrayList<BigInteger>();
+		groupIds = new ArrayList<Long>();
 		
 		panelGrid.add(tabContainer);
 		
@@ -191,7 +191,7 @@ public class ApplicationUserEditorPanel extends BaseAriumSecurityComposite imple
 	/**
 	 * Request data ke RPC
 	 */
-	private void getDataGroup(BigInteger userId){		
+	private void getDataGroup(Long userId){		
 		GroupAssignmentRPCServiceAsync.Util.getInstance().getUserGroupByUserId(userId, new AsyncCallback<List<UserGroupAssignmentDTO>>() {
 			@Override
 			public void onFailure(Throwable data) {
@@ -223,7 +223,7 @@ public class ApplicationUserEditorPanel extends BaseAriumSecurityComposite imple
 				
 				//create menu tree
 				try {
-					  FunctionRPCServiceAsync.Util.getInstance().getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(groupIds, new AsyncCallback<List<Function>>() {
+					  FunctionRPCServiceAsync.Util.getInstance().getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(groupIds, new AsyncCallback<List<ApplicationMenu>>() {
 
 						  @Override
 						  public void onFailure(Throwable e) {
@@ -232,7 +232,7 @@ public class ApplicationUserEditorPanel extends BaseAriumSecurityComposite imple
 						  }
 						  
 						  @Override
-						  public void onSuccess(List<Function> result) {
+						  public void onSuccess(List<ApplicationMenu> result) {
 							  menuTree.generateTree(result);
 							  
 							  //jika result null atau empty tampilkan pesan ini

@@ -9,7 +9,7 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -19,7 +19,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * @since Dec 10, 2012, 2:47:19 PM
  * @version $Id
  */
-public class LookupUser extends SecurityBaseSimpleSingleResultLookupDialog<BigInteger, UserDTO>{
+public class LookupUser extends SecurityBaseSimpleSingleResultLookupDialog<Long, UserDTO>{
 
 	@Override
 	protected String getLookupTitleI18Key() {		

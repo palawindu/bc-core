@@ -3,14 +3,14 @@
  */
 package id.co.sigma.security.server.service.impl;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.exception.MenuHaveChildException;
 import id.co.sigma.security.server.dao.IFunctionAssignmentDao;
 import id.co.sigma.security.server.dao.IFunctionDao;
 import id.co.sigma.security.server.service.IFunctionService;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 
@@ -45,12 +45,12 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 	private static final Logger logger = LoggerFactory.getLogger(FunctionServiceImpl.class); 
 
 	@Override
-	public List<Function> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<BigInteger> groupIds)
+	public List<ApplicationMenu> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<Long> groupIds)
 			throws Exception {
-		List<BigInteger> functionIds = functionAssignmentDao.getFunctionIdByGroupId(groupIds);
+		List<Long> functionIds = functionAssignmentDao.getFunctionIdByGroupId(groupIds);
 		if (functionIds == null || functionIds.isEmpty())
 			return null;
-		List<Function> result = functionDao.getFunctionByFunctionIdOrderByTreeLevelAndSiblingOrder(functionIds);
+		List<ApplicationMenu> result = functionDao.getFunctionByFunctionIdOrderByTreeLevelAndSiblingOrder(functionIds);
 		javaAssistDodge(result);
 		return result;
 	}
@@ -59,25 +59,25 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 	 * menghidari java assist dengan menulkan field2 yang bertipe object pojo
 	 * @param listData list dari data yang di nulkan, sifat param yang diinginkan pass by reference
 	 */
-	private void javaAssistDodge(List<Function> listData) {
-		for (Function data : listData) {
+	private void javaAssistDodge(List<ApplicationMenu> listData) {
+		for (ApplicationMenu data : listData) {
 			data.setApplication(null);
 			data.setPageDefinition(null);
 		}
 	}
 	
 	@Override
-	public List<Function> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(
-			BigInteger applicationId) throws Exception {
-		List<Function> result = functionDao.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(applicationId);
+	public List<ApplicationMenu> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(
+			Long applicationId) throws Exception {
+		List<ApplicationMenu> result = functionDao.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(applicationId);
 		javaAssistDodge(result);
 		return result;
 	}
 
 	@Override
-	public Function getFunctionById(BigInteger functionId) {
+	public ApplicationMenu getFunctionById(Long functionId) {
 		try {
-			return this.functionDao.get(Function.class, functionId);
+			return this.functionDao.get(ApplicationMenu.class, functionId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null ; 
@@ -86,14 +86,14 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 
 	@Override
 	@Transactional(readOnly=false , propagation=Propagation.REQUIRED)
-	public void updateFunction(Function function) throws Exception {
+	public void updateFunction(ApplicationMenu function) throws Exception {
 		functionDao.update(function);
 		
 	}
 
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
 	@Override
-	public void eraseApplicationMenu(BigInteger applicationMenuId)
+	public void eraseApplicationMenu(Long applicationMenuId)
 			throws Exception {
 		// TODO ini berat, implement yang detail, ke sema node
 		
@@ -115,7 +115,7 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 	 * @return true = have child, false = not
 	 * @throws Exception
 	 */
-	private boolean isFunctionHaveChild(BigInteger parentId) throws Exception {
+	private boolean isFunctionHaveChild(Long parentId) throws Exception {
 		Long numberOfChild = functionDao.getFunctionByFunctionIdParent(parentId);
 		boolean retval = numberOfChild > 0 ? true : false;
 		return retval;
@@ -127,8 +127,8 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 			throws Exception {
 		//1. set field2 yang belum di set
 		//2. set sibling order
-		Function data = translateApplicationMenuDTOToFunction(newData);
-		data.setApplicationId(new BigInteger(currentApplicationIdAsString));
+		ApplicationMenu data = translateApplicationMenuDTOToFunction(newData);
+		data.setApplicationId(new Long(currentApplicationIdAsString));
 		//set status menu active
 		data.setStatus("A");
 		Integer siblingOrder = functionDao.getNextSiblingOrder(data.getFunctionIdParent(), data.getApplicationId());
@@ -152,8 +152,8 @@ public class FunctionServiceImpl implements IFunctionService , ApplicationContex
 	 * @param dtoData
 	 * @return
 	 */
-	private Function translateApplicationMenuDTOToFunction(ApplicationMenuDTO dtoData) {
-		Function data = new Function();
+	private ApplicationMenu translateApplicationMenuDTOToFunction(ApplicationMenuDTO dtoData) {
+		ApplicationMenu data = new ApplicationMenu();
 		data.setFunctionCode(dtoData.getCode());
 		data.setFunctionLabel(dtoData.getLabel());
 		data.setPageId(dtoData.getPageId());

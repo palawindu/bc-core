@@ -7,7 +7,7 @@ import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.domain.Application;
 import id.co.sigma.common.security.dto.ApplicationDTO;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -52,5 +52,5 @@ public interface IApplicationService {
 	/**
 	 * Id app current, refer ke {@link #currentApplicationIdAsString}
 	 **/
-	public BigInteger getCurrentApplicationId() ; 
+	public Long getCurrentApplicationId() ; 
 }

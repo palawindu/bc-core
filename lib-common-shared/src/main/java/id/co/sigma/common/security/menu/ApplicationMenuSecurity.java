@@ -4,7 +4,7 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,8 +21,8 @@ public class ApplicationMenuSecurity implements Serializable,IsSerializable, IJS
 
 	private static final long serialVersionUID = 6365548759511385695L;
 	
-	private BigInteger menuId ;	
-	private BigInteger parentId ;
+	private Long menuId ;	
+	private Long parentId ;
 	private String menuCode;
 	private String label;
 	private String actionCommand;
@@ -35,11 +35,11 @@ public class ApplicationMenuSecurity implements Serializable,IsSerializable, IJS
 	private ApplicationMenuSecurity[] children;
 	private List<ApplicationMenuSecurity> childrenList;
 	
-	public BigInteger getMenuId() {
+	public Long getMenuId() {
 		return menuId;
 	}
 
-	public void setMenuId(BigInteger menuId) {
+	public void setMenuId(Long menuId) {
 		this.menuId = menuId;
 	}
 
@@ -90,11 +90,11 @@ public class ApplicationMenuSecurity implements Serializable,IsSerializable, IJS
 	public void setHaveChildren(boolean isHaveChildren) {
 		this.isHaveChildren = isHaveChildren;
 	}
-	public BigInteger getParentId() {
+	public Long getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(BigInteger parentId) {
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 	
@@ -301,11 +301,11 @@ public class ApplicationMenuSecurity implements Serializable,IsSerializable, IJS
 		retval.setLabel( (String)jsonContainer.get("label" ,  String.class.getName()));
 		retval.setLevel( (Integer)jsonContainer.get("level" ,  Integer.class.getName()));
 		retval.setMenuCode( (String)jsonContainer.get("menuCode" ,  String.class.getName()));
-		retval.setMenuId( (BigInteger)jsonContainer.get("menuId" ,  BigInteger.class.getName()));
+		retval.setMenuId( (Long)jsonContainer.get("menuId" ,  Long.class.getName()));
 		retval.setMenuTreeCode( (String)jsonContainer.get("menuTreeCode" ,  String.class.getName()));
 		retval.miscObject  = jsonContainer.getAsArraylist("miscObject", ApplicationMenuSecurity.class.getName()) ; 		
 		
-		retval.setParentId( (BigInteger)jsonContainer.get("parentId" ,  BigInteger.class.getName()));
+		retval.setParentId( (Long)jsonContainer.get("parentId" ,  Long.class.getName()));
 		retval.setSequence( (Integer)jsonContainer.get("sequence" ,  Integer.class.getName()));
 		return retval; 
 	}

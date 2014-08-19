@@ -422,9 +422,9 @@ public class ClientParsedJSONContainer extends BaseParsedJSONContainer{
 			value.translateToJSON( p); 
 			arr.set(arr.size() ,  p.jsonVal );
 		}
-		
-		
 	}
+	
+	
 	
 	
 	/**
@@ -477,6 +477,22 @@ public class ClientParsedJSONContainer extends BaseParsedJSONContainer{
 		}
 		
 	}
+	
+	@Override
+	public void appendToArray(String key, Long[] values) {
+		if ( values == null|| values.length==0){
+			this.jsonVal.put(key, JSONNull.getInstance());
+		}else{
+			JSONArray arr = new JSONArray();
+			this.jsonVal.put(key, arr);
+			int i = 0 ; 
+			for ( Long scn : values){
+				arr.set(i, scn== null? JSONNull.getInstance() : new JSONNumber(scn.doubleValue()) );
+				i++ ; 
+			}
+		}
+		
+	}
 	 
 	@Override
 	protected void putNull(String key) { 
@@ -501,6 +517,12 @@ public class ClientParsedJSONContainer extends BaseParsedJSONContainer{
 	}
 	public JSONObject getJsonVal() {
 		return jsonVal;
+	}
+	@Override
+	public void injectJSONValue(String json) {
+		JSONValue swap  = JSONParser.parseLenient(json);
+		jsonVal= swap.isObject(); 
+		
 	}
 	
 }

@@ -3,7 +3,7 @@ package id.co.sigma.common.server.service.system.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 
 import id.co.sigma.common.server.data.security.SimpleUserData;
@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+
 
 
 

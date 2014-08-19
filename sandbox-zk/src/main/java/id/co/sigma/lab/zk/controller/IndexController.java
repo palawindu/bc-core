@@ -1,8 +1,8 @@
 package id.co.sigma.lab.zk.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Map;
+
 
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
@@ -12,20 +12,15 @@ import id.co.sigma.zk.ui.SimpleQueryDrivenListModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
-import org.zkoss.bind.BindComposer;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.metainfo.ComponentInfo;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
-import org.zkoss.zk.ui.util.Initiator;
-import org.zkoss.zkplus.databind.AnnotateDataBinder;
-import org.zkoss.zul.GroupsModel;
-import org.zkoss.zul.ListModelArray;
-import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Window;
+import org.zkoss.zul.Textbox;
 
 /**
  * 
@@ -47,7 +42,7 @@ public class IndexController extends GenericForwardComposer<Component>{
 	private SimpleQueryDrivenListModel<Person> personData ;
 	
 	
-	
+	Textbox txt    ; 
 	private List<Person> persons ; 
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -92,8 +87,8 @@ public class IndexController extends GenericForwardComposer<Component>{
 		};
 		personData.initiate(personListbox.getPageSize());/**/
 		personListbox.setModel(personData);
-		Component c =  Executions.createComponents("~./metainfo/xml/hello-component.zul", null	, null);
-		
+		Executions.createComponents("~./zul/pages/HelloComponent.zul", null	, null);
+		 
 		
 		
 	}

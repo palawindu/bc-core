@@ -16,11 +16,10 @@ import id.co.sigma.jquery.client.container.JQDialog;
 import id.co.sigma.jquery.client.grid.CellButtonHandler;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 import id.co.sigma.jquery.client.grid.cols.BaseColumnDefinition;
-import id.co.sigma.jquery.client.grid.cols.BooleanColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.DateColumnDefinition;
 import id.co.sigma.jquery.client.grid.cols.StringColumnDefinition;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +38,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 	
 	private IOpenAndCloseable<User> openCloseable;
-	private IRemove<BigInteger> removeUtil;
+	private IRemove<Long> removeUtil;
 	
 	//cell button component
 	private CellButtonHandler<User> btnEdit;
@@ -164,7 +163,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 		}) {
 			@Override
 			public boolean isDataAllowMeToVisible(User data) {
-				return "A".equals(data.getActiveStatus());
+				return "A".equals(data.getActiveFlag());
 			}
 		};
 		
@@ -177,7 +176,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 		}) {
 			@Override
 			public boolean isDataAllowMeToVisible(User data) {
-				return !"A".equals(data.getActiveStatus());
+				return !"A".equals(data.getActiveFlag());
 			}
 		};
 		
@@ -190,7 +189,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 	 * @param data
 	 */
 	private void activeDeactiveUser(boolean isActive, User data) {
-		data.setActiveStatus(isActive ? "A" : "D");
+		data.setActiveFlag(isActive ? "A" : "D");
 		data.setModifiedBy(currentUserLogin);
 		data.setModifiedOn(applicationDate);
 		
@@ -226,7 +225,7 @@ public class UserGridPanel extends I18EnabledSimpleGrid<User>{
 	 * object untuk remove data
 	 * @param removeUtil
 	 */
-	public void setRemoveUtil(IRemove<BigInteger> removeUtil) {
+	public void setRemoveUtil(IRemove<Long> removeUtil) {
 		this.removeUtil = removeUtil;
 	}
 	

@@ -8,12 +8,12 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.DataNotFoundException;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.dto.PageDefinitionDTO;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -22,7 +22,6 @@ import java.util.List;
  * @version $Id
  * @since Jan 7, 2013, 10:19:50 AM
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/function.app-rpc")
 public interface FunctionRPCService extends JSONSerializedRemoteService {
 	
 	/**
@@ -31,7 +30,7 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public List<Function> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<BigInteger> groupIds) throws Exception;
+	public List<ApplicationMenu> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(List<Long> groupIds) throws Exception;
 	
 	/**
 	 * get function by application id order by tree level and sibling order
@@ -39,7 +38,7 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public List<Function> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(BigInteger applicationId) throws Exception;
+	public List<ApplicationMenu> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(Long applicationId) throws Exception;
 	
 	
 	/**
@@ -52,7 +51,7 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	 * membaca menu. di cari dengan current application
 	 * @return list of menus dari current application
 	 **/
-	public List<Function> getCurrentAppMenusOrderByTreeLevelAndSiblingOrder( ) throws Exception;
+	public List<ApplicationMenu> getCurrentAppMenusOrderByTreeLevelAndSiblingOrder( ) throws Exception;
 	
 	
 	 
@@ -70,7 +69,7 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	 * hapus application menu. di hapus bersama dengan semua referensi 
 	 * @param applicationMenuId id dari menu yang hendak di hapus
 	 **/
-	public void eraseApplicationMenu (BigInteger applicationMenuId) throws Exception ; 
+	public void eraseApplicationMenu (Long applicationMenuId) throws Exception ; 
 	
 	
 	
@@ -98,5 +97,5 @@ public interface FunctionRPCService extends JSONSerializedRemoteService {
 	/**
 	 * mencari data page definition dengan id dari page
 	 */
-	public PageDefinition getPageDefinition (BigInteger  page ) ; 
+	public PageDefinition getPageDefinition (Long  page ) ; 
 }

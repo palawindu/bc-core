@@ -9,12 +9,11 @@ import id.co.sigma.common.security.dto.ApplicationDTO;
 import id.co.sigma.security.server.dao.impl.ApplicationDaoImpl;
 import id.co.sigma.security.server.service.IApplicationService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,7 +53,7 @@ public class ApplicationServiceImpl implements IApplicationService , Initializin
 	/**
 	 * Id app current, refer ke {@link #currentApplicationIdAsString}
 	 **/
-	private BigInteger currentApplicationId = BigInteger.ONE;
+	private Long currentApplicationId = 1L;
 	@Override
 	public List<Application> getApplicationList() throws Exception {
 		return applicationDao.getApplicationList();
@@ -156,7 +155,7 @@ public class ApplicationServiceImpl implements IApplicationService , Initializin
 
 	@Override
 	public Application getCurrentAppDetailData() {
-		BigInteger id = new BigInteger(this.currentApplicationIdAsString); 
+		Long id = new Long(this.currentApplicationIdAsString); 
 		try {
 			return this.applicationDao.get(Application.class, id);
 		} catch (Exception e) {
@@ -170,7 +169,7 @@ public class ApplicationServiceImpl implements IApplicationService , Initializin
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		try {
-			this.currentApplicationId = new BigInteger(currentApplicationIdAsString);
+			this.currentApplicationId = new Long(currentApplicationIdAsString);
 		} catch (Exception e) {
 			logger.error("gagal konversi id app , error message:" + e.getMessage(), e); 
 		}
@@ -181,7 +180,7 @@ public class ApplicationServiceImpl implements IApplicationService , Initializin
 	/**
 	 * Id app current, refer ke {@link #currentApplicationIdAsString}
 	 **/
-	public BigInteger getCurrentApplicationId() {
+	public Long getCurrentApplicationId() {
 		return currentApplicationId;
 	}
 	

@@ -7,7 +7,6 @@ import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.domain.Application;
 import id.co.sigma.common.security.dto.ApplicationDTO;
 import id.co.sigma.common.security.rpc.ApplicationRPCService;
-import id.co.sigma.common.server.gwt.rpc.impl.BaseRPCHandler;
 import id.co.sigma.security.server.service.IApplicationService;
 
 import java.util.List;

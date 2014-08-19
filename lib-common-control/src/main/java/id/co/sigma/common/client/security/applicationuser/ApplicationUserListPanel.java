@@ -18,7 +18,7 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQDialog;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
@@ -108,7 +108,7 @@ public class ApplicationUserListPanel extends BaseRootSecurityPanel implements I
 				@Override
 				public void execute() {					
 					List<UserGroupAssignmentDTO> temp = editorPanel.getTemporaryListUserGroup();
-					insertOrUpdateGroup(temp, new BigInteger(editorPanel.getTxtUserId().getValue()));
+					insertOrUpdateGroup(temp, new Long(editorPanel.getTxtUserId().getValue()));
 				}
 			});
 			
@@ -147,8 +147,9 @@ public class ApplicationUserListPanel extends BaseRootSecurityPanel implements I
 	 * Insert atau update group user
 	 * @param data
 	 */
-	private void insertOrUpdateGroup(List<UserGroupAssignmentDTO> data, BigInteger userId){
-		ApplicationUserRPCServiceAsync.Util.getInstance().insertOrUpdate(data, getCurrentApplicationId(), userId, getCurrentUserLogin(), new AsyncCallback<Void>() {
+	private void insertOrUpdateGroup(List<UserGroupAssignmentDTO> data, Long userId){
+		ApplicationUserRPCServiceAsync.Util.getInstance().insertOrUpdate(data, getCurrentApplicationId(), 
+				userId, getCurrentUserLogin(), new AsyncCallback<Void>() {
 			@Override
 			public void onFailure(Throwable arg0) {
 				Window.alert(I18Utilities.getInstance().getInternalitionalizeText("security.applicationuser.alert.errorsaveusergroup", "Fail to save user group. Please try again !"));

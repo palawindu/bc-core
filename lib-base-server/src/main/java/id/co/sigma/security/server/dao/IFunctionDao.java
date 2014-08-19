@@ -3,11 +3,11 @@
  */
 package id.co.sigma.security.server.dao;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.server.dao.IBaseDao;
 
-import java.math.BigInteger;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -25,14 +25,14 @@ public interface IFunctionDao extends IBaseDao {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public List<Function> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(BigInteger applicationId) throws Exception;
+	public List<ApplicationMenu> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(Long applicationId) throws Exception;
 	
 	
 	/**
 	 * select ke dalam table application menu, 
 	 * @param applicationId id dari app yang perlu di load
 	 **/
-	public List<Function> getAppMenuByAppIdJoindedWithPageOrderByTreeLevelAndSiblingOrder(BigInteger applicationId) throws Exception;
+	public List<ApplicationMenu> getAppMenuByAppIdJoindedWithPageOrderByTreeLevelAndSiblingOrder(Long applicationId) throws Exception;
 	
 	/**
 	 * get function data by function id order by tree level position dan sibling order by application id
@@ -40,7 +40,7 @@ public interface IFunctionDao extends IBaseDao {
 	 * @return list of function
 	 * @throws Exception
 	 */
-	public List<Function> getFunctionByFunctionIdOrderByTreeLevelAndSiblingOrder(List<BigInteger> functionIds) throws Exception;
+	public List<ApplicationMenu> getFunctionByFunctionIdOrderByTreeLevelAndSiblingOrder(List<Long> functionIds) throws Exception;
 	
 	/**
 	 * add by dode
@@ -49,7 +49,7 @@ public interface IFunctionDao extends IBaseDao {
 	 * @return number of child function
 	 * @throws Exception
 	 */
-	public Long getFunctionByFunctionIdParent(BigInteger parentId) throws Exception;
+	public Long getFunctionByFunctionIdParent(Long parentId) throws Exception;
 	
 	
 	
@@ -58,7 +58,7 @@ public interface IFunctionDao extends IBaseDao {
 	 * membaca data dengan id dari aplikasi
 	 * @param applicationId id dari aplikasi
 	 */
-	public List<Function> getAllFunctionByApplicationId (BigInteger applicationId ) ; 
+	public List<ApplicationMenu> getAllFunctionByApplicationId (Long applicationId ) ; 
 	
 	/**
 	 * add by dode
@@ -66,7 +66,7 @@ public interface IFunctionDao extends IBaseDao {
 	 * @param id function id
 	 * @throws Exception
 	 */
-	public void deleteFunctionById(BigInteger id) throws Exception;
+	public void deleteFunctionById(Long id) throws Exception;
 	
 	/**
 	 * 
@@ -74,12 +74,12 @@ public interface IFunctionDao extends IBaseDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public Integer getNextSiblingOrder(BigInteger parentId, BigInteger applicationId) throws Exception;
+	public Integer getNextSiblingOrder(Long parentId, Long applicationId) throws Exception;
 	
 	
 	
 	/**
 	 * membaca page def dengan id dari page
 	 */
-	public List<PageDefinition> getPageDefinitionByPageIds ( Collection<BigInteger> pageIds ) ; 
+	public List<PageDefinition> getPageDefinitionByPageIds ( Collection<Long> pageIds ) ; 
 }

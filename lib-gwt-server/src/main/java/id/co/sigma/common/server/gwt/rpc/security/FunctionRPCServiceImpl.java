@@ -8,7 +8,7 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
 import id.co.sigma.common.exception.DataNotFoundException;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.dto.ApplicationMenuDTO;
 import id.co.sigma.common.security.dto.PageDefinitionDTO;
@@ -18,7 +18,7 @@ import id.co.sigma.common.server.util.IDTOGenerator;
 import id.co.sigma.security.server.service.IApplicationService;
 import id.co.sigma.security.server.service.IFunctionService;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,14 +32,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version $Id
  * @since Jan 7, 2013, 10:30:26 AM
  */
-/*@WebServlet(
-		name="id.co.sigma.arium.security.server.rpc.FunctionRPCServiceImpl" , 
-		description="Servlet RPC untuk handle Function Domain" , 
-		urlPatterns={"/sigma-rpc/function.app-rpc"})*/
-public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ BaseSecurityRPCService<FunctionRPCService>
+public class FunctionRPCServiceImpl extends  BaseSecurityRPCService<FunctionRPCService>
 		implements FunctionRPCService {
 
-	private static final long serialVersionUID = -4371019903401691889L;
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(FunctionRPCServiceImpl.class); 
 	@Autowired
 	private IFunctionService functionService;
@@ -52,17 +48,17 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	private IGeneralPurposeDao generalPurposeDao ; 
 
 	@Override
-	public List<Function> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(
-			List<BigInteger> groupIds) throws Exception {
+	public List<ApplicationMenu> getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(
+			List<Long> groupIds) throws Exception {
 		return functionService.getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(groupIds);
 	}
 	
 	@Override
-	public List<Function> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(
-			BigInteger applicationId) throws Exception {
-		List<Function> swap =  functionService.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(applicationId);
+	public List<ApplicationMenu> getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(
+			Long applicationId) throws Exception {
+		List<ApplicationMenu> swap =  functionService.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(applicationId);
 		if ( swap != null&& !swap.isEmpty()){
-			for ( Function scn : swap){
+			for ( ApplicationMenu scn : swap){
 				scn.setApplication(null);
 			}
 		}
@@ -73,7 +69,7 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	public PagedResultHolder<PageDefinitionDTO> getCurrentAppAvailablePages(SimpleQueryFilter[] filters , SimpleSortArgument[] sortArgs , int pageSize , int page) throws Exception {
 		
 		
-		BigInteger appId = applicationService.getCurrentApplicationId() ; 
+		Long appId = applicationService.getCurrentApplicationId() ; 
 		SimpleQueryFilter appIdFilter = new SimpleQueryFilter("applicationId"  ,SimpleQueryFilterOperator.equal ,appId) ; 
 		SimpleQueryFilter[]  actual = appendToArray(filters, appIdFilter);
 		
@@ -91,20 +87,20 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	}
 
 	@Override
-	public List<Function> getCurrentAppMenusOrderByTreeLevelAndSiblingOrder()
+	public List<ApplicationMenu> getCurrentAppMenusOrderByTreeLevelAndSiblingOrder()
 			throws Exception {
-		BigInteger currentAppId =  applicationService.getCurrentApplicationId();
+		Long currentAppId =  applicationService.getCurrentApplicationId();
 		return getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(currentAppId);
 	}
 
 	@Override
 	public List<ApplicationMenuDTO> getCurrentAppMenuDToByAppIdOrderByTreeLevelAndSiblingOrder()
 			throws Exception {
-		BigInteger appId = applicationService.getCurrentApplicationId() ;
-		List<Function> swap =  functionService.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(appId);
+		Long appId = applicationService.getCurrentApplicationId() ;
+		List<ApplicationMenu> swap =  functionService.getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(appId);
 		if ( swap != null && !swap.isEmpty()){
 			List<ApplicationMenuDTO> retval = new ArrayList<ApplicationMenuDTO>();
-			for ( Function scn : swap ){
+			for ( ApplicationMenu scn : swap ){
 				ApplicationMenuDTO dto = new ApplicationMenuDTO(scn); 
 				retval.add(dto); 
 			}
@@ -114,7 +110,7 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	}
 
 	@Override
-	public void eraseApplicationMenu(BigInteger applicationMenuId)
+	public void eraseApplicationMenu(Long applicationMenuId)
 			throws Exception {
 		// TODO ini berat, implement yang detail, ke sema node
 		try {
@@ -128,7 +124,7 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	@Override
 	public void updateApplicationMenu(ApplicationMenuDTO menuData)
 			throws   DataNotFoundException , Exception   {
-		Function  f =  functionService.getFunctionById(menuData.getId()); 
+		ApplicationMenu  f =  functionService.getFunctionById(menuData.getId()); 
 		if ( f ==null ){
 			throw new DataNotFoundException("unable to find menu with id: " + menuData.getId() +", data probable already erased");
 		}
@@ -161,7 +157,7 @@ public class FunctionRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/ Bas
 	}
 
 	@Override
-	public PageDefinition getPageDefinition(BigInteger page) {
+	public PageDefinition getPageDefinition(Long page) {
 		 if ( page== null){
 			 LOGGER.error("page null  , request di abaikan");
 			 return null ; 

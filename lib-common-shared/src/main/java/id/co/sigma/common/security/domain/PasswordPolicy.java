@@ -7,7 +7,7 @@ import id.co.sigma.common.security.domain.audit.BaseAuditedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -39,7 +39,7 @@ public class PasswordPolicy extends BaseAuditedObject implements IJSONFriendlyOb
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PASSWORD_POLICY_ID")
-	private BigInteger id;
+	private Long id;
 	
 	/**
 	* minimum panjang password<br/>
@@ -122,7 +122,7 @@ public class PasswordPolicy extends BaseAuditedObject implements IJSONFriendlyOb
 	* id password policy<br/>
 	* column :PASSWORD_POLICY_ID
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	
@@ -130,7 +130,7 @@ public class PasswordPolicy extends BaseAuditedObject implements IJSONFriendlyOb
 	* id password policy<br/>
 	* column :PASSWORD_POLICY_ID
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	
@@ -339,7 +339,7 @@ public class PasswordPolicy extends BaseAuditedObject implements IJSONFriendlyOb
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		retval.setDisabledLimit( (Short)jsonContainer.get("disabledLimit" ,  Short.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setInactiveLimit( (Short)jsonContainer.get("inactiveLimit" ,  Short.class.getName()));
 		retval.setMaximumLoginAttempt( (Short)jsonContainer.get("maximumLoginAttempt" ,  Short.class.getName()));
 		retval.setMinimumAlphabet( (Short)jsonContainer.get("minimumAlphabet" ,  Short.class.getName()));

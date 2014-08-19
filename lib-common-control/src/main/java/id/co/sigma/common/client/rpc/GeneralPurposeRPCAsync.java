@@ -84,6 +84,11 @@ public interface GeneralPurposeRPCAsync  {
 	 * @return token
 	 */
 	public void generateDoubleSubmitAvoidenceToken (AsyncCallback<String> callback) ; 
-	
+
+	/**
+	 * insert object baru ke dalam database
+	 * @param newObject 
+	 */
+	public void insertData (IJSONFriendlyObject<?> newObject , AsyncCallback<Void> callback) ;
 	
 }

@@ -36,7 +36,7 @@ public class SecuritySharedObjectGenerator extends AbstractObjectGenerator {
 		id.co.sigma.common.security.menu.UserDomainPaging.class,
 		id.co.sigma.common.security.LoginParameter.class,
 		id.co.sigma.common.security.LoginResultData.class, 
-		id.co.sigma.common.data.app.SimplifiedDualControlContainerTable.class, 
+		 
 		id.co.sigma.common.security.ApplicationSessionRegistry.class  , 
 		id.co.sigma.common.security.exception.UserNotExistException.class
 	};
@@ -60,7 +60,7 @@ public class SecuritySharedObjectGenerator extends AbstractObjectGenerator {
 		if (id.co.sigma.common.security.menu.UserDomainPaging.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.menu.UserDomainPaging();
 		if (id.co.sigma.common.security.LoginParameter.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.LoginParameter();
 		if (id.co.sigma.common.security.LoginResultData.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.LoginResultData();
-		if (id.co.sigma.common.data.app.SimplifiedDualControlContainerTable.class.getName().equals(objectFQCN))return (T)new id.co.sigma.common.data.app.SimplifiedDualControlContainerTable();
+		
 		if ( id.co.sigma.common.security.ApplicationSessionRegistry.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.ApplicationSessionRegistry();
 		if ( id.co.sigma.common.security.exception.UserNotExistException.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.exception.UserNotExistException(); 
 		logger.log(Level.SEVERE , "FQCN :" + objectFQCN +", tidak di temukan dalam class :" + this.getClass().getName()  + ",menyerah sekarang, di lempar ke next chain");
@@ -86,7 +86,7 @@ public class SecuritySharedObjectGenerator extends AbstractObjectGenerator {
 		if (id.co.sigma.common.security.menu.UserDomainPaging.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.menu.UserDomainPaging[size];
 		if (id.co.sigma.common.security.LoginParameter.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.LoginParameter[size];
 		if (id.co.sigma.common.security.LoginResultData.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.LoginResultData[size];
-		if ( id.co.sigma.common.data.app.SimplifiedDualControlContainerTable.class.getName().equals(objectFQCN)) return (T[])new id.co.sigma.common.data.app.SimplifiedDualControlContainerTable[size];
+		
 		if( id.co.sigma.common.security.ApplicationSessionRegistry.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.ApplicationSessionRegistry[size];
 		if ( id.co.sigma.common.security.exception.UserNotExistException.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.exception.UserNotExistException[size];
 		return null;

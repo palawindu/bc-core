@@ -6,7 +6,7 @@ import id.co.sigma.common.security.domain.BranchAssignment;
 import id.co.sigma.security.server.dao.BaseGenericDao;
 import id.co.sigma.security.server.dao.IBranchDao;
 
-import java.math.BigInteger;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -85,7 +85,7 @@ public class BranchDaoImpl extends BaseGenericDao implements IBranchDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<BranchAssignment> getBranchAssignmentByUserId(BigInteger userId) throws Exception {		
+	public List<BranchAssignment> getBranchAssignmentByUserId(Long userId) throws Exception {		
 		Query qry = getEntityManager().createQuery("SELECT a FROM BranchAssignment a WHERE a.userId=:USER_ID");
 		qry.setParameter("USER_ID", userId);		
 		return qry.getResultList();

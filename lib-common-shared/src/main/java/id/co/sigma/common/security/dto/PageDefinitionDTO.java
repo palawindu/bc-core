@@ -5,13 +5,13 @@ import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 
 /**
  * DTO dari {@link PageDefinition}
  * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
  */
-public class PageDefinitionDTO implements SingleKeyEntityData<BigInteger>, IJSONFriendlyObject<PageDefinitionDTO> {
+public class PageDefinitionDTO implements SingleKeyEntityData<Long>, IJSONFriendlyObject<PageDefinitionDTO> {
 	
     /**
 	 * 
@@ -19,7 +19,7 @@ public class PageDefinitionDTO implements SingleKeyEntityData<BigInteger>, IJSON
 	private static final long serialVersionUID = -5241310552314948309L;
 
 
-	private BigInteger id;
+	private Long id;
     
     
     private String pageCode;
@@ -55,12 +55,12 @@ public class PageDefinitionDTO implements SingleKeyEntityData<BigInteger>, IJSON
 	}
 	
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -107,7 +107,7 @@ public class PageDefinitionDTO implements SingleKeyEntityData<BigInteger>, IJSON
 	public PageDefinitionDTO instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		PageDefinitionDTO retval = new PageDefinitionDTO();
 		retval.setAdditionalData( (String)jsonContainer.get("additionalData" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setPageCode( (String)jsonContainer.get("pageCode" ,  String.class.getName()));
 		retval.setPageUrl( (String)jsonContainer.get("pageUrl" ,  String.class.getName()));
 		retval.setRemark( (String)jsonContainer.get("remark" ,  String.class.getName()));

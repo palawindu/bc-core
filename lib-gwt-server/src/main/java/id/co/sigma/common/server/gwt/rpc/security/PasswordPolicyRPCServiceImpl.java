@@ -8,7 +8,7 @@ import id.co.sigma.common.security.domain.PasswordPolicy;
 import id.co.sigma.common.security.rpc.PasswordPolicyRPCService;
 import id.co.sigma.security.server.service.IPasswordPolicyService;
 
-import java.math.BigInteger;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,17 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @version $Id
  * @since Jan 30, 2013, 3:42:08 PM
  */
-/*@WebServlet(
-		name="id.co.sigma.arium.security.server.rpc.PasswordPolicyRPCServiceImpl" , 
-		description="Servlet RPC untuk handle password policy Domain" , 
-		urlPatterns={"/sigma-rpc/password-policy.app-rpc"})*/
-public class PasswordPolicyRPCServiceImpl extends /*BaseSelfRegisteredRPCService*/BaseSecurityRPCService<PasswordPolicyRPCService>
+
+public class PasswordPolicyRPCServiceImpl extends BaseSecurityRPCService<PasswordPolicyRPCService>
 		implements PasswordPolicyRPCService {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5776508300609473971L;
+	
 
 	@Autowired
 	private IPasswordPolicyService passwordPolicyService;
@@ -49,7 +43,7 @@ public class PasswordPolicyRPCServiceImpl extends /*BaseSelfRegisteredRPCService
 	}
 
 	@Override
-	public void remove(BigInteger id) throws Exception {
+	public void remove(Long id) throws Exception {
 		passwordPolicyService.remove(id);
 	}
 

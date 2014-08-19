@@ -6,7 +6,10 @@ package id.co.sigma.common.data;
  */
 public final class CommonLibraryConstant {
 	
-	
+	/**
+	 * pattern yang di pergunakan untuk mengirim data dalam bentuk date as string. ini di pergunakan dalam field {@link TransportSimpleGridDataWrapper#getValues()}
+	 **/
+	public static final String DATE_TO_STRING_SERIALIZATION_PATTERN = "yyyy-MM-dd HH:mm:ss:S";
 	
 	
 	/**

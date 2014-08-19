@@ -8,7 +8,7 @@ import id.co.sigma.common.security.domain.PasswordPolicy;
 import id.co.sigma.security.server.dao.impl.PasswordPolicyDaoImpl;
 import id.co.sigma.security.server.service.IPasswordPolicyService;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +62,7 @@ public class PasswordPolicyServiceImpl implements IPasswordPolicyService {
 
 	@Override
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-	public void remove(BigInteger id) throws Exception {
+	public void remove(Long id) throws Exception {
 		PasswordPolicy dataToRemove = passwordPolicyDao.getPasswordPolicyById(id);
 		passwordPolicyDao.delete(dataToRemove);
 	}

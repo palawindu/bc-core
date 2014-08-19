@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.general;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -60,7 +60,7 @@ public class DefaultUserServices extends BaseSecurityService implements UserDeta
 			System.out.println("DEBUG USER NAME SECURITY SERVER >>>> username : " + username);
 			System.out.println("DEBUG USER NAME SECURITY SERVER >>> user from db : " + userFromDb);
 			if(userFromDb != null){
-				if(userFromDb.getActiveStatus().equals("A")){					
+				if("A".equalsIgnoreCase( userFromDb.getActiveFlag() )){					
 					String passwordDb = encoder.encodePassword(request.getParameter("j_password"), null);
 					System.out.println("DEBUG PASSWORD FROM UI SECURITY SERVER >>> md5 password from ui : " + passwordDb);
 					System.out.println("DEBUG PASSWORD DB SECURITY SERVER >>> password from db : " + userFromDb.getChipperText());
@@ -102,8 +102,8 @@ public class DefaultUserServices extends BaseSecurityService implements UserDeta
 		userDetail.setCredentialsNonExpired(true);
 		userDetail.setEmail(userFromDb.getEmail());
 		userDetail.setCurrentBranchCode(userFromDb.getDefaultBranchCode());
-		if(userFromDb.getActiveStatus() != null){
-			if("A".equalsIgnoreCase( userFromDb.getActiveStatus()) ){
+		if(userFromDb.getActiveFlag() != null){
+			if("A".equalsIgnoreCase( userFromDb.getActiveFlag()) ){
 				userDetail.setEnabled(true);
 			}else{
 				userDetail.setEnabled(false);
@@ -117,7 +117,7 @@ public class DefaultUserServices extends BaseSecurityService implements UserDeta
 		userDetail.setPasswordNoHashing(passwordNoEncript);
 		userDetail.setUserInternalId(userFromDb.getId());
 		if ( userFromDb.getDefaultApplicationId()!= null)
-			userDetail.setApplicationId(BigInteger.valueOf(userFromDb.getDefaultApplicationId().longValue()));		
+			userDetail.setApplicationId(userFromDb.getDefaultApplicationId().longValue());		
 		
 		//set last login ke dalam user detail DTO			
 		User user = userDao.getUserByUsername(userFromDb.getUserCode());			

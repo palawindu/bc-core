@@ -1,6 +1,6 @@
 package id.co.sigma.common.server.dao.base;
 
-import id.co.sigma.common.data.PagedSimpleDataGridData;
+
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;

@@ -5,7 +5,7 @@ import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -14,7 +14,6 @@ import java.util.List;
  * @since Dec 7, 2012, 1:00:37 PM
  * @version $Id
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/group-assignment.app-rpc")
 public interface GroupAssignmentRPCService extends JSONSerializedRemoteService{
 	
 	/**
@@ -39,7 +38,7 @@ public interface GroupAssignmentRPCService extends JSONSerializedRemoteService{
 	 * @param data
 	 * @throws Exception
 	 */
-	public void delete(BigInteger data) throws Exception;
+	public void delete(Long data) throws Exception;
 	
 	/**
 	 * Get user group by user id
@@ -47,5 +46,5 @@ public interface GroupAssignmentRPCService extends JSONSerializedRemoteService{
 	 * @return
 	 * @throws Exception
 	 */
-	public List<UserGroupAssignmentDTO> getUserGroupByUserId(BigInteger userId) throws Exception;
+	public List<UserGroupAssignmentDTO> getUserGroupByUserId(Long userId) throws Exception;
 }

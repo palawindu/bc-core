@@ -23,6 +23,11 @@ public interface ParsedJSONContainer {
 	
 	
 	
+	/**
+	 * inject json string ke dalam json container
+	 */
+	public void injectJSONValue (String json ) ; 
+	
 	
 	
 	/**
@@ -143,6 +148,11 @@ public interface ParsedJSONContainer {
 	
 	
 	
+	
+	/**
+	 * memasukan long ke dalam (array)
+	 */
+	public void appendToArray (String key , Long[] values) ;
 	
 	
 	

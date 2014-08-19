@@ -6,12 +6,11 @@ import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.dto.UserGroupAssignmentDTO;
 import id.co.sigma.common.security.menu.ApplicationMenuSecurity;
 import id.co.sigma.common.security.rpc.ApplicationUserRPCService;
-import id.co.sigma.common.server.gwt.rpc.impl.BaseRPCHandler;
 import id.co.sigma.security.server.dao.IUserDao;
 import id.co.sigma.security.server.service.IApplicationUserService;
 import id.co.sigma.security.server.service.IUserMenuService;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +44,12 @@ public class ApplicationUserRPCServiceImpl extends  BaseSecurityRPCService<Appli
 	}
 
 	@Override
-	public void insertOrUpdate(List<UserGroupAssignmentDTO> data, BigInteger applicationId, BigInteger userId, String currentUser) throws Exception {
+	public void insertOrUpdate(List<UserGroupAssignmentDTO> data, Long applicationId, Long userId, String currentUser) throws Exception {
 		applicationUserService.insertApplicationUser(data, applicationId, userId, currentUser);		
 	}
 
 	@Override
-	public void deleteApplicationUser(BigInteger applicationId, BigInteger userId) throws Exception {
+	public void deleteApplicationUser(Long applicationId, Long userId) throws Exception {
 		applicationUserService.deleteApplicationUser(applicationId, userId);		
 	}
 

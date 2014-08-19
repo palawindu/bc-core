@@ -13,7 +13,7 @@ import org.zkoss.zul.ListModelList;
 
 import id.co.sigma.common.data.lov.CommonLOV;
 import id.co.sigma.zk.ui.annotations.LookupEnabledControl;
-import id.co.sigma.zk.ui.controller.BaseSimpleController;
+import id.co.sigma.zk.ui.controller.base.BaseSimpleController;
 import id.co.sigma.zk.ui.lov.CommonLOVWithRenderer;
 import id.co.sigma.zk.ui.lov.DefaultLOVRenderer;
 

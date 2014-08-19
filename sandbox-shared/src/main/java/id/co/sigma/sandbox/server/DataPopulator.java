@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.sigma.common.security.domain.Application;
+import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.domain.lov.LookupDetail;
 import id.co.sigma.common.security.domain.lov.LookupHeader;
 import id.co.sigma.common.server.dao.IGeneralPurposeDao;
@@ -42,6 +44,7 @@ public class DataPopulator implements InitializingBean{
 					populatePerson();
 					populateLOV();
 					populateDepartement();
+					populateUser();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -143,5 +146,26 @@ public class DataPopulator implements InitializingBean{
 		generalPurposeDao.insert(new Department("ICT", "Information Communication Technology", 25));
 		generalPurposeDao.insert(new Department("FIN", "Finance", 5));
 		generalPurposeDao.insert(new Department("HRD", "Human Resource", 3));
+	}
+	
+	
+	
+	
+	
+	
+	private void populateUser () throws Exception{
+		Application app = new Application(); 
+		app.setId(1L);
+		app.setApplicationCode("SANDBOX");
+		app.setApplicationName("Sandbox Apps");
+		
+		generalPurposeDao.insert(app);
+		
+		generalPurposeDao.insert(new User("GPS", "gede.sutarsa@gmail.com", "Gede Sutarsa", "id"));
+		generalPurposeDao.insert(new User("WYNARY", "wayan.agustina@sigma.co.id", "Wayan Ari Agustina", "id"));
+		generalPurposeDao.insert(new User("SUBAGIA", "bagus.subagia@sigma.co.id", "Ida Bagus Subagia", "id"));
+		generalPurposeDao.insert(new User("RAKA", "raka.sanjaya@sigma.co.id", "Raka Sanjaya", "id"));
+		generalPurposeDao.insert(new User("AAA", "arie.anggreani@sigma.co.id", "A.A. Arie Anggreani", "id"));
+		generalPurposeDao.insert(new User("GUSDE", "ida.suartama@sigma.co.id", "Ida Bagus Rai Suartama", "id"));
 	}
 }

@@ -13,7 +13,7 @@ import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.User;
 import id.co.sigma.security.server.CurrentUserCurrentluUsedException;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +48,7 @@ public interface IUserLoginService {
 	 * @return Application
 	 * @throws Exception
 	 */
-	public Application getApplication(BigInteger applicationId) throws Exception;
+	public Application getApplication(Long applicationId) throws Exception;
 	
 	
 	
@@ -63,17 +63,17 @@ public interface IUserLoginService {
 	/**
 	 * mencari di mana saja user
 	 **/
-	public List<Branch> getUserBranches (BigInteger userId) ; 
+	public List<Branch> getUserBranches (Long userId) ; 
 	
 	
 	
 	/**
 	 * get data sign on dnegan id sigon
 	 **/
-	public Signon getSigonData (BigInteger sigonId) ; 
+	public Signon getSigonData (Long sigonId) ; 
 	
 	
-	public Signon createSignOnDataAndKickPrevUser(BigInteger appId , BigInteger userId
+	public Signon createSignOnDataAndKickPrevUser(Long appId , Long userId
 			) throws CurrentUserCurrentluUsedException,  Exception;
 	
 	/**
@@ -89,6 +89,6 @@ public interface IUserLoginService {
 	 * @return URL
 	 * @throws Exception
 	 */
-	public String getUrlRedirectToApplication(Application application ,BigInteger applicationId, Integer errorCode, String uuid, String userName , HttpServletResponse response ) throws Exception ;
+	public String getUrlRedirectToApplication(Application application ,Long applicationId, Integer errorCode, String uuid, String userName , HttpServletResponse response ) throws Exception ;
 	
 }

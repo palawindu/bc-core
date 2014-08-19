@@ -9,7 +9,7 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -23,10 +23,10 @@ public class LoginParameter implements Serializable,IsSerializable, IJSONFriendl
 
 	private static final long serialVersionUID = -8171301692870940153L;
 	
-	private BigInteger userId;
+	private Long userId;
 	private String username;
 	private String password;
-	private BigInteger applicationId;
+	private Long applicationId;
 	
 	
 	
@@ -73,10 +73,10 @@ public class LoginParameter implements Serializable,IsSerializable, IJSONFriendl
 	public void setUserHostName(String userHostName) {
 		this.userHostName = userHostName;
 	}
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getUsername() {
@@ -91,10 +91,10 @@ public class LoginParameter implements Serializable,IsSerializable, IJSONFriendl
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 	
@@ -157,11 +157,11 @@ public class LoginParameter implements Serializable,IsSerializable, IJSONFriendl
 	@Override
 	public LoginParameter instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		LoginParameter retval = new LoginParameter();
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setPassword( (String)jsonContainer.get("password" ,  String.class.getName()));
 		retval.setUserBrowser( (String)jsonContainer.get("userBrowser" ,  String.class.getName()));
 		retval.setUserHostName( (String)jsonContainer.get("userHostName" ,  String.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		retval.setUsername( (String)jsonContainer.get("username" ,  String.class.getName()));
 		return retval; 
 	}

@@ -1,9 +1,12 @@
 package id.co.sigma.common.client.security.rpc.impl;
 
-import java.math.BigInteger;
+
+
+import java.util.List;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.rpc.FunctionRPCService;
 import id.co.sigma.common.client.rpc.ManualJSONSerializeRPCService;
@@ -15,17 +18,20 @@ public class FunctionRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<F
 	protected Class<FunctionRPCService> getServiceInterface() {
 		return FunctionRPCService.class;
 	}
-	
-		public void eraseApplicationMenu(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
+	@Override
+	public void eraseApplicationMenu(Long applicationMenuId,
+			AsyncCallback<Void> callback) throws Exception {
 		this.submitRPCRequestRaw( "eraseApplicationMenu", new Class<?>[]{
-			java.math.BigInteger.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
+				Long.class, 
+				
+			}, 
+			new Object[]{
+				applicationMenuId, 
+			}, 
+			callback);
+		
 	}
+	
 
 
 	public void appendNewMenuNode(id.co.sigma.common.security.dto.ApplicationMenuDTO param0,com.google.gwt.user.client.rpc.AsyncCallback<id.co.sigma.common.security.dto.ApplicationMenuDTO> callback) {
@@ -63,17 +69,21 @@ public class FunctionRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<F
 		callback); 	
 	}
 
-
-	public void getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<java.util.List<id.co.sigma.common.security.domain.Function>> callback) {
+	@Override
+	public void getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder(
+			Long applicationId, AsyncCallback<List<ApplicationMenu>> callback)
+			throws Exception {
 		this.submitRPCRequestRaw( "getFunctionByApplicationIdOrderByTreeLevelAndSiblingOrder", new Class<?>[]{
-			java.math.BigInteger.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
+				Long.class, 
+				
+			}, 
+			new Object[]{
+				applicationId, 
+			}, 
+			callback);
+		
 	}
+	
 
 
 	public void getCurrentAppMenuDToByAppIdOrderByTreeLevelAndSiblingOrder(com.google.gwt.user.client.rpc.AsyncCallback<java.util.List<id.co.sigma.common.security.dto.ApplicationMenuDTO>> callback) {
@@ -87,20 +97,23 @@ public class FunctionRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<F
 		callback); 	
 	}
 
-
-	public void getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(java.util.List<java.math.BigInteger> param0,com.google.gwt.user.client.rpc.AsyncCallback<java.util.List<id.co.sigma.common.security.domain.Function>> callback) {
+	@Override
+	public void getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder(
+			List<Long> groupIds, AsyncCallback<List<ApplicationMenu>> callback)
+			throws Exception {
 		this.submitRPCRequestRaw( "getFunctionByGroupIdOrderByTreeLevelAndSiblingOrder", new Class<?>[]{
-			java.util.List.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
+				java.util.List.class, 
+				
+			}, 
+			new Object[]{
+				groupIds, 
+			}, 
+			callback);
 	}
+	
 
 
-	public void getCurrentAppMenusOrderByTreeLevelAndSiblingOrder(com.google.gwt.user.client.rpc.AsyncCallback<java.util.List<id.co.sigma.common.security.domain.Function>> callback) {
+	public void getCurrentAppMenusOrderByTreeLevelAndSiblingOrder(com.google.gwt.user.client.rpc.AsyncCallback<java.util.List<id.co.sigma.common.security.domain.ApplicationMenu>> callback) {
 		this.submitRPCRequestRaw( "getCurrentAppMenusOrderByTreeLevelAndSiblingOrder", new Class<?>[]{
 			 
 			
@@ -112,19 +125,19 @@ public class FunctionRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<F
 	}
 
 	@Override
-	public void getPageDefinition(BigInteger page,
+	public void getPageDefinition(Long page,
 			AsyncCallback<PageDefinition> callback) {
 		this.submitRPCRequestRaw( "getPageDefinition", new Class<?>[]{
-				BigInteger.class	 
+				Long.class	 
 				
 		}, 
 		new Object[]{
 				page
 		}, 
-		callback); 	
+		callback);
 		
 	}
-
+	
 
 
 

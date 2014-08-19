@@ -4,7 +4,7 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -42,7 +42,7 @@ public class CommonDualControlContainerTable implements Serializable, IJSONFrien
 	@Id
 	@Column(name="pk", nullable=true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	protected BigInteger id;
+	protected Long id;
 	 
 	/**
 	* CREATE,UPDATE,DELETE<br/>
@@ -171,7 +171,7 @@ public class CommonDualControlContainerTable implements Serializable, IJSONFrien
 	* primary key data<br/>
 	* column :pk
 	**/
-	public void setId(BigInteger id){
+	public void setId(Long id){
 	  this.id=id;
 	}
 	 
@@ -179,7 +179,7 @@ public class CommonDualControlContainerTable implements Serializable, IJSONFrien
 	* primary key data<br/>
 	* column :pk
 	**/
-	public BigInteger getId(){
+	public Long getId(){
 	    return this.id;
 	}
 	 
@@ -387,7 +387,7 @@ public class CommonDualControlContainerTable implements Serializable, IJSONFrien
 		retval.setApproverUserId( (String)jsonContainer.get("approverUserId" ,  String.class.getName()));
 		retval.setCreatedTime( (Date)jsonContainer.get("createdTime" ,  Date.class.getName()));
 		retval.setCreatorUserId( (String)jsonContainer.get("creatorUserId" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setJsonData( (String)jsonContainer.get("jsonData" ,  String.class.getName()));
 		retval.setKey1( (String)jsonContainer.get("key1" ,  String.class.getName()));
 		retval.setKey2( (String)jsonContainer.get("key2" ,  String.class.getName()));

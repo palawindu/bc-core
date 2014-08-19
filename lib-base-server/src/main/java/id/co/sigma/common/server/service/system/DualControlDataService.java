@@ -13,7 +13,7 @@ import id.co.sigma.common.data.query.SimpleSortArgument;
 import id.co.sigma.common.exception.InvalidExcelFileException;
 import id.co.sigma.common.server.spreadsheet.UploadedDataContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import org.springframework.transaction.annotation.Propagation;
@@ -52,7 +52,7 @@ public interface DualControlDataService {
 	 * Kurang lebih ini akan menyalin data dari {@link CommonDualControlContainerTable} (data json) ke data tujuan
 	 **/
 	@Transactional(readOnly=false ,propagation=Propagation.REQUIRED)
-	public void applyDataModification (BigInteger dataApprovalId , String approvalRemark) throws Exception; 
+	public void applyDataModification (Long dataApprovalId , String approvalRemark) throws Exception; 
 
 	
 	
@@ -60,13 +60,13 @@ public interface DualControlDataService {
 	 * apply data bulk
 	 */
 	@Transactional(readOnly=false ,propagation=Propagation.REQUIRED)
-	public void approveAndApplyBulkData(BigInteger bulkDataId) throws Exception ; 
+	public void approveAndApplyBulkData(Long bulkDataId) throws Exception ; 
 	
 	/**
 	 * reject data
 	 **/
 	@Transactional(readOnly=false ,propagation=Propagation.REQUIRED)
-	public void rejectData(BigInteger dataId, String rejectReason)
+	public void rejectData(Long dataId, String rejectReason)
 			throws Exception ; 
 	
 	
@@ -77,7 +77,7 @@ public interface DualControlDataService {
 	 *  
 	 */
 	@Transactional(readOnly=false ,propagation=Propagation.REQUIRED)
-	public void rejectBulkData(BigInteger dataId, String rejectReason)
+	public void rejectBulkData(Long dataId, String rejectReason)
 			throws Exception ; 
 	
 	
@@ -115,7 +115,7 @@ public interface DualControlDataService {
 	 * @param pageSize ukuran page per pembacaan data
 	 * @param page page berapa yang akan di baca
 	 */
-	public <DATA extends DualControlEnabledData<?,?>> PagedResultHolder<DATA> getBulkApprovalDataDetails ( BigInteger approvalDataId , int pageSize, int page) throws Exception ; 
+	public <DATA extends DualControlEnabledData<?,?>> PagedResultHolder<DATA> getBulkApprovalDataDetails ( Long approvalDataId , int pageSize, int page) throws Exception ; 
  	
 	
 	/**

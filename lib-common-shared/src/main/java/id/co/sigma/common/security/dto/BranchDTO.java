@@ -5,7 +5,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -15,12 +14,12 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * @since Jan 30, 2013, 5:25:22 PM
  * @version $Id
  */
-public class BranchDTO implements SingleKeyEntityData<BigInteger>,IsSerializable,Serializable, IJSONFriendlyObject<BranchDTO>{
+public class BranchDTO implements SingleKeyEntityData<Long>,IsSerializable,Serializable, IJSONFriendlyObject<BranchDTO>{
 
 	private static final long serialVersionUID = -6677691800656625680L;
 	
-	private BigInteger id;
-	private BigInteger idParent;
+	private Long id;
+	private Long idParent;
 	private String branchParentCode;
 	private String branchCode;
 	private String branchName;
@@ -28,16 +27,16 @@ public class BranchDTO implements SingleKeyEntityData<BigInteger>,IsSerializable
 	private String branchDescription;
 	private String branchStatus;
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public BigInteger getIdParent() {
+	public Long getIdParent() {
 		return idParent;
 	}
-	public void setIdParent(BigInteger idParent) {
+	public void setIdParent(Long idParent) {
 		this.idParent = idParent;
 	}	
 	public String getBranchParentCode() {
@@ -98,8 +97,8 @@ public class BranchDTO implements SingleKeyEntityData<BigInteger>,IsSerializable
 		retval.setBranchName( (String)jsonContainer.get("branchName" ,  String.class.getName()));
 		retval.setBranchParentCode( (String)jsonContainer.get("branchParentCode" ,  String.class.getName()));
 		retval.setBranchStatus( (String)jsonContainer.get("branchStatus" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
-		retval.setIdParent( (BigInteger)jsonContainer.get("idParent" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
+		retval.setIdParent( (Long)jsonContainer.get("idParent" ,  Long.class.getName()));
 		return retval; 
 	}
 }

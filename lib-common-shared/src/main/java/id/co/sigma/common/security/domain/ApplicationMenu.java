@@ -9,7 +9,7 @@ import id.co.sigma.common.security.domain.audit.BaseAuditedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,23 +30,23 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="sec_function")
-public class Function extends BaseAuditedObject implements IJSONFriendlyObject<Function> {
+public class ApplicationMenu extends BaseAuditedObject implements IJSONFriendlyObject<ApplicationMenu> {
 	
 	private static final long serialVersionUID = -264680357828308703L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="FUNCTION_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="FUNCTION_ID_PARENT")
-	private BigInteger functionIdParent;
+	private Long functionIdParent;
 	
 	@Column(name="SIBLING_ORDER")
 	private Integer siblingOrder;
 	
 	@Column(name="APPLICATION_ID")
-	private BigInteger applicationId;
+	private Long applicationId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="APPLICATION_ID", insertable=false, updatable=false)
@@ -59,7 +59,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	private String functionLabel;
 	
 	@Column(name="PAGE_ID")
-	private BigInteger pageId;
+	private Long pageId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="PAGE_ID", insertable=false, updatable=false)
@@ -79,7 +79,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : FUNCTION_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -88,7 +88,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : FUNCTION_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -97,7 +97,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : FUNCTION_ID_PARENT
 	 * @return functionIdParent
 	 */
-	public BigInteger getFunctionIdParent() {
+	public Long getFunctionIdParent() {
 		return functionIdParent;
 	}
 
@@ -106,7 +106,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : FUNCTION_ID_PARENT
 	 * @param functionIdParent
 	 */
-	public void setFunctionIdParent(BigInteger functionIdParent) {
+	public void setFunctionIdParent(Long functionIdParent) {
 		this.functionIdParent = functionIdParent;
 	}
 
@@ -133,7 +133,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : APPLICATION_ID
 	 * @return applicationId
 	 */
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 
@@ -142,7 +142,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : APPLICATION_ID
 	 * @param applicationId
 	 */
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 
@@ -203,7 +203,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : PAGE_ID
 	 * @return pageId
 	 */
-	public BigInteger getPageId() {
+	public Long getPageId() {
 		return pageId;
 	}
 
@@ -212,7 +212,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	 * COLUMN : PAGE_ID
 	 * @param pageId
 	 */
-	public void setPageId(BigInteger pageId) {
+	public void setPageId(Long pageId) {
 		this.pageId = pageId;
 	}
 
@@ -325,7 +325,7 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Function other = (Function) obj;
+		ApplicationMenu other = (ApplicationMenu) obj;
 		if (application == null) {
 			if (other.application != null)
 				return false;
@@ -434,24 +434,24 @@ public class Function extends BaseAuditedObject implements IJSONFriendlyObject<F
 	}
 	
 	@Override
-	public Function instantiateFromJSON(ParsedJSONContainer jsonContainer) {
-		Function retval = new Function();
+	public ApplicationMenu instantiateFromJSON(ParsedJSONContainer jsonContainer) {
+		ApplicationMenu retval = new ApplicationMenu();
 		  
 		retval.setApplication( (Application)jsonContainer.get("application" ,  Application.class.getName()));
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		retval.setFunctionCode( (String)jsonContainer.get("functionCode" ,  String.class.getName()));
-		retval.setFunctionIdParent( (BigInteger)jsonContainer.get("functionIdParent" ,  BigInteger.class.getName()));
+		retval.setFunctionIdParent( (Long)jsonContainer.get("functionIdParent" ,  Long.class.getName()));
 		retval.setFunctionLabel( (String)jsonContainer.get("functionLabel" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setMenuTreeCode( (String)jsonContainer.get("menuTreeCode" ,  String.class.getName()));
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
 		retval.setModifiedByIPAddress( (String)jsonContainer.get("modifiedByIPAddress" ,  String.class.getName()));
 		retval.setModifiedOn( (Date)jsonContainer.get("modifiedOn" ,  Date.class.getName()));
 		/*hati hati dengan variable ini. ini bukan tipe simple dan bukan tipe id.co.sigma.common.util.json.IJSONFriendlyObject*/		retval.setPageDefinition( (PageDefinition)jsonContainer.get("pageDefinition" ,  PageDefinition.class.getName()));
-		retval.setPageId( (BigInteger)jsonContainer.get("pageId" ,  BigInteger.class.getName()));
+		retval.setPageId( (Long)jsonContainer.get("pageId" ,  Long.class.getName()));
 		retval.setSiblingOrder( (Integer)jsonContainer.get("siblingOrder" ,  Integer.class.getName()));
 		retval.setStatus( (String)jsonContainer.get("status" ,  String.class.getName()));
 		retval.setTreeLevelPosition( (Integer)jsonContainer.get("treeLevelPosition" ,  Integer.class.getName()));

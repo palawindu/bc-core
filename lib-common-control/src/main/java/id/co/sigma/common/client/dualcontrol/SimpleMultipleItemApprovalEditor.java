@@ -1,6 +1,6 @@
 package id.co.sigma.common.client.dualcontrol;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -45,20 +45,20 @@ public class SimpleMultipleItemApprovalEditor<DATA extends DualControlEnabledDat
 	}
 
 	@Override
-	public void viewMultipleData(BigInteger dualControlDataId) {
+	public void viewMultipleData(Long dualControlDataId) {
 		
 		
 	}
 	
 	
 	@Override
-	public void viewApprovedOrRejectedMultipleData(BigInteger dualControlDataId) {
+	public void viewApprovedOrRejectedMultipleData(Long dualControlDataId) {
 		
 		
 	}
 
 	@Override
-	public void approveMultipleData(BigInteger dualControlDataId) {
+	public void approveMultipleData(Long dualControlDataId) {
 		
 		
 	}

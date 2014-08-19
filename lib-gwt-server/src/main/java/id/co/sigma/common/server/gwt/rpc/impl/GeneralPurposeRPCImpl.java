@@ -74,5 +74,10 @@ public class GeneralPurposeRPCImpl extends BaseServerRPCService<GeneralPurposeRP
 	public String generateDoubleSubmitAvoidenceToken() {
 		return rpcSecurityService.generateToken();
 	}
+	
+	@Override
+	public void insertData(IJSONFriendlyObject<?> newObject) throws Exception {
+		rpcSecurityService.insertNewData(newObject); 
+	}
 
 }

@@ -6,7 +6,7 @@ package id.co.sigma.common.client.security.user;
 import id.co.sigma.common.security.domain.Application;
 import id.co.sigma.common.security.domain.User;
 import id.co.sigma.common.security.exception.PasswordPolicyException;
-import id.co.sigma.common.security.menu.UserDomain;
+
 import id.co.sigma.common.client.form.ExtendedLabel;
 import id.co.sigma.common.client.form.ExtendedTextBox;
 import id.co.sigma.common.client.form.advance.CheckBoxWithLabel;
@@ -18,7 +18,6 @@ import id.co.sigma.common.client.security.control.EditPasswordTextBox;
 import id.co.sigma.common.client.security.group.IOpenAndCloseable;
 import id.co.sigma.common.client.security.rpc.ApplicationRPCServiceAsync;
 import id.co.sigma.common.client.security.rpc.UserRPCServiceAsync;
-import id.co.sigma.common.control.SingleValueLookupResultHandler;
 import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
@@ -33,7 +32,6 @@ import com.google.gwt.regexp.shared.RegExp;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;

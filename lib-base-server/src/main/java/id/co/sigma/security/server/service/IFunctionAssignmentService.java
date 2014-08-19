@@ -3,12 +3,12 @@
  */
 package id.co.sigma.security.server.service;
 
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
-import com.google.gwt.user.client.rpc.AsyncCallback;
+
 
 /**
  * service untuk function assignment
@@ -24,7 +24,7 @@ public interface IFunctionAssignmentService {
 	 * @return list of function id
 	 * @throws Exception
 	 */
-	public List<BigInteger> getFunctionIdByGroupId(BigInteger groupId) throws Exception;
+	public List<Long> getFunctionIdByGroupId(Long groupId) throws Exception;
 	
 	/**
 	 * add and remove function assignment data
@@ -32,5 +32,5 @@ public interface IFunctionAssignmentService {
 	 * @param removedData list of removed data
 	 * @throws Exception
 	 */
-	public void addRemoveFunctionAssignment(List<FunctionAssignment> addedData, List<FunctionAssignment> removedData) throws Exception;
+	public void addRemoveFunctionAssignment(List<ApplicationMenuAssignment> addedData, List<ApplicationMenuAssignment> removedData) throws Exception;
 }

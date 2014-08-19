@@ -188,6 +188,9 @@ public class ExtendedBeanUtils extends BeanUtils implements IBeanObjectDefinitio
 		setPropertiesToNull(source, tobeNulledList.toArray(new String[tobeNulledList.size()]));
 		
 	}
+	
+	
+	
 		
 	/**
 	 * method ini membaca isi dari object ke dalam array of object. 
@@ -266,6 +269,23 @@ public class ExtendedBeanUtils extends BeanUtils implements IBeanObjectDefinitio
 	}
 	
 	
+	
+	
+	/**
+	 * membaca property dari bean object
+	 */
+	public Object getProperty (Object beanObject , String propertyName ) {
+		if ( beanObject== null)
+			return null ; 
+		try{
+			PropertyDescriptor desc =  getPropertyDescriptor(beanObject.getClass(), propertyName);
+			return desc.getReadMethod().invoke(beanObject, new Object[]{});
+		}catch ( Exception exc) {
+			logger.error("gagal membaca property :" + propertyName + ", error : "  + exc.getMessage() , exc);
+			return null ; 
+		}
+		 
+	}
 	
 //	public static <T,H> void getLast(T[] array) {
 //		T

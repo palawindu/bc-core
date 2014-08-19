@@ -14,7 +14,7 @@ import id.co.sigma.common.util.I18Utilities;
 import id.co.sigma.jquery.client.container.JQDialog;
 import id.co.sigma.jquery.client.grid.IReloadGridCommand;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @version $Id
  * @since Jan 30, 2013, 3:18:03 PM
  */
-public class PasswordPolicyListPanel extends BaseRootSecurityPanel implements IReloadGridCommand, IOpenAndCloseable<PasswordPolicy>, IRemove<BigInteger> {
+public class PasswordPolicyListPanel extends BaseRootSecurityPanel implements IReloadGridCommand, IOpenAndCloseable<PasswordPolicy>, IRemove<Long> {
 
 	private static PasswordPolicyListPanelUiBinder uiBinder = GWT
 			.create(PasswordPolicyListPanelUiBinder.class);
@@ -81,7 +81,7 @@ public class PasswordPolicyListPanel extends BaseRootSecurityPanel implements IR
 	}
 
 	@Override
-	public void remove(BigInteger parameter) {
+	public void remove(Long parameter) {
 		
 			PasswordPolicyRPCServiceAsync.Util.getInstance().remove(parameter, new AsyncCallback<Void>() {
 

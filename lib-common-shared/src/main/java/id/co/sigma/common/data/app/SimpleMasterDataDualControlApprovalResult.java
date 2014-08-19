@@ -3,7 +3,7 @@ package id.co.sigma.common.data.app;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 
 
 
@@ -19,16 +19,16 @@ public class SimpleMasterDataDualControlApprovalResult implements IJSONFriendlyO
 	 */
 	private static final long serialVersionUID = -4193654605707280203L;
 
-	private BigInteger id ;
+	private Long id ;
 	
 	private String referenceNumber ; 
 	protected String approvalStatus;
 	
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getReferenceNumber() {
@@ -56,7 +56,7 @@ public class SimpleMasterDataDualControlApprovalResult implements IJSONFriendlyO
 			ParsedJSONContainer jsonContainer) {
 		SimpleMasterDataDualControlApprovalResult retval = new SimpleMasterDataDualControlApprovalResult(); 
 		retval.approvalStatus = jsonContainer.getAsString("approvalStatus"); 
-		retval.id = jsonContainer.getAsBigInteger("id"); 
+		retval.id = (Long)jsonContainer.get("id" , Long.class.getName()); 
 		retval.referenceNumber = jsonContainer.getAsString( "referenceNumber"); 
 		return retval;
 	}

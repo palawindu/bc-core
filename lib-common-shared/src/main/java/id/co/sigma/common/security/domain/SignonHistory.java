@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -36,17 +35,17 @@ public class SignonHistory implements Serializable,IsSerializable, IJSONFriendly
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="SIGNON_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="USER_ID")
-	private BigInteger userId;
+	private Long userId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
 	private User user;
 	
 	@Column(name="APPLICATION_ID")
-	private BigInteger applicationId;
+	private Long applicationId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="APPLICATION_ID", insertable=false, updatable=false)
@@ -95,28 +94,28 @@ public class SignonHistory implements Serializable,IsSerializable, IJSONFriendly
 	 * Signon Id. Column : SIGNON_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * Signon Id. Column : SIGNON_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
 	 * User id. Column : USER_ID
 	 * @return userId
 	 */
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 	/**
 	 * User id. Column : USER_ID
 	 * @param userId
 	 */
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	/**
@@ -137,14 +136,14 @@ public class SignonHistory implements Serializable,IsSerializable, IJSONFriendly
 	 * Application id. Column : APPLICATION_ID
 	 * @return applicationId
 	 */
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 	/**
 	 * Application id. Column : APPLICATION_ID
 	 * @param applicationId
 	 */
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 	/**
@@ -275,16 +274,16 @@ public class SignonHistory implements Serializable,IsSerializable, IJSONFriendly
 		SignonHistory retval = new SignonHistory();
 		  
 		retval.setApplication( (Application)jsonContainer.get("application" ,  Application.class.getName()));
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		retval.setDescription( (String)jsonContainer.get("description" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setLogonTime( (Date)jsonContainer.get("logonTime" ,  Date.class.getName()));
 		retval.setLogoutTime( (Date)jsonContainer.get("logoutTime" ,  Date.class.getName()));
 		retval.setTerminal( (String)jsonContainer.get("terminal" ,  String.class.getName()));
 		  
 		retval.setUser( (User)jsonContainer.get("user" ,  User.class.getName()));
 		retval.setUserBrowser( (String)jsonContainer.get("userBrowser" ,  String.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		retval.setUuid( (String)jsonContainer.get("uuid" ,  String.class.getName()));
 		return retval; 
 	}

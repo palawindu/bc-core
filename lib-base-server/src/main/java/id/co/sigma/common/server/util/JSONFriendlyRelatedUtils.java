@@ -82,7 +82,7 @@ public class JSONFriendlyRelatedUtils {
 	public   String generateMethodRaw (String fqcn  ) {
 		try {
 			
-			Class cls =Class.forName(fqcn) ; 
+			Class<?> cls =Class.forName(fqcn) ; 
 			
 			PropertyDescriptor[] pd =  BeanUtils.getPropertyDescriptors(cls);
 			if ( pd!= null ){
@@ -143,7 +143,7 @@ public class JSONFriendlyRelatedUtils {
 							}
 							else{
 								String paramName = "param" + i ;
-								String tipeData = ((Class)allTypes[0]).getName() ;
+								String tipeData = ((Class<?>)allTypes[0]).getName() ;
 								
 								getMethod.append("\t\t \n");
 								getMethod.append("\t\t  List<"  + tipeData + "> "+paramName+" = " +  rm.getName() +  "() ; \n");

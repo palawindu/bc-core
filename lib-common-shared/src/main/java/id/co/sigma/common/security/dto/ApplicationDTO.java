@@ -4,7 +4,6 @@ import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -18,7 +17,7 @@ public class ApplicationDTO implements Serializable,IsSerializable, IJSONFriendl
 
 	private static final long serialVersionUID = -7170563672591601672L;
 	
-	private BigInteger id;
+	private Long id;
 	private String applicationCode;
 	private String applicationName;
 	private String applicationUrl;
@@ -34,7 +33,7 @@ public class ApplicationDTO implements Serializable,IsSerializable, IJSONFriendl
 		super();
 	}
 	
-	public ApplicationDTO(BigInteger id, String appCode, String appName, String appUrl, Boolean active, String appLoginUrl, Boolean concurentUser){
+	public ApplicationDTO(Long id, String appCode, String appName, String appUrl, Boolean active, String appLoginUrl, Boolean concurentUser){
 		this.id = id;
 		this.applicationCode = appCode;
 		this.applicationName = appName;
@@ -44,10 +43,10 @@ public class ApplicationDTO implements Serializable,IsSerializable, IJSONFriendl
 		this.isConcurentUser = concurentUser;
 	}
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getApplicationCode() {
@@ -120,7 +119,7 @@ public class ApplicationDTO implements Serializable,IsSerializable, IJSONFriendl
 		retval.setApplicationName( (String)jsonContainer.get("applicationName" ,  String.class.getName()));
 		retval.setApplicationNotifyUrl( (String)jsonContainer.get("applicationNotifyUrl" ,  String.class.getName()));
 		retval.setApplicationUrl( (String)jsonContainer.get("applicationUrl" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setIsActive( (Boolean)jsonContainer.get("isActive" ,  Boolean.class.getName()));
 		retval.setIsConcurentUser( (Boolean)jsonContainer.get("isConcurentUser" ,  Boolean.class.getName()));
 		retval.setUserId( (String)jsonContainer.get("userId" ,  String.class.getName()));

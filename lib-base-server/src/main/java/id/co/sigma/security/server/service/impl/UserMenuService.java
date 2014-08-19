@@ -1,6 +1,6 @@
 package id.co.sigma.security.server.service.impl;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 
-import id.co.sigma.common.security.domain.Function;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenu;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.domain.PageDefinition;
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
@@ -59,7 +59,7 @@ public class UserMenuService implements IUserMenuService{
 	@Override
 	public List<ApplicationMenuSecurity> getMenuApplication(Signon parameter) throws Exception {
 		List<ApplicationMenuSecurity> result = null;
-		List<Function> resultFunction = getFunctionMenu(parameter);
+		List<ApplicationMenu> resultFunction = getFunctionMenu(parameter);
 						
 		//Jika menu ada sesuai dg userId yg ditemukan
 		if(resultFunction != null){
@@ -71,9 +71,9 @@ public class UserMenuService implements IUserMenuService{
 	
 	@Transactional(readOnly=true, propagation=Propagation.REQUIRED)
 	@Override
-	public List<ApplicationMenuSecurity> getMenuApplication(BigInteger userId) throws Exception {
+	public List<ApplicationMenuSecurity> getMenuApplication(Long userId) throws Exception {
 		List<ApplicationMenuSecurity> result = null;
-		List<Function> resultFunction = getAllowedMenusByUserId(userId);
+		List<ApplicationMenu> resultFunction = getAllowedMenusByUserId(userId);
 		if(resultFunction != null){
 			plugPage(resultFunction);
 			result = convertToApplicationMenu(resultFunction);
@@ -85,9 +85,9 @@ public class UserMenuService implements IUserMenuService{
 	
 	
 	
-	private void plugPage (List<Function>  menus ) {
-		Map<BigInteger, Function> indexedFunctions = new HashMap<BigInteger, Function>() ;
-		for ( Function scn : menus) {
+	private void plugPage (List<ApplicationMenu>  menus ) {
+		Map<Long, ApplicationMenu> indexedFunctions = new HashMap<Long, ApplicationMenu>() ;
+		for ( ApplicationMenu scn : menus) {
 			if ( scn.getPageId() == null)
 				continue ; 
 			indexedFunctions.put(scn.getPageId(), scn); 
@@ -109,7 +109,7 @@ public class UserMenuService implements IUserMenuService{
 	 * @return List of Function
 	 * @throws Exception
 	 */
-	private List<Function> getFunctionMenu(Signon parameter) throws Exception{
+	private List<ApplicationMenu> getFunctionMenu(Signon parameter) throws Exception{
 		
 		
 		Signon resultSignon = userDao.getDataSignonByParam(parameter); //Get user_id
@@ -134,21 +134,21 @@ public class UserMenuService implements IUserMenuService{
 	 * </ol>
 	 * @param userId id dari user
 	 **/
-	public List<Function> getAllowedMenusByUserId (BigInteger userId)throws Exception  {
-		List<Function> resultFunction = null;
+	public List<ApplicationMenu> getAllowedMenusByUserId (Long userId)throws Exception  {
+		List<ApplicationMenu> resultFunction = null;
 		
 		
 		List<UserGroupAssignment> resultGroupAssignment = userDao.getGroupAssigmentByParam(userId); //Get group_id
 		if(resultGroupAssignment != null){
-			List<BigInteger> listGroupId = new ArrayList<BigInteger>();
+			List<Long> listGroupId = new ArrayList<Long>();
 			for (UserGroupAssignment groupAssignment : resultGroupAssignment) {
 				listGroupId.add(groupAssignment.getGroupId());
 			}//end for
 			
-			List<FunctionAssignment> resultFunctionAssignment = userDao.getFunctionAssignmentByGroupId(listGroupId); //get function_assignment
+			List<ApplicationMenuAssignment> resultFunctionAssignment = userDao.getFunctionAssignmentByGroupId(listGroupId); //get function_assignment
 			if(resultFunctionAssignment != null){
-				List<BigInteger> listFunctionId = new ArrayList<BigInteger>();
-				for (FunctionAssignment functionAssignment : resultFunctionAssignment) {
+				List<Long> listFunctionId = new ArrayList<Long>();
+				for (ApplicationMenuAssignment functionAssignment : resultFunctionAssignment) {
 					if (!listFunctionId.contains(functionAssignment.getFunctionId()))
 						listFunctionId.add(functionAssignment.getFunctionId());
 				}//end for
@@ -172,10 +172,10 @@ public class UserMenuService implements IUserMenuService{
 	 * @param data
 	 * @return
 	 */
-	private List<ApplicationMenuSecurity> convertToApplicationMenu(List<Function> data){
+	private List<ApplicationMenuSecurity> convertToApplicationMenu(List<ApplicationMenu> data){
 		List<ApplicationMenuSecurity> result = new ArrayList<ApplicationMenuSecurity>();
 		try {			
-			for (Function function : data) {
+			for (ApplicationMenu function : data) {
 				ApplicationMenuSecurity appMenu = new ApplicationMenuSecurity();
 				if(function.getPageDefinition() != null){
 					if ( function.getPageDefinition().getPageUrl()== null)

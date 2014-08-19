@@ -1,10 +1,10 @@
 package id.co.sigma.common.data.app.security;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,47 +26,47 @@ public class MenuEditingData implements IJSONFriendlyObject<MenuEditingData>{
 	/**
 	 * data functions yang available dalam 1 application
 	 */
-	private List<Function> allMenus ; 
+	private List<ApplicationMenu> allMenus ; 
 	
 	
 	
 	/**
 	 * menu yang kondisi nya selected
 	 */
-	private List<BigInteger> allSelectedIds ; 
+	private List<Long> allSelectedIds ; 
 	
 	/**
 	 * data functions yang available dalam 1 application
 	 */
-	public void setAllMenus(List<Function> allMenus) {
+	public void setAllMenus(List<ApplicationMenu> allMenus) {
 		this.allMenus = allMenus;
 	}
 	/**
 	 * data functions yang available dalam 1 application
 	 */
-	public List<Function> getAllMenus() {
+	public List<ApplicationMenu> getAllMenus() {
 		return allMenus;
 	}
 	
 	/**
 	 * menu yang kondisi nya selected
 	 */
-	public List<BigInteger> getAllSelectedIds() {
+	public List<Long> getAllSelectedIds() {
 		return allSelectedIds;
 	}
 	/**
 	 * menu yang kondisi nya selected
 	 */
-	public void setAllSelectedIds(List<BigInteger> allSelectedIds) {
+	public void setAllSelectedIds(List<Long> allSelectedIds) {
 		this.allSelectedIds = allSelectedIds;
 	}
 	@Override
 	public void translateToJSON(ParsedJSONContainer jsonContainer) {
 		jsonContainer.put("allMenus", allMenus);
 		if ( allSelectedIds!= null && allSelectedIds.isEmpty()){
-			BigInteger[] ids = new BigInteger[allSelectedIds.size()];
+			Long[] ids = new Long[allSelectedIds.size()];
 			int i= 0 ; 
-			for ( BigInteger scn : allSelectedIds){
+			for ( Long scn : allSelectedIds){
 				ids[i++] = scn  ;
 			}
 			jsonContainer.appendToArray("allSelectedIds", ids);
@@ -75,11 +75,11 @@ public class MenuEditingData implements IJSONFriendlyObject<MenuEditingData>{
 	@Override
 	public MenuEditingData instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		MenuEditingData retval = new MenuEditingData(); 
-		retval.allMenus = jsonContainer.getAsArraylist("allMenus", Function.class.getName()); 
-		BigInteger[] selectedIdsJson =  jsonContainer.getAsArrayOfBigIntegers("allSelectedIds" );
+		retval.allMenus = jsonContainer.getAsArraylist("allMenus", ApplicationMenu.class.getName()); 
+		Long[] selectedIdsJson =  jsonContainer.getAsArrayOfLongs("allSelectedIds" );
 		if ( selectedIdsJson!= null && selectedIdsJson.length>0){
-			retval.allSelectedIds = new ArrayList<BigInteger>(); 
-			for ( BigInteger scn : selectedIdsJson) {
+			retval.allSelectedIds = new ArrayList<Long>(); 
+			for ( Long scn : selectedIdsJson) {
 				retval.allSelectedIds.add(scn); 
 			}
 		}

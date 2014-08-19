@@ -5,7 +5,7 @@ import id.co.sigma.common.data.IModifyAuditedData;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -132,13 +132,13 @@ public interface DualControlEnabledData<POJO
 	 * table yang dual control enabled juga wajib men-track id dari dual control row. ini untuk track balik, data saat ini di proses dengan id berapa<br/>
 	 * rekomendasi nya : ada filed curr_dual_ctr_id refer ke table m_dual_control_table.pk
 	 **/
-	public void setCurrentCommonDualControlId (BigInteger id ) ; 
+	public void setCurrentCommonDualControlId (Long id ) ; 
 	
 	
 	/**
 	 * table yang dual control enabled juga wajib men-track id dari dual control row. ini untuk track balik, data saat ini di proses dengan id berapa
 	 **/
-	public BigInteger getCurrentCommonDualControlId ( ) ;
+	public Long getCurrentCommonDualControlId ( ) ;
 	
 	
 	

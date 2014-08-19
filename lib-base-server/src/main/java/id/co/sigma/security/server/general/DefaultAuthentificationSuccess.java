@@ -1,7 +1,6 @@
 package id.co.sigma.security.server.general;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -54,7 +53,7 @@ public class DefaultAuthentificationSuccess extends BaseSecurityService implemen
 			@Override
 			public Integer doInTransaction(TransactionStatus arg0) {
 				Signon data = new Signon();
-				data.setApplicationId(BigInteger.ONE); //statis karena aplikasi hanya ada 1
+				data.setApplicationId(1L); //statis karena aplikasi hanya ada 1
 				data.setLogonTime(new Date());
 				data.setTerminal(request.getRemoteHost());
 				data.setUserBrowser(request.getHeader("user-agent"));

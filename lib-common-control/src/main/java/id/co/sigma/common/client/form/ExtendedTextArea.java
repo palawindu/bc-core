@@ -396,7 +396,7 @@ public class ExtendedTextArea extends TextArea implements MandatoryValidationEna
 	/**
 	 * flag show hide config button
 	 **/
-	private boolean showEditConfigButton = false ; 
+	boolean showEditConfigButton = false ; 
 	
 	
 	@Override

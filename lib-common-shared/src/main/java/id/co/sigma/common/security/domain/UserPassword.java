@@ -4,7 +4,7 @@ import id.co.sigma.common.security.domain.audit.BaseCreatedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -34,10 +34,10 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PASSWORD_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="USER_ID")
-	private BigInteger userId;
+	private Long userId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
@@ -54,7 +54,7 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 	 * password id<br>Column : PASSWORD_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -62,7 +62,7 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 	 * password id<br>Column : PASSWORD_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -70,7 +70,7 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 	 * user id<br>Column : USER_ID
 	 * @return userId
 	 */
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 	
@@ -78,7 +78,7 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 	 * user id<br>Column : USER_ID
 	 * @param userId
 	 */
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -163,10 +163,10 @@ public class UserPassword extends BaseCreatedObject implements IJSONFriendlyObje
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		retval.setEffectiveDate( (Date)jsonContainer.get("effectiveDate" ,  Date.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		  
 		retval.setUser( (User)jsonContainer.get("user" ,  User.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		return retval; 
 	}
 }

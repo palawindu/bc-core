@@ -1,13 +1,12 @@
 package id.co.sigma.security.server.dao.impl;
 
-import id.co.sigma.common.security.domain.Function;
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenu;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.domain.Signon;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.security.server.dao.BaseGenericDao;
 import id.co.sigma.security.server.dao.IUserMenuDao;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -40,7 +39,7 @@ public class UserMenuDaoImpl extends BaseGenericDao implements IUserMenuDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserGroupAssignment> getGroupAssigmentByParam(BigInteger userId) throws Exception {
+	public List<UserGroupAssignment> getGroupAssigmentByParam(Long userId) throws Exception {
 		List<UserGroupAssignment> result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-GET-GROUPASSIGNMENT");
 		qry.setParameter("USER_ID", userId);
@@ -53,8 +52,8 @@ public class UserMenuDaoImpl extends BaseGenericDao implements IUserMenuDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FunctionAssignment> getFunctionAssignmentByGroupId(List<BigInteger> parameter) throws Exception {
-		List<FunctionAssignment> result = null;
+	public List<ApplicationMenuAssignment> getFunctionAssignmentByGroupId(List<Long> parameter) throws Exception {
+		List<ApplicationMenuAssignment> result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-GET-FUNCTIONASSIGNMENT");
 		qry.setParameter("LIST_GROUP_ID", parameter);		
 		result = qry.getResultList();
@@ -66,8 +65,8 @@ public class UserMenuDaoImpl extends BaseGenericDao implements IUserMenuDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Function> getFunctionMenuByFunctionId(List<BigInteger> parameter) throws Exception {
-		List<Function> result = null;
+	public List<ApplicationMenu> getFunctionMenuByFunctionId(List<Long> parameter) throws Exception {
+		List<ApplicationMenu> result = null;
 		Query qry = getEntityManager().createNamedQuery("SECURITY-GET-FUNCTIONMEU");
 		qry.setParameter("LIST_FUNCTION_ID", parameter);
 		qry.setParameter("STATUS", "A");

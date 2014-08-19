@@ -8,8 +8,9 @@ import java.util.HashMap;
 import com.google.gwt.i18n.client.DateTimeFormat;
 
 
+
+import id.co.sigma.common.data.CommonLibraryConstant;
 import id.co.sigma.common.data.DataConverter;
-import id.co.sigma.common.data.PagedSimpleDataGridData;
 
 
 
@@ -21,7 +22,7 @@ public final class ClientDataUtils {
 	
 	
 	
-	private static final DateTimeFormat STRING_TO_DATE_DESERIALIZER = DateTimeFormat.getFormat(PagedSimpleDataGridData.DATE_TO_STRING_SERIALIZATION_PATTERN);
+	private static final DateTimeFormat STRING_TO_DATE_DESERIALIZER = DateTimeFormat.getFormat(CommonLibraryConstant.DATE_TO_STRING_SERIALIZATION_PATTERN);
 	
 	
 	

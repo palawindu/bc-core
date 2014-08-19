@@ -4,7 +4,7 @@ import id.co.sigma.common.data.SingleKeyEntityData;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -13,11 +13,11 @@ import java.util.List;
  * @since Dec 10, 2012, 11:02:20 AM
  * @version $Id
  */
-public class UserDTO implements  SingleKeyEntityData<BigInteger>, IJSONFriendlyObject<UserDTO>{
+public class UserDTO implements  SingleKeyEntityData<Long>, IJSONFriendlyObject<UserDTO>{
 
 	private static final long serialVersionUID = -4051054205378251757L;
 	
-	private BigInteger idUser;
+	private Long idUser;
 	private String username;
 	private String fullName;
 	private String email;
@@ -27,14 +27,14 @@ public class UserDTO implements  SingleKeyEntityData<BigInteger>, IJSONFriendlyO
 		super();
 	}	
 	
-	public UserDTO(BigInteger id, String username, String fullName, String email){
+	public UserDTO(Long id, String username, String fullName, String email){
 		this.idUser = id;
 		this.username = username;
 		this.fullName = fullName;
 		this.email = email;
 	}
 	
-	public UserDTO(BigInteger id, String username, String fullName, String email, List<UserGroupDTO> groups){
+	public UserDTO(Long id, String username, String fullName, String email, List<UserGroupDTO> groups){
 		this.idUser = id;
 		this.username = username;
 		this.fullName = fullName;		
@@ -43,10 +43,10 @@ public class UserDTO implements  SingleKeyEntityData<BigInteger>, IJSONFriendlyO
 	}
 	
 	
-	public BigInteger getIdUser() {
+	public Long getIdUser() {
 		return idUser;
 	}
-	public void setIdUser(BigInteger idUser) {
+	public void setIdUser(Long idUser) {
 		this.idUser = idUser;
 	}
 	public String getUsername() {
@@ -75,12 +75,12 @@ public class UserDTO implements  SingleKeyEntityData<BigInteger>, IJSONFriendlyO
 	}
 
 	@Override
-	public BigInteger getId() {
+	public Long getId() {
 		return idUser;
 	}
 
 	@Override
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.idUser = id ; 
 		
 	}	
@@ -112,8 +112,8 @@ public class UserDTO implements  SingleKeyEntityData<BigInteger>, IJSONFriendlyO
 		UserDTO retval = new UserDTO();
 		retval.setEmail( (String)jsonContainer.get("email" ,  String.class.getName()));
 		retval.setFullName( (String)jsonContainer.get("fullName" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
-		retval.setIdUser( (BigInteger)jsonContainer.get("idUser" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
+		retval.setIdUser( (Long)jsonContainer.get("idUser" ,  Long.class.getName()));
 		/*hati hati dengan variable ini. ini bukan tipe simple dan bukan tipe id.co.sigma.common.util.json.IJSONFriendlyObject*/		retval.setUsername( (String)jsonContainer.get("username" ,  String.class.getName()));
 		return retval; 
 	}

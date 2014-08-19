@@ -7,7 +7,7 @@ import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.common.security.domain.UserPassword;
 import id.co.sigma.common.server.dao.IBaseDao;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -45,7 +45,7 @@ public interface IUserDao extends IBaseDao{
 	 * @return List of application user
 	 * @throws Exception
 	 */
-	public List<ApplicationUser> getApplicationUser(BigInteger applicationId, User parameter, int pagePosition, int pageSize) throws Exception;
+	public List<ApplicationUser> getApplicationUser(Long applicationId, User parameter, int pagePosition, int pageSize) throws Exception;
 	
 	/**
 	 * Get user by list of user id
@@ -53,7 +53,7 @@ public interface IUserDao extends IBaseDao{
 	 * @return list of user
 	 * @throws Exception
 	 */
-	public List<User> getUserByUserId(List<BigInteger> userIds) throws Exception;
+	public List<User> getUserByUserId(List<Long> userIds) throws Exception;
 	
 	/**
 	 * Get user group assignment berdasarkan user id
@@ -61,7 +61,7 @@ public interface IUserDao extends IBaseDao{
 	 * @return list of user group assignment
 	 * @throws Exception
 	 */
-	public List<UserGroupAssignment> getGroupAssignmentByUserId(List<BigInteger> userIds) throws Exception;
+	public List<UserGroupAssignment> getGroupAssignmentByUserId(List<Long> userIds) throws Exception;
 	
 	/**
 	 * get semua data user
@@ -85,15 +85,15 @@ public interface IUserDao extends IBaseDao{
 	 * @return data user yang bersesuaian
 	 * @throws Exception
 	 */
-	public User getUserById(BigInteger id) throws Exception;
+	public User getUserById(Long id) throws Exception;
 	
 	/**
 	 * get user password by id
-	 * @param id id biginteger
+	 * @param id id Long
 	 * @return list user password
 	 * @throws Exception
 	 */
-	public List<UserPassword> getUserPasswordByUserId(BigInteger id) throws Exception;
+	public List<UserPassword> getUserPasswordByUserId(Long id) throws Exception;
 	
 	/**
 	 * cek apakah user name exist di database

@@ -5,7 +5,7 @@
  */
 package id.co.sigma.common.security.domain;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,7 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
+
 
 import id.co.sigma.common.security.domain.audit.BaseCreatedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
@@ -38,17 +38,17 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="BRANCH_ASSIGNMENT_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="USER_ID")
-	private BigInteger userId;
+	private Long userId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="USER_ID", insertable=false, updatable=false)
 	private User user;
 	
 	@Column(name="BRANCH_ID")
-	private BigInteger branchId;
+	private Long branchId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="BRANCH_ID", insertable=false, updatable=false)
@@ -59,7 +59,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : BRANCH_ASSIGNMENT_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -68,7 +68,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : BRANCH_ASSIGNMENT_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -77,7 +77,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : USER_ID
 	 * @return userId
 	 */
-	public BigInteger getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
@@ -86,7 +86,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : USER_ID
 	 * @param userId
 	 */
-	public void setUserId(BigInteger userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	
@@ -111,7 +111,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : BRANCH_ID
 	 * @return branchId
 	 */
-	public BigInteger getBranchId() {
+	public Long getBranchId() {
 		return branchId;
 	}
 
@@ -120,7 +120,7 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	 * COLUMN : BRANCH_ID
 	 * @param branchId
 	 */
-	public void setBranchId(BigInteger branchId) {
+	public void setBranchId(Long branchId) {
 		this.branchId = branchId;
 	}
 
@@ -219,13 +219,13 @@ public class BranchAssignment extends BaseCreatedObject implements IJSONFriendly
 	public BranchAssignment instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		BranchAssignment retval = new BranchAssignment();
 		retval.setBranch( (Branch)jsonContainer.get("branch" ,  Branch.class.getName()));
-		retval.setBranchId( (BigInteger)jsonContainer.get("branchId" ,  BigInteger.class.getName()));
+		retval.setBranchId( (Long)jsonContainer.get("branchId" ,  Long.class.getName()));
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setUser( (User)jsonContainer.get("user" ,  User.class.getName()));
-		retval.setUserId( (BigInteger)jsonContainer.get("userId" ,  BigInteger.class.getName()));
+		retval.setUserId( (Long)jsonContainer.get("userId" ,  Long.class.getName()));
 		return retval; 
 	}
 }

@@ -5,7 +5,6 @@
  */
 package id.co.sigma.common.security.domain;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 import id.co.sigma.common.security.domain.audit.BaseAuditedObject;
@@ -14,8 +13,6 @@ import id.co.sigma.common.util.json.ParsedJSONContainer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 /**
@@ -30,10 +27,9 @@ public class Application extends BaseAuditedObject implements IJSONFriendlyObjec
 
 	private static final long serialVersionUID = 8389686936501266421L;
 
-	@Id	
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@Column(name="APPLICATION_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="APPLICATION_CODE")
 	private String applicationCode;
@@ -79,7 +75,7 @@ public class Application extends BaseAuditedObject implements IJSONFriendlyObjec
 	 * COLUMN : APPLICATION_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -88,7 +84,7 @@ public class Application extends BaseAuditedObject implements IJSONFriendlyObjec
 	 * COLUMN : APPLICATION_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -370,7 +366,7 @@ public class Application extends BaseAuditedObject implements IJSONFriendlyObjec
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setKickPreviousLogin( (String)jsonContainer.get("kickPreviousLogin" ,  String.class.getName()));
 		retval.setLanguage( (String)jsonContainer.get("language" ,  String.class.getName()));
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));

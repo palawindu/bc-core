@@ -119,4 +119,17 @@ public class GeneralPurposeRPCAsyncImpl extends ManualJSONSerializeRPCService<Ge
 		
 	}
 
+	@Override
+	public void insertData(IJSONFriendlyObject<?> newObject,
+			AsyncCallback<Void> callback) {
+		this.submitRPCRequestRaw( "insertData",
+				new Class[]{
+					 IJSONFriendlyObject.class
+				}, 
+				new Object []{
+					newObject
+			}, callback);
+		
+	}
+
 }

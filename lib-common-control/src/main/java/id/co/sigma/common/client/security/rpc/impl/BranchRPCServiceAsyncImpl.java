@@ -1,5 +1,7 @@
 package id.co.sigma.common.client.security.rpc.impl;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 import id.co.sigma.common.security.rpc.BranchRPCService;
 import id.co.sigma.common.client.rpc.ManualJSONSerializeRPCService;
 import id.co.sigma.common.client.security.rpc.BranchRPCServiceAsync;
@@ -10,14 +12,14 @@ public class BranchRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<Bra
 	protected Class<BranchRPCService> getServiceInterface() {
 		return BranchRPCService.class;
 	}
-	
-		public void remove(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
+	@Override
+	public void remove(Long id, AsyncCallback<Void> callback) {
 		this.submitRPCRequestRaw( "remove", new Class<?>[]{
-			java.math.BigInteger.class, 
+			Long.class, 
 			
 		}, 
 		new Object[]{
-			 param0, 
+			 id, 
 		}, 
 		callback); 	
 	}

@@ -6,7 +6,7 @@ import id.co.sigma.common.client.security.rpc.impl.BranchRPCServiceAsyncImpl;
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 
-import java.math.BigInteger;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -45,5 +45,5 @@ public interface BranchRPCServiceAsync {
 	 * @param id
 	 * @param callback
 	 */
-	void remove(BigInteger id, AsyncCallback<Void> callback);
+	void remove(Long id, AsyncCallback<Void> callback);
 }

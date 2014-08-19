@@ -1,10 +1,10 @@
 package id.co.sigma.security.server.dao;
 
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.common.security.domain.UserGroupAssignment;
 import id.co.sigma.common.server.dao.IBaseDao;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 /**
@@ -20,14 +20,14 @@ public interface IFunctionAssignmentDao extends IBaseDao {
 	 * @param groupId
 	 * @throws Exception
 	 */
-	public void deleteFunctionByGroupId(BigInteger groupId) throws Exception;
+	public void deleteFunctionByGroupId(Long groupId) throws Exception;
 	
 	
 	
 	/**
 	 * menghapus data dari {@link UserGroupAssignment}. ini jadinya semua user yang mendapat group sesuai ID akan di hapus
 	 */
-	public void deleteUserGroupAssigmentByGroupId(BigInteger groupId) throws Exception;
+	public void deleteUserGroupAssigmentByGroupId(Long groupId) throws Exception;
 	
 	
 	/**
@@ -37,14 +37,14 @@ public interface IFunctionAssignmentDao extends IBaseDao {
 	 * @return list of function id
 	 * @throws Exception
 	 */
-	public List<BigInteger> getFunctionIdByGroupId(List<BigInteger> groupIds) throws Exception;
+	public List<Long> getFunctionIdByGroupId(List<Long> groupIds) throws Exception;
 	
 	
 	/**
 	 * membaca group assignment berdasarkan ID dari group
 	 * @param groupId Id dari group yang hendak di baca
 	 */
-	public List<FunctionAssignment> getFunctionAssigmentByGroupId ( BigInteger groupId  ) ; 
+	public List<ApplicationMenuAssignment> getFunctionAssigmentByGroupId ( Long groupId  ) ; 
 	
 	/**
 	 * add by dode
@@ -53,7 +53,7 @@ public interface IFunctionAssignmentDao extends IBaseDao {
 	 * @return list of function assignment
 	 * @throws Exception
 	 */
-	public List<FunctionAssignment> getFunctionAssignmentByIdAndGroupId(List<FunctionAssignment> data) throws Exception;
+	public List<ApplicationMenuAssignment> getFunctionAssignmentByIdAndGroupId(List<ApplicationMenuAssignment> data) throws Exception;
 	
 	/**
 	 * add by dode
@@ -61,5 +61,5 @@ public interface IFunctionAssignmentDao extends IBaseDao {
 	 * @param functionId function id
 	 * @throws Exception
 	 */
-	public void deleteFunctionAssigmentByFunctionId(BigInteger functionId) throws Exception;
+	public void deleteFunctionAssigmentByFunctionId(Long functionId) throws Exception;
 }

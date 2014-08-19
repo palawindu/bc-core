@@ -7,7 +7,7 @@ import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 import id.co.sigma.common.security.domain.PasswordPolicy;
 
-import java.math.BigInteger;
+
 
 /**
  * password policy RPC Service
@@ -15,7 +15,6 @@ import java.math.BigInteger;
  * @version $Id
  * @since Jan 30, 2013, 3:34:34 PM
  */
-//@RemoteServiceRelativePath(value="/sigma-rpc/password-policy.app-rpc")
 public interface PasswordPolicyRPCService extends JSONSerializedRemoteService {
 	
 	/**
@@ -46,5 +45,5 @@ public interface PasswordPolicyRPCService extends JSONSerializedRemoteService {
 	 * @param id id password policy yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long  id) throws Exception;
 }

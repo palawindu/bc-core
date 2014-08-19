@@ -8,7 +8,7 @@ import id.co.sigma.security.server.dao.IUserLoginDao;
 import id.co.sigma.security.server.dao.impl.ApplicationDaoImpl;
 import id.co.sigma.security.server.dao.impl.UserLoginDaoImpl;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -44,7 +44,7 @@ public class UserDetailService extends AbstractService implements UserDetailsSer
 		CoreServerUserDetail userDetail = null;
 		try {			
 			String applicationId = request.getParameter("j_applicationId");			
-			Application application = (Application) applicationDao.find(Application.class, new BigInteger(applicationId));
+			Application application = (Application) applicationDao.find(Application.class, applicationId);
 			User userFromDb = userDao.getUserByUsername(username);						
 			if(userFromDb != null){
 				/*Pencocokan ke tabel sec_password_hs*/
@@ -84,8 +84,8 @@ public class UserDetailService extends AbstractService implements UserDetailsSer
 		userDetail.setAccountNonLocked(true);
 		userDetail.setCredentialsNonExpired(true);
 		userDetail.setEmail(userFromDb.getEmail());
-		if(userFromDb.getActiveStatus() != null){
-			if(userFromDb.getActiveStatus().equalsIgnoreCase("A")){
+		if(userFromDb.getActiveFlag() != null){
+			if(userFromDb.getActiveFlag().equalsIgnoreCase("A")){
 				userDetail.setEnabled(true);
 			}else{
 				userDetail.setEnabled(false);

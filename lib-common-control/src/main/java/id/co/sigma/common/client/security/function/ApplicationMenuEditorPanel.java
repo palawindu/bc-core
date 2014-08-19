@@ -7,7 +7,7 @@ import id.co.sigma.common.client.security.rpc.FunctionRPCServiceAsync;
 import id.co.sigma.common.client.widget.BaseCommonControlComposite;
 import id.co.sigma.jquery.client.container.JQDialog;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +20,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.Widget;
@@ -103,7 +102,7 @@ public class ApplicationMenuEditorPanel extends BaseCommonControlComposite {
 			return  ; 
 		level0 = new ArrayList<ApplicationMenuDTO>();
 		level0TreeItem = new ArrayList<TreeItem> (); 
-		Map<BigInteger, ApplicationMenuDTO> indexedMenus = new HashMap<BigInteger, ApplicationMenuDTO>();
+		Map<Long, ApplicationMenuDTO> indexedMenus = new HashMap<Long, ApplicationMenuDTO>();
 		
 		Map<Integer, ArrayList< ApplicationMenuDTO>> indexedByLevel = new HashMap<Integer, ArrayList<ApplicationMenuDTO>>(); 
 		 
@@ -129,7 +128,7 @@ public class ApplicationMenuEditorPanel extends BaseCommonControlComposite {
 			}
 			parent.getSubMenus().add(scn);
 		}
-		Map<BigInteger, TreeItem> indexedTreeMenus = new HashMap<BigInteger, TreeItem>() ;
+		Map<Long, TreeItem> indexedTreeMenus = new HashMap<Long, TreeItem>() ;
 		
 		// render level per level. max 1000 level
 		if (! indexedByLevel.containsKey(1)){

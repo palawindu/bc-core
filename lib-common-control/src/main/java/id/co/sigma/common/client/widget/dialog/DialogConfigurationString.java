@@ -4,10 +4,9 @@ import id.co.sigma.common.client.control.i18.I18NTextBrowseButton;
 import id.co.sigma.common.client.form.IntegerTextBox;
 import id.co.sigma.common.data.entity.FormElementConfiguration;
 
-import com.google.gwt.user.client.Window;
+
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
 
 /**
  * Dialog konfigurasi untuk string control

@@ -1,8 +1,8 @@
 package id.co.sigma.common.client.dualcontrol;
 
-import java.math.BigInteger;
 
-import com.google.gwt.user.client.Window;
+
+
 
 import id.co.sigma.common.client.control.worklist.PagedSimpleGridPanel;
 import id.co.sigma.common.data.app.SimpleDualControlData;
@@ -25,7 +25,7 @@ public class MultipleDataDualControlGrid<DATA extends SimpleDualControlData<?>> 
 	/**
 	 * target object FQCN.class data yang di render apa
 	 **/
-	private String targetObjectFQCN ; 
+	String targetObjectFQCN ; 
 	
 	public MultipleDataDualControlGrid(){
 		super(); 
@@ -60,17 +60,7 @@ public class MultipleDataDualControlGrid<DATA extends SimpleDualControlData<?>> 
 	
 	
 	
-	/**
-	 * set data untuk di approve. ini otomatis memerintahkan editor untuk request data grid
-	 **/
-	public void setIdOfDataToApprove ( BigInteger dataId ){
-		
-		if ( this.targetObjectFQCN == null|| targetObjectFQCN.length()==0){
-			Window.alert("anda belum mengeset variable :   targetObjectFQCN  , untuk class : " + this.getClass().getName() +", mohon di perbaiki");
-			return ; 
-		}
-		//FIXME: kirim request ke RPC di sini
-	}
+	
 	
 	
 

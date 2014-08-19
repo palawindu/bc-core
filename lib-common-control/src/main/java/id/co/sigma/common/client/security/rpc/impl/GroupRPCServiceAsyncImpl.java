@@ -1,5 +1,7 @@
 package id.co.sigma.common.client.security.rpc.impl;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 import id.co.sigma.common.security.rpc.GroupRPCService;
 import id.co.sigma.common.client.rpc.ManualJSONSerializeRPCService;
 import id.co.sigma.common.client.security.rpc.GroupRPCServiceAsync;
@@ -11,15 +13,16 @@ public class GroupRPCServiceAsyncImpl extends ManualJSONSerializeRPCService<Grou
 		return GroupRPCService.class;
 	}
 	
-		public void delete(java.math.BigInteger param0,com.google.gwt.user.client.rpc.AsyncCallback<java.lang.Void> callback) {
-		this.submitRPCRequestRaw( "delete", new Class<?>[]{
-			java.math.BigInteger.class, 
-			
-		}, 
-		new Object[]{
-			 param0, 
-		}, 
-		callback); 	
+	@Override
+	public void delete(Long parameter, AsyncCallback<Void> callback) {
+		this.submitRPCRequestRaw( "insert", new Class<?>[]{
+				Long.class, 
+				
+			}, 
+			new Object[]{
+				parameter, 
+			}, 
+			callback);
 	}
 
 

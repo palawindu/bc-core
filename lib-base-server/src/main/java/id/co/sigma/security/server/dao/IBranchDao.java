@@ -4,7 +4,7 @@ import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.security.domain.Branch;
 import id.co.sigma.common.security.domain.BranchAssignment;
 
-import java.math.BigInteger;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public interface IBranchDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<BranchAssignment> getBranchAssignmentByUserId(BigInteger userId) throws Exception;
+	public List<BranchAssignment> getBranchAssignmentByUserId(Long userId) throws Exception;
 	
 	
 	/**

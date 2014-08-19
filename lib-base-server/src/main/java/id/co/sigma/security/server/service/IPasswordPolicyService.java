@@ -5,9 +5,9 @@ package id.co.sigma.security.server.service;
 
 import id.co.sigma.common.data.PagedResultHolder;
 import id.co.sigma.common.security.domain.PasswordPolicy;
-import id.co.sigma.common.security.domain.User;
 
-import java.math.BigInteger;
+
+
 
 /**
  * @author Dode
@@ -42,5 +42,5 @@ public interface IPasswordPolicyService {
 	 * @param id id password policy yang di remove
 	 * @throws Exception
 	 */
-	public void remove(BigInteger id) throws Exception;
+	public void remove(Long id) throws Exception;
 }

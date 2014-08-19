@@ -7,7 +7,7 @@ import id.co.sigma.common.security.domain.PasswordPolicy;
 import id.co.sigma.security.server.dao.BaseGenericDao;
 import id.co.sigma.security.server.dao.IPasswordPolicyDao;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
 import javax.persistence.Query;
@@ -44,7 +44,7 @@ public class PasswordPolicyDaoImpl extends BaseGenericDao implements
 	}
 
 	@Override
-	public PasswordPolicy getPasswordPolicyById(BigInteger id) throws Exception {
+	public PasswordPolicy getPasswordPolicyById(Long id) throws Exception {
 		String hql = "SELECT A FROM PasswordPolicy A WHERE A.id = :ID";
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("ID", id);

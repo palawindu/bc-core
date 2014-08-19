@@ -10,7 +10,7 @@ import id.co.sigma.common.security.domain.audit.BaseCreatedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
+
 
 /**
  * Entiti untuk tabel : sec_page_definition
@@ -32,20 +32,20 @@ import javax.persistence.TableGenerator;
  */
 @Entity
 @Table(name="sec_page_definition")
-public class PageDefinition extends BaseCreatedObject implements SingleKeyEntityData<BigInteger>, IJSONFriendlyObject<PageDefinition>{
+public class PageDefinition extends BaseCreatedObject implements SingleKeyEntityData<Long>, IJSONFriendlyObject<PageDefinition>{
 
 	private static final long serialVersionUID = -7013942142386812409L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PAGE_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="PAGE_CODE")
 	private String pageCode;
 	
 	@Column(name="APPLICATION_ID")
-	private BigInteger applicationId;	
+	private Long applicationId;	
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="APPLICATION_ID", insertable=false, updatable=false)
@@ -76,7 +76,7 @@ public class PageDefinition extends BaseCreatedObject implements SingleKeyEntity
 	 * COLUMN : PAGE_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -85,7 +85,7 @@ public class PageDefinition extends BaseCreatedObject implements SingleKeyEntity
 	 * COLUMN : PAGE_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -112,7 +112,7 @@ public class PageDefinition extends BaseCreatedObject implements SingleKeyEntity
 	 * COLUMN : APPLICATION_ID
 	 * @return applicationId
 	 */
-	public BigInteger getApplicationId() {
+	public Long getApplicationId() {
 		return applicationId;
 	}
 
@@ -121,7 +121,7 @@ public class PageDefinition extends BaseCreatedObject implements SingleKeyEntity
 	 * COLUMN : APPLICATION_ID
 	 * @param applicationId
 	 */
-	public void setApplicationId(BigInteger applicationId) {
+	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
 
@@ -287,13 +287,13 @@ public class PageDefinition extends BaseCreatedObject implements SingleKeyEntity
 	public PageDefinition instantiateFromJSON(ParsedJSONContainer jsonContainer) {
 		PageDefinition retval = new PageDefinition();
 		retval.setAdditionalData( (String)jsonContainer.get("additionalData" ,  String.class.getName()));
-		retval.setApplicationId( (BigInteger)jsonContainer.get("applicationId" ,  BigInteger.class.getName()));
+		retval.setApplicationId( (Long)jsonContainer.get("applicationId" ,  Long.class.getName()));
 		  
 		retval.setApplicationList( (Application)jsonContainer.get("applicationList" ,  Application.class.getName()));
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setPageCode( (String)jsonContainer.get("pageCode" ,  String.class.getName()));
 		retval.setPageUrl( (String)jsonContainer.get("pageUrl" ,  String.class.getName()));
 		retval.setRemark( (String)jsonContainer.get("remark" ,  String.class.getName()));

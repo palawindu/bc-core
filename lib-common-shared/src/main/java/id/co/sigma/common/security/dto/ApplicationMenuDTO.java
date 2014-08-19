@@ -1,10 +1,10 @@
 package id.co.sigma.common.security.dto;
 
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -21,9 +21,9 @@ public class ApplicationMenuDTO implements IsSerializable, IJSONFriendlyObject<A
 	 * 
 	 */
 	private static final long serialVersionUID = -7954154563614086527L;
-	private BigInteger id ; 
-	private BigInteger parentId  ; 
-	private BigInteger pageId ; 
+	private Long id ; 
+	private Long parentId  ; 
+	private Long pageId ; 
 	private Integer order ; 
 	private String code ; 
 	private String label ;
@@ -40,7 +40,7 @@ public class ApplicationMenuDTO implements IsSerializable, IJSONFriendlyObject<A
 	
 	public ApplicationMenuDTO(){}
 	
-	public ApplicationMenuDTO(Function f ){
+	public ApplicationMenuDTO(ApplicationMenu f ){
 		this.id = f.getId(); 
 		this.code = f.getFunctionCode() ; 
 		this.label = f.getFunctionLabel() ; 
@@ -61,27 +61,27 @@ public class ApplicationMenuDTO implements IsSerializable, IJSONFriendlyObject<A
 	private ArrayList<ApplicationMenuDTO> subMenus ; 
 	private PageDefinitionDTO pageDetail ;
 
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public BigInteger getParentId() {
+	public Long getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(BigInteger parentId) {
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 
-	public BigInteger getPageId() {
+	public Long getPageId() {
 		return pageId;
 	}
 
-	public void setPageId(BigInteger pageId) {
+	public void setPageId(Long pageId) {
 		this.pageId = pageId;
 	}
 
@@ -230,7 +230,7 @@ public class ApplicationMenuDTO implements IsSerializable, IJSONFriendlyObject<A
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedDate( (Date)jsonContainer.get("createdDate" ,  Date.class.getName()));
 		retval.setCreatedIpAddr( (String)jsonContainer.get("createdIpAddr" ,  String.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		retval.setLabel( (String)jsonContainer.get("label" ,  String.class.getName()));
 		retval.setMenuTreeCode( (String)jsonContainer.get("menuTreeCode" ,  String.class.getName()));
 		retval.setModifiedBy( (String)jsonContainer.get("modifiedBy" ,  String.class.getName()));
@@ -238,8 +238,8 @@ public class ApplicationMenuDTO implements IsSerializable, IJSONFriendlyObject<A
 		retval.setModifiedIpAddr( (String)jsonContainer.get("modifiedIpAddr" ,  String.class.getName()));
 		retval.setOrder( (Integer)jsonContainer.get("order" ,  Integer.class.getName()));
 		/*hati hati dengan variable ini. ini bukan tipe simple dan bukan tipe id.co.sigma.common.util.json.IJSONFriendlyObject*/		retval.setPageDetail( (PageDefinitionDTO)jsonContainer.get("pageDetail" ,  PageDefinitionDTO.class.getName()));
-		retval.setPageId( (BigInteger)jsonContainer.get("pageId" ,  BigInteger.class.getName()));
-		retval.setParentId( (BigInteger)jsonContainer.get("parentId" ,  BigInteger.class.getName()));
+		retval.setPageId( (Long)jsonContainer.get("pageId" ,  Long.class.getName()));
+		retval.setParentId( (Long)jsonContainer.get("parentId" ,  Long.class.getName()));
 		retval.setStatus( (String)jsonContainer.get("status" ,  String.class.getName()));
 		retval.subMenus =  jsonContainer.getAsArraylist("subMenus", ApplicationMenuDTO.class.getName());
 		

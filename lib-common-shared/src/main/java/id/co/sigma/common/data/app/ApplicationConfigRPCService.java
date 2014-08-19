@@ -12,8 +12,6 @@ import id.co.sigma.common.data.entity.I18Text;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.rpc.JSONSerializedRemoteService;
 
-import com.google.gwt.user.client.rpc.RemoteService;
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 
 

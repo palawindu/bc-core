@@ -4,10 +4,10 @@
 package id.co.sigma.common.client.security.control;
 
 import id.co.sigma.common.client.security.BaseAriumSecurityComposite;
-import id.co.sigma.common.security.domain.Function;
+import id.co.sigma.common.security.domain.ApplicationMenu;
 import id.co.sigma.common.util.I18Utilities;
 
-import java.math.BigInteger;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 	/**
 	 * hash map dari item2 menu untuk tree
 	 */
-	private Map<BigInteger, TreeItem> treeMap;
+	private Map<Long, TreeItem> treeMap;
 	
 	/**
 	 * root tree dari menu
@@ -55,12 +55,12 @@ public class MenuTree extends BaseAriumSecurityComposite {
 	/**
 	 * list of menu items yang akan di jadikan tree
 	 */
-	private List<Function> menuItems;
+	private List<ApplicationMenu> menuItems;
 	
 	public MenuTree() {
 		
 	    rootTree = new Tree();
-	    treeMap = new HashMap<BigInteger, TreeItem>();
+	    treeMap = new HashMap<Long, TreeItem>();
 	    treePanel = new ScrollPanel(rootTree);
 	    initWidget(treePanel);
 	}
@@ -69,7 +69,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 	   * build tree dan set menu items
 	   * @param menuItems menu items
 	   */
-	  public void generateTree(List<Function> menuItems) {
+	  public void generateTree(List<ApplicationMenu> menuItems) {
 		  this.menuItems = menuItems;
 		  generateTree();
 	  }
@@ -89,7 +89,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 			  }
 			  
 			  // lup 1 masukan dalam has map
-			  for (Function menuItem : menuItems) {
+			  for (ApplicationMenu menuItem : menuItems) {
 				  treeMap.put(menuItem.getId(), new TreeItem(SafeHtmlUtils.fromString(menuItem.getFunctionLabel())));
 				  if (menuItem.getFunctionIdParent() == null)
 					  rootTree.addItem(treeMap.get(menuItem.getId()));
@@ -98,7 +98,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 				  }
 			  }
 			  // pasang pada parent nya
-			  for (Function menuItem : menuItems) {
+			  for (ApplicationMenu menuItem : menuItems) {
 				  if (menuItem.getFunctionIdParent() == null){
 					 //DO nothing
 				  }
@@ -155,7 +155,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 	 * set menu items
 	 * @param menuItems list of menu item
 	 */
-	public void setMenuItems(List<Function> menuItems) {
+	public void setMenuItems(List<ApplicationMenu> menuItems) {
 		this.menuItems = menuItems;
 	}
 	
@@ -163,7 +163,7 @@ public class MenuTree extends BaseAriumSecurityComposite {
 	 * get menu items
 	 * @return list of menu items
 	 */
-	public List<Function> getMenuItems() {
+	public List<ApplicationMenu> getMenuItems() {
 		return menuItems;
 	}
 }

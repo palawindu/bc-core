@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
@@ -25,7 +26,6 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.text.shared.Renderer;
 import com.google.gwt.text.shared.Parser;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.ValueBoxBase;
 
 public class IntegerTextBox  extends ValueBoxBase<Integer> implements BaseFormElement,
@@ -223,7 +223,7 @@ public class IntegerTextBox  extends ValueBoxBase<Integer> implements BaseFormEl
 	/**
 	 * flag show hide config button
 	 **/
-	private boolean showEditConfigButton = false ; 
+	boolean showEditConfigButton = false ; 
 	
 	
 	@Override

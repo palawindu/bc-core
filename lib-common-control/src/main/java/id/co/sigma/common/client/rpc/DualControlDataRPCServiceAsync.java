@@ -15,7 +15,7 @@ import id.co.sigma.common.data.app.SimpleMasterDataDualControlApprovalResult;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleSortArgument;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 import java.util.List;
 
@@ -46,21 +46,12 @@ public interface DualControlDataRPCServiceAsync {
 		
 	}
 
-	/**
-	 * membaca data dual control dengan berdasar pada id dari data
-	 * @param id id dari data dalam table dual control
-	 *  
-	 **/
-	// di matikan karena tidak ada yang memakai
-	//public void getDataById(BigInteger id  , AsyncCallback<CommonDualControlContainerTable> callback) ;
-	
-	
 	
 	/**
-	 * replacement untuk {@link #getDataById(BigInteger)}. versi ini dengan mengirimkan data token kembali ke client. jadinya round trip data bisa di kurangi
+	 * versi ini dengan mengirimkan data token kembali ke client. jadinya round trip data bisa di kurangi
 	 * @param id ID pada table m_dual_control_table. data yang memerlukan approval
 	 */
-	public void getWaitApprovalDataWithToken (BigInteger id , AsyncCallback<DataWithToken<CommonDualControlContainerTable>> callback)  ; 
+	public void getWaitApprovalDataWithToken (Long id , AsyncCallback<DataWithToken<CommonDualControlContainerTable>> callback)  ; 
 	
 	/**
 	 * membaca data sebagai JSON String. data di baca dengan class FQCN dan ID dari data. id dari data di compact menjadi 1. Kalau id dari data composite, data di concat dengan .
@@ -71,7 +62,7 @@ public interface DualControlDataRPCServiceAsync {
 	 * @param dataId id data yang di reject
 	 * @param rejectReason alasan data di tolak oleh user
 	 **/
-	public void rejectData (BigInteger dataId , String rejectReason, AsyncCallback<Void> callback)   ; 
+	public void rejectData (Long dataId , String rejectReason, AsyncCallback<Void> callback)   ; 
 	
 	
 	
@@ -94,7 +85,7 @@ public interface DualControlDataRPCServiceAsync {
 	 * 
 	 * @return id dari object yang di create dalam database
 	 **/
-	public void submitDataForApproval (  CommonDualControlContainerTable dualControlledData , DualControlEnabledOperation operation , AsyncCallback<BigInteger> callback) ;
+	public void submitDataForApproval (  CommonDualControlContainerTable dualControlledData , DualControlEnabledOperation operation , AsyncCallback<Long> callback) ;
 	
 	/**
 	 * perbaikan dari {@link #submitDataForApproval(CommonDualControlContainerTable, DualControlEnabledOperation)} , ini dengan return yang lebih lengkap
@@ -134,7 +125,7 @@ public interface DualControlDataRPCServiceAsync {
 	 * 
 	 * @author <a href="mailto:gede.sutarsa@gmail.com">Gede Sutarsa</a>
 	 */
-	public <DATA extends DualControlEnabledData<?,?>> void getBulkApprovalDataDetails ( BigInteger approvalDataId , int pageSize, int page , AsyncCallback<PagedResultHolder<DATA>> callback)  ;
+	public <DATA extends DualControlEnabledData<?,?>> void getBulkApprovalDataDetails ( Long approvalDataId , int pageSize, int page , AsyncCallback<PagedResultHolder<DATA>> callback)  ;
 	
 	
 	
@@ -148,7 +139,7 @@ public interface DualControlDataRPCServiceAsync {
 	/**
 	 * approve data bulk. yang di kirim cuma Id dari approval data
 	 */
-	public void approveAndApplyBulkData ( BigInteger bulkDataId , AsyncCallback<Void> callback )   ;
+	public void approveAndApplyBulkData ( Long bulkDataId , AsyncCallback<Void> callback )   ;
 	
 	
 	
@@ -157,7 +148,7 @@ public interface DualControlDataRPCServiceAsync {
 	 * @param bulkDataId id dari data bulk
 	 * @param rejectReason alasan penolakan
 	 */
-	public void rejectBulkData ( BigInteger bulkDataId , String rejectReason, AsyncCallback<Void> callback)  ;
+	public void rejectBulkData ( Long bulkDataId , String rejectReason, AsyncCallback<Void> callback)  ;
 	
 	
 	/**

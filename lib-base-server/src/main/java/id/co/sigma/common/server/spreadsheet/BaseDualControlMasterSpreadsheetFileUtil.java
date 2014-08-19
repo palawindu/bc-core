@@ -1,6 +1,6 @@
 package id.co.sigma.common.server.spreadsheet;
 
-import java.math.BigInteger;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -107,7 +107,7 @@ public abstract class BaseDualControlMasterSpreadsheetFileUtil<DATA extends Simp
 	protected    List<DATA> getExistingDataOnDB ( List<DATA> uploadedNewData ) {
 		if ( uploadedNewData== null || uploadedNewData.isEmpty())
 			return null ; 
-		ArrayList<BigInteger > ids = new ArrayList<BigInteger>() ;
+		ArrayList<Long > ids = new ArrayList<Long>() ;
 		for ( DATA scn : uploadedNewData){
 			ids.add(scn.getPrimaryKey());
 		}

@@ -1,7 +1,7 @@
 package id.co.sigma.common.server.dao.base;
 
+import id.co.sigma.common.data.CommonLibraryConstant;
 import id.co.sigma.common.data.ModificationDataContainer;
-import id.co.sigma.common.data.PagedSimpleDataGridData;
 import id.co.sigma.common.data.SingleKeyEntityData;
 import id.co.sigma.common.data.query.SimpleQueryFilter;
 import id.co.sigma.common.data.query.SimpleQueryFilterOperator;
@@ -30,7 +30,7 @@ public abstract class SharedPartBaseDao implements IBaseDao{
 	/**
 	 * formatter untuk date (digunakan dalam casting filter ke type data aslinya)
 	 **/
-	protected static SimpleDateFormat dateFormatter = new SimpleDateFormat(PagedSimpleDataGridData.DATE_TO_STRING_SERIALIZATION_PATTERN);
+	protected static SimpleDateFormat dateFormatter = new SimpleDateFormat(CommonLibraryConstant.DATE_TO_STRING_SERIALIZATION_PATTERN);
 	
 	protected static SimpleDateFormat DATE_FORMATTER_SHORT = new SimpleDateFormat("yyyy-MM-dd");
 	

@@ -9,7 +9,7 @@ import id.co.sigma.common.security.domain.audit.BaseCreatedObject;
 import id.co.sigma.common.util.json.IJSONFriendlyObject;
 import id.co.sigma.common.util.json.ParsedJSONContainer;
 
-import java.math.BigInteger;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,24 +30,24 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="sec_function_assignment")
-public class FunctionAssignment extends BaseCreatedObject implements IJSONFriendlyObject<FunctionAssignment> {
+public class ApplicationMenuAssignment extends BaseCreatedObject implements IJSONFriendlyObject<ApplicationMenuAssignment> {
 
 	private static final long serialVersionUID = 4776419933883162445L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="FUNCTION_ASSIGNMENT_ID")
-	private BigInteger id;
+	private Long id;
 	
 	@Column(name="FUNCTION_ID")
-	private BigInteger functionId;
+	private Long functionId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="FUNCTION_ID", insertable=false, updatable=false)
-	private Function function;
+	private ApplicationMenu function;
 	
 	@Column(name="GROUP_ID")
-	private BigInteger groupId;
+	private Long groupId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="GROUP_ID", insertable=false, updatable=false)
@@ -58,7 +58,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : FUNCTION_ASSIGNMENT_ID
 	 * @return id
 	 */
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -67,7 +67,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : FUNCTION_ASSIGNMENT_ID
 	 * @param id
 	 */
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -76,7 +76,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : FUNCTION_ID
 	 * @return
 	 */
-	public BigInteger getFunctionId() {
+	public Long getFunctionId() {
 		return functionId;
 	}
 
@@ -85,23 +85,23 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : FUNCTION_ID
 	 * @param functionId
 	 */
-	public void setFunctionId(BigInteger functionId) {
+	public void setFunctionId(Long functionId) {
 		this.functionId = functionId;
 	}
 
 	/**
-	 * reference ke object Function {@link id.co.sigma.common.security.domain.Function}
+	 * reference ke object Function {@link id.co.sigma.common.security.domain.ApplicationMenu}
 	 * @return function
 	 */
-	public Function getFunction() {
+	public ApplicationMenu getFunction() {
 		return function;
 	}
 
 	/**
-	 * reference ke object Function {@link id.co.sigma.common.security.domain.Function}
+	 * reference ke object Function {@link id.co.sigma.common.security.domain.ApplicationMenu}
 	 * @param function
 	 */
-	public void setFunction(Function function) {
+	public void setFunction(ApplicationMenu function) {
 		this.function = function;
 	}
 
@@ -110,7 +110,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : GROUP_ID
 	 * @return groupId
 	 */
-	public BigInteger getGroupId() {
+	public Long getGroupId() {
 		return groupId;
 	}
 
@@ -119,7 +119,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	 * COLUMN : GROUP_ID
 	 * @param groupId
 	 */
-	public void setGroupId(BigInteger groupId) {
+	public void setGroupId(Long groupId) {
 		this.groupId = groupId;
 	}
 	
@@ -158,7 +158,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FunctionAssignment other = (FunctionAssignment) obj;
+		ApplicationMenuAssignment other = (ApplicationMenuAssignment) obj;
 		if (functionId == null) {
 			if (other.functionId != null)
 				return false;
@@ -189,7 +189,7 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 		jsonContainer.put("createdOn",getCreatedOn());
 		jsonContainer.put("creatorIPAddress",getCreatorIPAddress());
 		  
-		 Function param5 = getFunction();   
+		 ApplicationMenu param5 = getFunction();   
 		 if ( param5 != null){ 
 		
  //1. Ok tampung dulu variable
@@ -212,17 +212,17 @@ public class FunctionAssignment extends BaseCreatedObject implements IJSONFriend
 	}
 	
 	@Override
-	public FunctionAssignment instantiateFromJSON(ParsedJSONContainer jsonContainer) {
-		FunctionAssignment retval = new FunctionAssignment();
+	public ApplicationMenuAssignment instantiateFromJSON(ParsedJSONContainer jsonContainer) {
+		ApplicationMenuAssignment retval = new ApplicationMenuAssignment();
 		retval.setCreatedBy( (String)jsonContainer.get("createdBy" ,  String.class.getName()));
 		retval.setCreatedOn( (Date)jsonContainer.get("createdOn" ,  Date.class.getName()));
 		retval.setCreatorIPAddress( (String)jsonContainer.get("creatorIPAddress" ,  String.class.getName()));
 		  
-		retval.setFunction( (Function)jsonContainer.get("function" ,  Function.class.getName()));
-		retval.setFunctionId( (BigInteger)jsonContainer.get("functionId" ,  BigInteger.class.getName()));
+		retval.setFunction( (ApplicationMenu)jsonContainer.get("function" ,  ApplicationMenu.class.getName()));
+		retval.setFunctionId( (Long)jsonContainer.get("functionId" ,  Long.class.getName()));
 		/*hati hati dengan variable ini. ini bukan tipe simple dan bukan tipe id.co.sigma.common.util.json.IJSONFriendlyObject*/		retval.setGroup( (UserGroup)jsonContainer.get("group" ,  UserGroup.class.getName()));
-		retval.setGroupId( (BigInteger)jsonContainer.get("groupId" ,  BigInteger.class.getName()));
-		retval.setId( (BigInteger)jsonContainer.get("id" ,  BigInteger.class.getName()));
+		retval.setGroupId( (Long)jsonContainer.get("groupId" ,  Long.class.getName()));
+		retval.setId( (Long)jsonContainer.get("id" ,  Long.class.getName()));
 		return retval; 
 	}
 }

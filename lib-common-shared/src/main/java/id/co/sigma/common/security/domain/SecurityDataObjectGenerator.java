@@ -25,8 +25,8 @@ public class SecurityDataObjectGenerator extends AbstractObjectGenerator {
 		id.co.sigma.common.security.domain.ApplicationUserKey.class,
 		id.co.sigma.common.security.domain.Branch.class,
 		id.co.sigma.common.security.domain.BranchAssignment.class,
-		id.co.sigma.common.security.domain.Function.class,
-		id.co.sigma.common.security.domain.FunctionAssignment.class,
+		id.co.sigma.common.security.domain.ApplicationMenu.class,
+		id.co.sigma.common.security.domain.ApplicationMenuAssignment.class,
 		id.co.sigma.common.security.domain.PageDefinition.class,
 		id.co.sigma.common.security.domain.PasswordPolicy.class,
 		id.co.sigma.common.security.domain.Signon.class,
@@ -52,8 +52,8 @@ public class SecurityDataObjectGenerator extends AbstractObjectGenerator {
 		if (id.co.sigma.common.security.domain.ApplicationUserKey.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.ApplicationUserKey();
 		if (id.co.sigma.common.security.domain.Branch.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.Branch();
 		if (id.co.sigma.common.security.domain.BranchAssignment.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.BranchAssignment();
-		if (id.co.sigma.common.security.domain.Function.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.Function();
-		if (id.co.sigma.common.security.domain.FunctionAssignment.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.FunctionAssignment();
+		if (id.co.sigma.common.security.domain.ApplicationMenu.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.ApplicationMenu();
+		if (id.co.sigma.common.security.domain.ApplicationMenuAssignment.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.ApplicationMenuAssignment();
 		if (id.co.sigma.common.security.domain.PageDefinition.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.PageDefinition();
 		if (id.co.sigma.common.security.domain.PasswordPolicy.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.PasswordPolicy();
 		if (id.co.sigma.common.security.domain.Signon.class.getName().equals(objectFQCN)) return (T) new id.co.sigma.common.security.domain.Signon();
@@ -80,8 +80,8 @@ public class SecurityDataObjectGenerator extends AbstractObjectGenerator {
 		if (id.co.sigma.common.security.domain.ApplicationUserKey.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.ApplicationUserKey[size];
 		if (id.co.sigma.common.security.domain.Branch.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.Branch[size];
 		if (id.co.sigma.common.security.domain.BranchAssignment.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.BranchAssignment[size];
-		if (id.co.sigma.common.security.domain.Function.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.Function[size];
-		if (id.co.sigma.common.security.domain.FunctionAssignment.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.FunctionAssignment[size];
+		if (id.co.sigma.common.security.domain.ApplicationMenu.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.ApplicationMenu[size];
+		if (id.co.sigma.common.security.domain.ApplicationMenuAssignment.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.ApplicationMenuAssignment[size];
 		if (id.co.sigma.common.security.domain.PageDefinition.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.PageDefinition[size];
 		if (id.co.sigma.common.security.domain.PasswordPolicy.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.PasswordPolicy[size];
 		if (id.co.sigma.common.security.domain.Signon.class.getName().equals(objectFQCN)) return (T[]) new id.co.sigma.common.security.domain.Signon[size];

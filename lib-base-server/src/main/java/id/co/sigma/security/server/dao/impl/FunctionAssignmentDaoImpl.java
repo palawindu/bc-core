@@ -1,10 +1,9 @@
 package id.co.sigma.security.server.dao.impl;
 
-import id.co.sigma.common.security.domain.FunctionAssignment;
+import id.co.sigma.common.security.domain.ApplicationMenuAssignment;
 import id.co.sigma.security.server.dao.BaseGenericDao;
 import id.co.sigma.security.server.dao.IFunctionAssignmentDao;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Repository;
 public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFunctionAssignmentDao{
 
 	@Override
-	public void deleteFunctionByGroupId(BigInteger groupId) throws Exception {
+	public void deleteFunctionByGroupId(Long groupId) throws Exception {
 		Query qry = getEntityManager().createQuery("DELETE FROM FunctionAssignment a WHERE a.groupId=:GROUP_ID");
 		qry.setParameter("GROUP_ID", groupId);
 		qry.executeUpdate();
@@ -30,7 +29,7 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 	
 	
 	@Override
-	public void deleteUserGroupAssigmentByGroupId(BigInteger groupId)
+	public void deleteUserGroupAssigmentByGroupId(Long groupId)
 			throws Exception {
 		Query qry =getEntityManager().createQuery("delete from UserGroupAssignment ua where ua.groupId=:GROUP_ID") ; 
 		qry.setParameter("GROUP_ID", groupId);
@@ -40,7 +39,7 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 	} 
 
 	@Override
-	public List<BigInteger> getFunctionIdByGroupId(List<BigInteger> groupIds)
+	public List<Long> getFunctionIdByGroupId(List<Long> groupIds)
 			throws Exception {
 		String hql = "SELECT DISTINCT A.functionId FROM FunctionAssignment A WHERE A.groupId IN :GROUP_IDS";
 		Query query = getEntityManager().createQuery(hql);
@@ -49,13 +48,13 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 	}
 
 	@Override
-	public List<FunctionAssignment> getFunctionAssignmentByIdAndGroupId(
-			List<FunctionAssignment> data) throws Exception {
+	public List<ApplicationMenuAssignment> getFunctionAssignmentByIdAndGroupId(
+			List<ApplicationMenuAssignment> data) throws Exception {
 		String hql = "SELECT A FROM FunctionAssignment A WHERE 1=1";
-		List<BigInteger> ids = extractFunctionIdFromData(data);
+		List<Long> ids = extractFunctionIdFromData(data);
 		if (ids != null && !ids.isEmpty())
 			hql += " AND A.functionId in :LIST_FUNCTION_ID";
-		List<BigInteger> groupIds = extractGroupIdFromData(data);
+		List<Long> groupIds = extractGroupIdFromData(data);
 		if (groupIds != null && !groupIds.isEmpty())
 			hql += " AND A.groupId in :LIST_GROUP_ID";
 		Query query = getEntityManager().createQuery(hql);
@@ -71,11 +70,11 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 	 * @param data list function assignment
 	 * @return list id function assignment
 	 */
-	private List<BigInteger> extractFunctionIdFromData(List<FunctionAssignment> data) {
+	private List<Long> extractFunctionIdFromData(List<ApplicationMenuAssignment> data) {
 		if (data == null || data.isEmpty())
 			return null;
-		List<BigInteger> ids = new ArrayList<BigInteger>();
-		for (FunctionAssignment itemData : data) {
+		List<Long> ids = new ArrayList<Long>();
+		for (ApplicationMenuAssignment itemData : data) {
 			ids.add(itemData.getFunctionId());
 		}
 		return ids;
@@ -86,18 +85,18 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 	 * @param data list function assignment
 	 * @return list group id
 	 */
-	private List<BigInteger> extractGroupIdFromData(List<FunctionAssignment> data) {
+	private List<Long> extractGroupIdFromData(List<ApplicationMenuAssignment> data) {
 		if (data == null || data.isEmpty())
 			return null;
-		List<BigInteger> groupIds = new ArrayList<BigInteger>();
-		for (FunctionAssignment itemData : data) {
+		List<Long> groupIds = new ArrayList<Long>();
+		for (ApplicationMenuAssignment itemData : data) {
 			groupIds.add(itemData.getGroupId());
 		}
 		return groupIds;
 	}
 
 	@Override
-	public void deleteFunctionAssigmentByFunctionId(BigInteger functionId)
+	public void deleteFunctionAssigmentByFunctionId(Long functionId)
 			throws Exception {
 		
 		String queryString = "DELETE FROM FunctionAssignment a WHERE a.functionId = :ID_FUNCTION";
@@ -109,8 +108,8 @@ public class FunctionAssignmentDaoImpl extends BaseGenericDao implements IFuncti
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FunctionAssignment> getFunctionAssigmentByGroupId(
-			BigInteger groupId) {
+	public List<ApplicationMenuAssignment> getFunctionAssigmentByGroupId(
+			Long groupId) {
 		String hql ="SELECT a from FunctionAssignment a where a.groupId = :GROUP_ID" ; 
 		Query query = getEntityManager().createQuery(hql);
 		query.setParameter("GROUP_ID", groupId);

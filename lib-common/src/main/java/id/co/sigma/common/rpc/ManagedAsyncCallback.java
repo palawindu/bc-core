@@ -1,6 +1,6 @@
 package id.co.sigma.common.rpc;
 
-import com.google.gwt.user.client.Command;
+
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
